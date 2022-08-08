@@ -1,0 +1,4 @@
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby']
+

@@ -1,0 +1,32 @@
+### all ignore ###
+/*
+/.**
+
+### config
+!/.config/
+!/.config/**
+
+### fish
+!/.config/fish/
+!/.config/fish/**
+/.config/fish/config.fish.local
+/.config/fish/fish_variables
+/.config/fish/functions/
+
+### vim
+!/.vimrc
+!/.vim/
+!/.vim/*/
+!/.vim/rc/
+!/.vim/rc/**
+
+### .bin
+!/.bin/
+!/.bin/**
+!/.bin.local
+
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeep
+

@@ -1,0 +1,77 @@
+set VISUAL 'vim --noplugin'
+set THOR_DIFF '/usr/local/bin/vimdiff'
+set THOR_MERGE '/usr/local/bin/vimdiff'
+
+fish_add_path ~/.local/bin
+fish_add_path ~/bin
+fish_add_path ~/.rbenv/bin
+set -x less "-nm"
+
+abbr -a lss ls -acf
+abbr -a ll ls -al
+abbr -a virc vim ~/dotfiles/.config/fish/config.fish
+abbr -a srrc source ~/dotfiles/.config/fish/config.fish
+abbr -a .. cd ..
+abbr -a ... cd ../..
+
+# for TODO-TXT
+abbr -a tt todo-txt
+abbr -a ttl todo-txt ls
+abbr -a ttla todo-txt lsa
+abbr -a tta todo-txt -t add
+abbr -a ttd todo-txt do
+
+# for Git
+abbr -a gico git checkout
+abbr -a gia  git add
+abbr -a gial git add -A
+abbr -a gic  git commit -m
+abbr -a gis  git status
+abbr -a gil  git log --reverse --decorate
+abbr -a gib  git branch
+abbr -a gim  git merge
+
+# for Bundler
+abbr -a be   bundle exec
+abbr -a ber  bundle exec rails
+abbr -a berc bundle exec rails console --sandbox
+
+# substitute for eval (rbenv init -)
+status --is-interactive; and source (rbenv init -|psub)
+
+# copy command for WSL2
+function ccp
+  if string match -q '*-WSL*' (uname -r)
+    if count $argv > /dev/null
+      echo $argv | /mnt/c/Windows/System32/clip.exe
+    else
+      cat | /mnt/c/Windows/System32/clip.exe
+    end
+  end
+end
+
+# paste command for WSL2
+function cps
+  if string match -q '*-WSL*' (uname -r)
+    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
+      -command Get-Clipboard
+  end
+end
+
+function mkcd
+  mkdir $argv[1] && cd $argv[1] && pwd
+end
+
+function fish_user_key_bindings
+  bind \cr 'peco_select_history (commandline -b)'
+  for mode in insert default visual
+    fish_default_key_bindings -M $mode
+  end
+  fish_vi_key_bindings --no-erase
+  bind -M insert -m default jj backward-char force-repaint
+end
+
+if test -e (status dirname)'/config.fish.local'
+  source (status dirname)'/config.fish.local'
+end
+
