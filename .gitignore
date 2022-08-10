@@ -20,6 +20,9 @@
 !/.vim/rc/
 !/.vim/rc/**
 
+### git
+!/.gitignore_global
+
 ### .bin
 !/.bin/
 !/.bin/**
