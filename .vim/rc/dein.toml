@@ -56,3 +56,6 @@ depends = 'fzf'
 [[plugins]]
 repo = 'szw/vim-tags'
 
+[[plugins]]
+repo = 'rbtnn/vim-ambiwidth'
+
