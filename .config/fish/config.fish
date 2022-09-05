@@ -36,6 +36,9 @@ abbr -a be   bundle exec
 abbr -a ber  bundle exec rails
 abbr -a berc bundle exec rails console --sandbox
 
+# for Fly.io
+abbr -a fly flyctl
+
 # substitute for eval (rbenv init -)
 status --is-interactive; and source (rbenv init -|psub)
 
