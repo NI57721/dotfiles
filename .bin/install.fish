@@ -23,5 +23,6 @@ end
 
 
 backup
-and create_links
+create_links
+curl -sL https://git.io/fisher | source; and fisher update
 
