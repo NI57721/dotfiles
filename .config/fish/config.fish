@@ -1,16 +1,20 @@
 set VISUAL 'vim --noplugin'
 set THOR_DIFF '/usr/local/bin/vimdiff'
 set THOR_MERGE '/usr/local/bin/vimdiff'
+set FLYCTL_INSTALL '~/.fly'
 
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
 fish_add_path ~/.rbenv/bin
+fish_add_path $FLYCTL_INSTALL/bin
+
 set -x less "-nm"
 
 abbr -a lss ls -acf
 abbr -a ll ls -al
-abbr -a virc vim ~/dotfiles/.config/fish/config.fish
-abbr -a srrc source ~/dotfiles/.config/fish/config.fish
+abbr -a virc  vim    ~/.config/fish/config.fish
+abbr -a vircl vim    ~/.config/fish/config.fish.local
+abbr -a srrc  source ~/.config/fish/config.fish
 abbr -a .. cd ..
 abbr -a ... cd ../..
 
