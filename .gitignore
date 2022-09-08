@@ -6,6 +6,9 @@
 !/.config/
 !/.config/**
 
+### bash
+!/.bashrc
+
 ### fish
 !/.config/fish/
 !/.config/fish/**
