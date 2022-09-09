@@ -144,10 +144,10 @@ nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 let g:fzf_buffers_jump = 1
 
 " Yank settings for WSL2
-augroup Yank
-    autocmd!
-    autocmd TextYankPost * :call system('win32yank -i --crlf', @")
-augroup END
-nnoremap <silent> p :call setreg('"',system('win32yank -o --lf'))<CR>""p
-nnoremap <silent> P :call setreg('"',system('win32yank -o --lf'))<CR>""P
+" augroup Yank
+"     autocmd!
+"     autocmd TextYankPost * :call system('win32yank -i --crlf', @")
+" augroup END
+" nnoremap <silent> p :call setreg('"',system('win32yank -o --lf'))<CR>""p
+" nnoremap <silent> P :call setreg('"',system('win32yank -o --lf'))<CR>""P
 
