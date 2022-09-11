@@ -3,6 +3,10 @@ set THOR_DIFF '/usr/local/bin/vimdiff'
 set THOR_MERGE '/usr/local/bin/vimdiff'
 set FLYCTL_INSTALL '~/.fly'
 
+set -g theme_display_user no
+set -g theme_display_hostname no
+
+
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
 fish_add_path ~/.rbenv/bin
