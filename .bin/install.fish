@@ -15,8 +15,9 @@ function install_packages
   sudo add-apt-repository ppa:jonathonf/vim
   and sudo apt-get update
   and sudo apt-get install -y \
-        git \
-        vim-gtk3
+    git \
+    todotxt-cli \
+    vim-gtk3
   and success $history[1]
   or failure $history[1]
 end
