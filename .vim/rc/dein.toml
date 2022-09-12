@@ -1,7 +1,3 @@
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
@@ -25,12 +21,6 @@ repo = 'hrsh7th/vim-vsnip'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
-
-# [[plugins]]
-# repo = 'digitaltoad/vim-pug'
-
-# [[plugins]]
-# repo = 'tyru/skk.vim'
 
 [[plugins]]
 repo = 'Shougo/vinarise'
