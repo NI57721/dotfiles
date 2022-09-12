@@ -91,6 +91,9 @@ let &t_te .= "\e[0 q"
 
 let mapleader = "\<Space>"
 
+" Set the indent inside the p tags
+let g:html_indent_inctags = "p"
+
 set completeopt=menuone
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
   exec "imap " . k . " " . k . "<C-N><C-P>"
