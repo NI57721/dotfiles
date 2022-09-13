@@ -38,6 +38,7 @@ abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate
 abbr -a gib  git branch
 abbr -a gim  git merge
+abbr -a gid  git diff
 
 # for Bundler
 abbr -a be   bundle exec
