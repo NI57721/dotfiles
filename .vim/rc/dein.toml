@@ -49,3 +49,6 @@ repo = 'szw/vim-tags'
 [[plugins]]
 repo = 'rbtnn/vim-ambiwidth'
 
+[[plugins]]
+repo = 'chrisbra/matchit'
+
