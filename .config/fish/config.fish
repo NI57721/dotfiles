@@ -36,7 +36,9 @@ abbr -a gial git add -A
 abbr -a gic  git commit -m
 abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate
+abbr -a giln git log --reverse --decorate -n 10
 abbr -a gib  git branch
+abbr -a gif  git fetch
 abbr -a gim  git merge
 abbr -a gid  git diff
 
