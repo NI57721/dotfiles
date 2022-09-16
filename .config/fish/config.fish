@@ -73,7 +73,9 @@ function cps
 end
 
 function mkcd
-  mkdir $argv[1] && cd $argv[1] && pwd
+  mkdir -p $argv[1]
+  and cd $argv[1]
+  and pwd
 end
 
 function fish_user_key_bindings
