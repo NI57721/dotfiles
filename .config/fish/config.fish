@@ -32,6 +32,7 @@ abbr -a ttd todo-txt do
 # for Git
 abbr -a gico git checkout
 abbr -a gia  git add
+abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gic  git commit -m
 abbr -a gis  git status
@@ -41,6 +42,8 @@ abbr -a gib  git branch
 abbr -a gif  git fetch
 abbr -a gim  git merge
 abbr -a gid  git diff
+abbr -a gicl git clone git@github.com:
+abbr -a gira git remote add origin git@github.com:
 
 # for Bundler
 abbr -a be   bundle exec
