@@ -147,6 +147,9 @@ nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 " Make it possible to jump from fzf to the file
 let g:fzf_buffers_jump = 1
 
+command! Vimrc :tabnew ~/.vimrc
+command! Srrc  :source ~/.vimrc
+
 " Yank settings for WSL2
 " augroup Yank
 "     autocmd!
