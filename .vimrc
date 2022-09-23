@@ -70,6 +70,7 @@ tnoremap <C-Tab> <C-w>gt
 tnoremap <S-C-Tab> <C-w>gT
 noremap gr :tabnext<CR>
 noremap gR :tabprevious<CR>
+nnoremap <leader>h <C-6>
 
 noremap j gj
 noremap gj j
