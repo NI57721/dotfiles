@@ -2,3 +2,6 @@
 repo = 'tpope/vim-endwise'
 on_ft = ['ruby']
 
+[[plugins]]
+repo = 'NI57721/shakyo.vim'
+

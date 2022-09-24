@@ -147,6 +147,9 @@ nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 " Make it possible to jump from fzf to the file
 let g:fzf_buffers_jump = 1
 
+" Dispaly clue in shakyo mode
+nnoremap <leader>f :ShakyoClue<CR>
+
 command! Vimrc :tabnew ~/.vimrc
 command! Srrc  :source ~/.vimrc
 
