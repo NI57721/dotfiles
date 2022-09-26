@@ -152,6 +152,7 @@ nnoremap <leader>f :ShakyoClue<CR>
 
 command! Vimrc :tabnew ~/.vimrc
 command! Srrc  :source ~/.vimrc
+command! DeinTOML :tabnew ~/.vim/rc/dein.toml
 
 " Yank settings for WSL2
 " augroup Yank
