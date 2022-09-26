@@ -81,6 +81,14 @@ function mkcd
   and pwd
 end
 
+function rbenvupdate
+  pushd (rbenv root)
+  git pull
+  cd (rbenv root)/plugins/ruby-build
+  git pull
+  popd
+end
+
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual
