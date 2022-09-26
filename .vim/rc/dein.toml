@@ -52,3 +52,7 @@ repo = 'rbtnn/vim-ambiwidth'
 [[plugins]]
 repo = 'chrisbra/matchit'
 
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+
