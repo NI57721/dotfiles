@@ -48,6 +48,7 @@ abbr -a gira git remote add origin git@github.com:
 # for Bundler
 abbr -a be   bundle exec
 abbr -a ber  bundle exec rails
+abbr -a bers bundle exec rails server -b 0.0.0.0
 abbr -a berc bundle exec rails console --sandbox
 
 # for Fly.io
