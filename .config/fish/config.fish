@@ -42,6 +42,7 @@ abbr -a gib  git branch
 abbr -a gif  git fetch
 abbr -a gim  git merge
 abbr -a gid  git diff
+abbr -a gidc git diff --cached
 abbr -a gicl git clone git@github.com:
 abbr -a gira git remote add origin git@github.com:
 
