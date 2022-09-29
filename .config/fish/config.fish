@@ -38,6 +38,7 @@ abbr -a gic  git commit -m
 abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate
 abbr -a giln git log --reverse --decorate -n 10
+abbr -a gilg git log --graph --all --abbrev-commit --date=relative --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 abbr -a gib  git branch
 abbr -a gif  git fetch
 abbr -a gim  git merge
