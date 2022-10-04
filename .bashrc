@@ -23,6 +23,8 @@ alias tt="todo-txt -t"
 eval "$(rbenv init -)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+shopt -s dotglob
+
 set -o vi
 bind '"jj": vi-movement-mode'
 bind '"\C-p": previous-history'
