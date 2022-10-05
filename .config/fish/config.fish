@@ -36,14 +36,14 @@ abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gic  git commit -m
 abbr -a gis  git status
-abbr -a gil  git log --reverse --decorate
-abbr -a giln git log --reverse --decorate -n 10
-abbr -a gilg git log --graph --all --abbrev-commit --date=relative --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+abbr -a gil  git log --reverse --decorate --color=always
+abbr -a giln git log --reverse --decorate -n 10 --color=always
+abbr -a gilg git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 abbr -a gib  git branch
 abbr -a gif  git fetch
 abbr -a gim  git merge
-abbr -a gid  git diff
-abbr -a gidc git diff --cached
+abbr -a gid  git diff --color=always
+abbr -a gidc git diff --cached --color=always
 abbr -a gicl git clone git@github.com:
 abbr -a gira git remote add origin git@github.com:
 
