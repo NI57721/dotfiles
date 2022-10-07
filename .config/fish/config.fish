@@ -29,6 +29,9 @@ abbr -a ttla todo-txt lsa
 abbr -a tta todo-txt -t add
 abbr -a ttd todo-txt do
 
+# for trash-cli
+abbr -a tp trash-put
+
 # for Git
 abbr -a gico git checkout
 abbr -a gia  git add

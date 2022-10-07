@@ -87,6 +87,14 @@ function install_docker
   sudo usermod -aG docker $USER
 end
 
+function install_trash_cli
+  sudo apt-get update
+  and sudo apt-get install -y python3
+  and python3 -m pip install trash-cli
+  and success install trash-cli
+  or failure install trash-cli
+end
+
 backup
 create_links
 install_fisher

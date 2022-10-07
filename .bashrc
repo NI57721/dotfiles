@@ -19,6 +19,7 @@ alias srrc='source ~/.bashrc'
 alias virc='vim ~/.bashrc'
 alias lsag="!! | less -NM"
 alias tt="todo-txt -t"
+alias tp="trash-put"
 
 eval "$(rbenv init -)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
