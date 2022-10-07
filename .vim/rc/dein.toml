@@ -55,4 +55,6 @@ repo = 'chrisbra/matchit'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
+[[plugins]]
+repo = 'vim-denops/denops.vim'
 

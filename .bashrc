@@ -7,9 +7,11 @@ esac
 
 export VISUAL='vim --noplugin'
 export FLYCTL_INSTALL="~/.fly"
+export DENO_INSTALL="/home/nishihama/.deno"
 export LESS="-RNM"
 export PATH="~/.local/bin:~/bin:~/.rbenv/bin:$PATH"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 alias ..='cd ..'
 alias ...='cd ../..'

@@ -95,6 +95,10 @@ function install_trash_cli
   or failure install trash-cli
 end
 
+function install_deno
+  curl -fsSL https://deno.land/x/install/install.sh | sh
+end
+
 backup
 create_links
 install_fisher
