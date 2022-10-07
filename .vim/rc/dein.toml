@@ -58,3 +58,9 @@ repo = 'mattn/emmet-vim'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+
