@@ -31,6 +31,17 @@ if dein#check_install()
   call dein#install()
 endif
 
+call ddc#custom#patch_global('sources', ['vim-lsp'])
+call ddc#custom#patch_global(
+\   'sourceOptions',
+\   {
+\     'vim-lsp': {
+\       'matchers': ['matcher_head'],
+\       'mark': 'lsp',
+\     },
+\   }
+\ )
+call ddc#enable()
 
 colorscheme desert
 set ruler

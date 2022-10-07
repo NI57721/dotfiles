@@ -1,7 +1,7 @@
-set VISUAL 'vim --noplugin'
-set THOR_DIFF '/usr/local/bin/vimdiff'
-set THOR_MERGE '/usr/local/bin/vimdiff'
-set FLYCTL_INSTALL '~/.fly'
+set VISUAL vim --noplugin
+set THOR_DIFF /usr/local/bin/vimdiff
+set THOR_MERGE /usr/local/bin/vimdiff
+set FLYCTL_INSTALL ~/.fly
 set DENO_INSTALL ~/.deno
 
 set -g theme_display_user no
