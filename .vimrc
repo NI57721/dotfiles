@@ -35,8 +35,10 @@ call ddc#custom#patch_global('sources', ['vim-lsp'])
 call ddc#custom#patch_global(
 \   'sourceOptions',
 \   {
-\     'vim-lsp': {
-\       'matchers': ['matcher_head'],
+\     '_': {
+\       'matchers': ['matcher_fuzzy', 'matcher_head'],
+\       'sorters': ['sorter_fuzzy'],
+\       'converters': ['converter_fuzzy'],
 \       'mark': 'lsp',
 \     },
 \   }
