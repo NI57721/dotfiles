@@ -31,7 +31,7 @@ if dein#check_install()
   call dein#install()
 endif
 
-call ddc#custom#patch_global('sources', ['vim-lsp'])
+call ddc#custom#patch_global('sources', ['vim-lsp', 'around'])
 call ddc#custom#patch_global(
 \   'sourceOptions',
 \   {
@@ -41,6 +41,13 @@ call ddc#custom#patch_global(
 \       'converters': ['converter_fuzzy'],
 \       'mark': 'lsp',
 \     },
+\     'around': {'mark': 'A'},
+\   }
+\ )
+call ddc#custom#patch_global(
+\   'sourceParams',
+\   {
+\     'around': {'maxSize': 500},
 \   }
 \ )
 call ddc#enable()
