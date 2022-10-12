@@ -99,10 +99,3 @@ function install_deno
   curl -fsSL https://deno.land/x/install/install.sh | sh
 end
 
-backup
-create_links
-install_fisher
-install_rbenv
-install_fisher
-install_docker
-
