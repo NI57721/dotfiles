@@ -32,24 +32,20 @@ if dein#check_install()
 endif
 
 call ddc#custom#patch_global('sources', ['vim-lsp', 'around'])
-call ddc#custom#patch_global(
-\   'sourceOptions',
-\   {
-\     '_': {
-\       'matchers': ['matcher_fuzzy', 'matcher_head'],
-\       'sorters': ['sorter_fuzzy'],
-\       'converters': ['converter_fuzzy'],
-\       'mark': 'lsp',
-\     },
-\     'around': {'mark': 'A'},
-\   }
-\ )
-call ddc#custom#patch_global(
-\   'sourceParams',
-\   {
-\     'around': {'maxSize': 500},
-\   }
-\ )
+call ddc#custom#patch_global('sourceOptions',
+  \ {
+  \   'vim-lsp': {'mark': 'L'},
+  \   'around': {'mark': 'A'},
+  \   '_': {
+  \     'matchers': ['matcher_fuzzy', 'matcher_head'],
+  \     'sorters': ['sorter_fuzzy'],
+  \     'converters': ['converter_fuzzy'],
+  \   },
+  \ })
+call ddc#custom#patch_global('sourceParams',
+  \ {
+  \   'around': {'maxSize': 500},
+  \ })
 call ddc#enable()
 
 colorscheme desert
