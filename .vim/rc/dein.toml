@@ -70,3 +70,6 @@ repo = 'tani/ddc-fuzzy'
 [[plugins]]
 repo = 'Shougo/ddc-around'
 
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
