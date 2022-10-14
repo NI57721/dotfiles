@@ -26,6 +26,9 @@
 ### git
 !/.gitignore_global
 
+### tmux
+!/.tmux.conf
+
 ### .bin
 !/.bin/
 !/.bin/**
