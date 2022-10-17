@@ -1,4 +1,10 @@
 [[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'chrisbra/matchit'
+
+[[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = ['ruby']
 

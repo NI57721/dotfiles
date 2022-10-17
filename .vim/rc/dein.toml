@@ -50,12 +50,6 @@ repo = 'szw/vim-tags'
 repo = 'rbtnn/vim-ambiwidth'
 
 [[plugins]]
-repo = 'chrisbra/matchit'
-
-[[plugins]]
-repo = 'mattn/emmet-vim'
-
-[[plugins]]
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
