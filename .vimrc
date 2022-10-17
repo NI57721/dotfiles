@@ -162,6 +162,9 @@ let g:fzf_buffers_jump = 1
 " Dispaly clue in shakyo mode
 nnoremap <leader>f :ShakyoClue<CR>
 
+" Open automatically quickfix-window after excuting grep like commands
+autocmd QuickFixCmdPost *grep* cwindow
+
 command! Vimrc :tabnew ~/.vimrc
 command! Srrc  :source ~/.vimrc
 command! DeinTOML :tabnew ~/.vim/rc/dein.toml
