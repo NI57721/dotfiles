@@ -171,10 +171,22 @@ command! DeinTOML :tabnew ~/.vim/rc/dein.toml
 cabbr w!! w !sudo tee > /dev/null %
 
 " Yank settings for WSL2
-" augroup Yank
-"     autocmd!
-"     autocmd TextYankPost * :call system('win32yank -i --crlf', @")
-" augroup END
-" nnoremap <silent> p :call setreg('"',system('win32yank -o --lf'))<CR>""p
-" nnoremap <silent> P :call setreg('"',system('win32yank -o --lf'))<CR>""P
+function! IsWSL()
+  if has("unix")
+    let lines = readfile("/proc/version")
+    if lines[0] =~ "Microsoft"
+      return 1
+    endif
+  endif
+  return 0
+endfunction
+
+if IsWSL()
+  augroup Yank
+      autocmd!
+      autocmd TextYankPost * :call system('win32yank.exe -i --crlf', @")
+  augroup END
+  nnoremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
+  nnoremap <silent> P :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
+endif
 
