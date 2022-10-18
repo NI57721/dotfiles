@@ -95,6 +95,12 @@ noremap gj j
 noremap k  gk
 noremap gk k
 
+" Change the size of windows
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+
 " Not yank when using x, X, or s in normal mode
 nnoremap x "_x
 nnoremap X "_X
