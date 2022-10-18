@@ -144,15 +144,36 @@ export NVM_DIR=~/.nvm
 
 alias ..='cd ..'
 alias ...='cd ../..'
+
 alias ll='ls -al'
 alias lss='ls -ACF'
-alias srrc='. ~/.bashrc'
+
 alias virc='vim ~/.bashrc'
+alias srrc='. ~/.bashrc'
+
+alias gico="git checkout"
+alias gia="git add"
+alias giap="git add -p"
+alias gial="git add -A"
+alias gic="git commit -m"
+alias gis="git status"
+alias gil="git log --reverse --decorate --color=always"
+alias giln="git log --reverse --decorate -n 10 --color=always"
+alias gilg="git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'\"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"'"
+alias gib="git branch"
+alias gif="git fetch"
+alias gim="git merge"
+alias gid="git diff --color=always"
+alias gidc="git diff --cached --color=always"
+alias gicl="git clone git@github.com:"
+alias gira="git remote add origin git@github.com:"
+
 alias tt="todo-txt -t"
 alias ttl="todo-txt ls"
 alias ttla="todo-txt lsa"
 alias tta="todo-txt -t add"
 alias ttd="todo-txt do"
+
 alias tp="trash-put"
 
 shopt -s dotglob
