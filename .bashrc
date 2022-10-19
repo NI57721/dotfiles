@@ -174,7 +174,8 @@ alias ttla="todo-txt lsa"
 alias tta="todo-txt -t add"
 alias ttd="todo-txt do"
 
-alias tp="trash-put"
+alias rm="rm -i"
+alias put="trash-put"
 
 shopt -s dotglob
 
