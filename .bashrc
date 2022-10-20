@@ -8,12 +8,6 @@ case $- in
     *) return;;
 esac
 
-# Read .bashrc.local, if any, which may contain credentials or specific
-# options
-if [ -f ~/.bashrc.local ]; then
-  . ~/.bashrc.local
-fi
-
 ################################################################################
 #                                                                              #
 #                                   templates                                  #
@@ -332,5 +326,11 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
   }
 
   alias cps='powershell.exe -command Get-Clipboard'
+fi
+
+# Read .bashrc.local, if any, which may contain credentials or specific
+# options
+if [ -f ~/.bashrc.local ]; then
+  . ~/.bashrc.local
 fi
 
