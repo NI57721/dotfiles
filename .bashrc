@@ -282,21 +282,21 @@ function cdl {
 
 # Settings for WSL2
 if grep -qie "microsoft-.*-WSL2" /proc/version; then
-  WIN_HOME='/mnt/c/Users/$USER'
+  WIN_HOME="/mnt/c/Users/$USER"
 
-  alias cddt='cd $WIN_HOME/desktop/'
-  alias cdstu='cd $WIN_HOME/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/'
+  alias cddt="cd $WIN_HOME/desktop/"
+  alias cdstu="cd $WIN_HOME/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/"
 
-  alias ste='explorer.exe .'
+  alias ste="explorer.exe ."
 
   alias pnet=$'open "/mnt/c/PROGRA~1/paint.net/PaintDotNet.exe"'
   alias zoom=$'open "$WIN_HOME/AppData/Roaming/Zoom/bin/Zoom.exe"'
-  alias chrome='/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
+  alias chrome="/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe"
   alias word='powershell.exe -command "start WINWORD"'
   alias excel='powershell.exe -command "start EXCEL"'
 
-  alias goodbye='shutdown.exe /p; exit'
-  alias terminate='wsl.exe -t Ubuntu'
+  alias goodbye="shutdown.exe /p; exit"
+  alias terminate="wsl.exe -t Ubuntu"
 
   function open() {
     if [ $# -eq 0 ]; then
@@ -325,7 +325,7 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
     fi
   }
 
-  alias cps='powershell.exe -command Get-Clipboard'
+  alias cps="powershell.exe -command Get-Clipboard"
 fi
 
 # Read .bashrc.local, if any, which may contain credentials or specific
