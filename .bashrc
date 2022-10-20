@@ -195,10 +195,10 @@ update() {
 }
 
 apt_update() {
-  sudo apt-get update -q
-  sudo apt-get upgrade -q
-  sudo apt-get autoclean
-  sudo apt-get autoremove
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+  sudo apt-get autoclean -y
+  sudo apt-get autoremove -y
 }
 
 rbenv_update() {
