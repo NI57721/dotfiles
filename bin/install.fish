@@ -12,8 +12,7 @@ function failure
 end
 
 function install_packages
-  sudo add-apt-repository ppa:jonathonf/vim
-  and sudo apt-get update
+  sudo apt-get update
   and sudo apt-get install -y \
     git \
     todotxt-cli \
