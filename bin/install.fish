@@ -88,7 +88,7 @@ end
 
 function install_trash_cli
   sudo apt-get update
-  and sudo apt-get install -y python3
+  and sudo apt-get install -y python3 pyton3-pip
   and python3 -m pip install trash-cli
   and success install trash-cli
   or failure install trash-cli
