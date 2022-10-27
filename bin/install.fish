@@ -102,3 +102,9 @@ function install_tpm
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 end
 
+function install_virtualbox_ga
+  sudo apt-get install xserver-xorg xserver-xorg-core
+  sudo mount /dev/cdrom /mnt
+  sudo /usr/bin/bash /mnt/VBoxLinuxAdditions.run
+end
+
