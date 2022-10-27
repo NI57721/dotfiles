@@ -98,3 +98,7 @@ function install_deno
   curl -fsSL https://deno.land/x/install/install.sh | sh
 end
 
+function install_tpm
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+end
+
