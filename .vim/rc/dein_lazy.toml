@@ -11,3 +11,6 @@ on_ft = ['ruby']
 [[plugins]]
 repo = 'NI57721/shakyo.vim'
 
+[[plugins]]
+repo = 'previm/previm'
+
