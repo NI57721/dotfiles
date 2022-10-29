@@ -100,6 +100,8 @@ nnoremap <Down> gj
 inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
 
+inoremap <Tab>   <C-n>
+inoremap <S-Tab> <C-p>
 
 " Change the size of windows
 nnoremap <S-Left>  <C-w><<CR>
