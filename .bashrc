@@ -118,6 +118,7 @@ export PATH="~/bin:$PATH"
 export PATH="~/.local/bin:$PATH"
 export PATH="~/.yarn/bin:$PATH"
 export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 export FLYCTL_INSTALL=~/.fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"

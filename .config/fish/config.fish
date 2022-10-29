@@ -13,6 +13,8 @@ fish_add_path ~/bin
 fish_add_path ~/.rbenv/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $DENO_INSTALL/bin
+fish_add_path /usr/local/go/bin
+
 
 set -x less "-nm"
 

@@ -108,3 +108,15 @@ function install_virtualbox_ga
   sudo /usr/bin/bash /mnt/VBoxLinuxAdditions.run
 end
 
+function install_go
+  echo "Check the tar file URL from the below page."
+  echo "https://go.dev/dl/"
+  read -p "echo -e \"Tar file URL: \"" GO_URL
+  set -l FNAME (echo $GO_URL | sed -e "s/.*\///g")
+  curl -L $GO_URL > $FNAME
+  and sudo tar -C /usr/local -xzf $FNAME
+  and rm $FNAME
+  and success install Go
+  or failure install Go
+end
+
