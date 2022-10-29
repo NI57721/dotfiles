@@ -68,6 +68,7 @@ set expandtab
 set shiftwidth=2
 set matchpairs+=<:>,「:」,（:）,『:』,【:】
 set autochdir
+set clipboard=unnamedplus
 
 
 inoremap <silent> jj <ESC>
