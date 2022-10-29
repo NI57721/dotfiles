@@ -94,6 +94,11 @@ noremap j  gj
 noremap gj j
 noremap k  gk
 noremap gk k
+nnoremap <Up> gk
+nnoremap <Down> gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+
 
 " Change the size of windows
 nnoremap <S-Left>  <C-w><<CR>
