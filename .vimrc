@@ -90,6 +90,7 @@ noremap  gR        :tabprevious<CR>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-l> :noh<CR><C-l>
+nnoremap ms %
 
 noremap j  gj
 noremap gj j
