@@ -69,7 +69,9 @@ set shiftwidth=2
 set matchpairs+=<:>,「:」,（:）,『:』,【:】
 set autochdir
 set clipboard=unnamedplus
-
+set spell
+set spelllang& spelllang+=cjk
+set spelloptions& spelloptions+=camel
 
 inoremap <silent> jj <ESC>
 inoremap <silent> ｊｊ <ESC><ESC>
