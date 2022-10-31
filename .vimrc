@@ -207,5 +207,7 @@ if IsWSL()
   augroup END
   nnoremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
   nnoremap <silent> P :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
+  let g:previm_open_cmd = "/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe"
+  let g:previm_wsl_mode = 1
 endif
 
