@@ -72,6 +72,7 @@ set clipboard=unnamedplus
 set spell
 set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
+nnoremap <Space>s <Cmd>setlocal spell! spell?<CR>
 runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
