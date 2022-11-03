@@ -120,3 +120,7 @@ function install_go
   or failure install Go
 end
 
+function install_rust
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+end
+
