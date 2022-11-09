@@ -31,6 +31,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'skkeleton'])
 call ddc#custom#patch_global('sourceOptions', {
 \   'vim-lsp': {'mark': 'L'},

@@ -59,6 +59,9 @@ repo = 'Shougo/ddc.vim'
 repo = 'shun/ddc-vim-lsp'
 
 [[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
 repo = 'tani/ddc-fuzzy'
 
 [[plugins]]
