@@ -31,21 +31,25 @@ if dein#check_install()
   call dein#install()
 endif
 
-call ddc#custom#patch_global('sources', ['vim-lsp', 'around'])
-call ddc#custom#patch_global('sourceOptions',
-  \ {
-  \   'vim-lsp': {'mark': 'L'},
-  \   'around': {'mark': 'A'},
-  \   '_': {
-  \     'matchers': ['matcher_fuzzy', 'matcher_head'],
-  \     'sorters': ['sorter_fuzzy'],
-  \     'converters': ['converter_fuzzy'],
-  \   },
-  \ })
-call ddc#custom#patch_global('sourceParams',
-  \ {
-  \   'around': {'maxSize': 500},
-  \ })
+call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'skkeleton'])
+call ddc#custom#patch_global('sourceOptions', {
+\   'vim-lsp': {'mark': 'L'},
+\   'around': {'mark': 'A'},
+\   'skkeleton': {
+\     'mark': 'skk',
+\     'matchers': ['skkeleton'],
+\     'sorters': [],
+\     'minAutoCompleteLength': 2,
+\   },
+\   '_': {
+\     'matchers': ['matcher_fuzzy', 'matcher_head'],
+\     'sorters': ['sorter_fuzzy'],
+\     'converters': ['converter_fuzzy'],
+\   },
+\ })
+call ddc#custom#patch_global('sourceParams', {
+\   'around': {'maxSize': 500},
+\ })
 call ddc#enable()
 
 
@@ -183,6 +187,11 @@ let g:fzf_buffers_jump = 1
 
 " Dispaly clue in shakyo mode
 nnoremap <leader>f :ShakyoClue<CR>
+
+" define a skk dictionary
+call skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
+inoremap <C-j> <Plug>(skkeleton-toggle)
+cnoremap <C-j> <Plug>(skkeleton-toggle)
 
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
