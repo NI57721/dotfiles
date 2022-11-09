@@ -190,8 +190,8 @@ nnoremap <leader>f :ShakyoClue<CR>
 
 " define a skk dictionary
 call skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
-inoremap <C-j> <Plug>(skkeleton-toggle)
-cnoremap <C-j> <Plug>(skkeleton-toggle)
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
 
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
