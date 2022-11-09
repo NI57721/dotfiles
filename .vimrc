@@ -48,6 +48,9 @@ call ddc#custom#patch_global('sourceParams',
   \ })
 call ddc#enable()
 
+
+let mapleader = "\<Space>"
+
 colorscheme desert
 set ruler
 set showcmd
@@ -72,7 +75,7 @@ set clipboard=unnamedplus
 set spell
 set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
-nnoremap <Space>s <Cmd>setlocal spell! spell?<CR>
+nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
@@ -127,7 +130,6 @@ let &t_SI .= "\e[5 q"
 let &t_EI .= "\e[1 q"
 let &t_te .= "\e[0 q"
 
-let mapleader = "\<Space>"
 
 " Set the indent inside the p tags
 let g:html_indent_inctags = "p"
