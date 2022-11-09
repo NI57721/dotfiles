@@ -124,3 +124,11 @@ function install_rust
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 end
 
+function install_skkdic
+  mkdir ~/.skk
+  cd ~/.skk
+  wget https://skk-dev.github.io/dict/SKK-JISYO.L.gz
+  gzip -d SKK-JISYO.L
+  cd -
+end
+
