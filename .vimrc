@@ -190,7 +190,24 @@ let g:fzf_buffers_jump = 1
 nnoremap <leader>f :ShakyoClue<CR>
 
 " define a skk dictionary
-call skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
+call skkeleton#config({
+\   'globalJisyo': '~/.skk/SKK-JISYO.L',
+\   'globalDictionaries': [
+\     ["~/.skk/SKK-JISYO.L", "euc-jp"],
+\     "~/.skk/SKK-JISYO.geo",
+\     "~/.skk/SKK-JISYO.jinmei",
+\     "~/.skk/SKK-JISYO.propernoun",
+\     "~/.skk/SKK-JISYO.station",
+\     "~/.skk/SKK-JISYO.emoji.utf8",
+\     "~/.skk/zipcode/SKK-JISYO.zipcode"
+\   ],
+\   'markerHenkan': 'γ',
+\   'markerHenkanSelect': 'Γ',
+\   'registerConvertResult': v:true,
+\   'showCandidatesCount': 1
+\ })
+call skkeleton#register_keymap('input', ';', 'henkanPoint')
+call skkeleton#register_kanatable('rom', { 'jj': 'escape' })
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
