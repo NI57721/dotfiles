@@ -128,7 +128,16 @@ function install_skkdic
   mkdir ~/.skk
   cd ~/.skk
   wget https://skk-dev.github.io/dict/SKK-JISYO.L.gz
-  gzip -d SKK-JISYO.L
+  wget https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz
+  wget https://skk-dev.github.io/dict/SKK-JISYO.geo.gz
+  wget https://skk-dev.github.io/dict/SKK-JISYO.station.gz
+  wget https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz
+  wget https://skk-dev.github.io/dict/zipcode.tar.gz
+  wget https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
+  ls | find . -name "*.gz" | xargs -I{} gzip -d {}
+  and tar -xf zipcode.tar && rm zipcode.tar
+  and success install skk dictionaries
+  or failure install skk dictionaries
   cd -
 end
 
