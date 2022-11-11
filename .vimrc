@@ -32,10 +32,15 @@ if dein#check_install()
 endif
 
 call ddc#custom#patch_global('ui', 'native')
-call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'skkeleton'])
+call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file', 'skkeleton'])
 call ddc#custom#patch_global('sourceOptions', {
-\   'vim-lsp': {'mark': 'L'},
-\   'around': {'mark': 'A'},
+\   'vim-lsp': {'mark': 'lsp'},
+\   'around': {'mark': 'arnd'},
+\   'file': {
+\     'mark': 'file',
+\     'isVolatile': v:true,
+\     'forceCompletionPattern': '\S/\S*',
+\   },
 \   'skkeleton': {
 \     'mark': 'skk',
 \     'matchers': ['skkeleton'],
@@ -48,11 +53,25 @@ call ddc#custom#patch_global('sourceOptions', {
 \     'converters': ['converter_fuzzy'],
 \   },
 \ })
+
 call ddc#custom#patch_global('sourceParams', {
 \   'around': {'maxSize': 500},
 \ })
-call ddc#enable()
 
+call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
+\   'sourceOptions': {
+\     'file': {
+\       'forceCompletionPattern': '\S\\\S*',
+\     },
+\   },
+\   'sourceParams': {
+\     'file': {
+\       'mode': 'win32',
+\     },
+\   },
+\ })
+
+call ddc#enable()
 
 let mapleader = "\<Space>"
 

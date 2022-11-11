@@ -70,3 +70,6 @@ repo = 'Shougo/ddc-around'
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
 
+[[plugins]]
+repo = 'LumaKernel/ddc-source-file'
+
