@@ -226,7 +226,13 @@ call skkeleton#config({
 \   'showCandidatesCount': 1
 \ })
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
-call skkeleton#register_kanatable('rom', { 'jj': 'escape' })
+call skkeleton#register_kanatable('rom', {
+\   'jj': 'escape',
+\   'mb': ['ん', 'b'],
+\   'mm': ['ん', 'm'],
+\   'mp': ['ん', 'p'],
+\   'tch': ['っ', 'ch'],
+\ })
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
