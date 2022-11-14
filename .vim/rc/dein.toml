@@ -73,3 +73,6 @@ repo = 'Shougo/ddc-matcher_head'
 [[plugins]]
 repo = 'LumaKernel/ddc-source-file'
 
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+
