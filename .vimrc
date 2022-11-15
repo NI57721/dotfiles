@@ -243,7 +243,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 command! Vimrc :tabnew ~/.vimrc
 command! Srrc  :source ~/.vimrc
-command! DeinTOML :tabnew ~/.vim/rc/dein.toml
+command! DeinTOML :tabnew ~/.vim/rc/dein.toml|:tabnew ~/.vim/rc/dein_lazy.toml
 cabbr w!! w !sudo tee > /dev/null %
 
 " Yank settings for WSL2
