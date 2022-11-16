@@ -101,6 +101,7 @@ set clipboard=unnamedplus
 set spell
 set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
+set formatoptions+=M
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 runtime ftplugin/man.vim
 
