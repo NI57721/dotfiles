@@ -157,6 +157,13 @@ let &t_SI .= "\e[5 q"
 let &t_EI .= "\e[1 q"
 let &t_te .= "\e[0 q"
 
+" Enable bracketed-paste
+if &term =~ "screen"
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  exec "set t_PS=\e[200~"
+  exec "set t_PE=\e[201~"
+endif
 
 " Set the indent inside the p tags
 let g:html_indent_inctags = "p"
