@@ -216,6 +216,9 @@ nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 " Make it possible to jump from fzf to the file
 let g:fzf_buffers_jump = 1
 
+" Specify a user snippet directory
+let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
+
 " Dispaly clue in shakyo mode
 nnoremap <leader>f :ShakyoClue<CR>
 

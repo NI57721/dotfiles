@@ -20,6 +20,7 @@
 !/.vimrc
 !/.vim/
 !/.vim/*/
+!/.vim/vsnip/*.json
 !/.vim/rc/
 !/.vim/rc/**
 
