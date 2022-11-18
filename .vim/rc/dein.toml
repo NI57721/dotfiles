@@ -23,6 +23,9 @@ repo = 'hrsh7th/vim-vsnip'
 repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
+repo = 'rafamadriz/friendly-snippets'
+
+[[plugins]]
 repo = 'Shougo/vinarise'
 
 [[plugins]]
