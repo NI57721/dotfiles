@@ -95,7 +95,7 @@ set listchars=tab:>-,extends:<,trail:-
 set hlsearch
 set expandtab
 set shiftwidth=2
-set matchpairs+=<:>,「:」,（:）,『:』,【:】
+set matchpairs+=<:>,「:」,（:）,『:』,【:】,《:》,〈:〉,｛:｝,［:］,【:】,‘:’,“:”
 set autochdir
 set clipboard=unnamedplus
 set spell
