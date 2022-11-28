@@ -49,7 +49,7 @@ abbr -a gil  git log --reverse --decorate --color=always
 abbr -a giln git log --reverse --decorate -n 10 --color=always
 abbr -a gilg git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 abbr -a gib  git branch
-abbr -a gif  git fetch
+abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
