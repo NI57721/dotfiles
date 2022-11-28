@@ -141,3 +141,13 @@ function install_skkdic
   cd -
 end
 
+function install_vim_themis
+  mkdir -p ~/src ~/bin
+  cd ~/src
+  git clone git@github.com:thinca/vim-themis
+  and ln -s ~/src/vim-themis/bin/themis ~/bin
+  and success install vim-themis
+  or failure install vim-themis
+  cd -
+end
+
