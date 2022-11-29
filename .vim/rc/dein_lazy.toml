@@ -20,3 +20,6 @@ repo = 'previm/previm'
 # [[plugins]]
 # repo = 'shg-eo/skkeleton-azik'
 
+[[plugins]]
+repo = 'thinca/vim-themis'
+
