@@ -14,6 +14,7 @@ fish_add_path ~/.rbenv/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $DENO_INSTALL/bin
 fish_add_path /usr/local/go/bin
+fish_add_path ~/.vim/dein/repos/github.com/thinca/vim-themis/bin
 
 
 set -x less "-nm"
