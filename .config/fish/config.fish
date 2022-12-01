@@ -39,7 +39,7 @@ abbr -a rm  rm -i
 abbr -a put trash-put
 
 # for Git
-abbr -a gisw git switch
+abbr -a gist git switch
 abbr -a girs git restore
 abbr -a gia  git add
 abbr -a giap git add -p

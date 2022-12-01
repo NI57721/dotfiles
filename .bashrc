@@ -147,7 +147,7 @@ alias lss='ls -ACF'
 alias virc='vim ~/.bashrc'
 alias srrc='. ~/.bashrc'
 
-alias gisw="git switch"
+alias gist="git switch"
 alias girs="git restore"
 alias gia="git add"
 alias giap="git add -p"
