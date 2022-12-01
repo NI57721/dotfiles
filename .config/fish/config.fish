@@ -48,6 +48,7 @@ abbr -a gian git add -N
 abbr -a gic  git commit -m
 abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate --color=always
+abbr -a gilo git log --reverse --decorate --color=always origin
 abbr -a giln git log --reverse --decorate -n 10 --color=always
 abbr -a gilg git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 abbr -a gib  git branch
