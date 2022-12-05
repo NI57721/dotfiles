@@ -159,7 +159,7 @@ let &t_EI .= "\e[1 q"
 let &t_te .= "\e[0 q"
 
 " Enable bracketed-paste
-if &term =~ "screen"
+if &term =~ 'screen'
   let &t_BE = "\e[?2004h"
   let &t_BD = "\e[?2004l"
   exec "set t_PS=\e[200~"
@@ -167,7 +167,7 @@ if &term =~ "screen"
 endif
 
 " Set the indent inside the p tags
-let g:html_indent_inctags = "p"
+let g:html_indent_inctags = 'p'
 
 augroup MyXML
   autocmd!
@@ -226,13 +226,13 @@ nnoremap <leader>f :ShakyoClue<CR>
 call skkeleton#config({
 \   'globalJisyo': '~/.skk/SKK-JISYO.L',
 \   'globalDictionaries': [
-\     ["~/.skk/SKK-JISYO.L", "euc-jp"],
-\     "~/.skk/SKK-JISYO.geo",
-\     "~/.skk/SKK-JISYO.jinmei",
-\     "~/.skk/SKK-JISYO.propernoun",
-\     "~/.skk/SKK-JISYO.station",
-\     "~/.skk/SKK-JISYO.emoji.utf8",
-\     "~/.skk/zipcode/SKK-JISYO.zipcode"
+\     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
+\     '~/.skk/SKK-JISYO.geo',
+\     '~/.skk/SKK-JISYO.jinmei',
+\     '~/.skk/SKK-JISYO.propernoun',
+\     '~/.skk/SKK-JISYO.station',
+\     '~/.skk/SKK-JISYO.emoji.utf8',
+\     '~/.skk/zipcode/SKK-JISYO.zipcode'
 \   ],
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
@@ -261,9 +261,9 @@ cabbr h tab :h
 
 " Yank settings for WSL2
 function! IsWSL()
-  if has("unix")
-    let lines = readfile("/proc/version")
-    if lines[0] =~ "Microsoft"
+  if has('unix')
+    let lines = readfile('/proc/version')
+    if lines[0] =~ 'Microsoft'
       return 1
     endif
   endif
@@ -277,7 +277,7 @@ if IsWSL()
   augroup END
   nnoremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
   nnoremap <silent> P :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
-  let g:previm_open_cmd = "/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe"
+  let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
 
