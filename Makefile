@@ -77,12 +77,12 @@ i_fisher: i_fish ## Install fisher.
 	fish -c "fisher update"
 
 i_go: ## Install go.
-	rm -rf /usr/local/go
 	echo "Check the tar file URL from the below page."
 	echo "https://go.dev/dl/"
 	read -p "echo -e \"Tar file URL: \"" GO_URL \
 	&& FNAME=$$(echo $$GO_URL | sed -e "s/.*\///g") \
 	&& curl -L $$GO_URL > $$FNAME \
+	&& sudo rm -rf /usr/local/go \
 	&& sudo tar -C /usr/local -xzf $$FNAME \
 	&& rm $$FNAME
 
