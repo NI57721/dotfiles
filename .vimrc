@@ -227,12 +227,12 @@ call skkeleton#config({
 \   'globalJisyo': '~/.skk/SKK-JISYO.L',
 \   'globalDictionaries': [
 \     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
-\     '~/.skk/SKK-JISYO.geo',
-\     '~/.skk/SKK-JISYO.jinmei',
-\     '~/.skk/SKK-JISYO.propernoun',
-\     '~/.skk/SKK-JISYO.station',
-\     '~/.skk/SKK-JISYO.emoji.utf8',
-\     '~/.skk/zipcode/SKK-JISYO.zipcode'
+\     ['~/.skk/SKK-JISYO.geo', 'euc-jp'],
+\     ['~/.skk/SKK-JISYO.jinmei', 'euc-jp'],
+\     ['~/.skk/SKK-JISYO.propernoun', 'euc-jp'],
+\     ['~/.skk/SKK-JISYO.station', 'euc-jp'],
+\     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
+\     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
 \   ],
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
