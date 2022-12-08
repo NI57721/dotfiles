@@ -1,6 +1,9 @@
 .DEFAULT_GOAL := help
 .PHONY: all allinstall
 
+PACKAGES := curl git libffi-dev libyaml-dev python3 python3-pip tmux todotxt-cli
+PACKAGES += vim-gtk3
+
 ADD_REPOSITORY = sudo apt-add-repository ppa:
 INSTALL_PKG    = sudo apt-get -y install
 REMOVE_PKG     = sudo apt-get -y remove
@@ -35,15 +38,9 @@ install: i_packages i_deno i_docker i_fish i_fisher i_go i_rbenv i_rust i_skk_di
 install_optional: i_virtualbox_ga ## Install a tools for guest OSs on VirtualBox.
 
 install_packages: ## Install packages.
+	$(ADD_REPOSITORY)jonathonf/vim
 	$(UPDATE_PKG)
-	$(INSTALL_PKG) \
-	  curl \
-	  git \
-	  python3 \
-	  python3-pip \
-	  tmux \
-	  todotxt-cli \
-	  vim-gtk3
+	$(INSTALL_PKG) $(PACKAGES)
 
 i_deno: ## Install deno.
 	curl -fsSL https://deno.land/x/install/install.sh | sh
