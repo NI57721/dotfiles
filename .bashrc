@@ -2,7 +2,57 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
+mkcd() {
+  mkdir -p $1 && cd $1 && pwd
+}
+
+update() {
+  echo -e "### APT ###"
+  update_apt
+  echo -e "\n### RBENV ###"
+  update_rbenv
+  echo -e "\n### GEM ###"
+  update_gem
+  echo -e "\n### NVM ###"
+  update_nvm
+  echo -e "\n### PIP ###"
+  update_pip
+}
+
+update_apt() {
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+  sudo apt-get autoclean -y
+  sudo apt-get autoremove -y
+}
+
+update_rbenv() {
+  (cd "$(rbenv root)"; git pull; cd "$(rbenv root)"/plugins/ruby-build; git pull)
+}
+
+update_gem() {
+  gem update --system
+  gem update
+}
+
+update_nvm() {
+  cd $NVM_DIR
+  git fetch --tags origin
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+  $NVM_DIR/nvm.sh
+  nvm install stable --latest-npm
+  nvm install-latest-npm
+  npm update
+  cd -
+}
+
+update_pip() {
+  pip install -U pip
+  pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
+}
+
+
+# If not running interactively, don't do anything below
 case $- in
   *i*) ;;
     *) return;;
@@ -179,55 +229,6 @@ shopt -s dotglob
 set -o vi
 bind '"jj": vi-movement-mode'
 bind '"\C-p": previous-history'
-
-mkcd() {
-  mkdir -p $1 && cd $1 && pwd
-}
-
-update() {
-  echo -e "### APT ###"
-  apt_update
-  echo -e "\n### RBENV ###"
-  rbenv_update
-  echo -e "\n### GEM ###"
-  gem_update
-  echo -e "\n### NVM ###"
-  nvm_update
-  echo -e "\n### PIP ###"
-  pip_update
-}
-
-apt_update() {
-  sudo apt-get update -y
-  sudo apt-get upgrade -y
-  sudo apt-get autoclean -y
-  sudo apt-get autoremove -y
-}
-
-rbenv_update() {
-  (cd "$(rbenv root)"; git pull; cd "$(rbenv root)"/plugins/ruby-build; git pull)
-}
-
-gem_update() {
-  gem update --system
-  gem update
-}
-
-nvm_update() {
-  cd $NVM_DIR
-  git fetch --tags origin
-  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-  $NVM_DIR/nvm.sh
-  nvm install stable --latest-npm
-  nvm install-latest-npm
-  npm update
-  cd -
-}
-
-pip_update() {
-  pip install -U pip
-  pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
-}
 
 # https://qiita.com/xtetsuji/items/31bc53e92d94b1602b5d
 function cdl {

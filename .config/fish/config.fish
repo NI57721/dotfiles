@@ -100,12 +100,28 @@ function mkcd
   and pwd
 end
 
-function rbenvupdate
-  pushd (rbenv root)
-  git pull
-  cd (rbenv root)/plugins/ruby-build
-  git pull
-  popd
+function update
+  bash -c ". ~/.bashrc; update"
+end
+
+function update_apt
+  bash -c ". ~/.bashrc; update_apt"
+end
+
+function update_rbenv
+  bash -c ". ~/.bashrc; update_rbenv"
+end
+
+function update_gem
+  bash -c ". ~/.bashrc; update_gem"
+end
+
+function update_nvm
+  bash -c ". ~/.bashrc; update_nvm"
+end
+
+function update_pip
+  bash -c ". ~/.bashrc; update_pip"
 end
 
 function fish_user_key_bindings
