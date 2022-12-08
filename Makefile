@@ -86,6 +86,9 @@ i_go: ## Install go.
 	&& sudo tar -C /usr/local -xzf $$FNAME \
 	&& rm $$FNAME
 
+i_nvm: ## Install nvm.
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+
 i_rbenv: ## Install rbenv.
 	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 	cd ~/.rbenv && src/configure && make -C src
