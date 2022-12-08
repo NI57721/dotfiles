@@ -181,7 +181,7 @@ bind '"jj": vi-movement-mode'
 bind '"\C-p": previous-history'
 
 mkcd() {
-  mkdir $1 && cd $1 && pwd
+  mkdir -p $1 && cd $1 && pwd
 }
 
 update() {
