@@ -250,6 +250,36 @@ call skkeleton#register_kanatable('rom', {
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
+" define
+let g:dps_dial#augends = [
+\   'decimal',
+\   'date-hyphen',
+\   'date-slash',
+\   {'kind': 'constant', 'opts': {'elements': ['true', 'false']}},
+\   {'kind': 'constant', 'opts': {
+\     'elements': ['月', '火', '水', '木', '金', '土', '日'],
+\     'cyclic': v:true,
+\     'word': v:false,
+\   }},
+\   {'kind': 'constant', 'opts': {
+\     'elements': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+\     'cyclic': v:true,
+\     'word': v:true,
+\   }},
+\   {'kind': 'case', 'opts': {
+\     'cases': ['camelCase', 'snake_case', 'SCREAMING_SNAKE_CASE'],
+\     'cyclic': v:true,
+\   }},
+\   {'kind': 'date', 'opts': { 'format': 'yyyy-MM-dd', 'only_valid': v:false }},
+\ ]
+
+nnoremap  <C-a>  <Plug>(dps-dial-increment)
+nmap  <C-x>  <Plug>(dps-dial-decrement)
+xnoremap  <C-a>  <Plug>(dps-dial-increment)
+xmap  <C-x>  <Plug>(dps-dial-decrement)
+xnoremap g<C-a> g<Plug>(dps-dial-increment)
+xmap g<C-x> g<Plug>(dps-dial-decrement)
+
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
 
