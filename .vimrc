@@ -222,7 +222,7 @@ let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
 " Dispaly clue in shakyo mode
 nnoremap <leader>f :ShakyoClue<CR>
 
-" define a skk dictionary
+" Define a skk dictionary
 call skkeleton#config({
 \   'globalJisyo': '~/.skk/SKK-JISYO.L',
 \   'globalDictionaries': [
