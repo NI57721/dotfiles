@@ -169,11 +169,11 @@ endif
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
 
-augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-augroup END
+" augroup MyXML
+"   autocmd!
+"   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+"   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+" augroup END
 
 command -nargs=0 ClearUndo call <sid>ClearUndo()
 function! s:ClearUndo()
