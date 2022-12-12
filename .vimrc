@@ -127,14 +127,14 @@ nnoremap <C-l> :noh<CR><C-l>
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 
-noremap j  gj
-noremap gj j
-noremap k  gk
-noremap gk k
-nnoremap <Up> gk
+noremap  j gj
+noremap gj  j
+noremap  k gk
+noremap gk  k
+nnoremap <Up>   gk
 nnoremap <Down> gj
-inoremap <Up> <C-o>gk
-inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>   gk
+inoremap <Down> <C-o> gj
 
 inoremap <Tab>   <C-n>
 inoremap <S-Tab> <C-p>
