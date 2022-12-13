@@ -73,6 +73,39 @@ call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
 
 call ddc#enable()
 
+call ddu#custom#patch_global({
+\   'ui': 'filer',
+\   'sources': [{'name': 'file', 'params': {}}],
+\   'actionOptions': {
+\     'narrow': {
+\       'quit': v:false,
+\     },
+\   },
+\   'sourceOptions': {
+\     '_': {
+\       'columns': ['filename'],
+\     },
+\   },
+\   'kindOptions': {
+\     'file': {
+\       'defaultAction': 'open',
+\     },
+\   }
+\ })
+
+autocmd FileType ddu-filer call s:ddu_my_settings()
+function! s:ddu_my_settings() abort
+  nnoremap <buffer><silent> <CR>
+        \ <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
+  nnoremap <buffer><silent> <Space>
+        \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer> o
+        \ <Cmd>call ddu#ui#filer#do_action('expandItem',
+        \ {'mode': 'toggle'})<CR>
+  nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+endfunction
+
 packadd! matchit
 
 let mapleader = "\<Space>"
@@ -103,6 +136,7 @@ set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
 set formatoptions+=M
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
+nnoremap <leader>F <Cmd>call ddu#start({})<cr>
 runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
