@@ -223,6 +223,7 @@ alias ttd="todo-txt do"
 
 alias rm="rm -i"
 alias put="trash-put"
+alias puts="trash-put"
 
 shopt -s dotglob
 

@@ -36,8 +36,9 @@ abbr -a tta todo-txt -t add
 abbr -a ttd todo-txt do
 
 # for trash-cli
-abbr -a rm  rm -i
-abbr -a put trash-put
+abbr -a rm   rm -i
+abbr -a put  trash-put
+abbr -a puts trash-put
 
 # for Git
 abbr -a gist git switch
