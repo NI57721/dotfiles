@@ -284,7 +284,7 @@ call skkeleton#register_kanatable('rom', {
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
-" define
+" Define original sequences for dps_dial
 let g:dps_dial#augends = [
 \   'decimal',
 \   'date-hyphen',
@@ -308,11 +308,11 @@ let g:dps_dial#augends = [
 \ ]
 
 nnoremap  <C-a>  <Plug>(dps-dial-increment)
-nmap  <C-x>  <Plug>(dps-dial-decrement)
+nmap      <C-x>  <Plug>(dps-dial-decrement)
 xnoremap  <C-a>  <Plug>(dps-dial-increment)
-xmap  <C-x>  <Plug>(dps-dial-decrement)
+xmap      <C-x>  <Plug>(dps-dial-decrement)
 xnoremap g<C-a> g<Plug>(dps-dial-increment)
-xmap g<C-x> g<Plug>(dps-dial-decrement)
+xmap     g<C-x> g<Plug>(dps-dial-decrement)
 
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
