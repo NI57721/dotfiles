@@ -167,8 +167,8 @@ noremap  k gk
 noremap gk  k
 nnoremap <Up>   gk
 nnoremap <Down> gj
-inoremap <Up> <C-o>   gk
-inoremap <Down> <C-o> gj
+inoremap <Up>   <C-o>gk
+inoremap <Down> <C-o>gj
 
 inoremap <Tab>   <C-n>
 inoremap <S-Tab> <C-p>
