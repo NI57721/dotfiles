@@ -124,6 +124,10 @@ function update_pip
   bash -c ". ~/.bashrc && update_pip"
 end
 
+function update_deno
+  bash -c ". ~/.bashrc && update_deno"
+end
+
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual

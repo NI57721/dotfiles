@@ -17,6 +17,8 @@ update() {
   update_nvm
   echo -e "\n### PIP ###"
   update_pip
+  echo -e "\n### DENO ###"
+  update_deno
 }
 
 update_apt() {
@@ -51,6 +53,9 @@ update_pip() {
   pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
 }
 
+update_deno() {
+  deno upgrade
+}
 
 # If not running interactively, don't do anything below
 case $- in
