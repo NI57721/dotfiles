@@ -173,6 +173,9 @@ inoremap <Down> <C-o>gj
 inoremap <Tab>   <C-n>
 inoremap <S-Tab> <C-p>
 
+nnoremap <expr> n (v:searchforward ? 'n' : 'N')
+nnoremap <expr> N (v:searchforward ? 'N' : 'n')
+
 " Change the size of windows
 nnoremap <S-Left>  <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
