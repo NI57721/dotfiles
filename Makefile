@@ -1,8 +1,7 @@
 .DEFAULT_GOAL := help
 .PHONY: all allinstall
 
-PACKAGES := curl git libffi-dev libyaml-dev python3 python3-pip tmux todotxt-cli
-PACKAGES += vim-gtk3
+PACKAGES := curl git python3 python3-pip tmux todotxt-cli vim-gtk3
 
 ADD_REPOSITORY = sudo apt-add-repository ppa:
 INSTALL_PKG    = sudo apt-get -y install
