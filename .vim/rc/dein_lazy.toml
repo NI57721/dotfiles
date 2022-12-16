@@ -28,5 +28,4 @@ repo = 'monaqa/dps-dial.vim'
 
 [[plugins]]
 repo = 'NI57721/vim-socrates'
-rev = 'WIP'
 
