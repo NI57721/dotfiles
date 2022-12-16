@@ -94,7 +94,3 @@ repo = 'LumaKernel/ddc-source-file'
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 
-[[plugins]]
-repo = 'NI57721/vim-socrates'
-rev = 'WIP'
-

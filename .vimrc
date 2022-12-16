@@ -348,3 +348,5 @@ if IsWSL()
   let g:previm_wsl_mode = 1
 endif
 
+nnoremap <leader>q <Plug>(socrates-greed)
+
