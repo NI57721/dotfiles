@@ -1,3 +1,4 @@
+set VIMRUNTIME ~/src/vim/runtime
 set VISUAL vim --noplugin
 set THOR_DIFF /usr/local/bin/vimdiff
 set THOR_MERGE /usr/local/bin/vimdiff
@@ -15,6 +16,7 @@ fish_add_path ~/.rbenv/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $DENO_INSTALL/bin
 fish_add_path /usr/local/go/bin
+fish_add_path ~/src/vim/src
 fish_add_path ~/.vim/dein/repos/github.com/thinca/vim-themis/bin
 
 

@@ -114,9 +114,24 @@ i_tpm: ## Install tpm.
 i_trash_cli: install_packages ## Install trash-cli.
 	python3 -m pip install trash-cli
 
+i_vim: ## Build vim HEAD.
+	# $(UPDATE_PKG)
+	$(INSTALL_PKG) autoconf automake cproto gettext libacl1-dev libgpm-dev \
+	  libgtk-3-dev liblua5.2-dev libluajit-5.1-2 libperl-dev libtinfo-dev \
+	  libxmu-dev libxpm-dev lua5.2 luajit python2-dev python3-dev ruby-dev
+	mkdir -p ~/src
+	cd ~/src && if [ ! -e ./vim ]; then git clone https://github.com/vim/vim.git; fi
+	cd ~/src/vim && git pull
+	cd ~/src/vim/src && \
+	  ./configure --with-features=huge --enable-gui=gtk3 \
+	    --enable-perlinterp --enable-pythoninterp \
+	    --enable-python3interp --enable-rubyinterp \
+	    --enable-luainterp --enable-fail-if-missing
+	cd ~/src/vim/src && make
+
 i_virtualbox_ga: ## Install VirtualBox Guest Additions.
 	$(UPDATE_PKG)
-	$(INSTALL_APT) xserver-xorg xserver-xorg-core
+	$(INSTALL_PKG) xserver-xorg xserver-xorg-core
 	sudo mount /dev/cdrom /mnt
 	sudo sh /mnt/VBoxLinuxAdditions.run
 
