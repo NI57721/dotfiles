@@ -34,10 +34,6 @@ repo = 'szw/vim-tags'
 on_event = 'VimEnter'
 
 [[plugins]]
-repo = 'rbtnn/vim-ambiwidth'
-on_event = 'VimEnter'
-
-[[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 on_event = 'VimEnter'
 
