@@ -17,42 +17,6 @@ repo = 'mattn/vim-lsp-settings'
 repo = 'mattn/vim-lsp-icons'
 
 [[plugins]]
-repo = 'hrsh7th/vim-vsnip'
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
-
-[[plugins]]
-repo = 'rafamadriz/friendly-snippets'
-
-[[plugins]]
-repo = 'Shougo/vinarise'
-
-[[plugins]]
-repo = 'dag/vim-fish'
-
-[[plugins]]
-repo = 'vim-ruby/vim-ruby'
-
-[[plugins]]
-repo = 'tpope/vim-rails'
-
-[[plugins]]
-repo = 'junegunn/fzf'
-build = './install --all'
-merged = '0'
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-depends = 'fzf'
-
-[[plugins]]
-repo = 'szw/vim-tags'
-
-[[plugins]]
-repo = 'rbtnn/vim-ambiwidth'
-
-[[plugins]]
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
@@ -93,10 +57,4 @@ repo = 'LumaKernel/ddc-source-file'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-
-[[plugins]]
-repo = 'monaqa/dps-dial.vim'
-
-[[plugins]]
-repo = 'NI57721/vim-socrates'
 

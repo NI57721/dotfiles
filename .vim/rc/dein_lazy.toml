@@ -1,11 +1,61 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'Shougo/vinarise'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+on_event = 'VimEnter'
+build = './install --all'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+on_event = 'VimEnter'
+depends = 'fzf'
+
+[[plugins]]
+repo = 'szw/vim-tags'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'rbtnn/vim-ambiwidth'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'rafamadriz/friendly-snippets'
+on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'chrisbra/matchit'
+on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
@@ -13,13 +63,24 @@ on_ft = ['ruby']
 
 [[plugins]]
 repo = 'NI57721/shakyo.vim'
+on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'previm/previm'
+on_event = 'VimEnter'
 
 # [[plugins]]
 # repo = 'shg-eo/skkeleton-azik'
 
 [[plugins]]
 repo = 'thinca/vim-themis'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'monaqa/dps-dial.vim'
+on_map = '<Plug>(dps-dial-'
+
+[[plugins]]
+repo = 'NI57721/vim-socrates'
+on_map = '<Plug>(socrates-'
 
