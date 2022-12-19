@@ -23,9 +23,3 @@ repo = 'previm/previm'
 [[plugins]]
 repo = 'thinca/vim-themis'
 
-[[plugins]]
-repo = 'monaqa/dps-dial.vim'
-
-[[plugins]]
-repo = 'NI57721/vim-socrates'
-
