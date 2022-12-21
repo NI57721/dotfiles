@@ -1,76 +1,86 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-on_event = 'VimEnter'
+on_event = 'CursorHold'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+on_event = 'CursorHold'
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+depends = 'denops.vim'
+on_source = 'denops.vim'
 
 [[plugins]]
 repo = 'Shougo/vinarise'
-on_event = 'VimEnter'
+on_cmd = 'Vinarise'
 
 [[plugins]]
 repo = 'dag/vim-fish'
-on_event = 'VimEnter'
+on_ft = 'fish'
 
 [[plugins]]
 repo = 'vim-ruby/vim-ruby'
-on_event = 'VimEnter'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'tpope/vim-rails'
-on_event = 'VimEnter'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-on_event = 'VimEnter'
 build = './install --all'
 merged = '0'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
-on_event = 'VimEnter'
 depends = 'fzf'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'szw/vim-tags'
-on_event = 'VimEnter'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
-on_event = 'VimEnter'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
-on_event = 'VimEnter'
+depends = 'vim-vsnip'
+on_source = 'vim-vsnip'
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
-on_event = 'VimEnter'
+on_source = 'vim-vsnip'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_event = 'VimEnter'
+on_ft = 'html'
 
 [[plugins]]
 repo = 'chrisbra/matchit'
-on_event = 'VimEnter'
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
-on_ft = ['ruby']
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'NI57721/shakyo.vim'
-on_event = 'VimEnter'
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'previm/previm'
-on_event = 'VimEnter'
+on_event = 'InsertEnter'
 
 # [[plugins]]
 # repo = 'shg-eo/skkeleton-azik'
 
 [[plugins]]
 repo = 'thinca/vim-themis'
-on_event = 'VimEnter'
+on_event = 'CursorHold'
 
 [[plugins]]
 repo = 'monaqa/dps-dial.vim'
@@ -79,4 +89,89 @@ on_map = '<Plug>(dps-dial-'
 [[plugins]]
 repo = 'NI57721/vim-socrates'
 on_map = '<Plug>(socrates-'
+
+
+
+
+# [[plugins]]
+# repo = 'prabirshrestha/async.vim'
+# on_event = 'CursorHold'
+#
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete.vim'
+# on_event = 'CursorHold'
+#
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete-lsp.vim'
+# on_event = 'CursorHold'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_event = 'CursorHold'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = 'vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-icons'
+on_source = 'vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-source-file'
+depends = 'ddc.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+on_event = 'CursorHold'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+depends = 'ddu.vim'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+depends = 'ddu.vim'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-column-filename'
+depends = 'ddu.vim'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+depends = 'ddu.vim'
+on_source = 'ddu.vim'
 
