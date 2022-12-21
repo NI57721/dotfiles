@@ -19,6 +19,8 @@ update() {
   update_pip
   echo -e "\n### DENO ###"
   update_deno
+  echo -e "\n### GO ###"
+  update_go
 }
 
 update_apt() {
