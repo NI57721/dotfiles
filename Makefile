@@ -14,7 +14,7 @@ SKK_DIC_PATH = ~/.skkabcdefghijklmn
 LINKED_FILES = a b c ## WIP
 
 help: ## Display this message.
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	@grep -P "^[a-zA-Z_-]+:.*?## [^\n]*$$" $(MAKEFILE_LIST) \
 	| sort \
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
@@ -33,7 +33,8 @@ init_git: ## Initialize settings for git.
 	git config --global core.pager cat
 	git config --global init.defaultBranch main
 
-install: i_packages i_deno i_docker i_fish i_fisher i_go i_rbenv i_rust i_skk_dictionaries i_tpm i_trash_cli ## Install everything needed.
+install: i_deno i_docker i_fish i_fisher i_go i_rbenv i_rust i_skk_dictionaries i_tpm i_trash_cli i_vim ## Install everything needed
+
 install_optional: i_virtualbox_ga ## Install a tools for guest OSs on VirtualBox.
 
 install_packages: ## Install packages.

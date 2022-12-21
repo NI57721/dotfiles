@@ -66,7 +66,7 @@ update_go() {
   else
     local archive_uri="https://go.dev/dl/$latest_version.linux-amd64.tar.gz"
     local archive="$path/$latest_version.tar.gz"
-    curl -L $archive_uri > $archive
+    curl -L $archive_uri > "$archive"
     if [[ -d $path/go ]]; then
       rm -rf $path/go
     fi
