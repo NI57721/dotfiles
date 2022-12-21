@@ -57,6 +57,24 @@ update_deno() {
   deno upgrade
 }
 
+update_go() {
+  local path="~/src"
+  local version=$(go version | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
+  local latest_version=$(curl 'https://go.dev/VERSION?m=text')
+  if [[ "$version" == "$latest_version" ]]; then
+    echo "Local go version $version is the most recent release"
+  else
+    local archive_uri="https://go.dev/dl/$latest_version.linux-amd64.tar.gz"
+    local archive="$path/$latest_version.tar.gz"
+    curl -L $archive_uri > $archive
+    if [[ -d $path/go ]]; then
+      rm -rf $path/go
+    fi
+    mkdir -p $path/go
+    tar -C $path -xzf $archive && rm $archive
+  fi
+}
+
 # If not running interactively, don't do anything below
 case $- in
   *i*) ;;
@@ -173,7 +191,7 @@ export PATH="~/bin:$PATH"
 export PATH="~/.local/bin:$PATH"
 export PATH="~/.yarn/bin:$PATH"
 export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
+export PATH="~/src/go/bin:$PATH"
 
 export VIMRUNTIME=~/src/vim/runtime
 export PATH="~/src/vim/src:$PATH"
