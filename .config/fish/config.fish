@@ -61,7 +61,7 @@ abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a gicl git clone git@github.com:
 abbr -a gira git remote add origin git@github.com:
-abbr -a giss git stash show -p stash@\{
+abbr -a giss git stash show -p
 
 # for Bundler
 abbr -a be   bundle exec
