@@ -155,7 +155,7 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
@@ -189,32 +189,32 @@ fi
 export VISUAL='vim --noplugin'
 export LESS="-RNM"
 
-export PATH="~/bin:$PATH"
-export PATH="~/.local/bin:$PATH"
-export PATH="~/.yarn/bin:$PATH"
-export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="~/src/go/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/src/go/bin:$PATH"
 
-export VIMRUNTIME=~/src/vim/runtime
-export PATH="~/src/vim/src:$PATH"
-export PATH="~/.vim/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
+export VIMRUNTIME=$HOME/src/vim/runtime
+export PATH="$HOME/src/vim/src:$PATH"
+export PATH="$HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
 
-export FLYCTL_INSTALL=~/.fly
+export FLYCTL_INSTALL=$HOME/.fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-export DENO_INSTALL=~/.deno
+export DENO_INSTALL=$HOME/.deno
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-export PATH="~/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-export NVM_DIR=~/.nvm
+export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. ~/.cargo/env
+. $HOME/.cargo/env
 
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
+[ -f "$HOME/.fzf.bash" ] && . $HOME/.fzf.bash
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -222,8 +222,8 @@ alias ...='cd ../..'
 alias ll='ls -al'
 alias lss='ls -ACF'
 
-alias virc='vim ~/.bashrc'
-alias srrc='. ~/.bashrc'
+alias virc='vim $HOME/.bashrc'
+alias srrc='. $HOME/.bashrc'
 
 alias gist="git switch"
 alias girs="git restore"
@@ -364,7 +364,7 @@ fi
 
 # Read .bashrc.local, if any, which may contain credentials or specific
 # options
-if [ -f ~/.bashrc.local ]; then
-  . ~/.bashrc.local
+if [ -f "$HOME/.bashrc.local" ]; then
+  . $HOME/.bashrc.local
 fi
 
