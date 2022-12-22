@@ -135,6 +135,7 @@ set spell
 set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
 set formatoptions+=M
+set nrformats+=unsigned
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<cr>
 runtime ftplugin/man.vim
