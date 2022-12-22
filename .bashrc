@@ -75,7 +75,6 @@ update_go() {
   echo $archive
   echo $version
   if [[ -d $path/go ]]; then
-    echo exist path/go
     rm -rf $path/go
   fi
   mkdir -p $path/go
@@ -199,6 +198,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/src/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 export VIMRUNTIME=$HOME/src/vim/runtime
 export PATH="$HOME/src/vim/src:$PATH"
