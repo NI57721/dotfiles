@@ -140,7 +140,6 @@ set expandtab
 set shiftwidth=2
 set matchpairs+=<:>,「:」,（:）,『:』,【:】,《:》,〈:〉,｛:｝,［:］,【:】,‘:’,“:”
 set autochdir
-set clipboard=unnamedplus
 set spell
 set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
@@ -364,4 +363,10 @@ if IsWSL()
   let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
+
+set clipboard=exclude:.*
+augroup LazyClipboardSetup
+  autocmd!
+  autocmd CursorHold,CursorMoved * :call serverlist() | set clipboard=unnamedplus
+augroup END
 
