@@ -31,10 +31,12 @@ endif
 
 " Settings for ddc.vim
 call ddc#custom#patch_global('ui', 'native')
-call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file', 'skkeleton'])
+call ddc#custom#patch_global('sources', [
+\   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp'
+\ ])
 call ddc#custom#patch_global('sourceOptions', {
-\   'vim-lsp': {'mark': 'lsp'},
 \   'around': {'mark': 'arnd'},
+\   'buffer': {'mark': 'buf'},
 \   'file': {
 \     'mark': 'file',
 \     'isVolatile': v:true,
@@ -46,6 +48,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \     'sorters': [],
 \     'minAutoCompleteLength': 2,
 \   },
+\   'vim-lsp': {'mark': 'lsp'},
 \   '_': {
 \     'matchers': ['matcher_fuzzy', 'matcher_head'],
 \     'sorters': ['sorter_fuzzy'],
@@ -53,8 +56,15 @@ call ddc#custom#patch_global('sourceOptions', {
 \   },
 \ })
 
+
 call ddc#custom#patch_global('sourceParams', {
 \   'around': {'maxSize': 500},
+\   'buffer': {
+\     'requireSameFiletype': v:false,
+\     'limitBytes': 5000000,
+\     'fromAltBuf': v:true,
+\     'forceCollect': v:true,
+\   },
 \ })
 
 call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {

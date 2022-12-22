@@ -26,6 +26,10 @@ repo = 'Shougo/ddc-source-around'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
+repo = 'matsui54/ddc-buffer'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
 repo = 'Shougo/ddc-matcher_head'
 depends = ['denops.vim', 'ddc.vim']
 
