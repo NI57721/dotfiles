@@ -33,6 +33,9 @@ init_git: ## Initialize settings for git.
 	git config --global core.pager cat
 	git config --global init.defaultBranch main
 
+init_timezone: ## Initialize settings for timezones.
+	sudo timedatectl set-timezone Asia/Tokyo
+
 install: i_deno i_docker i_fish i_fisher i_go i_rbenv i_rust i_skk_dictionaries i_tpm i_trash_cli i_vim ## Install everything needed
 
 install_optional: i_virtualbox_ga ## Install a tools for guest OSs on VirtualBox.
