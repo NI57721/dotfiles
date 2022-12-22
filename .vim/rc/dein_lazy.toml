@@ -4,17 +4,17 @@ on_event = 'CmdlineEnter'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_event = 'VimEnter'
+on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 depends = 'vim-lsp'
-on_source = 'vim-lsp'
+on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
 repo = 'mattn/vim-lsp-icons'
 depends = 'vim-lsp'
-on_source = 'vim-lsp'
+on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
 repo = 'Shougo/vinarise'
