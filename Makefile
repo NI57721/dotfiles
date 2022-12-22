@@ -3,51 +3,69 @@
 
 PACKAGES := curl git python3 python3-pip tmux todotxt-cli
 
+GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
+
 ADD_REPOSITORY = sudo apt-add-repository ppa:
 INSTALL_PKG    = sudo apt-get -y install
 REMOVE_PKG     = sudo apt-get -y remove
 UPDATE_PKG     = sudo apt-get -y update
 
-PROJECT_PATH = ~/ ## WIP
-SKK_DIC_PATH = ~/.skkabcdefghijklmn
+PROJECT_PATH = $$HOME/ ## WIP
+SKK_DIC_PATH = $$HOME/.skkabcdefghijklmn
 
-LINKED_FILES = a b c ## WIP
+LINKED_FILES = foo bar baz ## WIP
 
-help: ## Display this message.
-	@grep -P "^[a-zA-Z_-]+:.*?## [^\n]*$$" $(MAKEFILE_LIST) \
-	| sort \
-	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+## help: Display this message.
+help:
+	@grep -P "^## [a-zA-Z_-]+: .[^\n]*$$" $(MAKEFILE_LIST) \
+	| awk 'BEGIN {FS = "^## |: "}; {printf "\033[36m%-20s\033[0m %s\n", $$2, $$3}'
 
-all: ## Execute install and initialize.
-	install
-	initialize
+## all: Execute install and initialize.
+all: install initialize
 
-backup: ## Make backups of data.
-create_links: ## Create links of data.
+## backup: WIP Make backups of data.
+backup:
 
-initialize: init_git ## Initialize settings for some software.
+## create_links: WIP Create links of data.
+create_links:
 
-init_git: ## Initialize settings for git.
+## initialize: Initialize settings for some software.
+initialize: init_git init_timezone
+
+## install: Install everything needed except for i_virtualbox_ga.
+install: install_go_packages \
+	 i_deno i_docker i_fish i_fisher i_go i_nvm i_rbenv i_rust \
+	 i_skk_dictionaries i_tpm i_trash_cli i_vim
+
+## install_optional: Install a tools for guest OSs on VirtualBox.
+install_optional: i_virtualbox_ga
+
+## init_git: Initialize settings for git.
+init_git:
 	git config --global user.email "104410688+NI57721@users.noreply.github.com"
 	git config --global user.name "NI57721"
 	git config --global core.pager cat
 	git config --global init.defaultBranch main
 
-init_timezone: ## Initialize settings for timezones.
+## init_timezone: Initialize settings for timezones.
+init_timezone:
 	sudo timedatectl set-timezone Asia/Tokyo
 
-install: i_deno i_docker i_fish i_fisher i_go i_rbenv i_rust i_skk_dictionaries i_tpm i_trash_cli i_vim ## Install everything needed
-
-install_optional: i_virtualbox_ga ## Install a tools for guest OSs on VirtualBox.
-
-install_packages: ## Install packages.
+## install_packages: Install packages.
+install_packages:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) $(PACKAGES)
 
-i_deno: ## Install deno.
+## install_go_packages: Install go packages.
+install_go_packages:
+	go install $(GO_PACKAGES)
+
+## i_deno: Install deno.
+i_deno:
 	curl -fsSL https://deno.land/x/install/install.sh | sh
 
-i_docker: ## Install docker.
+## i_docker: Install docker.
+i_docker:
 	$(REMOVE_PKG) docker docker-engine docker.io containerd runc
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) \
@@ -66,16 +84,19 @@ i_docker: ## Install docker.
 	sudo groupadd docker
 	sudo usermod -aG docker $$USER
 
-i_fish: ## Install fish shell.
+## i_fish: Install fish shell.
+i_fish:
 	$(ADD_REPOSITORY)fish-shell/release-3
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 
-i_fisher: i_fish ## Install fisher.
+## i_fisher: Install fisher.
+i_fisher: i_fish
 	curl -sL https://git.io/fisher | source
 	fish -c "fisher update"
 
-i_go: ## Install go.
+## i_go: Install go.
+i_go:
 	echo "Check the tar file URL from the below page."
 	echo "https://go.dev/dl/"
 	read -p "echo -e \"Tar file URL: \"" GO_URL \
@@ -85,10 +106,12 @@ i_go: ## Install go.
 	&& sudo tar -C /usr/local -xzf $$FNAME \
 	&& rm $$FNAME
 
-i_nvm: ## Install nvm.
+## i_nvm: Install nvm.
+i_nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
-i_rbenv: ## Install rbenv.
+## i_rbenv: Install rbenv.
+i_rbenv:
 	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 	cd ~/.rbenv && src/configure && make -C src
 	~/.rbenv/bin/rbenv init
@@ -96,10 +119,12 @@ i_rbenv: ## Install rbenv.
 	git clone https://github.com/rbenv/ruby-build.git $$(rbenv root)/plugins/ruby-build
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | sh
 
-i_rust: ## Install rust
+## i_rust: Install rust
+i_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-i_skk_dictionaries: ## Install dictionary files for skk.
+## i_skk_dictionaries: Install dictionary files for skk.
+i_skk_dictionaries:
 	mkdir $(SKK_DIC_PATH)
 	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.L.gz
 	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz
@@ -111,13 +136,16 @@ i_skk_dictionaries: ## Install dictionary files for skk.
 	find $(SKK_DIC_PATH) -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $(SKK_DIC_PATH)/zipcode.tar -C $(SKK_DIC_PATH) && rm $(SKK_DIC_PATH)/zipcode.tar
 
-i_tpm: ## Install tpm.
+## i_tpm: Install tpm.
+i_tpm:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-i_trash_cli: install_packages ## Install trash-cli.
+## i_trash_cli: Install trash-cli.
+i_trash_cli: install_packages
 	python3 -m pip install trash-cli
 
-i_vim: ## Build vim HEAD.
+## i_vim: Build vim HEAD.
+i_vim:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) autoconf automake cproto gettext libacl1-dev libgpm-dev \
 	  libgtk-3-dev liblua5.2-dev libluajit-5.1-2 libperl-dev libtinfo-dev \
@@ -132,7 +160,8 @@ i_vim: ## Build vim HEAD.
 	    --enable-luainterp --enable-fail-if-missing
 	cd ~/src/vim/src && make
 
-i_virtualbox_ga: ## Install VirtualBox Guest Additions.
+## i_virtualbox_ga: Install VirtualBox Guest Additions.
+i_virtualbox_ga:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) xserver-xorg xserver-xorg-core
 	sudo mount /dev/cdrom /mnt
