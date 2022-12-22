@@ -1,0 +1,55 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'LumaKernel/ddc-source-file'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+depends = ['denops.vim', 'ddu.vim']
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+depends = ['denops.vim', 'ddu.vim']
+
+[[plugins]]
+repo = 'Shougo/ddu-column-filename'
+depends = ['denops.vim', 'ddu.vim']
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+depends = ['denops.vim', 'ddu.vim']
+

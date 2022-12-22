@@ -1,8 +1,5 @@
-
-" Reset the specified directory when installing dein.vim
+" Settings for dein.vim
 let s:dein_dir = expand('~/.vim/dein')
-
-" Set a directory for dein.vim
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " clone dein.vim when not having installed dein.vim
@@ -31,6 +28,8 @@ if dein#check_install()
   call dein#install()
 endif
 
+
+" Settings for ddc.vim
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file', 'skkeleton'])
 call ddc#custom#patch_global('sourceOptions', {
@@ -73,6 +72,8 @@ call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
 
 call ddc#enable()
 
+
+" Settings for ddu.vim
 call ddu#custom#patch_global({
 \   'ui': 'filer',
 \   'sources': [{'name': 'file', 'params': {}}],
@@ -96,17 +97,16 @@ call ddu#custom#patch_global({
 autocmd FileType ddu-filer call s:ddu_my_settings()
 function! s:ddu_my_settings() abort
   nnoremap <buffer><silent> <CR>
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
+  \       <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
   nnoremap <buffer><silent> <Space>
-        \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+  \       <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
   nnoremap <buffer> o
-        \ <Cmd>call ddu#ui#filer#do_action('expandItem',
-        \ {'mode': 'toggle'})<CR>
+  \       <Cmd>call ddu#ui#filer#do_action('expandItem',
+  \       {'mode': 'toggle'})<CR>
   nnoremap <buffer><silent> q
-        \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+  \       <Cmd>call ddu#ui#filer#do_action('quit')<CR>
 endfunction
 
-packadd! matchit
 
 let mapleader = "\<Space>"
 
@@ -136,6 +136,7 @@ set spelllang& spelllang+=cjk
 set spelloptions& spelloptions+=camel
 set formatoptions+=M
 set nrformats+=unsigned
+
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<cr>
 runtime ftplugin/man.vim
@@ -159,8 +160,11 @@ noremap  gR        :tabprevious<CR>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-l> :noh<CR><C-l>
+
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
+nnoremap <leader>q <Plug>(socrates-greed)
+
 
 noremap  j gj
 noremap gj  j
@@ -207,11 +211,12 @@ endif
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
 
-" augroup MyXML
-"   autocmd!
-"   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-"   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-" augroup END
+" Auto completion to close XML tags
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o><C-o>=
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o><C-o>=
+augroup END
 
 command -nargs=0 ClearUndo call <sid>ClearUndo()
 function! s:ClearUndo()
@@ -222,9 +227,7 @@ function! s:ClearUndo()
   unlet old_undolevels
 endfunction
 
-if empty(globpath(&rtp, 'autoload/lsp.vim'))
-  finish
-endif
+
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
@@ -232,10 +235,12 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <f2> <plug>(lsp-rename)
   " inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
+
 augroup lsp_install
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
@@ -244,6 +249,7 @@ let g:asyncomplete_auto_completeopt = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
 let g:lsp_settings_filetype_ruby = 'solargraph'
+
 
 " Display results on the upper side with denite
 let g:fzf_layout = { 'up': '~40%' }
@@ -348,6 +354,4 @@ if IsWSL()
   let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
-
-nnoremap <leader>q <Plug>(socrates-greed)
 
