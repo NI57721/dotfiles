@@ -60,9 +60,10 @@ update_deno() {
 }
 
 update_go() {
+  echo Looking up latest version
   local path=$HOME/src
   local version=$(go version | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
-  local latest_version=$(curl 'https://go.dev/VERSION?m=text')
+  local latest_version=$(curl --silent https://go.dev/VERSION?m=text)
   if [[ "$version" == "$latest_version" ]]; then
     echo "Local go version $version is the most recent release"
     return
