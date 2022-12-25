@@ -202,6 +202,8 @@ nnoremap x "_x
 nnoremap X "_X
 nnoremap s "_s
 
+nnoremap Y y$
+
 nnoremap / /\v
 
 " Change cursors according with mode
