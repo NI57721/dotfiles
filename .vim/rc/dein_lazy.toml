@@ -88,6 +88,15 @@ on_map = '<Plug>(dps-dial-'
 repo = 'NI57721/vim-socrates'
 on_map = '<Plug>(socrates-'
 
+[[plugins]]
+repo = 'kana/vim-operator-user'
+on_event = ['CursorHold', 'CursorMoved']
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+on_source = 'vim-operator-user'
+
 # [[plugins]]
 # repo = 'shg-eo/skkeleton-azik'
 

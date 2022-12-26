@@ -191,6 +191,12 @@ inoremap <S-Tab> <C-p>
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
+xnoremap p P
+xnoremap P p
+nnoremap <silent> R <Plug>(operator-replace)
+xnoremap <silent> R <Plug>(operator-replace)
+nnoremap <silent> RR R
+
 " Change the size of windows
 nnoremap <S-Left>  <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
