@@ -97,14 +97,11 @@ i_fisher: i_fish
 
 ## i_go: Install go.
 i_go:
-	echo "Check the tar file URL from the below page."
-	echo "https://go.dev/dl/"
-	read -p "echo -e \"Tar file URL: \"" GO_URL \
-	&& FNAME=$$(echo $$GO_URL | sed -e "s/.*\///g") \
-	&& curl -L $$GO_URL > $$FNAME \
-	&& sudo rm -rf /usr/local/go \
-	&& sudo tar -C /usr/local -xzf $$FNAME \
-	&& rm $$FNAME
+	[[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
+	mkdir -p $(SRC_PATH)/hoge/go
+	curl -L https:/go.dev/dl/$$(curl --silent https://go.dev/VERSION?m=text).linux-amd64.tar.gz \
+	  > $(SRC_PATH)/hoge/latest_go.tar.gz
+	tar -C $(SRC_PATH)/hoge -xzf $(SRC_PATH)/hoge/latest_go.tar.gz && rm $(SRC_PATH)/hoge/latest_go.tar.gz
 
 ## i_nvm: Install nvm.
 i_nvm:

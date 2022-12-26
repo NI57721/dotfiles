@@ -62,6 +62,7 @@ update_deno() {
 update_go() {
   echo Looking up latest version
   local path=$HOME/src
+  local go_path=$path/go
   local version=$(go version | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
   local latest_version=$(curl --silent https://go.dev/VERSION?m=text)
   if [[ "$version" == "$latest_version" ]]; then
@@ -71,14 +72,8 @@ update_go() {
   local archive_uri=https://go.dev/dl/$latest_version.linux-amd64.tar.gz
   local archive=$path/$latest_version.tar.gz
   curl -L $archive_uri > "$archive"
-  echo $archive_uri
-  echo $latest_version
-  echo $archive
-  echo $version
-  if [[ -d $path/go ]]; then
-    rm -rf $path/go
-  fi
-  mkdir -p $path/go
+  [[ -d "$go_path" ]] && rm -rf $go_path
+  mkdir -p $go_path
   tar -C $path -xzf $archive && rm $archive
 }
 
