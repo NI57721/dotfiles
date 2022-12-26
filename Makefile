@@ -12,6 +12,7 @@ UPDATE_PKG     = sudo apt-get -y update
 
 PROJECT_PATH = $$HOME/ ## WIP
 SKK_DIC_PATH = $$HOME/.skkabcdefghijklmn
+SRC_PATH     = $$HOME/src
 
 LINKED_FILES = foo bar baz ## WIP
 
@@ -147,15 +148,16 @@ i_vim:
 	$(INSTALL_PKG) autoconf automake cproto gettext libacl1-dev libgpm-dev \
 	  libgtk-3-dev liblua5.2-dev libluajit-5.1-2 libperl-dev libtinfo-dev \
 	  libxmu-dev libxpm-dev lua5.2 luajit python2-dev python3-dev ruby-dev
-	mkdir -p ~/src
-	cd ~/src && if [ ! -e ./vim ]; then git clone https://github.com/vim/vim.git; fi
-	cd ~/src/vim && git pull
-	cd ~/src/vim/src && \
-	  ./configure --with-features=huge --enable-gui=gtk3 \
+	mkdir -p $(SRC_PATH)
+	if [ ! -e $(SRC_PATH)/vim ]; then git clone https://github.com/vim/vim.git $(SRC_PATH); fi
+	git -C $(SRC_PATH)/vim pull
+	cd $(SRC_PATH)/vim/src && \
+	  ./configure \
+	    --with-features=huge --enable-gui=gtk3 \
 	    --enable-perlinterp --enable-pythoninterp \
 	    --enable-python3interp --enable-rubyinterp \
 	    --enable-luainterp --enable-fail-if-missing
-	cd ~/src/vim/src && make
+	cd $(SRC_PATH)/vim/src && make
 
 ## i_virtualbox_ga: Install VirtualBox Guest Additions.
 i_virtualbox_ga:
