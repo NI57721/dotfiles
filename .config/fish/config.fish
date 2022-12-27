@@ -1,4 +1,5 @@
 set VIMRUNTIME ~/src/vim/runtime
+set MANPAGER "/bin/sh -c \"col -b -x|vim -R -c 'set ft=man nolist nonu noma' -\""
 set VISUAL vim --noplugin
 set THOR_DIFF /usr/local/bin/vimdiff
 set THOR_MERGE /usr/local/bin/vimdiff
