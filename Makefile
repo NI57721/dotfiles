@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 .PHONY: all allinstall
 
-PACKAGES := curl git python3 python3-pip tmux todotxt-cli
+PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
 
