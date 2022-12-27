@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-on_event = 'CmdlineEnter'
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -36,25 +36,23 @@ on_ft = ['eruby', 'ruby']
 repo = 'junegunn/fzf'
 build = './install --all'
 merged = '0'
-on_event = 'CmdlineEnter'
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
-on_source = 'fzf'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
-on_event = 'InsertEnter'
+on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
 depends = 'vim-vsnip'
-on_source = 'vim-vsnip'
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
-on_source = 'vim-vsnip'
+depends = 'vim-vsnip'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -62,31 +60,33 @@ on_ft = ['html', 'xml']
 
 [[plugins]]
 repo = 'chrisbra/matchit'
-on_event = 'InsertEnter'
+on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
-on_event = 'InsertEnter'
+on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
 repo = 'NI57721/shakyo.vim'
-on_event = 'CmdlineEnter'
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'previm/previm'
-on_event = 'InsertEnter'
+on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
 repo = 'thinca/vim-themis'
-on_event = 'CmdlineEnter'
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'monaqa/dps-dial.vim'
 on_map = '<Plug>(dps-dial-'
+on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
 repo = 'NI57721/vim-socrates'
 on_map = '<Plug>(socrates-'
+on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
@@ -95,7 +95,6 @@ on_event = ['CursorHold', 'CursorMoved']
 [[plugins]]
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
-on_source = 'vim-operator-user'
 
 # [[plugins]]
 # repo = 'shg-eo/skkeleton-azik'
