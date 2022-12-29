@@ -96,6 +96,3 @@ on_event = ['CursorHold', 'CursorMoved']
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
 
-# [[plugins]]
-# repo = 'shg-eo/skkeleton-azik'
-

@@ -11,7 +11,7 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir, [expand('~/.vimrc')])
   " Set directories for dein.toml and dein_lazy.toml
   let s:toml_dir = expand('~/.vim/rc')
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
@@ -302,13 +302,29 @@ call skkeleton#config({
 \   'showCandidatesCount': 1
 \ })
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
-call skkeleton#register_kanatable('rom', {
-\   'jj': 'escape',
-\   'mb': ['ん', 'b'],
-\   'mm': ['ん', 'm'],
-\   'mp': ['ん', 'p'],
-\   'tch': ['っ', 'ch'],
-\ })
+augroup Skkeleton
+  autocmd!
+  autocmd InsertEnter * :call skkeleton#register_kanatable('rom', {
+    \   'jj': 'escape',
+    "\   'mb': ['ん', 'b'],
+    "\   'mm': ['ん', 'm'],
+    "\   'mp': ['ん', 'p'],
+    \   'xi':  ['し', ''],
+    \   'ji':  ['じ', ''],
+    \   'ci':  ['ち', ''],
+    \   'tch': ['っ', 'c'],
+    \   'tsi': ['つぃ', ''],
+    \   'tsu': ['つ', ''],
+    \   'tse': ['つぇ', ''],
+    \   'tso': ['つぉ', ''],
+    \ })
+augroup END
+
+" let g:skkeleton_azik_enable_rule_1 = v:false
+" let g:skkeleton_azik_enable_rule_2 = v:false
+" let g:skkeleton_azik_enable_rule_3 = v:false
+" let g:skkeleton_azik_enable_rule_4 = v:false
+
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 

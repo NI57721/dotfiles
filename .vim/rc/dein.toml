@@ -6,6 +6,11 @@ repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 
 [[plugins]]
+repo = 'NI57721/skkeleton-azik'
+# repo = 'shg-eo/skkeleton-azik'
+depends = ['denops.vim', 'skkeleton']
+
+[[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = 'denops.vim'
 
