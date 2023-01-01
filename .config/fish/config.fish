@@ -71,6 +71,10 @@ abbr -a ber  bundle exec rails
 abbr -a bers bundle exec rails server -b 0.0.0.0
 abbr -a berc bundle exec rails console --sandbox
 
+# for clipboard
+abbr -a ccp  xclip -sel clip
+abbr -a cps  xclip -o
+
 # for Fly.io
 abbr -a fly flyctl
 

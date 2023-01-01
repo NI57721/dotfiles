@@ -256,6 +256,9 @@ alias rm="rm -i"
 alias put="trash-put"
 alias puts="trash-put"
 
+alias ccp="xclip -sel clip"
+alias cps="xclip -o"
+
 shopt -s dotglob
 
 set -o vi
