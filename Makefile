@@ -1,17 +1,20 @@
 .DEFAULT_GOAL := help
 .PHONY: all allinstall
 
-PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
+# PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
+PACKAGES := curl git hyperfine openssh python3 python-pip tmux unzip wget xclip xfce4
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
 
+INSTALL_PKG    = yes | sudo pacman -S
+UPDATE_PKG     = sudo pacman -Syuu
 ADD_REPOSITORY = sudo apt-add-repository ppa:
-INSTALL_PKG    = sudo apt-get -y install
+# INSTALL_PKG    = sudo apt-get -y install
 REMOVE_PKG     = sudo apt-get -y remove
-UPDATE_PKG     = sudo apt-get -y update
+# UPDATE_PKG     = sudo apt-get -y update
 
 PROJECT_PATH = $$HOME/ ## WIP
-SKK_DIC_PATH = $$HOME/.skkabcdefghijklmn
+SKK_DIC_PATH = $$HOME/.skk
 SRC_PATH     = $$HOME/src
 
 LINKED_FILES = foo bar baz ## WIP
@@ -63,7 +66,7 @@ install_go_packages:
 
 ## i_deno: Install deno.
 i_deno:
-	curl -fsSL https://deno.land/x/install/install.sh | sh
+	curl -fsSL https://deno.land/x/install/install.sh | bash
 
 ## i_docker: Install docker.
 i_docker:
@@ -98,8 +101,8 @@ i_fisher: i_fish
 
 ## i_go: Install go.
 i_go:
-	[[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
-	mkdir -p $(SRC_PATH)/hoge/go
+	# [[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
+	mkdir -p $(SRC_PATH)/go
 	curl -L https:/go.dev/dl/$$(curl --silent https://go.dev/VERSION?m=text).linux-amd64.tar.gz \
 	  > $(SRC_PATH)/hoge/latest_go.tar.gz
 	tar -C $(SRC_PATH)/hoge -xzf $(SRC_PATH)/hoge/latest_go.tar.gz && rm $(SRC_PATH)/hoge/latest_go.tar.gz
@@ -110,16 +113,16 @@ i_nvm:
 
 ## i_rbenv: Install rbenv.
 i_rbenv:
-	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-	cd ~/.rbenv && src/configure && make -C src
-	~/.rbenv/bin/rbenv init
+	#git clone https://github.com/rbenv/rbenv.git $$HOME/.rbenv
+	cd $$HOME/.rbenv && src/configure && make -C src
+	#$$HOME/.rbenv/bin/rbenv init
 	mkdir -p $$(rbenv root)/plugins
 	git clone https://github.com/rbenv/ruby-build.git $$(rbenv root)/plugins/ruby-build
-	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | sh
+	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 ## i_rust: Install rust
 i_rust:
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
 ## i_skk_dictionaries: Install dictionary files for skk.
 i_skk_dictionaries:
