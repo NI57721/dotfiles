@@ -69,7 +69,7 @@ update_go() {
   local latest_version=$(curl --silent https://go.dev/VERSION?m=text)
   if [[ "$version" == "$latest_version" ]]; then
     echo "Local go version $version is the most recent release"
-    return
+    return 0
   fi
   local archive_uri=https://go.dev/dl/$latest_version.linux-amd64.tar.gz
   local archive=$path/$latest_version.tar.gz
@@ -356,13 +356,13 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
     fi
   }
 
-  wincmd() {
+  function wincmd() {
     local CMD=$1
     shift
     $CMD $* 2>&1 | iconv -f cp932 -t utf-8
   }
 
-  ccp() {
+  function ccp() {
     if [[ $# -eq 0 ]] ; then
       cat | clip.exe
     else
