@@ -21,6 +21,8 @@ update() {
   update_deno
   echo -e "\n### GO ###"
   update_go
+  echo -e "\n### RUST ###"
+  update_rust
 }
 
 update_apt() {
@@ -75,6 +77,10 @@ update_go() {
   [[ -d "$go_path" ]] && rm -rf $go_path
   mkdir -p $go_path
   tar -C $path -xzf $archive && rm $archive
+}
+
+update_rust() {
+  rustup update
 }
 
 # If not running interactively, don't do anything below

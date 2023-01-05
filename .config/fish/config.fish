@@ -141,6 +141,10 @@ function update_go
   bash -c ". ~/.bashrc && update_go"
 end
 
+function update_go
+  bash -c ". ~/.bashrc && update_rust"
+end
+
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual
