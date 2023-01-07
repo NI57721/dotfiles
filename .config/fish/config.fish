@@ -113,8 +113,8 @@ function update
   bash -c ". ~/.bashrc && update"
 end
 
-function update_apt
-  bash -c ". ~/.bashrc && update_apt"
+function update_packages
+  bash -c ". ~/.bashrc && update_packages"
 end
 
 function update_rbenv
