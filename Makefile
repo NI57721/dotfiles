@@ -50,6 +50,11 @@ init_git:
 	git config --global user.name "NI57721"
 	git config --global core.pager cat
 	git config --global init.defaultBranch main
+	mkdir -p $$HOME/.ssh
+	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
+	echo -e " Host github github.com\n  HostName github.com\n  IdentityFile $$HOME/.ssh/ni57721\n  User git\n" | \
+	  tee -a $$HOME/.ssh/config
+	xdg-open https://github.com/settings/ssh
 
 ## init_mirrorlist: Sort the mirrorlist used by pacman.
 init_mirrorlist:
