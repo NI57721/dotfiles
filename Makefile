@@ -160,18 +160,18 @@ i_trash_cli: install_packages
 ## i_vim: Build vim HEAD.
 i_vim:
 	$(UPDATE_PKG)
-	$(INSTALL_PKG) autoconf automake cproto gettext libacl1-dev libgpm-dev \
-	  libgtk-3-dev liblua5.2-dev libluajit-5.1-2 libperl-dev libtinfo-dev \
-	  libxmu-dev libxpm-dev lua5.2 luajit python2-dev python3-dev ruby-dev
+	# cproto libacl1-dev libgpm-dev libgtk-3-dev liblua5.2-dev
+	# libluajit-5.1-2 libperl-dev libtinfo-dev libxmu-dev libxpm-dev lua5.2
+	# python3-dev ruby-dev
+	$(INSTALL_PKG) autoconf automake gettext luajit
 	mkdir -p $(SRC_PATH)
-	if [ ! -e $(SRC_PATH)/vim ]; then git clone https://github.com/vim/vim.git $(SRC_PATH); fi
+	if [ ! -e $(SRC_PATH)/vim ]; then git clone https://github.com/vim/vim.git $(SRC_PATH)/vim; fi
 	git -C $(SRC_PATH)/vim pull
 	cd $(SRC_PATH)/vim/src && \
 	  ./configure \
-	    --with-features=huge --enable-gui=gtk3 \
-	    --enable-perlinterp --enable-pythoninterp \
-	    --enable-python3interp --enable-rubyinterp \
-	    --enable-luainterp --enable-fail-if-missing
+	    --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
+	    --enable-python3interp --enable-rubyinterp --enable-luainterp \
+	    --with-luajit --enable-fail-if-missing
 	cd $(SRC_PATH)/vim/src && make
 
 ## i_virtualbox_ga: Install VirtualBox Guest Additions.
