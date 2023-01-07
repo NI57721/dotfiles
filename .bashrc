@@ -222,7 +222,7 @@ export NVM_DIR=$HOME/.nvm
 
 . $HOME/.cargo/env
 
-[ -f "$HOME/.fzf.bash" ] && . $HOME/.fzf.bash
+[ -f "$HOME/.fzf.bash" ] && . ~/.fzf.bash
 
 alias ..='cd ..'
 alias ...='cd ../..'
