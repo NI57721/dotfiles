@@ -34,7 +34,7 @@ backup:
 create_links:
 
 ## initialize: Initialize settings for some software.
-initialize: init_git init_timezone
+initialize: init_git init_mirrorlist init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga.
 install: install_go_packages \
@@ -50,6 +50,13 @@ init_git:
 	git config --global user.name "NI57721"
 	git config --global core.pager cat
 	git config --global init.defaultBranch main
+
+## init_mirrorlist: Sort the mirrorlist used by pacman.
+init_mirrorlist:
+	sudo cp /etc/pacman.d/mirrorlist{,.bak}
+	sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
+	rankmirrors -n 0 /etc/pacman.d/mirrorlist.bak | sudo tee /etc/pacman.d/mirrorlist
+
 
 ## init_timezone: Initialize settings for timezones.
 init_timezone:
