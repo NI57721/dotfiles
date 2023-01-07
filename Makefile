@@ -2,7 +2,7 @@
 .PHONY: all allinstall
 
 # PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
-PACKAGES := curl git hyperfine openssh python3 python-pip tmux unzip wget xclip xfce4
+PACKAGES := base-devel curl git hyperfine ntfs-3g openssh pinta python3 python-pip tmux unzip wget xclip xfce4
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
 
