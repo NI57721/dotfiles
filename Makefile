@@ -38,7 +38,7 @@ initialize: init_git init_mirrorlist init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga.
 install: install_go_packages \
-	 i_deno i_docker i_fish i_fisher i_go i_nvm i_rbenv i_rust \
+	 i_deno i_docker i_fish i_fisher i_go i_nvm i_paru i_rbenv i_rust \
 	 i_skk_dictionaries i_tpm i_trash_cli i_vim
 
 ## install_optional: Install a tools for guest OSs on VirtualBox.
@@ -122,6 +122,11 @@ i_go:
 ## i_nvm: Install nvm.
 i_nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+
+## i_paru: Install paru.
+i_paru:
+	git clone https://aur.archlinux.org/paru.git $(SRC_PATH)
+	cd $(SRC_PATH)/paru && makepkg -si
 
 ## i_rbenv: Install rbenv.
 i_rbenv:
