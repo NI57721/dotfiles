@@ -284,7 +284,7 @@ alias rm="rm -i"
 alias put="trash-put"
 alias puts="trash-put"
 
-alias ccp="xclip -sel clip"
+alias ccp="xclip"
 alias cps="xclip -o"
 
 shopt -s dotglob
