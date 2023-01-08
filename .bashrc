@@ -53,7 +53,8 @@ update_packages() {
 }
 
 update_rbenv() {
-  (cd "$(rbenv root)"; git pull; cd "$(rbenv root)"/plugins/ruby-build; git pull)
+  git -C $(rbenv root) pull
+  git -C $(rbenv root)/plugins/ruby-build pull
 }
 
 update_gem() {
@@ -62,10 +63,11 @@ update_gem() {
 }
 
 update_nvm() {
-  cd $NVM_DIR
-  git fetch --tags origin
-  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-  cd -
+  git -C $NVM_DIR fetch --tags origin
+  local latest_commit=$(git -C $NVM_DIR rev-list --tags --max-count=1)
+  local latest_tag=$(git -C $NVM_DIR describe --abbrev=0 --tags --match \
+    "v[0-9]*" $latest_commit)
+  git -C $NVM_DIR checkout $latest_tag
   . $NVM_DIR/nvm.sh
   nvm install stable --latest-npm
   nvm install-latest-npm
