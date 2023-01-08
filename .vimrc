@@ -151,6 +151,9 @@ nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<cr>
 runtime ftplugin/man.vim
 
+nnoremap <leader>w :ShakyoClue<CR>
+nnoremap <leader>f :Files<CR>
+
 inoremap <silent> jj <ESC>
 inoremap <silent> ｊｊ <ESC><ESC>
 cnoremap jj <ESC>
@@ -280,9 +283,6 @@ let g:fzf_buffers_jump = 1
 
 " Specify a user snippet directory
 let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
-
-" Dispaly clue in shakyo mode
-nnoremap <leader>f :ShakyoClue<CR>
 
 " Define a skk dictionary
 call skkeleton#config({
