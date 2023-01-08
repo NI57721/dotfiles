@@ -2,12 +2,12 @@
 .PHONY: all allinstall
 
 # PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
-PACKAGES := base-devel curl git hyperfine ntfs-3g openssh pinta python3 python-pip tmux unzip wget xclip xfce4
+PACKAGES := base-devel bat curl git git-delta hyperfine ntfs-3g openssh pinta python3 python-pip ripgrep the_silver_searcher tmux tree unzip wget xclip xfce4
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
 
 INSTALL_PKG    = yes | sudo pacman -S
-UPDATE_PKG     = sudo pacman -Syuu
+UPDATE_PKG     = sudo pacman -Syu
 ADD_REPOSITORY = sudo apt-add-repository ppa:
 # INSTALL_PKG    = sudo apt-get -y install
 REMOVE_PKG     = sudo apt-get -y remove
