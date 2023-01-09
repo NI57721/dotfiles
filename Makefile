@@ -6,12 +6,26 @@ PACKAGES := base-devel bat curl git git-delta github-cli hyperfine ntfs-3g opens
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
 
-INSTALL_PKG    = yes | sudo pacman -S
-UPDATE_PKG     = sudo pacman -Syu
-ADD_REPOSITORY = sudo apt-add-repository ppa:
-# INSTALL_PKG    = sudo apt-get -y install
-REMOVE_PKG     = sudo apt-get -y remove
-# UPDATE_PKG     = sudo apt-get -y update
+# Default distribution is set to ArchLinux.
+# You can specify a distribution as below:
+# make task DST=YourDistribution
+DST = arch
+
+ifeq ($(DST), arch)
+	INSTALL_PKG    = sudo pacman -S
+	UPDATE_PKG     = sudo pacman -Syu
+	REMOVE_PKG     = sudo pacman -R
+else ifeq ($(DST), ubuntu)
+	INSTALL_PKG    = sudo apt-get -y install
+	UPDATE_PKG     = sudo apt-get -y update
+	ADD_REPOSITORY = sudo apt-add-repository ppa:
+	REMOVE_PKG     = sudo apt-get -y remove
+else
+	INSTALL_PKG    = sudo pacman -S
+	UPDATE_PKG     = sudo pacman -Syu
+	REMOVE_PKG     = sudo pacman -R
+endif
+
 
 PROJECT_PATH = $$HOME/ ## WIP
 SKK_DIC_PATH = $$HOME/.skk
@@ -102,7 +116,9 @@ i_docker:
 
 ## i_fish: Install fish shell.
 i_fish:
-	$(ADD_REPOSITORY)fish-shell/release-3
+	ifeq ($(DST), ubuntu)
+		$(ADD_REPOSITORY)fish-shell/release-3
+	endif
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 
