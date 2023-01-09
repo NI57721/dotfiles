@@ -148,11 +148,11 @@ set nrformats+=unsigned
 set scrolloff=5
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
-nnoremap <leader>F <Cmd>call ddu#start({})<cr>
-runtime ftplugin/man.vim
-
+nnoremap <leader>F <Cmd>call ddu#start({})<CR>
+nnoremap <leader>D <Cmd>call dein#update()<CR>
 nnoremap <leader>w :ShakyoClue<CR>
 nnoremap <leader>f :Files<CR>
+runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
 inoremap <silent> ｊｊ <ESC><ESC>
