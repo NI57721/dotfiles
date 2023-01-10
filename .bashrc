@@ -365,7 +365,7 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
   alias goodbye="shutdown.exe /p; exit"
   alias terminate="wsl.exe -t Ubuntu"
 
-  function open() {
+  open() {
     if [ $# -eq 0 ]; then
       explorer.exe .
     else
@@ -378,20 +378,21 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
     fi
   }
 
-  function wincmd() {
+  wincmd() {
     local CMD=$1
     shift
     $CMD $* 2>&1 | iconv -f cp932 -t utf-8
   }
 
-  function ccp() {
+  # Override existing alias for ccp
+  alias ccp=_ccp
+  _ccp() {
     if [[ $# -eq 0 ]] ; then
       cat | clip.exe
     else
       echo $1 | clip.exe
     fi
   }
-
   alias cps="powershell.exe -command Get-Clipboard"
 fi
 
