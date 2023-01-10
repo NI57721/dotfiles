@@ -141,7 +141,7 @@ function update_go
   bash -c ". ~/.bashrc && update_go"
 end
 
-function update_go
+function update_rust
   bash -c ". ~/.bashrc && update_rust"
 end
 
