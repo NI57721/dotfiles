@@ -153,6 +153,10 @@ function update_tpm
   bash -c ". ~/.bashrc && update_tpm"
 end
 
+function update_fisher
+  bash -c ". ~/.bashrc && update_fisher"
+end
+
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual

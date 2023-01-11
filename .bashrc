@@ -25,6 +25,8 @@ update() {
   update_rust
   echo -e "\n### TPM ###"
   update_tpm
+  echo -e "\n### FISHER ###"
+  update_fisher
 }
 
 update_packages() {
@@ -109,6 +111,10 @@ update_rust() {
 
 update_tpm() {
   ~/.tmux/plugins/tpm/bin/update_plugins all
+}
+
+update_fisher() {
+  fish -c "fisher update"
 }
 
 # If not running interactively, don't do anything below
