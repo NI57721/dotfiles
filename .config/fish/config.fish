@@ -84,22 +84,25 @@ sh ~/.cargo/env
 # substitute for eval (rbenv init -)
 status --is-interactive; and source (rbenv init -|psub)
 
-# copy command for WSL2
-function ccp
-  if string match -q '*-WSL*' (uname -r)
-    if count $argv > /dev/null
-      echo $argv | /mnt/c/Windows/System32/clip.exe
-    else
-      cat | /mnt/c/Windows/System32/clip.exe
+# Settings for WSL2
+if grep -qie "microsoft-.*-WSL2" /proc/version
+  abbr -e ccp
+  function ccp
+    if string match -q '*-WSL*' (uname -r)
+      if count $argv > /dev/null
+        echo $argv | /mnt/c/Windows/System32/clip.exe
+      else
+        cat | /mnt/c/Windows/System32/clip.exe
+      end
     end
   end
-end
 
-# paste command for WSL2
-function cps
-  if string match -q '*-WSL*' (uname -r)
-    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
-      -command Get-Clipboard
+  abbr -e cps
+  function cps
+    if string match -q '*-WSL*' (uname -r)
+      /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
+        -command Get-Clipboard
+    end
   end
 end
 
