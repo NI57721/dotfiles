@@ -95,6 +95,7 @@ on_event = ['CursorHold', 'CursorMoved']
 [[plugins]]
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
+on_map = '<Plug>(operator-replace)'
 
 [[plugins]]
 repo = 'tweekmonster/helpful.vim'
