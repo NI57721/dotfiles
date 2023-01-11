@@ -64,6 +64,7 @@ abbr -a gidc git diff --cached --color=always
 abbr -a gicl git clone git@github.com:
 abbr -a gira git remote add origin git@github.com:
 abbr -a giss git stash show -p
+abbr -a gipf git push --force-with-lease --force-if-includes
 
 # for Bundler
 abbr -a be   bundle exec
