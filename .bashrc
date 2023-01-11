@@ -117,6 +117,19 @@ update_fisher() {
   fish -c "fisher update"
 }
 
+update_vim() {
+  mkdir -p $HOME/src
+  if [ ! -e $HOME/src/vim ]; then git clone https://github.com/vim/vim.git $HOME/src/vim; fi
+  git -C $HOME/src/vim pull
+  cd $HOME/src/vim/src
+  ./configure \
+    --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
+    --enable-python3interp --enable-rubyinterp --enable-luainterp \
+    --with-luajit --enable-fail-if-missing
+  make
+  cd -
+}
+
 # If not running interactively, don't do anything below
 case $- in
   *i*) ;;
