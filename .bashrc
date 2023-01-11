@@ -23,6 +23,8 @@ update() {
   update_go
   echo -e "\n### RUST ###"
   update_rust
+  echo -e "\n### TPM ###"
+  update_tpm
 }
 
 update_packages() {
@@ -103,6 +105,10 @@ update_go() {
 
 update_rust() {
   rustup update
+}
+
+update_tpm() {
+  ~/.tmux/plugins/tpm/bin/update_plugins all
 }
 
 # If not running interactively, don't do anything below

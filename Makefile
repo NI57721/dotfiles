@@ -173,6 +173,7 @@ i_skk_dictionaries:
 ## i_tpm: Install tpm.
 i_tpm:
 	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
+	bash $$HOME/.tmux/plugins/tpm/bin/install_plugins
 
 ## i_trash_cli: Install trash-cli.
 i_trash_cli: install_packages

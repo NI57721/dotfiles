@@ -148,6 +148,10 @@ function update_rust
   bash -c ". ~/.bashrc && update_rust"
 end
 
+function update_tpm
+  bash -c ". ~/.bashrc && update_tpm"
+end
+
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual
