@@ -2,8 +2,10 @@
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
-repo = 'vim-skk/skkeleton'
+repo = 'NI57721/skkeleton'
+rev = 'fix-candidates'
 depends = 'denops.vim'
+#repo = 'vim-skk/skkeleton'
 
 [[plugins]]
 repo = 'NI57721/skkeleton-azik'
