@@ -235,7 +235,7 @@ let g:html_indent_inctags = 'p'
 " Auto completion to close XML tags
 augroup MyXML
   autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o><ESC>==o
+  autocmd Filetype xml  inoremap <buffer> </ </<C-x><C-o><ESC>==o
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o><ESC>==o
 augroup END
 
