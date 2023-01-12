@@ -7,8 +7,9 @@ depends = 'denops.vim'
 
 [[plugins]]
 repo = 'NI57721/skkeleton-azik'
-# repo = 'shg-eo/skkeleton-azik'
+rev = 'add-options'
 depends = ['denops.vim', 'skkeleton']
+# repo = 'shg-eo/skkeleton-azik'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
