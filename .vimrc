@@ -165,7 +165,7 @@ noremap  <C-Tab>   :tabnext<CR>:f<CR>
 noremap  <S-C-Tab> :tabprevious<CR>:f<CR>
 noremap  <C-Right> :tabnext<CR>:f<CR>
 noremap  <C-Left>  :tabprevious<CR>:f<CR>
-noremap  <C-Down>  :q<CR>
+noremap  <C-Down>  :q<CR>:f<CR>
 tnoremap <C-Tab>   <C-w>gt<CR>:f<CR>
 tnoremap <S-C-Tab> <C-w>gT<CR>:f<CR>
 noremap  gr        :tabnext<CR>:f<CR>
