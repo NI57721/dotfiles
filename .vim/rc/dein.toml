@@ -8,12 +8,6 @@ depends = 'denops.vim'
 # rev = 'fix-candidates'
 
 [[plugins]]
-repo = 'NI57721/skkeleton-azik'
-rev = 'add-options'
-depends = ['denops.vim', 'skkeleton']
-# repo = 'shg-eo/skkeleton-azik'
-
-[[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = 'denops.vim'
 

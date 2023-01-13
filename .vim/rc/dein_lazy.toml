@@ -9,12 +9,12 @@ on_event = ['CursorHold', 'CursorMoved']
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 depends = 'vim-lsp'
-on_event = ['CursorHold', 'CursorMoved']
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'mattn/vim-lsp-icons'
 depends = 'vim-lsp'
-on_event = ['CursorHold', 'CursorMoved']
+on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'Shougo/vinarise'
@@ -102,4 +102,10 @@ on_map = '<Plug>(operator-replace)'
 [[plugins]]
 repo = 'tweekmonster/helpful.vim'
 on_event = ['CursorHold', 'CmdlineEnter']
+
+[[plugins]]
+repo = 'NI57721/skkeleton-azik'
+rev = 'add-options'
+depends = ['denops.vim', 'skkeleton']
+# repo = 'shg-eo/skkeleton-azik'
 
