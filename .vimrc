@@ -32,7 +32,7 @@ endif
 " Settings for ddc.vim
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sources', [
-\   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp'
+\   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip'
 \ ])
 call ddc#custom#patch_global('sourceOptions', {
 \   'around': {'mark': 'arnd'},
@@ -49,6 +49,10 @@ call ddc#custom#patch_global('sourceOptions', {
 \     'minAutoCompleteLength': 2,
 \   },
 \   'vim-lsp': {'mark': 'lsp'},
+\   'vsnip': {
+\     'mark': 'vsnp',
+\     'dup': 'keep',
+\   },
 \   '_': {
 \     'matchers': ['matcher_fuzzy', 'matcher_head'],
 \     'sorters': ['sorter_fuzzy'],

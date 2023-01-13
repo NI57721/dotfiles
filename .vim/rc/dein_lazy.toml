@@ -48,10 +48,12 @@ on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
+on_event = ['CursorHold', 'InsertEnter']
 depends = 'vim-vsnip'
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
+on_event = ['CursorHold', 'InsertEnter']
 depends = 'vim-vsnip'
 
 [[plugins]]
