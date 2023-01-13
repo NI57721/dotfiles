@@ -2,6 +2,10 @@
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+# on_event = ['CursorHold', 'CursorMoved']
+
+[[plugins]]
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 # repo = 'NI57721/skkeleton'

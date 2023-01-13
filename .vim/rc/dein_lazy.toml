@@ -3,10 +3,6 @@ repo = 'Shougo/dein.vim'
 on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_event = ['CursorHold', 'CursorMoved']
-
-[[plugins]]
 repo = 'mattn/vim-lsp-settings'
 depends = 'vim-lsp'
 on_event = ['CursorHold', 'CmdlineEnter']
