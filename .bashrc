@@ -310,8 +310,8 @@ alias rm="rm -i"
 alias put="trash-put"
 alias puts="trash-put"
 
-alias ccp="xclip"
-alias cps="xclip -o"
+alias ccp="xclip -selection clipboard -i"
+alias cps="xclip -selection clipboard -o"
 
 shopt -s dotglob
 
