@@ -170,13 +170,14 @@ i_rust:
 ## i_skk_dictionaries: Install dictionary files for skk.
 i_skk_dictionaries:
 	mkdir $(SKK_DIC_PATH)
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.L.gz
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.geo.gz
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.station.gz
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz
-	wget -P $(SKK_DIC_PATH) https://skk-dev.github.io/dict/zipcode.tar.gz
-	wget -P $(SKK_DIC_PATH) https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
+	curl --remote-name-all --output-dir $(SKK_DIC_PATH) \
+	  https://skk-dev.github.io/dict/SKK-JISYO.L.gz \
+	  https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz \
+	  https://skk-dev.github.io/dict/SKK-JISYO.geo.gz \
+	  https://skk-dev.github.io/dict/SKK-JISYO.station.gz \
+	  https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
+	  https://skk-dev.github.io/dict/zipcode.tar.gz \
+	  https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
 	find $(SKK_DIC_PATH) -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $(SKK_DIC_PATH)/zipcode.tar -C $(SKK_DIC_PATH) && rm $(SKK_DIC_PATH)/zipcode.tar
 
