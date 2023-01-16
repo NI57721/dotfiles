@@ -1,10 +1,19 @@
 .DEFAULT_GOAL := help
 .PHONY: all allinstall
 
-# PACKAGES := curl git hyperfine python3 python3-pip tmux todotxt-cli
-PACKAGES := base-devel bat curl git git-delta github-cli hyperfine linux-headers ntfs-3g openssh pinta python3 python-pip ripgrep synaptics the_silver_searcher tmux tree unzip virtualbox wget xclip xfce4
+# Basic packages
+PACKAGES := base-devel curl git linux-headers openssh python3 python-pip ripgrep the_silver_searcher tmux tree unzip
+# GUI
+PACKAGES += pinta synaptics xclip xfce4
+# Others
+PACKAGES += bat github-cli git-delta hyperfine ntfs-3g pinta virtualbox wget
+
+
+AUR_PACKAGES := google-chrome todotxt vlc-nox
+
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
+
 
 # Default distribution is set to ArchLinux.
 # You can specify a distribution as below:
@@ -20,6 +29,7 @@ else ifeq ($(DST), ubuntu)
 	UPDATE_PKG     = sudo apt-get -y update
 	ADD_REPOSITORY = sudo apt-add-repository ppa:
 	REMOVE_PKG     = sudo apt-get -y remove
+	PACKAGES      += todotxt-cli
 else
 	INSTALL_PKG    = sudo pacman -S
 	UPDATE_PKG     = sudo pacman -Syu
