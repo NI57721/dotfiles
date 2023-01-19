@@ -5,8 +5,8 @@
 PACKAGES := base-devel curl git linux-headers openssh python3 python-pip ripgrep the_silver_searcher tmux tree unzip
 # GUI
 PACKAGES += pinta synaptics xclip xfce4
-# Others
-PACKAGES += bat github-cli git-delta hyperfine ntfs-3g pinta virtualbox wget
+# Misc
+PACKAGES += bat github-cli git-delta hyperfine ntfs-3g pinta trash-cli virtualbox wget
 
 
 AUR_PACKAGES := google-chrome todotxt vlc-nox
@@ -63,7 +63,7 @@ initialize: init_git init_mirrorlist init_timezone
 ## install: Install everything needed except for i_virtualbox_ga.
 install: install_go_packages \
 	 i_deno i_docker i_fish i_fisher i_go i_nvm i_paru i_rbenv i_rust \
-	 i_skk_dictionaries i_tpm i_trash_cli i_vim
+	 i_skk_dictionaries i_tpm i_vim
 
 ## install_optional: Install a tools for guest OSs on VirtualBox.
 install_optional: i_virtualbox_ga
@@ -185,10 +185,6 @@ i_skk_dictionaries:
 i_tpm:
 	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
 	bash $$HOME/.tmux/plugins/tpm/bin/install_plugins
-
-## i_trash_cli: Install trash-cli.
-i_trash_cli: install_packages
-	python3 -m pip install trash-cli
 
 ## i_vim: Build vim HEAD.
 i_vim:
