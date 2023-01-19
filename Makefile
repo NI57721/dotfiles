@@ -2,14 +2,18 @@
 .PHONY: all allinstall
 
 # Basic packages
-PACKAGES := base-devel curl git linux-headers openssh python3 python-pip ripgrep the_silver_searcher tmux tree unzip
+PACKAGES := base-devel curl git linux-headers ntfs-3g openssh ripgrep the_silver_searcher tmux tree unzip
 # GUI
 PACKAGES += pinta synaptics xclip xfce4
+# Sound server
+PACKAGES += pulseaudio pulseaudio-alsa
+# Font
+PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
 PACKAGES += bat github-cli git-delta hyperfine ntfs-3g pinta trash-cli virtualbox wget
 
 
-AUR_PACKAGES := google-chrome todotxt vlc-nox
+AUR_PACKAGES := google-chrome todotxt ttf-hackgen vlc-nox
 
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
@@ -24,6 +28,7 @@ ifeq ($(DST), arch)
 	INSTALL_PKG    = sudo pacman -S
 	UPDATE_PKG     = sudo pacman -Syu
 	REMOVE_PKG     = sudo pacman -R
+	PACKAGES      += pacman-contrib
 else ifeq ($(DST), ubuntu)
 	INSTALL_PKG    = sudo apt-get -y install
 	UPDATE_PKG     = sudo apt-get -y update
