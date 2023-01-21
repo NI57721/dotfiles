@@ -10,7 +10,7 @@ PACKAGES += pulseaudio pulseaudio-alsa
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
-PACKAGES += bat github-cli git-delta hyperfine ntfs-3g pinta trash-cli virtualbox wget
+PACKAGES += bat github-cli git-delta gnuplot hyperfine ntfs-3g pinta trash-cli virtualbox wget
 
 
 AUR_PACKAGES := google-chrome todotxt ttf-hackgen vlc-nox
