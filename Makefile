@@ -67,8 +67,8 @@ initialize: init_git init_mirrorlist init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga.
 install: install_go_packages \
-	 i_deno i_docker i_fish i_fisher i_go i_nvm i_paru i_rbenv i_rust \
-	 i_skk_dictionaries i_tpm i_vim
+	 i_deno i_docker i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
+	 i_rust i_skk_dictionaries i_tpm i_vim
 
 ## install_optional: Install a tools for guest OSs on VirtualBox.
 install_optional: i_virtualbox_ga
@@ -128,6 +128,11 @@ i_docker:
 	$(INSTALL_PKG) docker-ce docker-ce-cli containerd.io docker-compose-plugin
 	sudo groupadd docker
 	sudo usermod -aG docker $$USER
+
+## i_dropbox: Install DropBox CLI tool.
+i_dropbox:
+	curl -L https://www.dropbox.com/download?plat=lnx.x86_64 | \
+	  tar -C $$HOME/hoge -xzf -
 
 ## i_fish: Install fish shell.
 i_fish:
