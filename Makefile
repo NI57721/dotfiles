@@ -136,9 +136,7 @@ i_dropbox:
 
 ## i_fish: Install fish shell.
 i_fish:
-	ifeq ($(DST), ubuntu)
-		$(ADD_REPOSITORY)fish-shell/release-3
-	endif
+	[ "$(DST)" == ubuntu ] && $(ADD_REPOSITORY)fish-shell/release-3
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 
@@ -149,11 +147,11 @@ i_fisher: i_fish
 
 ## i_go: Install go.
 i_go:
-	# [[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
+	[[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
 	mkdir -p $(SRC_PATH)/go
 	curl -L https:/go.dev/dl/$$(curl --silent https://go.dev/VERSION?m=text).linux-amd64.tar.gz \
-	  > $(SRC_PATH)/hoge/latest_go.tar.gz
-	tar -C $(SRC_PATH)/hoge -xzf $(SRC_PATH)/hoge/latest_go.tar.gz && rm $(SRC_PATH)/hoge/latest_go.tar.gz
+	  > $(SRC_PATH)/latest_go.tar.gz
+	tar -C $(SRC_PATH) -xzf $(SRC_PATH)/latest_go.tar.gz && rm $(SRC_PATH)/latest_go.tar.gz
 
 ## i_nvm: Install nvm.
 i_nvm:
@@ -161,16 +159,16 @@ i_nvm:
 
 ## i_paru: Install paru.
 i_paru:
-	git clone https://aur.archlinux.org/paru.git $(SRC_PATH)
+	git clone https://aur.archlinux.org/paru.git $(SRC_PATH)/paru
 	cd $(SRC_PATH)/paru && makepkg -si
 
 ## i_rbenv: Install rbenv.
 i_rbenv:
-	#git clone https://github.com/rbenv/rbenv.git $$HOME/.rbenv
+	git clone https://github.com/rbenv/rbenv.git $$HOME/.rbenv
 	cd $$HOME/.rbenv && src/configure && make -C src
-	#$$HOME/.rbenv/bin/rbenv init
-	mkdir -p $$(rbenv root)/plugins
-	git clone https://github.com/rbenv/ruby-build.git $$(rbenv root)/plugins/ruby-build
+	$$HOME/.rbenv/bin/rbenv init
+	mkdir -p $$HOME/.rbenv/plugins
+	git clone https://github.com/rbenv/ruby-build.git $$HOME/.rbenv/plugins/ruby-build
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 ## i_rust: Install rust
