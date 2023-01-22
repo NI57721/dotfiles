@@ -7,6 +7,11 @@ set FLYCTL_INSTALL ~/.fly
 set DENO_INSTALL ~/.deno
 set NVM_DIR ~/.nvm
 
+set XDG_CONFIG_HOME ~/.config
+set XDG_CACHE_HOME  ~/.cache
+set XDG_DATA_HOME   ~/.local/share
+set XDG_STATE_HOME  ~/.local/state
+
 set -g theme_display_user no
 set -g theme_display_hostname no
 
