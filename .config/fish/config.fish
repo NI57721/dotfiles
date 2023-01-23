@@ -72,6 +72,11 @@ abbr -a gira git remote add origin git@github.com:
 abbr -a giss git stash show -p
 abbr -a gipf git push --force-with-lease --force-if-includes
 
+# for Docker
+abbr docl docker container ls
+abbr doil docker image ls
+abbr dos  docker stop
+
 # for Bundler
 abbr -a be   bundle exec
 abbr -a ber  bundle exec rails

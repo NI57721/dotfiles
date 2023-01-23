@@ -306,6 +306,10 @@ alias gira="git remote add origin git@github.com:"
 alias giss="git stash show -p"
 alias gipf="git push --force-with-lease --force-if-includes"
 
+alias docl="docker container ls"
+alias doil="docker image ls"
+alias dos="docker stop"
+
 alias tt="todo-txt -t"
 alias ttl="todo-txt ls"
 alias ttla="todo-txt lsa"
