@@ -309,6 +309,7 @@ alias gipf="git push --force-with-lease --force-if-includes"
 alias docl="docker container ls"
 alias doil="docker image ls"
 alias dos="docker stop"
+alias doe="docker exec -it"
 
 alias tt="todo-txt -t"
 alias ttl="todo-txt ls"

@@ -76,6 +76,7 @@ abbr -a gipf git push --force-with-lease --force-if-includes
 abbr docl docker container ls
 abbr doil docker image ls
 abbr dos  docker stop
+abbr doe  docker exec -it {} /bin/bash
 
 # for Bundler
 abbr -a be   bundle exec
