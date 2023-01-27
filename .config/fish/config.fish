@@ -38,11 +38,11 @@ abbr -a .. cd ..
 abbr -a ... cd ../..
 
 # for TODO-TXT
-abbr -a tt todo-txt
-abbr -a ttl todo-txt ls
-abbr -a ttla todo-txt lsa
-abbr -a tta todo-txt -t add
-abbr -a ttd todo-txt do
+abbr -a tt   todo.sh
+abbr -a ttl  todo.sh ls
+abbr -a ttla todo.sh lsa
+abbr -a tta  todo.sh -t add
+abbr -a ttd  todo.sh do
 
 # for trash-cli
 abbr -a rm   rm -i
