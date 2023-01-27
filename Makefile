@@ -2,7 +2,7 @@
 .PHONY: all allinstall
 
 # Basic packages
-PACKAGES := base-devel curl fzf git linux-headers ntfs-3g openssh ripgrep the_silver_searcher tmux tree unzip
+PACKAGES := base-devel curl fzf jq git linux-headers ntfs-3g openssh ripgrep the_silver_searcher tmux tree unzip
 # GUI
 PACKAGES += pinta xclip xfce4
 # Sound server
