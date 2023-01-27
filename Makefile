@@ -101,6 +101,10 @@ install_packages:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) $(PACKAGES)
 
+## install_aur: Install AURs.
+install_aur: i_paru
+	paru $(AUR_PACKAGES)
+
 ## install_go_packages: Install go packages.
 install_go_packages:
 	go install $(GO_PACKAGES)
