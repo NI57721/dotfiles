@@ -91,6 +91,9 @@ abbr -a cps  xclip -selection clipboard -o
 # for Fly.io
 abbr -a fly flyctl
 
+# launcher
+abbr chrome swaymsg exec "google-chrome-stable"
+
 # for Rust
 sh ~/.cargo/env
 
