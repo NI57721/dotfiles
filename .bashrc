@@ -433,6 +433,11 @@ if grep -qie "microsoft-.*-WSL2" /proc/version; then
   alias cps="powershell.exe -command Get-Clipboard"
 fi
 
+# Launch Sway when logging in with tty.
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec sway
+fi
+
 # Read .bashrc.local, if any, which may contain credentials or specific
 # options
 if [ -f "$HOME/.bashrc.local" ]; then
