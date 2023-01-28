@@ -217,8 +217,9 @@ nnoremap X "_X
 nnoremap s "_s
 
 nnoremap Y y$
-
 nnoremap / /\v
+nnoremap <C-g>  2<C-g>
+nnoremap 2<C-g> <C-g>
 
 " Change cursors according with mode
 let &t_ti .= "\e[1 q"
