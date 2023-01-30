@@ -159,6 +159,7 @@ i_go:
 
 ## i_nvm: Install nvm.
 i_nvm:
+	mkdir $$HOME/.nvm
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
 ## i_paru: Install paru.
