@@ -1,3 +1,17 @@
+if &encoding !=? 'utf-8'
+  let &termencoding = &encoding
+  set encoding=utf-8
+endif
+
+scriptencoding utf-8
+
+if has('guess_encode')
+  set fileencodings=ucs-bom,utf-8,iso-2022-jp,guess,euc-jp,cp932,latin1
+else
+  set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,latin1
+endif
+set fileformats=unix,dos
+
 " Settings for dein.vim
 let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
