@@ -303,6 +303,7 @@ alias gid="git diff --color=always"
 alias gidc="git diff --cached --color=always"
 alias gicl="git clone git@github.com:"
 alias gira="git remote add origin git@github.com:"
+alias gish="git stash"
 alias giss="git stash show -p"
 alias gipf="git push --force-with-lease --force-if-includes"
 
