@@ -190,8 +190,8 @@ noremap  gr        :tabnext<CR>:f<CR>
 noremap  gR        :tabprevious<CR>:f<CR>
 
 nnoremap <leader>h <C-6>
-nnoremap <C-l> :noh<CR><C-l>
-" nnoremap <C-L> :noh<CR><C-l>:call setline(1, getline(1, '$'))<CR>
+nnoremap <C-L> :noh<CR><C-L>
+" nnoremap <C-L> :noh<CR><C-L>:call setline(1, getline(1, '$'))<CR>
 
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
@@ -204,11 +204,11 @@ noremap  k gk
 noremap gk  k
 nnoremap <Up>   gk
 nnoremap <Down> gj
-inoremap <Up>   <C-o>gk
-inoremap <Down> <C-o>gj
+inoremap <Up>   <C-O>gk
+inoremap <Down> <C-O>gj
 
-inoremap <Tab>   <C-n>
-inoremap <S-Tab> <C-p>
+inoremap <Tab>   <C-N>
+inoremap <S-Tab> <C-P>
 
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
@@ -220,10 +220,10 @@ xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
 
 " Change the size of windows
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
+nnoremap <S-Left>  <C-W><<CR>
+nnoremap <S-Right> <C-W>><CR>
+nnoremap <S-Up>    <C-W>-<CR>
+nnoremap <S-Down>  <C-W>+<CR>
 
 " Not yank when using x, X, or s in normal mode
 nnoremap x "_x
@@ -232,8 +232,8 @@ nnoremap s "_s
 
 nnoremap Y y$
 nnoremap / /\v
-nnoremap <C-g>  2<C-g>
-nnoremap 2<C-g> <C-g>
+nnoremap <C-G>  2<C-G>
+nnoremap 2<C-G> <C-G>
 
 " Change cursors according with mode
 let &t_ti .= "\e[1 q"
@@ -255,8 +255,8 @@ let g:html_indent_inctags = 'p'
 " Auto completion to close XML tags
 augroup MyXML
   autocmd!
-  autocmd Filetype xml  inoremap <buffer> </ </<C-x><C-o><ESC>==o
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o><ESC>==o
+  autocmd Filetype xml  inoremap <buffer> </ </<C-X><C-O><ESC>==o
+  autocmd Filetype html inoremap <buffer> </ </<C-X><C-O><ESC>==o
 augroup END
 
 command -nargs=0 ClearUndo call <sid>ClearUndo()
@@ -274,7 +274,7 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
   nmap <buffer> gd <plug>(lsp-definition)
   nmap <buffer> <f2> <plug>(lsp-rename)
-  " inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+  " inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 endfunction
 
 augroup lsp_install
@@ -346,8 +346,8 @@ augroup END
 " let g:skkeleton_azik_enable_rule_3 = v:false
 " let g:skkeleton_azik_enable_rule_4 = v:false
 
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
+imap <C-J> <Plug>(skkeleton-toggle)
+cmap <C-J> <Plug>(skkeleton-toggle)
 
 " Define original sequences for dps_dial
 let g:dps_dial#augends = [
@@ -372,12 +372,12 @@ let g:dps_dial#augends = [
 \   {'kind': 'date', 'opts': { 'format': 'yyyy-MM-dd', 'only_valid': v:false }},
 \ ]
 
-nnoremap  <C-a>  <Plug>(dps-dial-increment)
-nmap      <C-x>  <Plug>(dps-dial-decrement)
-xnoremap  <C-a>  <Plug>(dps-dial-increment)
-xmap      <C-x>  <Plug>(dps-dial-decrement)
-xnoremap g<C-a> g<Plug>(dps-dial-increment)
-xmap     g<C-x> g<Plug>(dps-dial-decrement)
+nnoremap  <C-A>  <Plug>(dps-dial-increment)
+nmap      <C-X>  <Plug>(dps-dial-decrement)
+xnoremap  <C-A>  <Plug>(dps-dial-increment)
+xmap      <C-X>  <Plug>(dps-dial-decrement)
+xnoremap g<C-A> g<Plug>(dps-dial-increment)
+xmap     g<C-X> g<Plug>(dps-dial-decrement)
 
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
