@@ -179,15 +179,15 @@ cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
 
-noremap  <C-Tab>   :tabnext<CR>:f<CR>
-noremap  <S-C-Tab> :tabprevious<CR>:f<CR>
-noremap  <C-Right> :tabnext<CR>:f<CR>
-noremap  <C-Left>  :tabprevious<CR>:f<CR>
-noremap  <C-Down>  :q<CR>:f<CR>
+noremap  <C-Tab>   :tabnext<CR>2<C-G>
+noremap  <S-C-Tab> :tabprevious<CR>2<C-G>
+noremap  <C-Right> :tabnext<CR>2<C-G>
+noremap  <C-Left>  :tabprevious<CR>2<C-G>
+noremap  <C-Down>  :q<CR>2<C-G>
 tnoremap <C-Tab>   <C-w>gt<CR>:f<CR>
 tnoremap <S-C-Tab> <C-w>gT<CR>:f<CR>
-noremap  gr        :tabnext<CR>:f<CR>
-noremap  gR        :tabprevious<CR>:f<CR>
+noremap  gr        :tabnext<CR>2<C-G>
+noremap  gR        :tabprevious<CR>2<C-G>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
