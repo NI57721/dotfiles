@@ -192,6 +192,8 @@ noremap  gR        :tabprevious<CR>2<C-G>
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
 " nnoremap <C-L> :noh<CR><C-L>:call setline(1, getline(1, '$'))<CR>
+nnoremap * *``zz
+nnoremap # #``zz
 
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
