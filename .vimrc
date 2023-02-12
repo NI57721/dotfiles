@@ -174,7 +174,7 @@ nnoremap <leader>f :Files<CR>
 runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
-inoremap <silent> ｊｊ <ESC><ESC>
+inoremap <silent> ｊｊ <ESC>
 cnoremap jj <ESC>
 
 vnoremap < <gv
