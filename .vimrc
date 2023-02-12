@@ -154,6 +154,7 @@ set number
 set list
 set listchars=tab:>-,extends:<,trail:-
 set hlsearch
+set incsearch
 set expandtab
 set shiftwidth=2
 set matchpairs+=<:>,「:」,（:）,『:』,【:】,《:》,〈:〉,｛:｝,［:］,【:】,‘:’,“:”
