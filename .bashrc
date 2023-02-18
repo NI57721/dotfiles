@@ -325,6 +325,10 @@ alias puts="trash-put"
 alias ccp="xclip -selection clipboard -i"
 alias cps="xclip -selection clipboard -o"
 
+alias chrome="swaymsg exec \"google-chrome-stable\""
+alias thunar="swaymsg exec \"thunar\""
+alias vlc="swaymsg exec \"vlc\""
+
 shopt -s dotglob
 
 set -o vi

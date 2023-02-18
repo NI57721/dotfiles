@@ -94,6 +94,8 @@ abbr -a fly flyctl
 
 # launcher
 abbr chrome swaymsg exec "google-chrome-stable"
+abbr thunar swaymsg exec "thunar"
+abbr vlc    swaymsg exec "vlc"
 
 # for Rust
 sh ~/.cargo/env
