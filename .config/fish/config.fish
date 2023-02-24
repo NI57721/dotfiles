@@ -12,8 +12,11 @@ set XDG_CACHE_HOME  ~/.cache
 set XDG_DATA_HOME   ~/.local/share
 set XDG_STATE_HOME  ~/.local/state
 
-set -g theme_display_user no
+set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
+set -g theme_display_user no
+set -g theme_display_vi yes
+set -g theme_project_dir_length 1
 
 
 fish_add_path ~/.local/bin
