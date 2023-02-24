@@ -238,6 +238,9 @@ nnoremap / /\v
 nnoremap <C-G>  2<C-G>
 nnoremap 2<C-G> <C-G>
 
+nnoremap mm mQ
+nnoremap mk `Q
+
 " Change cursors according with mode
 let &t_ti .= "\e[1 q"
 let &t_SI .= "\e[5 q"
