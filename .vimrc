@@ -200,6 +200,18 @@ nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 nnoremap <leader>q <Plug>(socrates-greed)
 
+" vim-sandwich
+let g:sandwich_no_default_key_mappings = 1
+nmap <leader>a  <Plug>(sandwich-add)
+xmap <leader>a  <Plug>(sandwich-add)
+omap <leader>a  <Plug>(sandwich-add)
+nmap <leader>d  <Plug>(sandwich-delete)
+xmap <leader>d  <Plug>(sandwich-delete)
+nmap <leader>db <Plug>(sandwich-delete-auto)
+nmap <leader>r  <Plug>(sandwich-replace)
+xmap <leader>r  <Plug>(sandwich-replace)
+nmap <leader>rb <Plug>(sandwich-replace-auto)
+
 
 noremap  j gj
 noremap gj  j

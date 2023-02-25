@@ -105,3 +105,7 @@ rev = 'add-options'
 depends = ['denops.vim', 'skkeleton']
 # repo = 'shg-eo/skkeleton-azik'
 
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+on_event = ['CursorHold', 'InsertEnter']
+
