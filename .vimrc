@@ -325,7 +325,6 @@ let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
 
 " Define a skk dictionary
 call skkeleton#config({
-\   'globalJisyo': '~/.skk/SKK-JISYO.L',
 \   'globalDictionaries': [
 \     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
 \     ['~/.skk/SKK-JISYO.geo', 'euc-jp'],
@@ -335,6 +334,7 @@ call skkeleton#config({
 \     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
 \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
 \   ],
+\   'eggLikeNewline': v:true,
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
 \   'registerConvertResult': v:true,
