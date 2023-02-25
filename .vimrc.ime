@@ -106,6 +106,7 @@ let mapleader = "\<Space>"
 
 colorscheme desert
 set ruler
+set number
 set showcmd
 set shortmess-=S
 set smartindent
@@ -250,7 +251,7 @@ call skkeleton#config({
 \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
 \   ],
 \   'eggLikeNewline': v:true,
-\   'keepState': v:true,
+"\   'keepState': v:true,
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
 \   'registerConvertResult': v:true,
@@ -324,7 +325,7 @@ augroup END
 
 augroup MakeSkkeletonEnable
   autocmd!
-  autocmd InsertEnter * :echom "Insert!"
-  autocmd InsertEnter * :call feedkeys("\<C-J>")
+  " autocmd InsertEnter * :call skkeleton#handle('enable', {})
+  autocmd InsertEnter * :call feedkeys("\<C-J>", 'it')
 augroup END
 
