@@ -18,6 +18,7 @@
 
 ### vim
 !/.vimrc
+!/.vimrc.ime
 !/.vim/
 !/.vim/*/
 !/.vim/vsnip/*.json
