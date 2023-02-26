@@ -281,7 +281,7 @@ command -nargs=0 ClearUndo call <sid>ClearUndo()
 function! s:ClearUndo()
   let old_undolevels = &undolevels
   set undolevels=-1
-  exe "normal a \<BS>\<Esc>"
+  execute "normal! a \<BS>\<Esc>"
   let &undolevels = old_undolevels
   unlet old_undolevels
 endfunction
@@ -367,6 +367,7 @@ augroup END
 imap <C-J> <Plug>(skkeleton-toggle)
 cmap <C-J> <Plug>(skkeleton-toggle)
 
+" dps-dial.vim
 " Define original sequences for dps_dial
 let g:dps_dial#augends = [
 \   'decimal',
