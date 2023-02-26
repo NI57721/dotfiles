@@ -440,6 +440,7 @@ fi
 
 # Launch Sway when logging in with tty.
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
   exec sway
 fi
 
