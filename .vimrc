@@ -397,6 +397,9 @@ xmap      <C-X>  <Plug>(dps-dial-decrement)
 xnoremap g<C-A> g<Plug>(dps-dial-increment)
 xmap     g<C-X> g<Plug>(dps-dial-decrement)
 
+" kensaku.vim/kensaku-search.vim
+cnoremap <CR> <Plug>(kensaku-search-replace)<CR>
+
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
 

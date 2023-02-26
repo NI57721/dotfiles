@@ -69,3 +69,11 @@ depends = ['denops.vim', 'ddu.vim']
 repo = 'Shougo/ddu-ui-filer'
 depends = ['denops.vim', 'ddu.vim']
 
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'lambdalisue/kensaku-search.vim'
+depends = ['denops.vim', 'kensaku.vim']
+
