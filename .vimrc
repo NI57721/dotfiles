@@ -436,6 +436,6 @@ endif
 set clipboard=exclude:.*
 augroup LazyClipboardSetup
   autocmd!
-  autocmd CursorHold,CursorMoved * :call serverlist() | set clipboard=unnamedplus
+  autocmd CursorHold,CursorMoved ++once :call serverlist() | set clipboard=unnamedplus
 augroup END
 
