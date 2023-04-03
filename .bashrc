@@ -91,7 +91,7 @@ update_go() {
   echo Looking up latest version
   local path=$HOME/src
   local go_path=$path/go
-  local version=$(go version | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
+  local version=$(go version 2> /dev/null | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
   local latest_version=$(curl --silent https://go.dev/VERSION?m=text)
   if [[ "$version" == "$latest_version" ]]; then
     echo "Local go version $version is the most recent release"
