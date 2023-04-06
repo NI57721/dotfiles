@@ -7,7 +7,7 @@ PACKAGES += ripgrep the_silver_searcher tmux tree unzip
 # GUI
 PACKAGES += pinta xclip xfce4
 # Sound
-PACKAGES += pulseaudio pulseaudio-alsa sway-audio-idle-inhibit-git
+PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth sway-audio-idle-inhibit-git
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
