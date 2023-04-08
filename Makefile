@@ -7,14 +7,15 @@ PACKAGES += ripgrep the_silver_searcher tmux tree unzip
 # GUI
 PACKAGES += pinta xclip xfce4
 # Sound
-PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth sway-audio-idle-inhibit-git
+PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
+PACKAGES += bluez-utils sway-audio-idle-inhibit-git
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
 PACKAGES += bat github-cli git-delta gnuplot hyperfine man-db man-pages ntfs-3g pinta trash-cli virtualbox wget
 
 
-AUR_PACKAGES := google-chrome todotxt ttf-hackgen vlc-nox
+AUR_PACKAGES := google-chrome todotxt ttf-hackgen vlc-nox bluez-firmware
 
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
