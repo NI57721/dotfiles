@@ -31,6 +31,9 @@
 ### tmux
 !/.tmux.conf
 
+### grub
+~/.config/grub/**
+
 ### .bin
 !/.bin/
 !/.bin/**

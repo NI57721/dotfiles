@@ -65,7 +65,7 @@ backup:
 create_links:
 
 ## initialize: Initialize settings for some software.
-initialize: init_git init_mirrorlist init_timezone
+initialize: init_git init_grub init_mirrorlist init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga.
 install: install_go_packages \
@@ -86,6 +86,16 @@ init_git:
 	echo -e " Host github github.com\n  HostName github.com\n  IdentityFile $$HOME/.ssh/ni57721\n  User git\n" | \
 	  tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
+
+## init_grub: Initialize settings for grub, where grub is hidden when not pressing Shift.
+init_grub:
+	echo -e "\n\
+	# Hiding grub menu.\n\
+	GRUB_FORCE_HIDDEN_MENU=\"true\"\
+	" | sudo tee -a /etc/default/grub
+	sudo cp $$HOME/.config/grub/31_hold_shift /etc/grub.d
+	sudo chmod +x /etc/grub.d/31_hold_shift
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## init_mirrorlist: Sort the mirrorlist used by pacman.
 init_mirrorlist:
