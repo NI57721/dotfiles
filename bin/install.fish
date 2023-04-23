@@ -24,9 +24,9 @@ end
 function backup
   set dir (date "+%Y%m%d-%H%M%S")
   for f in $linked_files
-    set dirpath $project_root/.backup/$dir/
+    set dirpath $project_root/.backup/$dir/(dirname $f)
     mkdir -p $dirpath
-    and mv ~/$f $dirpath
+    and cp $project_root/$f $dirpath
     and success mv ~/$f $dirpath
     or failure mv ~/$f $dirpath
   end
@@ -35,6 +35,7 @@ end
 function create_links
   for f in $linked_files
     set filepath $project_root/$f
+    and mkdir -p ~/(dirname $f)
     and ln -snf $filepath ~/$f
     and success ln -snf $filepath ~/$f
     or failure ln -snf $filepath ~/$f
