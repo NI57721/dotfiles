@@ -87,14 +87,12 @@ init_git:
 	  tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
-## init_grub: Initialize settings for grub, where grub is hidden when not pressing Shift.
+## init_grub: Initialize settings for grub, where grub is hidden.
 init_grub:
 	echo -e "\n\
 	# Hiding grub menu.\n\
-	GRUB_FORCE_HIDDEN_MENU=\"true\"\
-	" | sudo tee -a /etc/default/grub
-	sudo cp $$HOME/.config/grub/31_hold_shift /etc/grub.d
-	sudo chmod +x /etc/grub.d/31_hold_shift
+	GRUB_FORCE_HIDDEN_MENU=\"true\"" | \
+	  sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## init_mirrorlist: Sort the mirrorlist used by pacman.
