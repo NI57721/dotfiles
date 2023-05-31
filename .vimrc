@@ -335,6 +335,7 @@ call skkeleton#config({
 \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
 \   ],
 \   'eggLikeNewline': v:true,
+\   'keepState': v:true,
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
 \   'registerConvertResult': v:true,
