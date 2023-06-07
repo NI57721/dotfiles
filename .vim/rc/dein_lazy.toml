@@ -109,3 +109,7 @@ depends = ['denops.vim', 'skkeleton']
 repo = 'machakann/vim-sandwich'
 on_event = ['CursorHold', 'InsertEnter']
 
+[[plugins]]
+repo = 'tyru/capture.vim'
+on_event = ['CursorHold', 'InsertEnter']
+
