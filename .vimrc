@@ -414,6 +414,7 @@ command! DeinTOML :tabnew ~/.vim/rc/dein.toml|:tabnew ~/.vim/rc/dein_lazy.toml
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
+cabbr qa<CR> tabdo windo if !&modified \| close \| endif<CR>
 
 " Yank settings for WSL2
 function! IsWSL()
