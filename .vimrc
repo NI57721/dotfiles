@@ -455,3 +455,8 @@ vmap tlj <Cmd>call deepl#v("JA")<CR><ESC>
 " nmap tle yypV<Cmd>call deepl#v("EN")<CR>
 nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
 
+
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
+
