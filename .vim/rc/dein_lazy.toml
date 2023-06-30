@@ -113,3 +113,7 @@ on_event = ['CursorHold', 'InsertEnter']
 repo = 'tyru/capture.vim'
 on_event = ['CursorHold', 'InsertEnter']
 
+[[plugins]]
+repo = 'ryicoh/deepl.vim'
+on_event = ['CursorHold', 'InsertEnter']
+

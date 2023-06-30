@@ -444,3 +444,14 @@ augroup LazyClipboardSetup
   autocmd CursorHold,CursorMoved ++once :call serverlist() | set clipboard=unnamedplus
 augroup END
 
+
+let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
+
+" replace a visual selection
+" vmap tle <Cmd>call deepl#v("EN")<CR>
+vmap tlj <Cmd>call deepl#v("JA")<CR><ESC>
+
+" translate a current line and display on a new line
+" nmap tle yypV<Cmd>call deepl#v("EN")<CR>
+nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
+
