@@ -12,7 +12,8 @@ PACKAGES += bluez-utils sway-audio-idle-inhibit-git
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
-PACKAGES += bat github-cli git-delta gnuplot hyperfine man-db man-pages ntfs-3g pinta trash-cli virtualbox wget
+PACKAGES += bat github-cli git-delta gnuplot hyperfine man-db man-pages ntfs-3g pinta trash-cli virtualbox
+         += wf-recorder wget
 
 
 AUR_PACKAGES := google-chrome todotxt ttf-hackgen vlc-nox bluez-firmware
