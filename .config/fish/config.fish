@@ -196,6 +196,12 @@ function fish_user_key_bindings
   bind -M insert -m default jj backward-char force-repaint
 end
 
+# Launch Sway when logging in with tty.
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]
+  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+  exec sway
+end
+
 if test -e (status dirname)'/config.fish.local'
   source (status dirname)'/config.fish.local'
 end
