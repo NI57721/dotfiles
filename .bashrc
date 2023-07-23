@@ -322,8 +322,8 @@ alias rm="rm -i"
 alias put="trash-put"
 alias puts="trash-put"
 
-alias ccp="xclip -selection clipboard -i"
-alias cps="xclip -selection clipboard -o"
+alias ccp="wl-copy"
+alias cps="wl-paste"
 
 alias chrome="swaymsg exec \"google-chrome-stable\""
 alias thunar="swaymsg exec \"thunar\""
