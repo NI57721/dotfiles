@@ -176,19 +176,18 @@ runtime ftplugin/man.vim
 inoremap <silent> jj <ESC>
 inoremap <silent> ｊｊ <ESC>
 cnoremap jj <ESC>
-
 vnoremap < <gv
 vnoremap > >gv
 
-noremap  <C-Tab>   :tabnext<CR>2<C-G>
-noremap  <S-C-Tab> :tabprevious<CR>2<C-G>
-noremap  <C-Right> :tabnext<CR>2<C-G>
-noremap  <C-Left>  :tabprevious<CR>2<C-G>
-noremap  <C-Down>  :q<CR>2<C-G>
+noremap  <C-Tab>   :tabnext<CR>
+noremap  <S-C-Tab> :tabprevious<CR>
+noremap  <C-Right> :tabnext<CR>
+noremap  <C-Left>  :tabprevious<CR>
+noremap  <C-Down>  :q<CR>
 tnoremap <C-Tab>   <C-w>gt<CR>:f<CR>
 tnoremap <S-C-Tab> <C-w>gT<CR>:f<CR>
-noremap  gr        :tabnext<CR>2<C-G>
-noremap  gR        :tabprevious<CR>2<C-G>
+noremap  gr        :tabnext<CR>
+noremap  gR        :tabprevious<CR>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
