@@ -404,10 +404,10 @@ autocmd QuickFixCmdPost *grep* cwindow
 command! Vimrc :tabnew ~/.vimrc
 command! Srrc  :source ~/.vimrc
 command! DeinTOML :tabnew ~/.vim/rc/dein.toml|:tabnew ~/.vim/rc/dein_lazy.toml
-cabbr w!!<CR> w !sudo tee > /dev/null %
+cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
-cabbr qa<CR> tabdo windo if !&modified \| close \| endif<CR>
+cabbr qa tabdo windo if !&modified \| close \| endif<CR>
 
 " Yank settings
 " set clipboard=exclude:.*
