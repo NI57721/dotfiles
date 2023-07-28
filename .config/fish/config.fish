@@ -1,16 +1,16 @@
-set VIMRUNTIME ~/src/vim/runtime
-set MANPAGER "/bin/sh -c \"col -b -x|vim -R -c 'set ft=man nolist nonu noma' -\""
-set VISUAL vim --noplugin
-set THOR_DIFF /usr/local/bin/vimdiff
-set THOR_MERGE /usr/local/bin/vimdiff
-set FLYCTL_INSTALL ~/.fly
-set DENO_INSTALL ~/.deno
-set NVM_DIR ~/.nvm
+set -gx VIMRUNTIME ~/src/vim/runtime
+set -gx MANPAGER "/bin/sh -c \"col -b -x|vim -R -c 'set ft=man nolist nonu noma' -\""
+set -gx VISUAL vim --noplugin
+set -gx THOR_DIFF /usr/local/bin/vimdiff
+set -gx THOR_MERGE /usr/local/bin/vimdiff
+set -gx FLYCTL_INSTALL ~/.fly
+set -gx DENO_INSTALL ~/.deno
+set -gx NVM_DIR ~/.nvm
 
-set XDG_CONFIG_HOME ~/.config
-set XDG_CACHE_HOME  ~/.cache
-set XDG_DATA_HOME   ~/.local/share
-set XDG_STATE_HOME  ~/.local/state
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx XDG_CACHE_HOME  ~/.cache
+set -gx XDG_DATA_HOME   ~/.local/share
+set -gx XDG_STATE_HOME  ~/.local/state
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
