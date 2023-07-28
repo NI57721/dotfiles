@@ -228,12 +228,6 @@ inoremap <S-Tab> <C-P>
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
-xnoremap p P
-xnoremap P p
-nnoremap <silent> R <Plug>(operator-replace)
-xnoremap <silent> R <Plug>(operator-replace)
-nnoremap <silent> RR R
-
 " Change the size of windows
 nnoremap <S-Left>  <C-W><<CR>
 nnoremap <S-Right> <C-W>><CR>
@@ -416,6 +410,26 @@ cabbr h tab :help
 cabbr encto edit ++encoding=
 cabbr qa<CR> tabdo windo if !&modified \| close \| endif<CR>
 
+" Yank settings
+" set clipboard=exclude:.*
+nnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+xnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+xnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> R <Plug>(operator-replace)
+xnoremap <silent> R <Plug>(operator-replace)
+nnoremap <silent> RR R
+
+set clipboard^=unnamed
+augroup LazyClipboardSetup
+  autocmd!
+  autocmd TextYankPost * call system('wl-copy -- "' . substitute(getreg('*'), '[\"]', '\\\0', 'g') . '"')
+  " autocmd TextYankPost * call system('wl-copy -- "' . substitute(getreg('*'), '"', '\"', '') . '"')
+  " autocmd VimEnter,FocusLost,FocusGained,VimResume * call setreg('*', system('wl-paste', '-n'))
+  " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
+augroup END
+
 " Yank settings for WSL2
 function! IsWSL()
   if has('unix')
@@ -437,13 +451,6 @@ if IsWSL()
   let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
-
-set clipboard=exclude:.*
-augroup LazyClipboardSetup
-  autocmd!
-  autocmd CursorHold,CursorMoved ++once :call serverlist() | set clipboard=unnamedplus
-augroup END
-
 
 let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
 
