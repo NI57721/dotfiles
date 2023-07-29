@@ -407,7 +407,7 @@ command! DeinTOML :tabnew ~/.vim/rc/dein.toml|:tabnew ~/.vim/rc/dein_lazy.toml
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
-cabbr qa tabdo windo if !&modified \| close \| endif<CR>
+cabbr qaa tabdo windo if !&modified \| close \| endif
 
 " Yank settings
 " set clipboard=exclude:.*
