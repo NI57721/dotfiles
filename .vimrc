@@ -411,11 +411,11 @@ cabbr qa tabdo windo if !&modified \| close \| endif<CR>
 
 " Yank settings
 " set clipboard=exclude:.*
-nnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-nnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-xnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-xnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+" nnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+" nnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+" xnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+" xnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+" inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
 nnoremap <silent> R <Plug>(operator-replace)
 xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
@@ -423,8 +423,8 @@ nnoremap <silent> RR R
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  autocmd TextYankPost * call system('wl-copy -- "' . substitute(getreg('*'), '[\"]', '\\\0', 'g') . '"')
-  " autocmd TextYankPost * call system('wl-copy -- "' . substitute(getreg('*'), '"', '\"', '') . '"')
+  autocmd TextYankPost * call system('wl-copy &', getreg('*'))
+  autocmd VimEnter,FocusGained,VimResume,CursorHold * call setreg('*', system('wl-paste -n'))
   " autocmd VimEnter,FocusLost,FocusGained,VimResume * call setreg('*', system('wl-paste', '-n'))
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
