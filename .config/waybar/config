@@ -5,7 +5,7 @@
     "spacing": 2, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/vpn", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "idle_inhibitor"],
+    "modules-right": ["custom/ppp", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "idle_inhibitor"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -84,10 +84,10 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/vpn": {
-        "format": " {}",
+    "custom/ppp": {
+        "format": "",
         "interval": 5,
-        "exec": "$HOME/.config/waybar/scripts/nm-vpn.sh",
+        "exec": "$HOME/.config/waybar/scripts/ppp.sh",
         "exec-if": "exit 0"
      },
     "custom/pacman": {
