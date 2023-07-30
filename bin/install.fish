@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
 set project_root (realpath (dirname (status dirname)))
-set linked_files .vimrc .vimrc.ime .vim/vsnip/ruby.json .vim/rc/dein.toml .vim/rc/dein_lazy.toml .config/fish/config.fish .config/fish/fish_plugins .gitignore_global .tmux.conf .bashrc .config/paru/paru.conf .config/waybar/config .config/waybar/style.css
+set linked_files .vimrc .vimrc.ime .vim/vsnip/ruby.json .vim/rc/dein.toml .vim/rc/dein_lazy.toml .config/fish/config.fish .config/fish/fish_plugins .gitignore_global .tmux.conf .bashrc .config/paru/paru.conf .config/waybar/config .config/waybar/style.css .config/waybar/scripts/ppp.sh
+
 
 function success
   echo "Success: $argv"
