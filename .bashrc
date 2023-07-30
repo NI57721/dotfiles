@@ -15,8 +15,8 @@ update() {
   update_gem
   echo -e "\n### NVM ###"
   update_nvm
-  echo -e "\n### PIP ###"
-  update_pip
+  # echo -e "\n### PIP ###"
+  # update_pip
   echo -e "\n### DENO ###"
   update_deno
   echo -e "\n### GO ###"
