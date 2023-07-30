@@ -1,5 +1,5 @@
 set -gx VIMRUNTIME ~/src/vim/runtime
-set -gx MANPAGER "/bin/sh -c \"col -b -x|vim -R -c 'set ft=man nolist nonu noma' -\""
+set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff

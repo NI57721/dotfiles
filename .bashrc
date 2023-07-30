@@ -240,7 +240,7 @@ fi
 ################################################################################
 
 export VISUAL='vim --noplugin'
-export MANPAGER="/bin/sh -c \"col -bx|vim -Rc 'set ft=man nolist nonu noma' -\""
+export MANPAGER="vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 export LESS="-RNM"
 
 export PATH="$HOME/bin:$PATH"
