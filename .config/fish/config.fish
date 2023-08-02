@@ -35,6 +35,7 @@ set -x less "-nm"
 abbr -a lss ls -acf
 abbr -a ll ls -al
 abbr -a kila kill -9
+abbr -a psa ps aux \| grep -v grep \| grep
 abbr -a virc  vim    ~/.config/fish/config.fish
 abbr -a vircl vim    ~/.config/fish/config.fish.local
 abbr -a srrc  source ~/.config/fish/config.fish
