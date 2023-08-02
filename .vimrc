@@ -12,7 +12,7 @@ else
 endif
 set fileformats=unix,dos
 
-" Settings for dein.vim
+" dein.vim
 let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -43,7 +43,7 @@ if dein#check_install()
 endif
 
 
-" Settings for ddc.vim
+" ddc.vim
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sources', [
 \   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip'
@@ -101,7 +101,7 @@ call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
 call ddc#enable()
 
 
-" Settings for ddu.vim
+" ddu.vim
 call ddu#custom#patch_global({
 \   'ui': 'filer',
 \   'sources': [{'name': 'file', 'params': {}}],
@@ -409,7 +409,7 @@ cabbr h tab :help
 cabbr encto edit ++encoding=
 cabbr qaa tabdo windo if !&modified \| close \| endif
 
-" Yank settings
+" Yank
 " set clipboard=exclude:.*
 " nnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
 " nnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
@@ -423,13 +423,13 @@ nnoremap <silent> RR R
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  autocmd TextYankPost * call system('wl-copy &', getreg('*'))
-  autocmd VimEnter,FocusGained,VimResume,CursorHold * call setreg('*', system('wl-paste -n'))
+  autocmd TextYankPost * silent call system('wl-copy &', getreg('*'))
+  autocmd FocusGained,VimResume,CursorHold * silent call setreg('*', system('wl-paste -n'))
   " autocmd VimEnter,FocusLost,FocusGained,VimResume * call setreg('*', system('wl-paste', '-n'))
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
 
-" Yank settings for WSL2
+" Yank for WSL2
 function! IsWSL()
   if has('unix')
     let lines = readfile('/proc/version')
@@ -451,7 +451,9 @@ if IsWSL()
   let g:previm_wsl_mode = 1
 endif
 
+" DeepL
 let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
+let g:deepl#auth_key = ""
 
 " replace a visual selection
 " vmap tle <Cmd>call deepl#v("EN")<CR>
