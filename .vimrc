@@ -317,6 +317,7 @@ let g:fzf_buffers_jump = 1
 let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
 
 " Define a skk dictionary
+call skkeleton#azik#add_table('us')
 call skkeleton#config({
 \   'globalDictionaries': [
 \     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
@@ -327,36 +328,49 @@ call skkeleton#config({
 \     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
 \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
 \   ],
+\   'kanaTable': 'azik',
 \   'eggLikeNewline': v:true,
 \   'keepState': v:true,
 \   'markerHenkan': 'γ',
 \   'markerHenkanSelect': 'Γ',
 \   'registerConvertResult': v:true,
-\   'showCandidatesCount': 1
+\   'showCandidatesCount': 1,
+\   'selectCandidateKeys': '12345qw',
 \ })
+
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
 augroup Skkeleton
   autocmd!
-  autocmd InsertEnter * :call skkeleton#register_kanatable('rom', {
+  autocmd InsertEnter * call skkeleton#register_kanatable('azik', {
     \   'jj': 'escape',
-    "\   'mb': ['ん', 'b'],
-    "\   'mm': ['ん', 'm'],
-    "\   'mp': ['ん', 'p'],
+    \   ':': 'zenkaku',
+    \   'q': 'katakana',
+    \   '<s-q>': 'hankatakana',
+    \   "'":  ["'", ''],
+    \   'z~':  ['～', ''],
+    \   'l':  ['っ', ''],
     \   'xi':  ['し', ''],
-    \   'ji':  ['じ', ''],
     \   'ci':  ['ち', ''],
-    \   'tch': ['っ', 'c'],
+    \   'xxa':  ['ぁ', ''],
+    \   'xxi':  ['ぃ', ''],
+    \   'xxu':  ['ぅ', ''],
+    \   'xxe':  ['ぇ', ''],
+    \   'xxo':  ['ぉ', ''],
+    \   'xxya':  ['ゃ', ''],
+    \   'xxyu':  ['ゅ', ''],
+    \   'xxyo':  ['ょ', ''],
+    \   'xxwa':  ['ゎ', ''],
+    \   'tsa': ['つゃ', ''],
     \   'tsi': ['つぃ', ''],
     \   'tsu': ['つ', ''],
     \   'tse': ['つぇ', ''],
     \   'tso': ['つぉ', ''],
     \ })
+  autocmd User skkeleton-enable-post lnoremap <buffer> <S-L>
+  \ <Cmd>call skkeleton#handle('handleKey', {'key': ';'})<CR>
+  \ <Cmd>call skkeleton#handle('handleKey', {'key': 'l'})<CR>
+  autocmd User skkeleton-disable-post lunmap <buffer> <S-L>
 augroup END
-
-" let g:skkeleton_azik_enable_rule_1 = v:false
-" let g:skkeleton_azik_enable_rule_2 = v:false
-" let g:skkeleton_azik_enable_rule_3 = v:false
-" let g:skkeleton_azik_enable_rule_4 = v:false
 
 imap <C-J> <Plug>(skkeleton-toggle)
 cmap <C-J> <Plug>(skkeleton-toggle)

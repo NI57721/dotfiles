@@ -14,8 +14,12 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
-# repo = 'NI57721/skkeleton'
-# rev = 'fix-candidates'
+
+[[plugins]]
+# repo = 'kei-s16/skkeleton-azik-kanatable'
+repo = 'NI57721/skkeleton-azik-kanatable'
+rev = 'feature/delete-some-mappings'
+on_source = 'skkeleton'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
