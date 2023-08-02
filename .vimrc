@@ -407,7 +407,7 @@ xnoremap g<C-A> g<Plug>(dps-dial-increment)
 xmap     g<C-X> g<Plug>(dps-dial-decrement)
 
 " kensaku.vim/kensaku-search.vim
-cnoremap <CR> <Plug>(kensaku-search-replace)<CR>
+cnoremap JJ <Plug>(kensaku-search-replace)<CR>
 
 " capture.vim
 cnoremap <C-C> <Home>Capture <CR>
