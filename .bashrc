@@ -282,6 +282,7 @@ alias ...='cd ../..'
 
 alias ll='ls -al'
 alias lss='ls -ACF'
+alias kila='kill -9'
 
 alias virc='vim $HOME/.bashrc'
 alias srrc='. $HOME/.bashrc'
