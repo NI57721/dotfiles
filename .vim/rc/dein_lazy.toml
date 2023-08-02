@@ -100,9 +100,13 @@ repo = 'tweekmonster/helpful.vim'
 on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
-repo = 'NI57721/skkeleton-azik'
-rev = 'add-options'
-depends = ['denops.vim', 'skkeleton']
+repo = 'kei-s16/skkeleton-azik-kanatable'
+on_source = 'skkeleton'
+
+# [[plugins]]
+# repo = 'NI57721/skkeleton-azik'
+# rev = 'add-options'
+# depends = ['denops.vim', 'skkeleton']
 # repo = 'shg-eo/skkeleton-azik'
 
 [[plugins]]
