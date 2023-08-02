@@ -34,7 +34,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d\n%H\n%M}",
+        "format": "{:%b\n %d\n %H\n %M}",
         "format-alt": "{:%Y-%m-%d(%a) %H:%M}"
     },
     "cpu": {
@@ -59,7 +59,8 @@
         },
         "format": "{icon}\n{capacity}",
         "format-charging": "\n{capacity}",
-        "format-plugged": "\n{capacity}",
+        // "format-plugged": "\n{capacity}",
+        "format-plugged": "",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         "format-full": "",
