@@ -12,7 +12,7 @@ PACKAGES += bluez-utils sway-audio-idle-inhibit-git
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
-PACKAGES += bat github-cli git-delta gnuplot hyperfine man-db man-pages neofetch ntfs-3g pinta
+PACKAGES += bat dust github-cli git-delta gnuplot hyperfine man-db man-pages neofetch ntfs-3g pinta
          += python-qrcode trash-cli virtualbox wf-recorder wget
 
 
