@@ -165,8 +165,8 @@ set scrolloff=5
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
 nnoremap <leader>D <Cmd>call dein#update()<CR>
-nnoremap <leader>w :ShakyoClue<CR>
-nnoremap <leader>f :Files<CR>
+nnoremap <leader>w <Cmd>ShakyoClue<CR>
+nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
 
 inoremap <silent> jj <ESC>
@@ -175,19 +175,18 @@ cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
 
-noremap  <C-Tab>   :tabnext<CR>
-noremap  <S-C-Tab> :tabprevious<CR>
-noremap  <C-Right> :tabnext<CR>
-noremap  <C-Left>  :tabprevious<CR>
-noremap  <C-Down>  :q<CR>
+noremap <C-Tab>   :tabnext<CR>
+noremap <S-C-Tab> :tabprevious<CR>
+noremap <C-Right> :tabnext<CR>
+noremap <C-Left>  :tabprevious<CR>
+noremap <C-Down>  :q<CR>
 tnoremap <C-Tab>   <C-w>gt<CR>:f<CR>
 tnoremap <S-C-Tab> <C-w>gT<CR>:f<CR>
-noremap  gr        :tabnext<CR>
-noremap  gR        :tabprevious<CR>
+noremap gr        :tabnext<CR>
+noremap gR        :tabprevious<CR>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
-" nnoremap <C-L> :noh<CR><C-L>:call setline(1, getline(1, '$'))<CR>
 nnoremap * *``zz
 nnoremap # #``zz
 
