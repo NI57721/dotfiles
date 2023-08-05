@@ -7,6 +7,7 @@ return {
   color_scheme = "Darcura",
   adjust_window_size_when_changing_font_size = false,
   warn_about_missing_glyphs = false,
+  enable_csi_u_key_encoding = true,
   window_padding = {
     left = 0,
     right = 0,
