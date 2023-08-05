@@ -421,7 +421,7 @@ nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
 nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
 xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
 xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-cnoremap <C-R>"          <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"<Cmd>redraw!<CR>
+cnoremap <C-R>"          <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 nnoremap <silent> R <Plug>(operator-replace)
 xnoremap <silent> R <Plug>(operator-replace)
