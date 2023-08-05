@@ -169,8 +169,8 @@ nnoremap <leader>w <Cmd>ShakyoClue<CR>
 nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
 
-inoremap <silent> jj <ESC>
-inoremap <silent> ｊｊ <ESC>
+inoremap jj <ESC>
+inoremap JJ <C-O>yy
 cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
