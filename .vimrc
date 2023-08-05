@@ -420,11 +420,12 @@ cabbr qaa tabdo windo if !&modified \| close \| endif
 
 " Yank
 " set clipboard=exclude:.*
-" nnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-" nnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-" xnoremap <silent> p <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-" xnoremap <silent> P <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-" inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
+xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+cnoremap <C-R>"          <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"<Cmd>redraw!<CR>
+inoremap <silent> <C-R>" <C-O><Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 nnoremap <silent> R <Plug>(operator-replace)
 xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
@@ -432,9 +433,7 @@ nnoremap <silent> RR R
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  autocmd TextYankPost * silent call system('wl-copy &', getreg('*'))
-  autocmd FocusGained,VimResume,CursorHold * silent call setreg('*', system('wl-paste -n'))
-  " autocmd VimEnter,FocusLost,FocusGained,VimResume * call setreg('*', system('wl-paste', '-n'))
+  autocmd TextYankPost * silent call job_start(['wl-copy', getreg('*')])
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
 
@@ -452,7 +451,7 @@ endfunction
 if IsWSL()
   augroup Yank
       autocmd!
-      autocmd TextYankPost * :call system('win32yank.exe -i --crlf', @")
+      autocmd TextYankPost * silent call job_start(['win32yank.exe', '-i', ' --crlf', getreg('"')])
   augroup END
   nnoremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
   nnoremap <silent> P :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
