@@ -179,9 +179,9 @@ vnoremap > >gv
 noremap <S-Tab>   :tabnext<CR><C-G>
 noremap <C-Right> :tabnext<CR><C-G>
 noremap <C-Left>  :tabprevious<CR><C-G>
-noremap <C-Down>  :q<CR>
-nnoremap gr       :tabnext<CR>
-nnoremap gR       :tabprevious<CR>
+noremap <C-Down>  :q<CR><C-G>
+nnoremap gr       :tabnext<CR><C-G>
+nnoremap gR       :tabprevious<CR><C-G>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
