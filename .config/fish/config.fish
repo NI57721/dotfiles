@@ -61,7 +61,7 @@ abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gian git add -N
-abbr -a gic  git commit -m
+abbr -a --set-cursor gic  git commit -m \'%\'
 abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate --color=always
 abbr -a gilo git log --reverse --decorate --color=always origin -15
@@ -75,7 +75,7 @@ abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
-abbr -a gicl git clone git@github.com:
+abbr -a --set-cursor gicl git clone git@github.com:%
 abbr -a gira git remote add origin git@github.com:
 abbr -a gish git stash
 abbr -a giss git stash show -p
