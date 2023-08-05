@@ -67,9 +67,6 @@ abbr -a gil  git log --reverse --decorate --color=always
 abbr -a gilo git log --reverse --decorate --color=always origin -15
 abbr -a gilg git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 abbr -a gilr git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"@%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| sed -E '\'s/^([^@]*)@|^([^-]*)$/\\1\\2@\\n/; 1!G; h; $!d;\'' \| sed -E '\'/^[^@]*@$/y!/\\\\\\\\!\\\\\\\\/!; N; s/@\\n//\''
-# abbr -a gilr git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| tac \| ruby -pe '\'$_.sub!(/^.+?(?=\\h{7}|$)/){ _1.tr("/\\\\\\\\", "\\\\\\\\\\\\\\\\/") }\''
-
-
 abbr -a gib  git branch
 abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
