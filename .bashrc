@@ -340,6 +340,16 @@ bind '"jj": vi-movement-mode'
 bind '"\C-n": next-history'
 bind '"\C-p": previous-history'
 
+# settings below for CSI u mode
+# \cm(\e[109;5u) -> Enter, \ci(\e[105;5u) -> Tab, \c[ -> ESC
+bind -m vi-insert  '"\e[32;2u": " "'
+bind -m vi-command '"\e[32;2u": forward-char'
+bind -m vi-insert  '"\e[109;5u": "\C-m"'
+bind -m vi-command '"\e[109;5u": "\C-m"'
+bind -m vi-insert  '"\e[105;5u": complete'
+bind -m vi-command '"\e[105;5u": complete'
+bind -m vi-insert  '"\e[91;5u": vi-movement-mode'
+
 # https://qiita.com/xtetsuji/items/31bc53e92d94b1602b5d
 function cdl {
   local -a dirlist opt_f=false

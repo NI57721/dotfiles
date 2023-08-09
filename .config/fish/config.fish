@@ -197,6 +197,18 @@ function fish_user_key_bindings
   end
   fish_vi_key_bindings --no-erase
   bind -M insert -m default jj backward-char force-repaint
+
+  # settings below for CSI u mode
+  # \cm(\e[109;5u) -> Enter, \ci(\e[105;5u) -> Tab, \c[ -> ESC
+  # bind -M insert  \e\[32\;2u complete-and-search
+  bind -M insert  \e\[109\;5u execute
+  bind -M default \e\[109\;5u execute
+  bind -M insert  \e\[105\;5u complete
+  bind -M visual  \e\[105\;5u complete
+  bind -M default \e\[105\;5u complete
+  bind -M insert  -m default \e\[91\;5u backward-char force-repaint
+  bind -M visual  -m default \e\[91\;5u end-selection force-repaint
+  bind -M default            \e\[91\;5u ''
 end
 
 # Launch Sway when logging in with tty.

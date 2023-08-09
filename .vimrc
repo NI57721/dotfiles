@@ -175,6 +175,12 @@ cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
 
+" For CSI u mode
+inoremap <S-Space> <Space>
+cnoremap <S-Space> <Space>
+noremap <C-I> <C-I>
+" noremap <Tab>     :tabnext<CR><C-G>
+noremap <S-Tab>   :tabprevious<CR><C-G>
 
 noremap <C-1>     :tabnext<CR><C-G>
 noremap !         :tabprevious<CR><C-G>
