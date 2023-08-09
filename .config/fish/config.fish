@@ -47,6 +47,7 @@ abbr -a tt   todo.sh
 abbr -a ttl  todo.sh ls
 abbr -a ttla todo.sh lsa
 abbr -a tta  todo.sh -t add
+abbr -a --set-cursor tta todo.sh -t add \"\(B\) %\"
 abbr -a ttd  todo.sh do
 
 # for trash-cli
