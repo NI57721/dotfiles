@@ -197,6 +197,7 @@ function fish_user_key_bindings
   end
   fish_vi_key_bindings --no-erase
   bind -M insert -m default jj backward-char force-repaint
+  bind -M visual -m default jj end-selection force-repaint
 
   # settings below for CSI u mode
   # \cm(\e[109;5u) -> Enter, \ci(\e[105;5u) -> Tab, \c[ -> ESC
