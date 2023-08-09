@@ -333,7 +333,11 @@ alias vlc="swaymsg exec \"vlc\""
 shopt -s dotglob
 
 set -o vi
+bind 'set show-mode-in-prompt on'
+bind 'set vi-cmd-mode-string N:'
+bind 'set vi-ins-mode-string I:'
 bind '"jj": vi-movement-mode'
+bind '"\C-n": next-history'
 bind '"\C-p": previous-history'
 
 # https://qiita.com/xtetsuji/items/31bc53e92d94b1602b5d
