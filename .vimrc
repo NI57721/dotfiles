@@ -337,15 +337,18 @@ augroup Skkeleton
   autocmd!
   autocmd InsertEnter * call skkeleton#register_kanatable('azik', {
     \   'jj': 'escape',
-    \   ':': 'zenkaku',
     \   'q': 'katakana',
+    \   '''':    'disable',
+    \   '@':     'zenkaku',
     \   '<s-q>': 'hankatakana',
-    \   "'":  ["'", ''],
     \   'z~':  ['～', ''],
+    \   'z ':    ['　', ''],
     \   'l':  ['っ', ''],
     \   'xi':  ['し', ''],
+    \   'xy':    ['しぃ', ''],
     \   'xk':  ['しん', ''],
     \   'ci':  ['ち', ''],
+    \   'cy':    ['ちぃ', ''],
     \   'ck':  ['ちん', ''],
     \   'jk':  ['じん', ''],
     \   'xxa':  ['ぁ', ''],
@@ -357,6 +360,7 @@ augroup Skkeleton
     \   'xxyu':  ['ゅ', ''],
     \   'xxyo':  ['ょ', ''],
     \   'xxwa':  ['ゎ', ''],
+    \   'tyi':   ['ちぃ', ''],
     \   'tsa': ['つぁ', ''],
     \   'tsi': ['つぃ', ''],
     \   'tsu': ['つ', ''],
@@ -371,6 +375,7 @@ augroup Skkeleton
     \   'tsd': ['つぇん', ''],
     \   'tsp': ['つぉう', ''],
     \   'tsl': ['つぉん', ''],
+    \   'sf':    ['さい', ''],
     \ })
   autocmd User skkeleton-enable-post lnoremap <buffer> <S-L>
   \ <Cmd>call skkeleton#handle('handleKey', {'key': ';'})<CR>
