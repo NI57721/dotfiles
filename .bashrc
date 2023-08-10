@@ -13,8 +13,8 @@ update() {
   update_rbenv
   echo -e "\n### GEM ###"
   update_gem
-  echo -e "\n### NVM ###"
-  update_nvm
+  # echo -e "\n### NVM ###"
+  # update_nvm
   # echo -e "\n### PIP ###"
   # update_pip
   echo -e "\n### DENO ###"
