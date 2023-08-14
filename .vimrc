@@ -347,7 +347,7 @@ call skkeleton#config({
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
 augroup Skkeleton
   autocmd!
-  autocmd InsertEnter * call skkeleton#register_kanatable('azik', {
+  autocmd InsertEnter * ++once call skkeleton#register_kanatable('azik', {
     \   'jj':    'escape',
     \   '''':    'disable',
     \   '@':     'zenkaku',
