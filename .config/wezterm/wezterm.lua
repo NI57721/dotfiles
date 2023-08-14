@@ -4,7 +4,7 @@ return {
   font = wezterm.font("HackGenConsoleNF"),
   use_ime = false,
   font_size = 20.0,
-  color_scheme = "Darcura",
+  color_scheme = "Dracula",
   adjust_window_size_when_changing_font_size = false,
   warn_about_missing_glyphs = false,
   enable_csi_u_key_encoding = true,
