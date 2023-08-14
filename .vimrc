@@ -463,7 +463,7 @@ set clipboard-=autoselect
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  autocmd TextYankPost * silent call job_start(['wl-copy', getreg('*')])
+  autocmd TextYankPost * silent call job_start(['wl-copy', '--', getreg('*')])
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
 
