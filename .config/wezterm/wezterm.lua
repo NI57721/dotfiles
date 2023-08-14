@@ -18,6 +18,62 @@ wezterm.on('trigger-vim-with-scrollback', function(window, pane)
   os.remove(name)
 end)
 
+
+function basename(s)
+  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+end
+
+function omit_path(s)
+  return s:gsub('^[^:]*://[^/]*', ''):gsub('^' .. wezterm.home_dir, '~'):gsub('([^/])[^/]*/', '%1/')
+end
+
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+function tab_title(tab_info)
+  local title = basename(tab_info.active_pane.foreground_process_name)
+  if title == 'fish' or title == 'bash' then
+    title = omit_path(tab_info.active_pane.current_working_dir)
+  end
+  return title == '' and tab_info_.tab_index + 1 or tab_info.tab_index + 1 .. ':' .. title
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local edge_background = '#100020'
+    local background = '#201030'
+    local foreground = '#80f080'
+
+    if tab.is_active then
+      background = '#80f080'
+      foreground = '#201030'
+    elseif hover then
+      background = '#80f080'
+      foreground = '#201030'
+    end
+
+    local edge_foreground = background
+
+    local title = tab_title(tab)
+
+    -- ensure that the titles fit in the available space,
+    -- and that we have room for the edges.
+    title = wezterm.truncate_right(title, max_width - 2)
+
+    return {
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Text = ' ' .. title },
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = wezterm.nerdfonts.pl_left_hard_divider },
+    }
+  end
+)
+
+
 return {
   font = wezterm.font('HackGenConsoleNF'),
   font_size = 20.0,
