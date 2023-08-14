@@ -29,12 +29,6 @@ return {
      {key=">",mods="SUPER|SHIFT",action=wezterm.action.SendKey{key=">", mods="ALT"}},
      {key="?",mods="SUPER|SHIFT",action=wezterm.action.SendKey{key="?", mods="ALT"}},
      {key="Insert",mods = "SHIFT",action=wezterm.action({PasteFrom="Clipboard"})},
-     {
-      key = 'o',
-      mods = 'CMD',
-      action = wezterm.action.SpawnCommandInNewTab {
-        cwd = '~'
-      },
-     },
+     {key='o',mods='CMD',action=wezterm.action.SpawnCommandInNewTab{cwd='~'},},
   },
 }
