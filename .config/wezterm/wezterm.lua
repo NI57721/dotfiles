@@ -27,6 +27,7 @@ return {
   warn_about_missing_glyphs = false,
   enable_csi_u_key_encoding = true,
   window_padding = { left = 0, right = 0, top = 0, bottom = 0, },
+  use_fancy_tab_bar = false,
 
   -- key mappings
   keys = {
