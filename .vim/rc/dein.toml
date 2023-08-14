@@ -12,7 +12,9 @@ repo = 'prabirshrestha/vim-lsp'
 # on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
-repo = 'vim-skk/skkeleton'
+# repo = 'vim-skk/skkeleton'
+repo = 'NI57721/skkeleton'
+rev = 'feature/handle-multiple-keys'
 depends = 'denops.vim'
 
 [[plugins]]
