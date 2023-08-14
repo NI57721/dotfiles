@@ -458,13 +458,12 @@ nnoremap <silent> R <Plug>(operator-replace)
 xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
 
+" Avoid being triggered when leaving from visual mode
+set clipboard-=autoselect
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  " Avoid being triggered when leaving from visual mode
-  autocmd TextYankPost * if !v:event.visual || v:event.inclusive |
-  \     silent call job_start(['wl-copy', getreg('*')]) |
-  \   endif
+  autocmd TextYankPost * silent call job_start(['wl-copy', getreg('*')])
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
 
