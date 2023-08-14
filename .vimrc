@@ -184,9 +184,9 @@ noremap <C-I> <C-I>
 " noremap <Tab>     :tabnext<CR><C-G>
 noremap <S-Tab>   :tabprevious<CR><C-G>
 
-noremap !          :tabnext<CR><C-G>
-noremap <C-1>      :tabprevious<CR><C-G>
-noremap <C-Right> :tabnext<CR><C-G>
+noremap <Tab>      :tabnext<CR><C-G>
+noremap <S-Tab>    :tabprevious<CR><C-G>
+noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Down>   :q<CR><C-G>
 nnoremap gr        :tabnext<CR><C-G>
