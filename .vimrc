@@ -217,10 +217,9 @@ nmap <leader>r  <Plug>(sandwich-replace)
 xmap <leader>r  <Plug>(sandwich-replace)
 nmap <leader>rb <Plug>(sandwich-replace-auto)
 
-
-noremap  j gj
+nnoremap <expr> j v:count == 0 ? 'gj' : 'm`' . v:count . 'gj'
+nnoremap <expr> k v:count == 0 ? 'gk' : 'm`' . v:count . 'gk'
 noremap gj  j
-noremap  k gk
 noremap gk  k
 nnoremap <Up>   gk
 nnoremap <Down> gj
