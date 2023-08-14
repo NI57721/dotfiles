@@ -1,5 +1,23 @@
 local wezterm = require 'wezterm';
 
+-- cf. https://zenn.dev/yutakatay/articles/wezterm-intro
+wezterm.on("trigger-vim-with-scrollback", function(window, pane)
+  local scrollback = pane:get_logical_lines_as_text(1024)
+  local name = os.tmpname()
+  local f = io.open(name, "w+")
+  f:write(scrollback)
+  f:flush()
+  f:close()
+  window:perform_action(
+    wezterm.action({ SpawnCommandInNewTab = {
+      args = { "vim", "-c", "set nospell", name },
+    } }),
+    pane
+  )
+  wezterm.sleep_ms(1000)
+  os.remove(name)
+end)
+
 return {
   font = wezterm.font("HackGenConsoleNF"),
   use_ime = false,
@@ -32,5 +50,7 @@ return {
      {key='o',mods='CMD',action=wezterm.action.SpawnCommandInNewTab{cwd='~'},},
      {key='w',mods='CMD',action=wezterm.action.CloseCurrentTab{confirm=true},},
      {key='W',mods='CTRL',action=wezterm.action.Nop},
+     {key="p",mods="ALT",action=wezterm.action{EmitEvent="trigger-vim-with-scrollback"}},
   },
 }
+
