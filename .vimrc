@@ -461,7 +461,10 @@ nnoremap <silent> RR R
 set clipboard^=unnamed
 augroup LazyClipboardSetup
   autocmd!
-  autocmd TextYankPost * silent call job_start(['wl-copy', getreg('*')])
+  " Avoid being triggered when leaving from visual mode
+  autocmd TextYankPost * if !v:event.visual || v:event.inclusive |
+  \     silent call job_start(['wl-copy', getreg('*')]) |
+  \   endif
   " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
 augroup END
 
