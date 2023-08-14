@@ -74,7 +74,7 @@ abbr -a gim  git merge
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
-abbr -a gira git remote add origin git@github.com:
+abbr -a --set-cursor gira git remote add origin git@github.com:%
 abbr -a gish git stash
 abbr -a giss git stash show -p
 abbr -a gipf git push --force-with-lease --force-if-includes
