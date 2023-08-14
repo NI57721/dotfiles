@@ -44,7 +44,7 @@ update_packages() {
       sudo apt-get autoremove -y;;
     arch )
       sudo pacman -Syu
-      pacman -Qdtq || sudo pacman -Rs
+      [ -s $(pacman -Qdtq) ] || pacman -Qdtq | sudo pacman -Rs -
       paccache -ruk0;;
     rhel ) echo "Red Hat";;
     centos ) echo "CentOS";;
