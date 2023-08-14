@@ -187,11 +187,14 @@ noremap <S-Tab>   :tabprevious<CR><C-G>
 noremap !          :tabnext<CR><C-G>
 noremap <C-1>      :tabprevious<CR><C-G>
 noremap <C-Right> :tabnext<CR><C-G>
-noremap <C-Left>  :tabprevious<CR><C-G>
-noremap <C-Down>  :q<CR><C-G>
-nnoremap gr       :tabnext<CR><C-G>
-nnoremap gR       :tabprevious<CR><C-G>
-nnoremap q:       :q<CR><C-G>
+noremap <C-Left>   :tabprevious<CR><C-G>
+noremap <C-Down>   :q<CR><C-G>
+nnoremap gr        :tabnext<CR><C-G>
+nnoremap gR        :tabprevious<CR><C-G>
+nnoremap q:        :q<CR><C-G>
+tnoremap <C-Right> <Cmd>tabnext<CR><C-G>
+tnoremap <C-Left>  <Cmd>tabprevious<CR><C-G>
+tnoremap <C-Down>  <Cmd>q<CR><C-G>
 
 nnoremap <leader>h <C-6>
 nnoremap <C-L> :noh<CR><C-L>
