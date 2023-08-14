@@ -165,6 +165,8 @@ set scrolloff=5
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
 nnoremap <leader>D <Cmd>call dein#update()<CR>
+nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
+nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
 nnoremap <leader>w <Cmd>ShakyoClue<CR>
 nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
@@ -336,6 +338,7 @@ call skkeleton#config({
 \   'registerConvertResult': v:true,
 \   'showCandidatesCount': 1,
 \   'selectCandidateKeys': '12345qw',
+\   'debug': v:true,
 \ })
 
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
