@@ -1,0 +1,333 @@
+
+# Variables
+set $mod Mod1
+set $super Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term wezterm
+
+# font
+font pango:monospace 12
+
+# Wallpaper
+# output "*" bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Screenlocker
+exec swayidle -w \
+  timeout 1200 'systemctl suspend' resume 'swaymsg "output * power on"'
+  # timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
+  # before-sleep 'swaylock -f -C ~/.config/swaylock/config' \
+  # after-resume 'swaymsg "output * enable"'
+  # timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+
+# Enables inhibit_idle when playing audio
+exec sway-audio-idle-inhibit
+
+# Clamshell mode
+set $laptop LVSD-1
+set $hoge $(swaymsg -t get_outputs | grep -e "^ *\"name\":" | grep -v "HDMI" \
+  | sed -e "s/.*\?: \"\|\",\$//g" | head -1)
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+exec_always ~/.config/sway/clamshell.sh $laptop
+exec_always echo (date) ": $hoge" | tee -a ~/.config/sway/hoge.log
+
+# Keyboard
+input type:keyboard {
+  xkb_options caps:ctrl_modifier
+  drag enabled
+  drag_lock enabled
+  repeat_delay 300
+  repeat_rate 50
+}
+
+# Touchpad
+input type:touchpad {
+  tap enabled
+  dwt enabled
+  natural_scroll disabled
+  drag enabled
+  drag_lock enabled
+  pointer_accel 1
+}
+
+input "1133:16420:Logitech_K400" {
+  tap enabled
+  dwt enabled
+  natural_scroll disabled
+  drag enabled
+  drag_lock enabled
+  pointer_accel 1
+}
+
+input "1133:16461:Logitech_K400" {
+  tap enabled
+  dwt enabled
+  natural_scroll disabled
+  drag enabled
+  drag_lock enabled
+  pointer_accel 1
+}
+
+input type:pointer {
+  tap enabled
+  dwt enabled
+  natural_scroll disabled
+  drag enabled
+  drag_lock enabled
+  pointer_accel 1
+}
+
+### Key bindings
+
+# Start a terminal
+bindsym $mod+f exec $term
+# Kill focused window
+bindsym $mod+Shift+q kill
+# Launch Vim as IME
+for_window [app_id="FloatingVim"] floating enable
+bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/ime-vim.sh
+# for_window [app_id="Floaterm"] floating enable
+# bindsym $mod+j exec XMODIFIERS=@im= ~/.config/sway/clip.sh
+
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $super+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $super+l exec swaylock -f -C ~/.config/swaylock/config
+
+# Move your focus around
+bindsym $mod+$left focus left
+# bindsym $mod+Left focus left
+bindsym $mod+$down focus down
+bindsym $mod+Down focus down
+bindsym $mod+$up focus up
+bindsym $mod+Up focus up
+bindsym $mod+$right focus right
+# bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Right move right
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Control+Shift+Tab workspace prev
+bindsym $mod+Tab workspace next
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+# bindsym $mod+b splith
+# bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+
+# Toggle floating/tiling
+bindsym $mod+t floating toggle
+# Make the current focus fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Space fullscreen toggle
+popup_during_fullscreen smart
+
+# Swap focus between the tiling area and the floating area
+# bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
+mode "resize" {
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left resize shrink width 10px or 10ppt
+  bindsym Left resize shrink width 10px or 10ppt
+  bindsym $down resize grow height 10px or 10ppt
+  bindsym Down resize grow height 10px or 10ppt
+  bindsym $up resize shrink height 10px or 10ppt
+  bindsym Up resize shrink height 10px or 10ppt
+  bindsym $right resize grow width 10px or 10ppt
+  bindsym Right resize grow width 10px or 10ppt
+
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+# Custom keybindings
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# screen shot
+bindsym $super+1 exec /usr/share/sway/scripts/grimshot --notify save window $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
+bindsym $super+2 exec /usr/share/sway/scripts/grimshot --notify copy window
+bindsym $super+3 exec /usr/share/sway/scripts/grimshot --notify save output  $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
+bindsym $super+4 exec /usr/share/sway/scripts/grimshot --notify save area  $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
+bindsym $super+0 exec ~/.config/sway/recorder.sh
+
+# Clipboard
+exec wl-paste -t text --watch clipman --no-persist store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+
+
+# Change focus
+# focus_on_window_activation focus
+
+
+# Opacity
+exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
+
+# Gaps
+gaps top 1
+gaps bottom 1
+gaps right 1
+gaps left 1
+gaps inner 1
+
+# auto tiling
+#exec ~/.config/i3/scripts/column-layout.py
+
+
+# sway-session
+exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
+
+exec nm-applet --indicator
+exec mako
+exec fcitx5 -d
+
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="org.fcitx.fcitx5-config-qt"] floating enable
+for_window [class="Nextcloud"] floating enable
+for_window [app_id="thunar" title="File Operation Progress"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+exec nextcloud --background
+for_window [class="Enpass"] {
+    floating enable
+    sticky enable
+}
+exec enpass -minimize
+assign [class="Slack"] workspace $ws_chat
+exec  slack
+assign [class="Vivaldi-stable"] workspace $ws_main
+exec vivaldi-stable
+assign [app_id="org.wezfurlong.wezterm"] workspace $ws_main
+exec wezterm
+assign [class="Emacs"] workspace $ws_sub
+exec emacs
+#assign [class="zoom"] workspace $ws_sub
+for_window [app_id="zoom"] floating enable
+exec blueman-applet
+for_window [app_id="blueman-manager"] floating enable
+for_window [class="Google-chrome" title="YouTube Music"] move container to workspace number $ws_media
+for_window [class="Google-chrome" title="YouTube"] move container to workspace number $ws_media
+
+bar {
+  position bottom
+  swaybar_command waybar
+  position bottom
+}
+
+# Window decoration
+## class                border  backgr. text    indicator
+client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+client.unfocused        #2e3440 #1f222d #888888 #1f222d
+client.focused_inactive #2e3440 #1f222d #888888 #1f222d
+client.placeholder      #2e3440 #1f222d #888888 #1f222d
+client.urgent           #900000 #900000 #ffffff #900000
+
+client.background       #242424
+
+default_border none
+default_floating_border none
+font pango:monospace 0
+titlebar_padding 1
+titlebar_border_thickness 0
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     position left
+# 
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+# 
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+include /etc/sway/config.d/*
