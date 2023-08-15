@@ -181,11 +181,9 @@ vnoremap > >gv
 inoremap <S-Space> <Space>
 cnoremap <S-Space> <Space>
 noremap <C-I> <C-I>
-" noremap <Tab>     :tabnext<CR><C-G>
+noremap <Tab>     :tabnext<CR><C-G>
 noremap <S-Tab>   :tabprevious<CR><C-G>
 
-noremap <Tab>      :tabnext<CR><C-G>
-noremap <S-Tab>    :tabprevious<CR><C-G>
 noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Down>   :q<CR><C-G>
