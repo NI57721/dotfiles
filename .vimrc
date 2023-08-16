@@ -185,8 +185,17 @@ noremap <C-I> <C-I>
 noremap <Tab>     :tabnext<CR><C-G>
 noremap <S-Tab>   :tabprevious<CR><C-G>
 
+let g:most_recently_closed = []
+augroup MostRecentlyClosed
+  autocmd!
+  autocmd BufWinLeave * call insert(g:most_recently_closed, expand('<amatch>'))
+augroup END
+
 noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
+noremap <C-Up>     <Cmd>if len(g:most_recently_closed) > 0 \|
+                   \     exec ':tabnew ' .. remove(g:most_recently_closed, 0) \|
+                   \   endif<CR>
 noremap <C-Down>   :q<CR><C-G>
 nnoremap gr        :tabnext<CR><C-G>
 nnoremap gR        :tabprevious<CR><C-G>
