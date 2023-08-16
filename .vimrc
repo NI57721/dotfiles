@@ -339,12 +339,42 @@ call skkeleton#config({
 \   'registerConvertResult': v:true,
 \   'showCandidatesCount': 1,
 \   'selectCandidateKeys': '12345qw',
-\   'debug': v:true,
 \ })
+
+function s:mapAzikOkuri(input, feed) abort
+  for mode in ['i', 'c']
+    exec 'autocmd User skkeleton-enable-post ' . mode . 'map <buffer> ' . a:input .
+    \   " <Cmd>call <SID>azikOkuri('" . a:input . "', '" . a:feed "')<CR>"
+  endfor
+endfunction
+
+function s:azikOkuri(input, feed) abort
+  if g:skkeleton#state.phase ==# 'input:okurinasi' && g:skkeleton#mode !=# 'abbrev'
+     \   && g:skkeleton#vim_status().prevInput =~# '\a$'
+    call skkeleton#handle('handleKey', {'key': a:feed})
+  else
+    call skkeleton#handle('handleKey', {'key': a:input})
+  endif
+endfunction
 
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
 augroup Skkeleton
   autocmd!
+  let s:azikOkuriList = [
+  \   ['Q', 'aI'],
+  \   ['Z', 'aNn'],
+  \   ['K', 'iNn'],
+  \   ['H', 'uU'],
+  \   ['J', 'uNn'],
+  \   ['W', 'eI'],
+  \   ['D', 'eNn'],
+  \   ['P', 'oU'],
+  \   ['L', 'oNn']
+  \ ]
+  for item in s:azikOkuriList
+    call s:mapAzikOkuri(item[0], item[1])
+  endfor
+
   autocmd InsertEnter * ++once call skkeleton#register_kanatable('azik', {
     \   'jj':    'escape',
     \   '''':    'disable',
@@ -389,10 +419,6 @@ augroup Skkeleton
     \   'ww':    ['うぇい', ''],
     \   'sf':    ['さい', ''],
     \ })
-  autocmd User skkeleton-enable-post lnoremap <buffer> <S-L>
-  \ <Cmd>call skkeleton#handle('handleKey', {'key': ';'})<CR>
-  \ <Cmd>call skkeleton#handle('handleKey', {'key': 'l'})<CR>
-  autocmd User skkeleton-disable-post lunmap <buffer> <S-L>
 augroup END
 
 imap <C-J> <Plug>(skkeleton-toggle)
