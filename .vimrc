@@ -273,7 +273,7 @@ augroup MyXML
   autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-O><CR><ESC>==o
 augroup END
 
-command -nargs=0 ClearUndo call <sid>ClearUndo()
+command -nargs=0 ClearUndo call <SID>ClearUndo()
 function! s:ClearUndo()
   let old_undolevels = &undolevels
   set undolevels=-1
