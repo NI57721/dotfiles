@@ -386,6 +386,7 @@ augroup Skkeleton
     \   'tsd':   ['つぇん', ''],
     \   'tsp':   ['つぉう', ''],
     \   'tsl':   ['つぉん', ''],
+    \   'ww':    ['うぇい', ''],
     \   'sf':    ['さい', ''],
     \ })
   autocmd User skkeleton-enable-post lnoremap <buffer> <S-L>
