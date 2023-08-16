@@ -137,7 +137,7 @@ let mapleader = "\<Space>"
 colorscheme desert
 set ruler
 set showcmd
-set shortmess-=S
+set shortmess=filmnxtToOc
 set smartindent
 set display=lastline
 set backspace=indent,eol,start
@@ -161,6 +161,7 @@ set spelloptions& spelloptions+=camel
 set formatoptions+=M
 set nrformats+=unsigned
 set scrolloff=5
+set viminfo='1000,f1,<500,s10,h
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
