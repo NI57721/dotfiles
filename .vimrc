@@ -46,89 +46,88 @@ endif
 " ddc.vim
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sources', [
-\   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp'
-\ ])
+  \   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp'
+  \ ])
 call ddc#custom#patch_global('sourceOptions', {
-\   'around': {'mark': 'arnd'},
-\   'buffer': {'mark': 'buf'},
-\   'file': {
-\     'mark': 'file',
-\     'isVolatile': v:true,
-\     'forceCompletionPattern': '\S/\S*',
-\   },
-\   'skkeleton': {
-\     'mark': 'skk',
-\     'matchers': ['skkeleton'],
-\     'sorters': [],
-\     'minAutoCompleteLength': 2,
-\   },
-\   'vim-lsp': {'mark': 'lsp'},
-\   '_': {
-\     'matchers': ['matcher_fuzzy', 'matcher_head'],
-\     'sorters': ['sorter_fuzzy'],
-\     'converters': ['converter_fuzzy'],
-\   },
-\ })
+  \   'around': {'mark': 'arnd'},
+  \   'buffer': {'mark': 'buf'},
+  \   'file': {
+  \     'mark': 'file',
+  \     'isVolatile': v:true,
+  \     'forceCompletionPattern': '\S/\S*',
+  \   },
+  \   'skkeleton': {
+  \     'mark': 'skk',
+  \     'matchers': ['skkeleton'],
+  \     'sorters': [],
+  \     'minAutoCompleteLength': 2,
+  \   },
+  \   'vim-lsp': {'mark': 'lsp'},
+  \   '_': {
+  \     'matchers': ['matcher_fuzzy', 'matcher_head'],
+  \     'sorters': ['sorter_fuzzy'],
+  \     'converters': ['converter_fuzzy'],
+  \   },
+  \ })
 
 
 call ddc#custom#patch_global('sourceParams', {
-\   'around': {'maxSize': 500},
-\   'buffer': {
-\     'requireSameFiletype': v:false,
-\     'limitBytes': 5000000,
-\     'fromAltBuf': v:true,
-\     'forceCollect': v:true,
-\   },
-\ })
+  \   'around': {'maxSize': 500},
+  \   'buffer': {
+  \     'requireSameFiletype': v:false,
+  \     'limitBytes': 5000000,
+  \     'fromAltBuf': v:true,
+  \     'forceCollect': v:true,
+  \   },
+  \ })
 
 call ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
-\   'sourceOptions': {
-\     'file': {
-\       'forceCompletionPattern': '\S\\\S*',
-\     },
-\   },
-\   'sourceParams': {
-\     'file': {
-\       'mode': 'win32',
-\     },
-\   },
-\ })
+  \   'sourceOptions': {
+  \     'file': {
+  \       'forceCompletionPattern': '\S\\\S*',
+  \     },
+  \   },
+  \   'sourceParams': {
+  \     'file': {
+  \       'mode': 'win32',
+  \     },
+  \   },
+  \ })
 
 call ddc#enable()
 
 
 " ddu.vim
 call ddu#custom#patch_global({
-\   'ui': 'filer',
-\   'sources': [{'name': 'file', 'params': {}}],
-\   'actionOptions': {
-\     'narrow': {
-\       'quit': v:false,
-\     },
-\   },
-\   'sourceOptions': {
-\     '_': {
-\       'columns': ['filename'],
-\     },
-\   },
-\   'kindOptions': {
-\     'file': {
-\       'defaultAction': 'open',
-\     },
-\   }
-\ })
+  \   'ui': 'filer',
+  \   'sources': [{'name': 'file', 'params': {}}],
+  \   'actionOptions': {
+  \     'narrow': {
+  \       'quit': v:false,
+  \     },
+  \   },
+  \   'sourceOptions': {
+  \     '_': {
+  \       'columns': ['filename'],
+  \     },
+  \   },
+  \   'kindOptions': {
+  \     'file': {
+  \       'defaultAction': 'open',
+  \     },
+  \   },
+  \ })
 
 autocmd FileType ddu-filer call s:ddu_my_settings()
 function! s:ddu_my_settings() abort
   nnoremap <buffer><silent> <CR>
-  \       <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
+    \   <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
   nnoremap <buffer><silent> <Space>
-  \       <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+    \   <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
   nnoremap <buffer> o
-  \       <Cmd>call ddu#ui#filer#do_action('expandItem',
-  \       {'mode': 'toggle'})<CR>
+    \   <Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>
   nnoremap <buffer><silent> q
-  \       <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+    \   <Cmd>call ddu#ui#filer#do_action('quit')<CR>
 endfunction
 
 
@@ -194,8 +193,8 @@ augroup END
 noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Up>     <Cmd>if len(g:most_recently_closed) > 0 \|
-                   \     exec ':tabnew ' .. remove(g:most_recently_closed, 0) \|
-                   \   endif<CR>
+                     \   exec ':tabnew ' .. remove(g:most_recently_closed, 0) \|
+                     \ endif<CR>
 noremap <C-Down>   :q<CR><C-G>
 nnoremap gr        :tabnext<CR><C-G>
 nnoremap gR        :tabprevious<CR><C-G>
@@ -331,35 +330,36 @@ let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
 " Define a skk dictionary
 call skkeleton#azik#add_table('us')
 call skkeleton#config({
-\   'globalDictionaries': [
-\     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
-\     ['~/.skk/SKK-JISYO.geo', 'euc-jp'],
-\     ['~/.skk/SKK-JISYO.jinmei', 'euc-jp'],
-\     ['~/.skk/SKK-JISYO.propernoun', 'euc-jp'],
-\     ['~/.skk/SKK-JISYO.station', 'euc-jp'],
-\     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
-\     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp']
-\   ],
-\   'kanaTable': 'azik',
-\   'eggLikeNewline': v:true,
-\   'keepState': v:true,
-\   'markerHenkan': 'γ',
-\   'markerHenkanSelect': 'Γ',
-\   'registerConvertResult': v:true,
-\   'showCandidatesCount': 1,
-\   'selectCandidateKeys': '12345qw',
-\ })
+  \   'globalDictionaries': [
+  \     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
+  \     ['~/.skk/SKK-JISYO.geo', 'euc-jp'],
+  \     ['~/.skk/SKK-JISYO.jinmei', 'euc-jp'],
+  \     ['~/.skk/SKK-JISYO.propernoun', 'euc-jp'],
+  \     ['~/.skk/SKK-JISYO.station', 'euc-jp'],
+  \     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
+  \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp'],
+  \   ],
+  \   'kanaTable': 'azik',
+  \   'eggLikeNewline': v:true,
+  \   'keepState': v:true,
+  \   'markerHenkan': 'γ',
+  \   'markerHenkanSelect': 'Γ',
+  \   'registerConvertResult': v:true,
+  \   'showCandidatesCount': 1,
+  \   'selectCandidateKeys': '12345qw',
+  \ })
 
 function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
-    exec 'autocmd User skkeleton-enable-post ' . mode . 'map <buffer> ' . a:input .
-    \   " <Cmd>call <SID>azikOkuri('" . a:input . "', '" . a:feed "')<CR>"
+    exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
+      \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
+      \   a:feed "')<CR>"
   endfor
 endfunction
 
 function s:azikOkuri(input, feed) abort
   if g:skkeleton#state.phase ==# 'input:okurinasi' && g:skkeleton#mode !=# 'abbrev'
-     \   && g:skkeleton#vim_status().prevInput =~# '\a$'
+    \   && g:skkeleton#vim_status().prevInput =~# '\a$'
     call skkeleton#handle('handleKey', {'key': a:feed})
   else
     call skkeleton#handle('handleKey', {'key': a:input})
@@ -370,16 +370,16 @@ call skkeleton#register_keymap('input', ';', 'henkanPoint')
 augroup Skkeleton
   autocmd!
   let s:azikOkuriList = [
-  \   ['Q', 'aI'],
-  \   ['Z', 'aNn'],
-  \   ['K', 'iNn'],
-  \   ['H', 'uU'],
-  \   ['J', 'uNn'],
-  \   ['W', 'eI'],
-  \   ['D', 'eNn'],
-  \   ['P', 'oU'],
-  \   ['L', 'oNn']
-  \ ]
+    \   ['Q', 'aI'],
+    \   ['Z', 'aNn'],
+    \   ['K', 'iNn'],
+    \   ['H', 'uU'],
+    \   ['J', 'uNn'],
+    \   ['W', 'eI'],
+    \   ['D', 'eNn'],
+    \   ['P', 'oU'],
+    \   ['L', 'oNn'],
+    \ ]
   for item in s:azikOkuriList
     call s:mapAzikOkuri(item[0], item[1])
   endfor
@@ -436,26 +436,26 @@ cmap <C-J> <Plug>(skkeleton-toggle)
 " dps-dial.vim
 " Define original sequences for dps_dial
 let g:dps_dial#augends = [
-\   'decimal',
-\   'date-hyphen',
-\   'date-slash',
-\   {'kind': 'constant', 'opts': {'elements': ['true', 'false']}},
-\   {'kind': 'constant', 'opts': {
-\     'elements': ['月', '火', '水', '木', '金', '土', '日'],
-\     'cyclic': v:true,
-\     'word': v:false,
-\   }},
-\   {'kind': 'constant', 'opts': {
-\     'elements': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-\     'cyclic': v:true,
-\     'word': v:true,
-\   }},
-\   {'kind': 'case', 'opts': {
-\     'cases': ['camelCase', 'snake_case', 'SCREAMING_SNAKE_CASE'],
-\     'cyclic': v:true,
-\   }},
-\   {'kind': 'date', 'opts': { 'format': 'yyyy-MM-dd', 'only_valid': v:false }},
-\ ]
+  \   'decimal',
+  \   'date-hyphen',
+  \   'date-slash',
+  \   {'kind': 'constant', 'opts': {'elements': ['true', 'false']}},
+  \   {'kind': 'constant', 'opts': {
+  \     'elements': ['月', '火', '水', '木', '金', '土', '日'],
+  \     'cyclic': v:true,
+  \     'word': v:false,
+  \   }},
+  \   {'kind': 'constant', 'opts': {
+  \     'elements': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  \     'cyclic': v:true,
+  \     'word': v:true,
+  \   }},
+  \   {'kind': 'case', 'opts': {
+  \     'cases': ['camelCase', 'snake_case', 'SCREAMING_SNAKE_CASE'],
+  \     'cyclic': v:true,
+  \   }},
+  \   {'kind': 'date', 'opts': { 'format': 'yyyy-MM-dd', 'only_valid': v:false }},
+  \ ]
 
 nnoremap  <C-A>  <Plug>(dps-dial-increment)
 nmap      <C-X>  <Plug>(dps-dial-decrement)
