@@ -353,7 +353,7 @@ function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
     exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
       \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
-      \   a:feed "')<CR>"
+      \   a:feed .. "')<CR>"
   endfor
 endfunction
 
