@@ -77,6 +77,7 @@ wezterm.on(
 return {
   font = wezterm.font('HackGenConsoleNF'),
   font_size = 20.0,
+  command_palette_font_size = 18.0,
   use_ime = false,
   color_scheme = 'Dracula',
   adjust_window_size_when_changing_font_size = false,
@@ -105,6 +106,7 @@ return {
     {key='w',mods='ALT',action=wezterm.action.CloseCurrentTab{confirm=true}},
     {key='W',mods='CTRL',action=wezterm.action.Nop},
     {key='p',mods='ALT',action=wezterm.action{EmitEvent='trigger-vim-with-scrollback'}},
+    {key='?',mods='ALT|SHIFT',action=wezterm.action.ActivateCommandPalette},
   },
 }
 
