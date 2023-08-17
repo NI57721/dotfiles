@@ -2,15 +2,20 @@
     email = NI57721@users.noreply.github.com
     name = NI57721
 [core]
-    pager = delta
+    pager = cat
     editor = /home/Storm/src/vim/src/vim
 [credential "https://github.com"]
     helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
     helper = !/usr/bin/gh auth git-credential
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    navigate = true
+    minus-emph-style = syntax "#a04040"
+    minus-style = syntax "#402020"
+    plus-emph-style = syntax "#409040"
+    plus-style = syntax "#204020"
+    side-by-side = true
+    syntax-theme = Dracula
 [diff]
     colorMoved = default
 [init]
@@ -19,4 +24,7 @@
     diffFilter = delta --color-only
 [merge]
     tool = vimdiff
+[pager]
+    diff = delta
+    show = delta
 
