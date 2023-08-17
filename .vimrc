@@ -195,7 +195,7 @@ noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Up>     <Cmd>if len(g:most_recently_closed) > 0 \|
                      \   exec ':tabnew ' .. remove(g:most_recently_closed, 0) \|
                      \ endif<CR>
-noremap <C-Down>   :q<CR><C-G>
+noremap  <C-Down>  :q<CR><C-G>
 noremap  <expr> <C-lt> ':tabmove -' .. v:count1 .. '<CR>'
 noremap  <expr> <C->>  ':tabmove +' .. v:count1 .. '<CR>'
 nnoremap gr        :tabnext<CR><C-G>
