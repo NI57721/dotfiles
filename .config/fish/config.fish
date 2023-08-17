@@ -56,6 +56,7 @@ abbr -a put  trash-put
 abbr -a puts trash-put
 
 # for Git
+abbr -a cgr  cd \(git rev-parse --show-toplevel 2\> /dev/null \|\| pwd\)
 abbr -a gist git switch
 abbr -a girs git restore
 abbr -a gia  git add

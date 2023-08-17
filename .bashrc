@@ -287,6 +287,7 @@ alias kila='kill -9'
 alias virc='vim $HOME/.bashrc'
 alias srrc='. $HOME/.bashrc'
 
+alias cgr="cd \$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
 alias gist="git switch"
 alias girs="git restore"
 alias gia="git add"
