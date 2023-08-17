@@ -108,6 +108,7 @@ return {
     {key='.',mods='ALT',action=wezterm.action.MoveTabRelative(1)},
     {key='W',mods='CTRL',action=wezterm.action.Nop},
     {key='p',mods='ALT',action=wezterm.action{EmitEvent='trigger-vim-with-scrollback'}},
+    {key='Enter',mods='ALT',action=wezterm.action.ActivateCopyMode},
     {key='?',mods='ALT|SHIFT',action=wezterm.action.ActivateCommandPalette},
   },
 }
