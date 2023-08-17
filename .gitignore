@@ -26,6 +26,7 @@
 !/.vim/rc/**
 
 ### git
+!/.gitconfig
 !/.gitignore_global
 
 ### tmux

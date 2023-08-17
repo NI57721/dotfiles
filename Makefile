@@ -78,10 +78,6 @@ install_optional: i_virtualbox_ga
 
 ## init_git: Initialize settings for git.
 init_git:
-	git config --global user.email "104410688+NI57721@users.noreply.github.com"
-	git config --global user.name "NI57721"
-	git config --global core.pager cat
-	git config --global init.defaultBranch main
 	mkdir -p $$HOME/.ssh
 	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
 	echo -e " Host github github.com\n  HostName github.com\n  IdentityFile $$HOME/.ssh/ni57721\n  User git\n" | \

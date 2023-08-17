@@ -1,0 +1,22 @@
+[user]
+    email = NI57721@users.noreply.github.com
+    name = NI57721
+[core]
+    pager = delta
+    editor = /home/Storm/src/vim/src/vim
+[credential "https://github.com"]
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = !/usr/bin/gh auth git-credential
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[diff]
+    colorMoved = default
+[init]
+    defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    tool = vimdiff
+
