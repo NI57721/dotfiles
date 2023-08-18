@@ -2,7 +2,7 @@ local wezterm = require 'wezterm';
 
 -- cf. https://zenn.dev/yutakatay/articles/wezterm-intro
 wezterm.on('trigger-vim-with-scrollback', function(window, pane)
-  local scrollback = pane:get_logical_lines_as_text(1024)
+  local scrollback = pane:get_logical_lines_as_text(10000)
   local name = os.tmpname()
   local f = io.open(name, 'w+')
   f:write(scrollback)
