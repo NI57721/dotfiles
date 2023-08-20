@@ -110,6 +110,7 @@ sh ~/.cargo/env
 # for NVM
 [ -s "$NVM_DIR/nvm.sh" ] && bash -c ". $NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && bash -c ". $NVM_DIR/bash_completion"
+nvm use latest > /dev/null
 
 # substitute for eval (rbenv init -)
 status --is-interactive; and source (rbenv init -|psub)
