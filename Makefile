@@ -66,7 +66,7 @@ backup:
 create_links:
 
 ## initialize: Initialize settings for some software
-initialize: init_git init_grub init_mirrorlist init_timezone
+initialize: init_git init_grub init_mirrorlist init_pacman init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
 install: install_go_packages \
@@ -105,6 +105,14 @@ init_mirrorlist:
 	sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
 	rankmirrors -n 0 /etc/pacman.d/mirrorlist.bak | sudo tee /etc/pacman.d/mirrorlist
 
+## init_pacman: Initialize settings for pacman, where Color and ILoveCandy are turned on
+init_pacman:
+	echo -e "\
+	\n\
+	Color\n\
+	ILoveCandy\n\
+	" | \
+	  sudo tee -a /etc/pacman.conf
 
 ## init_timezone: Initialize settings for timezones
 init_timezone:
