@@ -51,76 +51,83 @@ SRC_PATH     = $$HOME/src
 
 LINKED_FILES = foo bar baz ## WIP
 
-## help: Display this message.
+## help: Display this message
 help:
 	@grep -P "^## [a-zA-Z_-]+: .[^\n]*$$" $(MAKEFILE_LIST) \
 	| awk 'BEGIN {FS = "^## |: "}; {printf "\033[36m%-20s\033[0m %s\n", $$2, $$3}'
 
-## all: Execute install and initialize.
+## all: Execute install and initialize
 all: install initialize
 
-## backup: WIP Make backups of data.
+## backup: WIP Make backups of data
 backup:
 
-## create_links: WIP Create links of data.
+## create_links: WIP Create links of data
 create_links:
 
-## initialize: Initialize settings for some software.
+## initialize: Initialize settings for some software
 initialize: init_git init_grub init_mirrorlist init_timezone
 
-## install: Install everything needed except for i_virtualbox_ga.
+## install: Install everything needed except for i_virtualbox_ga
 install: install_go_packages \
 	 i_deno i_docker i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
 	 i_rust i_skk_dictionaries i_tpm i_vim
 
-## install_optional: Install a tools for guest OSs on VirtualBox.
+## install_optional: Install a tools for guest OSs on VirtualBox
 install_optional: i_virtualbox_ga
 
-## init_git: Initialize settings for git.
+## init_git: Initialize settings for git
 init_git:
 	mkdir -p $$HOME/.ssh
 	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
-	echo -e " Host github github.com\n  HostName github.com\n  IdentityFile $$HOME/.ssh/ni57721\n  User git\n" | \
+	echo -e "\
+	Host github github.com\n\
+	  HostName github.com\n\
+	  IdentityFile $$HOME/.ssh/ni57721\n
+	  User git\n
+	" | \
 	  tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
-## init_grub: Initialize settings for grub, where grub is hidden.
+## init_grub: Initialize settings for grub, where grub is hidden
 init_grub:
-	echo -e "\n\
+	echo -e "
+	\n\
 	# Hiding grub menu.\n\
-	GRUB_FORCE_HIDDEN_MENU=\"true\"" | \
+	GRUB_FORCE_HIDDEN_MENU=\"true\"
+	" | \
 	  sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-## init_mirrorlist: Sort the mirrorlist used by pacman.
+## init_mirrorlist: Sort the mirrorlist used by pacman
 init_mirrorlist:
 	sudo cp /etc/pacman.d/mirrorlist{,.bak}
 	sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
 	rankmirrors -n 0 /etc/pacman.d/mirrorlist.bak | sudo tee /etc/pacman.d/mirrorlist
 
 
-## init_timezone: Initialize settings for timezones.
+## init_timezone: Initialize settings for timezones
 init_timezone:
 	sudo timedatectl set-timezone Asia/Tokyo
 
-## install_packages: Install packages.
+## install_packages: Install packages
 install_packages:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) $(PACKAGES)
 
-## install_aur: Install AURs.
+## install_aur: Install AURs
 install_aur: i_paru
 	paru $(AUR_PACKAGES)
 
-## install_go_packages: Install go packages.
+## install_go_packages: Install go packages
 install_go_packages:
 	go install $(GO_PACKAGES)
 
-## i_deno: Install deno.
+## i_deno: Install deno
 i_deno:
 	curl -fsSL https://deno.land/x/install/install.sh | bash
 
-## i_docker: Install docker.
+## i_docker: Install docker
 i_docker:
 	$(REMOVE_PKG) docker docker-engine docker.io containerd runc
 	$(UPDATE_PKG)
@@ -140,23 +147,23 @@ i_docker:
 	sudo groupadd docker
 	sudo usermod -aG docker $$USER
 
-## i_dropbox: Install DropBox CLI tool.
+## i_dropbox: Install DropBox CLI tool
 i_dropbox:
 	curl -L https://www.dropbox.com/download?plat=lnx.x86_64 | \
 	  tar -C $$HOME/hoge -xzf -
 
-## i_fish: Install fish shell.
+## i_fish: Install fish shell
 i_fish:
 	[ "$(DST)" == ubuntu ] && $(ADD_REPOSITORY)fish-shell/release-3
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 
-## i_fisher: Install fisher.
+## i_fisher: Install fisher
 i_fisher: i_fish
 	curl -sL https://git.io/fisher | source
 	fish -c "fisher update"
 
-## i_go: Install go.
+## i_go: Install go
 i_go:
 	[[ -d $(SRC_PATH)/go ]] && rm -rf $(SRC_PATH)/go
 	mkdir -p $(SRC_PATH)/go
@@ -164,17 +171,17 @@ i_go:
 	  > $(SRC_PATH)/latest_go.tar.gz
 	tar -C $(SRC_PATH) -xzf $(SRC_PATH)/latest_go.tar.gz && rm $(SRC_PATH)/latest_go.tar.gz
 
-## i_nvm: Install nvm.
+## i_nvm: Install nvm
 i_nvm:
 	mkdir $$HOME/.nvm
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
-## i_paru: Install paru.
+## i_paru: Install paru
 i_paru:
 	git clone https://aur.archlinux.org/paru.git $(SRC_PATH)/paru
 	cd $(SRC_PATH)/paru && makepkg -si
 
-## i_rbenv: Install rbenv.
+## i_rbenv: Install rbenv
 i_rbenv:
 	git clone https://github.com/rbenv/rbenv.git $$HOME/.rbenv
 	cd $$HOME/.rbenv && src/configure && make -C src
@@ -187,7 +194,7 @@ i_rbenv:
 i_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
-## i_skk_dictionaries: Install dictionary files for skk.
+## i_skk_dictionaries: Install dictionary files for skk
 i_skk_dictionaries:
 	mkdir $(SKK_DIC_PATH)
 	curl --remote-name-all --output-dir $(SKK_DIC_PATH) \
@@ -201,12 +208,12 @@ i_skk_dictionaries:
 	find $(SKK_DIC_PATH) -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $(SKK_DIC_PATH)/zipcode.tar -C $(SKK_DIC_PATH) && rm $(SKK_DIC_PATH)/zipcode.tar
 
-## i_tpm: Install tpm.
+## i_tpm: Install tpm
 i_tpm:
 	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
 	bash $$HOME/.tmux/plugins/tpm/bin/install_plugins
 
-## i_vim: Build vim HEAD.
+## i_vim: Build vim HEAD
 i_vim:
 	$(UPDATE_PKG)
 	# cproto libacl1-dev libgpm-dev libgtk-3-dev liblua5.2-dev
@@ -223,7 +230,7 @@ i_vim:
 	    --with-luajit --enable-fail-if-missing
 	cd $(SRC_PATH)/vim/src && make
 
-## i_virtualbox_ga: Install VirtualBox Guest Additions.
+## i_virtualbox_ga: Install VirtualBox Guest Additions
 i_virtualbox_ga:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) xserver-xorg xserver-xorg-core
