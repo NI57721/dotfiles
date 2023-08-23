@@ -29,9 +29,6 @@
 !/.gitconfig
 !/.gitignore_global
 
-### tmux
-!/.tmux.conf
-
 ### grub
 ~/.config/grub/**
 

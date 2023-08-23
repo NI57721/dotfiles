@@ -218,8 +218,8 @@ i_skk_dictionaries:
 
 ## i_tpm: Install tpm
 i_tpm:
-	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
-	bash $$HOME/.tmux/plugins/tpm/bin/install_plugins
+	git clone https://github.com/tmux-plugins/tpm $$XDG_CONFIG_HOME/tmux/plugins/tpm
+	bash $$XDG_CONFIG_HOME/tmux/plugins/tpm/bin/install_plugins
 
 ## i_vim: Build vim HEAD
 i_vim:

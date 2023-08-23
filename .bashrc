@@ -110,7 +110,7 @@ update_rust() {
 }
 
 update_tpm() {
-  ~/.tmux/plugins/tpm/bin/update_plugins all
+  $XDG_CONFIG_HOME/tmux/plugins/tpm/bin/update_plugins all
 }
 
 update_fisher() {
