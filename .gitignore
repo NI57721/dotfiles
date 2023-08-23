@@ -35,10 +35,9 @@
 ### grub
 ~/.config/grub/**
 
-### .bin
-!/.bin/
-!/.bin/**
-!/.bin.local
+### /scripts
+!/scripts
+!/scripts/**
 
 !/README.md
 !/LICENSE
