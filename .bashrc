@@ -329,7 +329,6 @@ alias ccp="wl-copy"
 alias cps="wl-paste"
 
 alias chrome="swaymsg exec \"google-chrome-stable\""
-alias thunar="swaymsg exec \"thunar\""
 alias vlc="swaymsg exec \"vlc\""
 
 shopt -s dotglob
