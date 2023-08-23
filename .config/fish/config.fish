@@ -37,9 +37,9 @@ abbr -a lss ls -acf
 abbr -a ll ls -al
 abbr -a kila kill -9
 abbr -a psa ps aux \| grep -v grep \| grep
-abbr -a virc  vim    ~/.config/fish/config.fish
-abbr -a vircl vim    ~/.config/fish/config.fish.local
-abbr -a srrc  source ~/.config/fish/config.fish
+abbr -a virc  vim    $XDG_CONFIG_HOME/fish/config.fish
+abbr -a vircl vim    $XDG_CONFIG_HOME/fish/config.fish.local
+abbr -a srrc  source $XDG_CONFIG_HOME/fish/config.fish
 abbr -a .. cd ..
 abbr -a ... cd ../..
 
