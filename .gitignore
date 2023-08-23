@@ -46,3 +46,6 @@
 !.gitignore
 !.gitkeep
 
+### Vim's swap files
+.*.sw?
+
