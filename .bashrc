@@ -239,6 +239,11 @@ fi
 #                                                                              #
 ################################################################################
 
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
 export VISUAL='vim --noplugin'
 export MANPAGER="vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 export LESS="-RNM"
@@ -267,11 +272,6 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm use latest > /dev/null
-
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_STATE_HOME=$HOME/.local/state
 
 
 . $HOME/.cargo/env

@@ -1,3 +1,8 @@
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx XDG_CACHE_HOME  ~/.cache
+set -gx XDG_DATA_HOME   ~/.local/share
+set -gx XDG_STATE_HOME  ~/.local/state
+
 set -gx VIMRUNTIME ~/src/vim/runtime
 set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 set -gx VISUAL vim --noplugin
@@ -6,11 +11,6 @@ set -gx THOR_MERGE /usr/local/bin/vimdiff
 set -gx FLYCTL_INSTALL ~/.fly
 set -gx DENO_INSTALL ~/.deno
 set -gx NVM_DIR ~/.nvm
-
-set -gx XDG_CONFIG_HOME ~/.config
-set -gx XDG_CACHE_HOME  ~/.cache
-set -gx XDG_DATA_HOME   ~/.local/share
-set -gx XDG_STATE_HOME  ~/.local/state
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
