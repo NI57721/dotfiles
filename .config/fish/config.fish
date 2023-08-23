@@ -11,6 +11,7 @@ set -gx THOR_MERGE /usr/local/bin/vimdiff
 set -gx FLYCTL_INSTALL ~/.fly
 set -gx DENO_INSTALL ~/.deno
 set -gx NVM_DIR ~/.nvm
+set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
@@ -21,7 +22,7 @@ set -g theme_project_dir_length 1
 
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
-fish_add_path ~/.rbenv/bin
+fish_add_path $RBENV_ROOT/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $DENO_INSTALL/bin
 fish_add_path ~/src/go/bin
@@ -112,7 +113,7 @@ sh ~/.cargo/env
 nvm use latest > /dev/null
 
 # substitute for eval (rbenv init -)
-status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and source (rbenv init - | psub)
 
 # Settings for WSL2
 if grep -qie "microsoft-.*-WSL2" /proc/version

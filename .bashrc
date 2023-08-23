@@ -265,7 +265,8 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export DENO_INSTALL=$HOME/.deno
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT=$XDG_DATA_HOME/rbenv
+export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
 export NVM_DIR=$HOME/.nvm
