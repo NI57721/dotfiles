@@ -11,6 +11,8 @@ set -gx THOR_MERGE /usr/local/bin/vimdiff
 set -gx FLYCTL_INSTALL ~/.fly
 set -gx NVM_DIR ~/.nvm
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
+set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
@@ -22,6 +24,7 @@ set -g theme_project_dir_length 1
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
 fish_add_path $RBENV_ROOT/bin
+fish_add_path $XDG_DATA_HOME/cargo/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path ~/src/go/bin
@@ -102,9 +105,6 @@ abbr -a fly flyctl
 # launcher
 abbr chrome swaymsg exec "google-chrome-stable"
 abbr vlc    swaymsg exec "vlc"
-
-# for Rust
-sh ~/.cargo/env
 
 # for NVM
 [ -s "$NVM_DIR/nvm.sh" ] && bash -c ". $NVM_DIR/nvm.sh"
