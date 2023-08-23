@@ -9,7 +9,6 @@ set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff
 set -gx FLYCTL_INSTALL ~/.fly
-set -gx DENO_INSTALL ~/.deno
 set -gx NVM_DIR ~/.nvm
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 
@@ -24,7 +23,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/bin
 fish_add_path $RBENV_ROOT/bin
 fish_add_path $FLYCTL_INSTALL/bin
-fish_add_path $DENO_INSTALL/bin
+fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path ~/src/go/bin
 fish_add_path ~/go/bin
 fish_add_path ~/src/vim/src

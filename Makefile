@@ -133,7 +133,8 @@ install_go_packages:
 
 ## i_deno: Install deno
 i_deno:
-	curl -fsSL https://deno.land/x/install/install.sh | bash
+	curl -fsSL https://deno.land/x/install/install.sh | \
+	  DENO_INSTALL=$$XDG_DATA_HOME/deno bash
 
 ## i_docker: Install docker
 i_docker:

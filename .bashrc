@@ -262,8 +262,7 @@ export PATH="$HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
 export FLYCTL_INSTALL=$HOME/.fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-export DENO_INSTALL=$HOME/.deno
-export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$XDG_DATA_HOME/deno/bin:$PATH"
 
 export RBENV_ROOT=$XDG_DATA_HOME/rbenv
 export PATH="$RBENV_ROOT/bin:$PATH"
