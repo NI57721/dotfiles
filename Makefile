@@ -164,7 +164,7 @@ i_dropbox:
 
 ## i_fish: Install fish shell
 i_fish:
-	[ "$(DST)" == ubuntu ] && $(ADD_REPOSITORY)fish-shell/release-3
+	if [ "$(DST)" == ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 

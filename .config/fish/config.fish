@@ -59,7 +59,7 @@ abbr -a put  trash-put
 abbr -a puts trash-put
 
 # for Git
-abbr -a cgr  cd \(git rev-parse --show-toplevel 2\> /dev/null \|\| pwd\)
+abbr -a cgr  cd \(git rev-parse --show-toplevel 2\> /dev/null; or pwd\)
 abbr -a gist git switch
 abbr -a girs git restore
 abbr -a gia  git add
@@ -111,8 +111,7 @@ abbr vlc    swaymsg exec "vlc"
 [ -s "$NVM_DIR/bash_completion" ] && bash -c ". $NVM_DIR/bash_completion"
 nvm use latest > /dev/null
 
-# substitute for eval (rbenv init -)
-status --is-interactive; and source (rbenv init - | psub)
+status --is-interactive; and rbenv init - fish | source
 
 # Settings for WSL2
 if grep -qie "microsoft-.*-WSL2" /proc/version
