@@ -264,7 +264,7 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm use latest > /dev/null
 
-[ -f "$HOME/.fzf.bash" ] && . $HOME/.fzf.bash
+if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
