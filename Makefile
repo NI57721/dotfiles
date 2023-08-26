@@ -175,16 +175,11 @@ i_fisher: i_fish
 
 ## i_go: Install go
 i_go:
-	if [ -d $$XDG_DATA_HOME/go ]; then rm -rf $$XDG_DATA_HOME/go; fi
-	mkdir -p $$XDG_DATA_HOME/go
-	curl -L https:/go.dev/dl/$$(curl --silent https://go.dev/VERSION?m=text | head -1).linux-amd64.tar.gz \
-	  > /tmp/latest_go.tar.gz
-	tar -C $$XDG_DATA_HOME/go -xzf /tmp/latest_go.tar.gz && rm /tmp/latest_go.tar.gz
+	scripts/update_go.sh
 
 ## i_nvm: Install nvm
 i_nvm:
-	mkdir $$HOME/.nvm
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+	scripts/update_nvm.sh
 
 ## i_paru: Install paru
 i_paru:
