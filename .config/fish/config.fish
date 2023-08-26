@@ -27,7 +27,7 @@ fish_add_path $RBENV_ROOT/bin
 fish_add_path $XDG_DATA_HOME/cargo/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
-fish_add_path ~/src/go/bin
+fish_add_path $XDG_DATA_HOME/go/bin
 fish_add_path ~/go/bin
 fish_add_path ~/src/vim/src
 fish_add_path ~/.vim/dein/repos/github.com/thinca/vim-themis/bin

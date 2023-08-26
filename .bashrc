@@ -88,21 +88,7 @@ update_deno() {
 }
 
 update_go() {
-  echo Looking up latest version
-  local path=$HOME/src
-  local go_path=$path/go
-  local version=$(go version 2> /dev/null | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
-  local latest_version=$(curl --silent https://go.dev/VERSION?m=text | head -1)
-  if [[ "$version" == "$latest_version" ]]; then
-    echo "Local go version $version is the most recent release"
-    return 0
-  fi
-  local archive_uri=https://go.dev/dl/$latest_version.linux-amd64.tar.gz
-  local archive=$path/$latest_version.tar.gz
-  curl -L $archive_uri > "$archive"
-  [[ -d "$go_path" ]] && rm -rf $go_path
-  mkdir -p $go_path
-  tar -C $path -xzf $archive && rm $archive
+  $HOME/dotfiles/scripts/update_go.sh
 }
 
 update_rust() {
@@ -252,8 +238,8 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/src/go/bin:$PATH"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
+export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 export VIMRUNTIME=$HOME/src/vim/runtime
