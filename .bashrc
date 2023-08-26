@@ -13,8 +13,8 @@ update() {
   update_rbenv
   echo -e "\n### GEM ###"
   update_gem
-  # echo -e "\n### NVM ###"
-  # update_nvm
+  echo -e "\n### NVM ###"
+  update_nvm
   # echo -e "\n### PIP ###"
   # update_pip
   echo -e "\n### DENO ###"
@@ -67,15 +67,7 @@ update_gem() {
 }
 
 update_nvm() {
-  git -C $NVM_DIR fetch --tags origin
-  local latest_commit=$(git -C $NVM_DIR rev-list --tags --max-count=1)
-  local latest_tag=$(git -C $NVM_DIR describe --abbrev=0 --tags --match \
-    "v[0-9]*" $latest_commit)
-  git -C $NVM_DIR checkout $latest_tag
-  . $NVM_DIR/nvm.sh
-  nvm install stable --latest-npm
-  nvm install-latest-npm
-  npm update
+  $DOTFILES_ROOT/scripts/update_nvm.sh
 }
 
 update_pip() {
@@ -259,10 +251,10 @@ eval "$(rbenv init - bash)"
 export RUSTUP_ROOT=$XDG_DATA_HOME/rustup
 export CARGO_ROOT=$XDG_DATA_HOME/cargo
 
-export NVM_DIR=$HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use latest > /dev/null
+export NVM_DIR=$XDG_DATA_HOME/nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then . $NVM_DIR/nvm.sh; fi
+if [ -s "$NVM_DIR/bash_completion" ]; then . "$NVM_DIR/bash_completion"; fi
+nvm use node > /dev/null
 
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 

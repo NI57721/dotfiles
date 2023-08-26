@@ -10,10 +10,17 @@ set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff
 set -gx FLYCTL_INSTALL $HOME/.fly
-set -gx NVM_DIR $HOME/.nvm
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx NVM_DIR $XDG_DATA_HOME/nvm
+set -gx nvm_data $NVM_DIR/versions/node
+if [ -d "$nvm_data" ]
+  cp /dev/null "$nvm_data/.index"
+  for node_path in $nvm_data/*
+    echo $node_path | sed -e "s!^.*/!!" | tee -a "$nvm_data/.index" > /dev/null
+  end
+end
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
@@ -107,11 +114,6 @@ abbr -a fly flyctl
 abbr chrome swaymsg exec "google-chrome-stable"
 abbr vlc    swaymsg exec "vlc"
 
-# for NVM
-[ -s "$NVM_DIR/nvm.sh" ] && bash -c ". $NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && bash -c ". $NVM_DIR/bash_completion"
-nvm use latest > /dev/null
-
 status --is-interactive; and rbenv init - fish | source
 
 # Settings for WSL2
@@ -159,7 +161,14 @@ function update_gem
 end
 
 function update_nvm
-  bash -c ". $HOME/.bashrc && update_nvm"
+  $DOTFILES_ROOT/scripts/update_nvm.sh
+  set -gx nvm_data $NVM_DIR/versions/node
+  if [ ! -d "$nvm_data" ]; return 1; end
+
+  cp /dev/null "$nvm_data/.index"
+  for node_path in $nvm_data/*
+    echo $node_path | sed -e "s!^.*/!!" | tee -a "$nvm_data/.index" > /dev/null
+  end
 end
 
 function update_pip
