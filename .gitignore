@@ -1,40 +1,43 @@
-### all ignore ###
+### This is an allowlist
+### Once ignore all
 /*
 /.**
 
-### config
+### $XDG_CONFIG_HOME
 !/.config/
-!/.config/**
+
+!/.config/fish/config.fish
+!/.config/fish/fish_plugins
+
+!/.config/git/config
+!/.config/git/gitignore_global
+
+!/.config/paru/paru.conf
+
+!/.config/sway/config
+!/.config/sway/clamshell.sh
+!/.config/sway/ime-vim.sh
+!/.config/sway/recorder.sh
+
+!/.config/tmux/tmux.conf
+
+!/.config/waybar/config
+!/.config/waybar/style.css
+!/.config/waybar/scripts/ppp.sh
+
+!/.config/wezterm/wezterm.lua
 
 ### bash
 !/.bashrc
 
-### fish
-!/.config/fish/
-!/.config/fish/**
-/.config/fish/config.fish.local
-/.config/fish/fish_variables
-/.config/fish/functions/
-
-### vim
+### Vim
 !/.vimrc
-!/.vimrc.ime
-!/.vim/
-!/.vim/*/
 !/.vim/vsnip/*.json
-!/.vim/rc/
-!/.vim/rc/**
+!/.vim/rc/*.toml
 
-### git
-!/.gitconfig
-!/.gitignore_global
-
-### grub
-~/.config/grub/**
 
 ### /scripts
-!/scripts
-!/scripts/**
+!/scripts/*.sh
 
 !/README.md
 !/LICENSE
@@ -43,6 +46,6 @@
 !.gitignore
 !.gitkeep
 
-### Vim's swap files
+### Ignore Vim's swap files
 .*.sw?
 
