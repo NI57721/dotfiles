@@ -1,16 +1,16 @@
-set -gx XDG_CONFIG_HOME ~/.config
-set -gx XDG_CACHE_HOME  ~/.cache
-set -gx XDG_DATA_HOME   ~/.local/share
-set -gx XDG_STATE_HOME  ~/.local/state
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_CACHE_HOME  $HOME/.cache
+set -gx XDG_DATA_HOME   $HOME/.local/share
+set -gx XDG_STATE_HOME  $HOME/.local/state
 set -gx DOTFILES_ROOT   $HOME/dotfiles
 
-set -gx VIMRUNTIME ~/src/vim/runtime
+set -gx VIMRUNTIME $HOME/src/vim/runtime
 set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff
-set -gx FLYCTL_INSTALL ~/.fly
-set -gx NVM_DIR ~/.nvm
+set -gx FLYCTL_INSTALL $HOME/.fly
+set -gx NVM_DIR $HOME/.nvm
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
@@ -22,16 +22,16 @@ set -g theme_display_vi yes
 set -g theme_project_dir_length 1
 
 
-fish_add_path ~/.local/bin
-fish_add_path ~/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/bin
 fish_add_path $RBENV_ROOT/bin
 fish_add_path $XDG_DATA_HOME/cargo/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path $XDG_DATA_HOME/go/bin
-fish_add_path ~/go/bin
-fish_add_path ~/src/vim/src
-fish_add_path ~/.vim/dein/repos/github.com/thinca/vim-themis/bin
+fish_add_path $HOME/go/bin
+fish_add_path $HOME/src/vim/src
+fish_add_path $HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin
 
 
 set -x less "-nm"
@@ -143,51 +143,51 @@ function mkcd
 end
 
 function update
-  bash -c ". ~/.bashrc && update"
+  bash -c ". $HOME/.bashrc && update"
 end
 
 function update_packages
-  bash -c ". ~/.bashrc && update_packages"
+  bash -c ". $HOME/.bashrc && update_packages"
 end
 
 function update_rbenv
-  bash -c ". ~/.bashrc && update_rbenv"
+  bash -c ". $HOME/.bashrc && update_rbenv"
 end
 
 function update_gem
-  bash -c ". ~/.bashrc && update_gem"
+  bash -c ". $HOME/.bashrc && update_gem"
 end
 
 function update_nvm
-  bash -c ". ~/.bashrc && update_nvm"
+  bash -c ". $HOME/.bashrc && update_nvm"
 end
 
 function update_pip
-  bash -c ". ~/.bashrc && update_pip"
+  bash -c ". $HOME/.bashrc && update_pip"
 end
 
 function update_deno
-  bash -c ". ~/.bashrc && update_deno"
+  bash -c ". $HOME/.bashrc && update_deno"
 end
 
 function update_go
-  bash -c ". ~/.bashrc && update_go"
+  bash -c ". $HOME/.bashrc && update_go"
 end
 
 function update_rust
-  bash -c ". ~/.bashrc && update_rust"
+  bash -c ". $HOME/.bashrc && update_rust"
 end
 
 function update_tpm
-  bash -c ". ~/.bashrc && update_tpm"
+  bash -c ". $HOME/.bashrc && update_tpm"
 end
 
 function update_fisher
-  bash -c ". ~/.bashrc && update_fisher"
+  bash -c ". $HOME/.bashrc && update_fisher"
 end
 
 function update_vim
-  bash -c ". ~/.bashrc && update_vim"
+  bash -c ". $HOME/.bashrc && update_vim"
 end
 
 
