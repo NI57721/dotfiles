@@ -2,6 +2,7 @@ set -gx XDG_CONFIG_HOME ~/.config
 set -gx XDG_CACHE_HOME  ~/.cache
 set -gx XDG_DATA_HOME   ~/.local/share
 set -gx XDG_STATE_HOME  ~/.local/state
+set -gx DOTFILES_ROOT   $HOME/dotfiles
 
 set -gx VIMRUNTIME ~/src/vim/runtime
 set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"

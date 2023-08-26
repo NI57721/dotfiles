@@ -229,6 +229,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
+export DOTFILES_ROOT=$HOME/dotfiles
 
 export VISUAL='vim --noplugin'
 export MANPAGER="vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
