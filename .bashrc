@@ -258,6 +258,8 @@ nvm use node > /dev/null
 
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
 alias ..='cd ..'

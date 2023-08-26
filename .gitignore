@@ -23,6 +23,8 @@
 
 !/.config/tmux/tmux.conf
 
+!/.config/vim/vimrc
+
 !/.config/waybar/config
 !/.config/waybar/style.css
 !/.config/waybar/scripts/ppp.sh
