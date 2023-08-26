@@ -256,6 +256,8 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then . $NVM_DIR/nvm.sh; fi
 if [ -s "$NVM_DIR/bash_completion" ]; then . "$NVM_DIR/bash_completion"; fi
 nvm use node > /dev/null
 
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
 alias ..='cd ..'

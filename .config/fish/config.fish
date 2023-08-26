@@ -15,6 +15,8 @@ set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx NVM_DIR $XDG_DATA_HOME/nvm
 set -gx nvm_data $NVM_DIR/versions/node
+set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
+
 if [ -d "$nvm_data" ]
   cp /dev/null "$nvm_data/.index"
   for node_path in $nvm_data/*
