@@ -80,7 +80,7 @@ update_deno() {
 }
 
 update_go() {
-  $HOME/dotfiles/scripts/update_go.sh
+  $DOTFILES_ROOT/scripts/update_go.sh
 }
 
 update_rust() {

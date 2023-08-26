@@ -30,7 +30,6 @@ set -g theme_project_dir_length 1
 
 
 fish_add_path $HOME/.local/bin
-fish_add_path $HOME/bin
 fish_add_path $RBENV_ROOT/bin
 fish_add_path $XDG_DATA_HOME/cargo/bin
 fish_add_path $FLYCTL_INSTALL/bin
@@ -39,7 +38,6 @@ fish_add_path $XDG_DATA_HOME/go/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/src/vim/src
 fish_add_path $HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin
-
 
 set -x less "-nm"
 
@@ -180,7 +178,7 @@ function update_deno
 end
 
 function update_go
-  bash -c ". $HOME/.bashrc && update_go"
+  $DOTFILES_ROOT/scripts/update_go.sh
 end
 
 function update_rust
