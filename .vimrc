@@ -333,13 +333,13 @@ let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
 call skkeleton#azik#add_table('us')
 call skkeleton#config({
   \   'globalDictionaries': [
-  \     ['~/.skk/SKK-JISYO.L', 'euc-jp'],
-  \     ['~/.skk/SKK-JISYO.geo', 'euc-jp'],
-  \     ['~/.skk/SKK-JISYO.jinmei', 'euc-jp'],
-  \     ['~/.skk/SKK-JISYO.propernoun', 'euc-jp'],
-  \     ['~/.skk/SKK-JISYO.station', 'euc-jp'],
-  \     ['~/.skk/SKK-JISYO.emoji.utf8', 'utf-8'],
-  \     ['~/.skk/zipcode/SKK-JISYO.zipcode', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.L', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.geo', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.jinmei', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.propernoun', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.station', 'euc-jp'],
+  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.emoji.utf8', 'utf-8'],
+  \     ['$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode', 'euc-jp'],
   \   ],
   \   'kanaTable': 'azik',
   \   'eggLikeNewline': v:true,

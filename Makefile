@@ -47,7 +47,6 @@ endif
 
 
 PROJECT_PATH = $$HOME/ ## WIP
-SKK_DIC_PATH = $$HOME/.skk
 SRC_PATH     = $$HOME/src
 
 LINKED_FILES = foo bar baz ## WIP
@@ -199,8 +198,8 @@ i_rust:
 
 ## i_skk_dictionaries: Install dictionary files for skk
 i_skk_dictionaries:
-	mkdir $(SKK_DIC_PATH)
-	curl --remote-name-all --output-dir $(SKK_DIC_PATH) \
+	mkdir -p $$XDG_DATA_HOME/skk
+	curl --remote-name-all --output-dir $$XDG_DATA_HOME/skk \
 	  https://skk-dev.github.io/dict/SKK-JISYO.L.gz \
 	  https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz \
 	  https://skk-dev.github.io/dict/SKK-JISYO.geo.gz \
@@ -208,8 +207,9 @@ i_skk_dictionaries:
 	  https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
 	  https://skk-dev.github.io/dict/zipcode.tar.gz \
 	  https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
-	find $(SKK_DIC_PATH) -name "*.gz" | xargs -I{} gzip -d {}
-	tar -xf $(SKK_DIC_PATH)/zipcode.tar -C $(SKK_DIC_PATH) && rm $(SKK_DIC_PATH)/zipcode.tar
+	find $$XDG_DATA_HOME/skk -name "*.gz" | xargs -I{} gzip -d {}
+	tar -xf $$XDG_DATA_HOME/skk/zipcode.tar -C $$XDG_DATA_HOME/skk && \
+	  rm $$XDG_DATA_HOME/skk/zipcode.tar
 
 ## i_tpm: Install tpm
 i_tpm:
