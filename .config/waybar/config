@@ -5,7 +5,7 @@
     "spacing": 2, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/ppp", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "idle_inhibitor"],
+    "modules-right": ["custom/ppp", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "custom/audio_idle_inhibitor", "idle_inhibitor"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -27,6 +27,18 @@
             "deactivated": ""
         }
     },
+    // "custom/audio_idle_inhibitor": {
+    //     "format": "{icon}",
+    //     "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+    //     "exec-if": "which sway-audio-idle-inhibit",
+    //     "return-type": "json",
+    //     "format-icons": {
+    //         "output": "",
+    //         "input": "",
+    //         "output-input": "  ",
+    //         "none": ""
+    //     }
+    // },
     "tray": {
         "icon-size": 24,
         "spacing": 1
