@@ -4,8 +4,6 @@
 /.**
 
 ### $XDG_CONFIG_HOME
-!/.config/
-
 !/.config/fish/config.fish
 !/.config/fish/fish_plugins
 
@@ -38,6 +36,7 @@
 ### bash
 !/.bashrc
 
+!/.xinitrc
 
 ### /scripts
 !/scripts/*.sh
@@ -45,7 +44,6 @@
 !/README.md
 !/LICENSE
 !/Makefile
-!/.xinitrc
 !.gitignore
 !.gitkeep
 
