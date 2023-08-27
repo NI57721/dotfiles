@@ -477,9 +477,10 @@ cnoremap <C-C> <Home>Capture <CR>
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
 
-command! Vimrc :tabnew $XDG_CONFIG_HOME/vim/vimrc
-command! Srrc  :source $XDG_CONFIG_HOME/vim/vimrc
-command! DeinTOML :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml | :tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
+command! RC :tabnew $XDG_CONFIG_HOME/vim/vimrc |
+            \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml |
+            \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
+command! SR :source $XDG_CONFIG_HOME/vim/vimrc
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
