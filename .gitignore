@@ -33,10 +33,10 @@
 
 !/.config/wezterm/wezterm.lua
 
+!/.config/X11/xinitrc
+
 ### bash
 !/.bashrc
-
-!/.xinitrc
 
 ### /scripts
 !/scripts/*.sh
