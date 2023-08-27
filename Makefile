@@ -66,7 +66,7 @@ backup:
 create_links:
 
 ## initialize: Initialize settings for some software
-initialize: init_git init_grub init_mirrorlist init_pacman init_timezone
+initialize: init_bash init_git init_grub init_mirrorlist init_pacman init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
 install: install_go_packages \
@@ -75,6 +75,17 @@ install: install_go_packages \
 
 ## install_optional: Install a tools for guest OSs on VirtualBox
 install_optional: i_virtualbox_ga
+
+## init_bash: Add settings to read $XDG_CONFIG_HOME/bash/bashrc
+init_bash:
+	if [ -f $$XDG_CONFIG_HOME/bash/bashrc ]; then \
+	  echo -e "\
+	\n\
+	# Read the bash config file in an XDG Base Directory\n\
+	. $$XDG_CONFIG_HOME/bash/bashrc\n\
+	" | \
+	  sudo tee -a /etc/bash.bashrc > /dev/null; \
+	fi
 
 ## init_git: Initialize settings for git
 init_git:

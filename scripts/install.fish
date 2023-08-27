@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 set project_root (realpath (dirname (status dirname)))
-set linked_files .config/vim/{vimrc,rc/dein{,_lazy}.toml} .config/vsnip/ruby.json .config/fish/{config.fish,fish_plugins} .config/git/{config,gitignore_global} .config/tmux/tmux.conf .bashrc .config/paru/paru.conf .config/waybar/{config,style.css,scripts/ppp.sh} .config/wezterm/wezterm.lua .config/sway/{config,clamshell.sh,ime-vim.sh,recorder.sh} .config/npm/npmrc .config/X11/xinitrc
+set linked_files .config/vim/{vimrc,rc/dein{,_lazy}.toml} .config/vsnip/ruby.json .config/fish/{config.fish,fish_plugins} .config/git/{config,gitignore_global} .config/tmux/tmux.conf .config/bash/bashrc .config/paru/paru.conf .config/waybar/{config,style.css,scripts/ppp.sh} .config/wezterm/wezterm.lua .config/sway/{config,clamshell.sh,ime-vim.sh,recorder.sh} .config/npm/npmrc .config/X11/xinitrc
 
 
 function success

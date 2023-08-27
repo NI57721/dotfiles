@@ -250,6 +250,7 @@ nvm use node > /dev/null
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export HISTFILE=$XDG_STATE_HOME/bash/history
 
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
@@ -260,8 +261,8 @@ alias ll='ls -al'
 alias lss='ls -ACF'
 alias kila='kill -9'
 
-alias virc='vim $HOME/.bashrc'
-alias srrc='. $HOME/.bashrc'
+alias virc='vim -p $XDG_CONFIG_HOME{/fish/config.fish,bash/bashrc}'
+alias srrc='. $XDG_CONFIG_HOME/bash/bashrc'
 
 alias cgr="cd \$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
 alias gist="git switch"
@@ -437,7 +438,7 @@ fi
 
 # Read .bashrc.local, if any, which may contain credentials or specific
 # options
-if [ -f "$HOME/.bashrc.local" ]; then
-  . $HOME/.bashrc.local
+if [ -f "$XDG_CONFIG_HOME/bash/bashrc.local" ]; then
+  . $XDG_CONFIG_HOME/bash/bashrc.local
 fi
 

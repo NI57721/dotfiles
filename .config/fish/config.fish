@@ -17,6 +17,7 @@ set -gx NVM_DIR $XDG_DATA_HOME/nvm
 set -gx nvm_data $NVM_DIR/versions/node
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -gx VIMINIT 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+set -gx HISTFILE $XDG_STATE_HOME/bash/history
 
 if [ -d "$nvm_data" ]
   cp /dev/null "$nvm_data/.index"
@@ -48,7 +49,7 @@ abbr -a lss ls -acf
 abbr -a ll ls -al
 abbr -a kila kill -9
 abbr -a psa ps aux \| grep -v grep \| grep
-abbr -a virc  vim    $XDG_CONFIG_HOME/fish/config.fish
+abbr -a virc  vim -p $XDG_CONFIG_HOME/{fish/config.fish,bash/bashrc}
 abbr -a vircl vim    $XDG_CONFIG_HOME/fish/config.fish.local
 abbr -a srrc  source $XDG_CONFIG_HOME/fish/config.fish
 abbr -a .. cd ..
