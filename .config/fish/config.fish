@@ -18,6 +18,7 @@ set -gx nvm_data $NVM_DIR/versions/node
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -gx VIMINIT 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
+set -gx GOPATH $XDG_DATA_HOME/go-workspace
 
 if [ -d "$nvm_data" ]
   cp /dev/null "$nvm_data/.index"
@@ -39,7 +40,7 @@ fish_add_path $XDG_DATA_HOME/cargo/bin
 fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path $XDG_DATA_HOME/go/bin
-fish_add_path $HOME/go/bin
+fish_add_path $GOPATH/bin
 fish_add_path $XDG_DATA_HOME/vim/src
 fish_add_path $XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin
 

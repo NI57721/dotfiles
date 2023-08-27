@@ -224,7 +224,7 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 export VIMRUNTIME=$XDG_DATA_HOME/vim/runtime
 export PATH="$XDG_DATA_HOME/vim/src:$PATH"
@@ -251,6 +251,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export HISTFILE=$XDG_STATE_HOME/bash/history
+export GOPATH=$XDG_DATA_HOME/go-workspace
 
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
