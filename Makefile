@@ -223,15 +223,7 @@ i_vim:
 	# libluajit-5.1-2 libperl-dev libtinfo-dev libxmu-dev libxpm-dev lua5.2
 	# python3-dev ruby-dev
 	$(INSTALL_PKG) autoconf automake gettext luajit
-	mkdir -p $(SRC_PATH)
-	if [ ! -e $(SRC_PATH)/vim ]; then git clone https://github.com/vim/vim.git $(SRC_PATH)/vim; fi
-	git -C $(SRC_PATH)/vim pull
-	cd $(SRC_PATH)/vim/src && \
-	  ./configure \
-	    --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
-	    --enable-python3interp --enable-rubyinterp --enable-luainterp \
-	    --with-luajit --enable-fail-if-missing
-	cd $(SRC_PATH)/vim/src && make
+	scripts/update_vim.sh
 
 ## i_virtualbox_ga: Install VirtualBox Guest Additions
 i_virtualbox_ga:

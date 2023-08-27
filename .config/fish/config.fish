@@ -4,7 +4,7 @@ set -gx XDG_DATA_HOME   $HOME/.local/share
 set -gx XDG_STATE_HOME  $HOME/.local/state
 set -gx DOTFILES_ROOT   $HOME/dotfiles
 
-set -gx VIMRUNTIME $HOME/src/vim/runtime
+set -gx VIMRUNTIME $XDG_DATA_HOME/vim/runtime
 set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
@@ -39,8 +39,8 @@ fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path $XDG_DATA_HOME/go/bin
 fish_add_path $HOME/go/bin
-fish_add_path $HOME/src/vim/src
-fish_add_path $HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin
+fish_add_path $XDG_DATA_HOME/vim/src
+fish_add_path $XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin
 
 set -x less "-nm"
 
@@ -197,7 +197,7 @@ function update_fisher
 end
 
 function update_vim
-  bash -c ". $HOME/.bashrc && update_vim"
+  $DOTFILES_ROOT/scripts/update_vim.sh
 end
 
 

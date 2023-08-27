@@ -96,16 +96,7 @@ update_fisher() {
 }
 
 update_vim() {
-  mkdir -p $HOME/src
-  if [ ! -e $HOME/src/vim ]; then git clone https://github.com/vim/vim.git $HOME/src/vim; fi
-  git -C $HOME/src/vim pull
-  cd $HOME/src/vim/src
-  ./configure \
-    --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
-    --enable-python3interp --enable-rubyinterp --enable-luainterp \
-    --with-luajit --enable-fail-if-missing
-  make
-  cd -
+  $DOTFILES_ROOT/scripts/update_vim.sh
 }
 
 # If not running interactively, don't do anything below
@@ -235,9 +226,9 @@ export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
-export VIMRUNTIME=$HOME/src/vim/runtime
-export PATH="$HOME/src/vim/src:$PATH"
-export PATH="$HOME/.vim/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
+export VIMRUNTIME=$XDG_DATA_HOME/vim/runtime
+export PATH="$XDG_DATA_HOME/vim/src:$PATH"
+export PATH="$XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
 
 export FLYCTL_INSTALL=$HOME/.fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
