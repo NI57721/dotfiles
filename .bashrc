@@ -227,6 +227,7 @@ nvm use node > /dev/null
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export DVDCSS_CACHE=$XDG_CACHE_HOME/dvdcss
 export HISTFILE=$XDG_STATE_HOME/bash/history
 export GOPATH=$XDG_DATA_HOME/go-workspace
 

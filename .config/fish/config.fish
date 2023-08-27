@@ -17,6 +17,7 @@ set -gx NVM_DIR $XDG_DATA_HOME/nvm
 set -gx nvm_data $NVM_DIR/versions/node
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -gx VIMINIT 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+set -gx DVDCSS_CACHE $XDG_CACHE_HOME/dvdcss
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
 
