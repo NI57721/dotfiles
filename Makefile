@@ -182,8 +182,13 @@ i_nvm:
 
 ## i_paru: Install paru
 i_paru:
-	git clone https://aur.archlinux.org/paru.git $(SRC_PATH)/paru
-	cd $(SRC_PATH)/paru && makepkg -si
+	mkdir -p $$XDG_DATA_HOME/paru
+	if [ -d $$XDG_DATA_HOME/paru/.git ]; then \
+	  git -C $$XDG_DATA_HOME/paru pull; \
+	else \
+	  git clone https://github.com/vim/vim.git $$XDG_DATA_HOME/paru; \
+	fi
+	cd $$XDG_DATA_HOME/paru && makepkg -si
 
 ## i_rbenv: Install rbenv
 i_rbenv:
