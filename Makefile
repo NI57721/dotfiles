@@ -20,7 +20,7 @@ PACKAGES += wf-recorder wget
 AUR_PACKAGES := google-chrome grimshot todotxt ttf-hackgen vlc-nox bluez-firmware
 
 
-GO_PACKAGES := github.com/rhysd/vim-startuptime@latest
+GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
 
 
 # Default distribution is set to ArchLinux.
@@ -140,7 +140,9 @@ install_aur: i_paru
 
 ## install_go_packages: Install go packages
 install_go_packages:
-	go install $(GO_PACKAGES)
+	for go_package in $(GO_PACKAGES); do \
+	  go install $$go_package; \
+	done;
 
 ## i_deno: Install deno
 i_deno:
