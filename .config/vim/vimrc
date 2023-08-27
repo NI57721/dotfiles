@@ -13,7 +13,7 @@ endif
 set fileformats=unix,dos
 
 " dein.vim
-let s:dein_dir = expand('~/.vim/dein')
+let s:dein_dir = expand('$XDG_DATA_HOME/dein')
 let s:dein_repo_dir = s:dein_dir .. '/repos/github.com/Shougo/dein.vim'
 
 " clone dein.vim when not having installed dein.vim
@@ -25,9 +25,9 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir, [expand('~/.vimrc')])
+  call dein#begin(s:dein_dir)
   " Set directories for dein.toml and dein_lazy.toml
-  let s:toml_dir = expand('~/.vim/rc')
+  let s:toml_dir = expand('$XDG_CONFIG_HOME/vim/rc')
   call dein#load_toml(s:toml_dir .. '/dein.toml', {'lazy': 0})
   call dein#load_toml(s:toml_dir .. '/dein_lazy.toml', {'lazy': 1})
   call dein#end()
@@ -327,7 +327,7 @@ nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 let g:fzf_buffers_jump = 1
 
 " Specify a user snippet directory
-let g:vsnip_snippet_dir = expand('~/.vim/vsnip')
+let g:vsnip_snippet_dir = expand('$XDG_CONFIG_HOME/vsnip')
 
 " Define a skk dictionary
 call skkeleton#azik#add_table('us')
@@ -475,9 +475,9 @@ cnoremap <C-C> <Home>Capture <CR>
 " Open automatically quickfix-window after excuting grep like commands
 autocmd QuickFixCmdPost *grep* cwindow
 
-command! Vimrc :tabnew ~/.vimrc
-command! Srrc  :source ~/.vimrc
-command! DeinTOML :tabnew ~/.vim/rc/dein.toml|:tabnew ~/.vim/rc/dein_lazy.toml
+command! Vimrc :tabnew $XDG_CONFIG_HOME/vim/vimrc
+command! Srrc  :source $XDG_CONFIG_HOME/vim/vimrc
+command! DeinTOML :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml | :tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
@@ -539,7 +539,7 @@ vmap tlj <Cmd>call deepl#v("JA")<CR><ESC>
 nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
 
 
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
+if filereadable(expand('$XDG_CONFIG_HOME/vim/vimrc.local'))
+  source $XDG_CONFIG_HOME/vim/vimrc.local
 endif
 

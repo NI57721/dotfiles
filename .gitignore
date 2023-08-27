@@ -24,6 +24,10 @@
 !/.config/tmux/tmux.conf
 
 !/.config/vim/vimrc
+!/.config/vim/rc/dein.toml
+!/.config/vim/rc/dein_lazy.toml
+
+!/.config/vsnip/ruby.json
 
 !/.config/waybar/config
 !/.config/waybar/style.css
@@ -33,11 +37,6 @@
 
 ### bash
 !/.bashrc
-
-### Vim
-!/.vimrc
-!/.vim/vsnip/*.json
-!/.vim/rc/*.toml
 
 
 ### /scripts
