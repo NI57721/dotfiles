@@ -12,6 +12,8 @@
 !/.config/git/config
 !/.config/git/gitignore_global
 
+!/.config/irb/irbrc
+
 !/.config/npm/npmrc
 
 !/.config/paru/paru.conf
