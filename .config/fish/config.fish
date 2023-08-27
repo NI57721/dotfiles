@@ -148,19 +148,42 @@ function mkcd
 end
 
 function update
-  bash -c ". $HOME/.bashrc && update"
+  echo -e "### packages ###"
+  update_packages
+  echo -e "\n### RBENV ###"
+  update_rbenv
+  echo -e "\n### GEM ###"
+  update_gem
+  echo -e "\n### NVM ###"
+  update_nvm
+  # echo -e "\n### PIP ###"
+  # update_pip
+  echo -e "\n### DENO ###"
+  update_deno
+  echo -e "\n### GO ###"
+  update_go
+  echo -e "\n### RUST ###"
+  update_rust
+  echo -e "\n### TPM ###"
+  update_tpm
+  echo -e "\n### FISHER ###"
+  update_fisher
+  echo -e "\n### VIM ###"
+  update_vim
 end
 
 function update_packages
-  bash -c ". $HOME/.bashrc && update_packages"
+  $DOTFILES_ROOT/scripts/update_packages.sh
 end
 
 function update_rbenv
-  bash -c ". $HOME/.bashrc && update_rbenv"
+  git -C (rbenv root) pull
+  git -C (rbenv root)/plugins/ruby-build pull
 end
 
 function update_gem
-  bash -c ". $HOME/.bashrc && update_gem"
+  gem update --system
+  gem update
 end
 
 function update_nvm
@@ -175,11 +198,12 @@ function update_nvm
 end
 
 function update_pip
-  bash -c ". $HOME/.bashrc && update_pip"
+  pip install -U pip
+  pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
 end
 
 function update_deno
-  bash -c ". $HOME/.bashrc && update_deno"
+  deno upgrade
 end
 
 function update_go
@@ -187,15 +211,15 @@ function update_go
 end
 
 function update_rust
-  bash -c ". $HOME/.bashrc && update_rust"
+  rustup update
 end
 
 function update_tpm
-  bash -c ". $HOME/.bashrc && update_tpm"
+  $XDG_CONFIG_HOME/tmux/plugins/tpm/bin/update_plugins all
 end
 
 function update_fisher
-  bash -c ". $HOME/.bashrc && update_fisher"
+  fisher update
 end
 
 function update_vim
