@@ -166,7 +166,7 @@ nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
 nnoremap <leader>D <Cmd>call dein#update()<CR>
 nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
-nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
+" nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
 nnoremap <leader>w <Cmd>ShakyoClue<CR>
 nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
@@ -356,13 +356,15 @@ function s:mapAzikOkuri(input, feed) abort
     exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
       \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
       \   a:feed .. "')<CR>"
+    exec 'autocmd User skkeleton-disable-pre silent! ' .. mode ..
+      \   'unmap <buffer> ' .. a:input .. '<CR>'
   endfor
 endfunction
 
 function s:azikOkuri(input, feed) abort
   if g:skkeleton#state.phase ==# 'input:okurinasi' && g:skkeleton#mode !=# 'abbrev'
     \   && g:skkeleton#vim_status().prevInput =~# '\a$'
-    call skkeleton#handle('handleKey', {'key': a:feed})
+    call skkeleton#handle('handleKey', {'key': split(a:feed, '\zs')})
   else
     call skkeleton#handle('handleKey', {'key': a:input})
   endif

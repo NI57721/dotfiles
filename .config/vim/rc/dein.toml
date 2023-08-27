@@ -12,10 +12,10 @@ repo = 'prabirshrestha/vim-lsp'
 # on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
-# repo = 'vim-skk/skkeleton'
-repo = 'NI57721/skkeleton'
-rev = 'feature/handle-multiple-keys'
+repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
+# repo = 'NI57721/skkeleton'
+# rev = 'WIP'
 
 [[plugins]]
 # repo = 'kei-s16/skkeleton-azik-kanatable'
