@@ -8,7 +8,7 @@ PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois
 PACKAGES += pinta wl-clipboard
 # Sound
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
-PACKAGES += bluez-utils sway-audio-idle-inhibit-git
+PACKAGES += bluez-utils
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
@@ -17,7 +17,7 @@ PACKAGES += man-pages neofetch ntfs-3g pinta python-qrcode trash-cli virtualbox
 PACKAGES += wf-recorder wget
 
 
-AUR_PACKAGES := google-chrome grimshot todotxt ttf-hackgen vlc-nox bluez-firmware
+AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
 
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
@@ -94,18 +94,18 @@ init_git:
 	echo -e "\
 	Host github github.com\n\
 	  HostName github.com\n\
-	  IdentityFile $$HOME/.ssh/ni57721\n
-	  User git\n
+	  IdentityFile $$HOME/.ssh/ni57721\n\
+	  User git\n\
 	" | \
 	  tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
 ## init_grub: Initialize settings for grub, where grub is hidden
 init_grub:
-	echo -e "
+	echo -e "\
 	\n\
 	# Hiding grub menu.\n\
-	GRUB_FORCE_HIDDEN_MENU=\"true\"
+	GRUB_FORCE_HIDDEN_MENU=\"true\"\
 	" | \
 	  sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -135,8 +135,8 @@ install_packages:
 	$(INSTALL_PKG) $(PACKAGES)
 
 ## install_aur: Install AURs
-install_aur: i_paru
-	paru $(AUR_PACKAGES)
+install_aur: # i_paru
+	paru -S $(AUR_PACKAGES)
 
 ## install_go_packages: Install go packages
 install_go_packages:
@@ -179,10 +179,13 @@ i_fish:
 	if [ "$(DST)" == ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
+	echo /bin/fish | sudo tee -a /etc/shells
+	homectl update --shell=/bin/fish $$USER
 
 ## i_fisher: Install fisher
-i_fisher: i_fish
-	curl -sL https://git.io/fisher | source
+i_fisher: # i_fish
+# curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+	curl -sL https://git.io/fisher | fish
 	fish -c "fisher update"
 
 ## i_go: Install go
