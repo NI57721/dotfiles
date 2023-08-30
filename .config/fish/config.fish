@@ -227,6 +227,17 @@ function update_vim
   $DOTFILES_ROOT/scripts/update_vim.sh
 end
 
+function om
+  swaymsg output LVDS-1 disable
+end
+
+function von
+  sudo /etc/myip/myip-up
+end
+
+function vof
+  sudo /etc/myip/myip-down
+end
 
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
