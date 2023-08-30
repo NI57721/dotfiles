@@ -333,13 +333,13 @@ let g:vsnip_snippet_dir = expand('$XDG_CONFIG_HOME/vsnip')
 call skkeleton#azik#add_table('us')
 call skkeleton#config({
   \   'globalDictionaries': [
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.L', 'euc-jp'],
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.geo', 'euc-jp'],
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.jinmei', 'euc-jp'],
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.propernoun', 'euc-jp'],
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.station', 'euc-jp'],
-  \     ['$XDG_DATA_HOME/skk/SKK-JISYO.emoji.utf8', 'utf-8'],
-  \     ['$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode', 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.L'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.geo'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.jinmei'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.propernoun'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.station'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.emoji.utf8'), 'utf-8'],
+  \     [expand('$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode'), 'euc-jp'],
   \   ],
   \   'kanaTable': 'azik',
   \   'eggLikeNewline': v:true,
@@ -349,6 +349,7 @@ call skkeleton#config({
   \   'registerConvertResult': v:true,
   \   'showCandidatesCount': 1,
   \   'selectCandidateKeys': '12345qw',
+  \   'userJisyo': expand('$XDG_DATA_HOME/skk/skkeleton'),
   \ })
 
 function s:mapAzikOkuri(input, feed) abort
