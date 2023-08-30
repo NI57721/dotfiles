@@ -10,8 +10,8 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{index}:{icon}",
-        "format-icons": { "urgent": "", "focused": "", "default": "" }
+        "format": "{index}{icon}",
+        "format-icons": { "urgent": ":", "focused": "", "default": "" }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>",
