@@ -1,7 +1,7 @@
 ### This is an allowlist
 ### Once ignore all
-/*
-/.**
+*
+!*/
 
 ### $XDG_CONFIG_HOME
 !/.config/bash/bashrc
