@@ -7,8 +7,10 @@ if [[ "$version" == "$latest_version" ]]; then
   echo "Local go version $version is the most recent release"
   exit 0
 fi
+
 curl -L https://go.dev/dl/$latest_version.linux-amd64.tar.gz > /tmp/latest_go.tar.gz
-if [ -d $XDG_DATA_HOME/go ]; then rm -rf $XDG_DATA_HOME/go; fi
-mkdir -p $XDG_DATA_HOME/go
+go_root=$XDG_DATA_HOME/go
+if [ -d $go_root ]; then rm -rf $go_root; fi
+mkdir -p $go_root
 tar -C $XDG_DATA_HOME -xzf /tmp/latest_go.tar.gz && rm /tmp/latest_go.tar.gz
 
