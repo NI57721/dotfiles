@@ -253,3 +253,24 @@ i_virtualbox_ga:
 	sudo mount /dev/cdrom /mnt
 	sudo sh /mnt/VBoxLinuxAdditions.run
 
+## i_vpn: Install VPN settings for Interlink
+i_vpn_interlink: # pptpclient
+	curl https://www.interlink.or.jp/support/vpn/myip/myiptools/myiptools.tar.gz > /tmp/myiptools.tar.gz
+	sudo tar xvzf /tmp/myiptools.tar.gz -C /etc
+	rm /tmp/myiptools.tar.gz
+	echo -e "\
+	MYIP_SERVER=\"myip*.interlink.or.jp\"\n\
+	ID=\"mi*\"\n\
+	PASSWORD=\"****\"\n\
+	IPADDR=\"***.***.***.***\"\n\
+	DNS1=\"203.141.128.35\"\n\
+	DNS2=\"203.141.128.33\"\n\
+	CLIENT_GLOBALIP=\"AUTO\"\n\
+	" | \
+	  sudo tee /etc/myip/myip.conf
+	sudo vim -u NONE -N /etc/myip/myip.conf
+	sudo /etc/myip/myip-setup
+	sudo sed "2q; d" /etc/myip/myip.conf | sed "s/.*\"\(.*\)\"/\1/" | \
+	  xargs -I{} sudo cat /etc/ppp/peers/myip_{}
+	sudo cat /etc/ppp/chap-secrets
+
