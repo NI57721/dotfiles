@@ -5,7 +5,7 @@
 PACKAGES := base-devel curl fzf jq git linux-headers ntfs-3g openssh reflector
 PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois
 # GUI and Desktop
-PACKAGES += pinta qt5-wayland sway swayidle swaylock waybar wl-clipboard xorg-xwayland
+PACKAGES += pinta qt5-wayland sway swayidle swaylock thunar waybar wl-clipboard xorg-xwayland
 # Sound
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
 PACKAGES += bluez-utils
@@ -13,8 +13,8 @@ PACKAGES += bluez-utils
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
 PACKAGES += alacritty bat dust github-cli git-delta gnuplot grim hyperfine man-db
-PACKAGES += man-pages neofetch ntfs-3g pinta pptpclient putty python-qrcode trash-cli virtualbox
-PACKAGES += wf-recorder wget
+PACKAGES += man-pages neofetch ntfs-3g pinta pptpclient putty python-qrcode trash-cli udisks2
+PACKAGES += virtualbox wf-recorder wget
 
 
 AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
