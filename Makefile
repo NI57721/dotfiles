@@ -274,3 +274,13 @@ i_vpn_interlink: # pptpclient
 	  xargs -I{} sudo cat /etc/ppp/peers/myip_{}
 	sudo cat /etc/ppp/chap-secrets
 
+## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
+create_arch_linux_installer:
+	@echo -e "Check the name of a USB drive"
+	# ls -l /dev/disk/by-id/usb-*
+	@echo -e "\nEnsure that the USB drive is not mounted"
+	lsblk
+	@echo -e "\nDownload an ISO file"
+	xdg-open https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/
+	@echo -e "\nExecute \"cp archlinux-YYYY.MM.DD-x86_64.iso /dev/your/USB/without/suffix\""
+
