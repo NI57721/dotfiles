@@ -202,7 +202,7 @@ i_paru:
 	if [ -d $$XDG_DATA_HOME/paru/.git ]; then \
 	  git -C $$XDG_DATA_HOME/paru pull; \
 	else \
-	  git clone https://github.com/vim/vim.git $$XDG_DATA_HOME/paru; \
+	  git clone https://aur.archlinux.org/paru.git $$XDG_DATA_HOME/paru; \
 	fi
 	cd $$XDG_DATA_HOME/paru && makepkg -si
 
