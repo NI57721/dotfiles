@@ -157,8 +157,6 @@ function update
   update_gem
   echo -e "\n### NVM ###"
   update_nvm
-  # echo -e "\n### PIP ###"
-  # update_pip
   echo -e "\n### DENO ###"
   update_deno
   echo -e "\n### GO ###"
@@ -196,11 +194,6 @@ function update_nvm
   for node_path in $nvm_data/*
     echo $node_path | sed -e "s!^.*/!!" | tee -a "$nvm_data/.index" > /dev/null
   end
-end
-
-function update_pip
-  pip install -U pip
-  pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
 end
 
 function update_deno

@@ -15,8 +15,6 @@ update() {
   update_gem
   echo -e "\n### NVM ###"
   update_nvm
-  # echo -e "\n### PIP ###"
-  # update_pip
   echo -e "\n### DENO ###"
   update_deno
   echo -e "\n### GO ###"
@@ -45,11 +43,6 @@ update_gem() {
 
 update_nvm() {
   $DOTFILES_ROOT/scripts/update_nvm.sh
-}
-
-update_pip() {
-  pip install -U pip
-  pip list -o | tail -n +3 | sed -e "s/ .*//g" | xargs -t -I{} pip install -U {}
 }
 
 update_deno() {
