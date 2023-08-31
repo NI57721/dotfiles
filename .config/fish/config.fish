@@ -21,12 +21,7 @@ set -gx DVDCSS_CACHE $XDG_CACHE_HOME/dvdcss
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
 
-if [ -d "$nvm_data" ]
-  cp /dev/null "$nvm_data/.index"
-  for node_path in $nvm_data/*
-    echo $node_path | sed -e "s!^.*/!!" | tee -a "$nvm_data/.index" > /dev/null
-  end
-end
+nvm use (nvm list | sed "s/.*v\|[^0-9]\+\$//g" | sort | tail -1) > /dev/null
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
@@ -187,13 +182,6 @@ end
 
 function update_nvm
   $DOTFILES_ROOT/scripts/update_nvm.sh
-  set -gx nvm_data $NVM_DIR/versions/node
-  if [ ! -d "$nvm_data" ]; return 1; end
-
-  cp /dev/null "$nvm_data/.index"
-  for node_path in $nvm_data/*
-    echo $node_path | sed -e "s!^.*/!!" | tee -a "$nvm_data/.index" > /dev/null
-  end
 end
 
 function update_deno
