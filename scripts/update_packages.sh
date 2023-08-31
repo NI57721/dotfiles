@@ -13,8 +13,9 @@ case $ID in
     sudo apt-get autoclean -y
     sudo apt-get autoremove -y;;
   arch )
-    paru -Syu
-    [ -s $(paru -Qdtq) ] || paru -Qdtq | paru -Rs -;;
+    pkgmng=$(which paru 2> /dev/null || echo pacman)
+    $pkgmng -Syu
+    [ -s $($pkgmng -Qdtq) ] || $pkgmng -Qdtq | $pkgmng -Rs -;;
   rhel ) echo "Red Hat";;
   centos ) echo "CentOS";;
   fedora ) echo "Fedora";;
