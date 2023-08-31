@@ -25,6 +25,8 @@
 
 !/.config/tmux/tmux.conf
 
+!/.config/todo/config
+
 !/.config/vim/vimrc
 !/.config/vim/rc/dein.toml
 !/.config/vim/rc/dein_lazy.toml
