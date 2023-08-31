@@ -208,9 +208,9 @@ i_paru:
 
 ## i_rbenv: Install rbenv
 i_rbenv:
-	git clone https://github.com/rbenv/rbenv.git $$XDG_DATA_HOME/rbenv
-	mkdir -p $$XDG_DATA_HOME/rbenv/plugins
-	git clone https://github.com/rbenv/ruby-build.git $$XDG_DATA_HOME/rbenv/plugins/ruby-build
+	git clone https://github.com/rbenv/rbenv.git $$RBENV_ROOT
+	mkdir -p $$RBENV_ROOT/plugins
+	git clone https://github.com/rbenv/ruby-build.git $$RBENV_ROOT/plugins/ruby-build
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 ## i_rust: Install rust
