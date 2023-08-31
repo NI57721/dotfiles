@@ -270,6 +270,7 @@ alias tta="todo.sh -t add"
 alias ttd="todo.sh do"
 
 alias rm="rm -i"
+alias mv="mv -i"
 alias put="trash-put"
 alias puts="trash-put"
 
