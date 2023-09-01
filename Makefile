@@ -5,7 +5,8 @@
 PACKAGES := base-devel curl fzf jq git linux-headers ntfs-3g openssh reflector
 PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois
 # GUI and Desktop
-PACKAGES += pinta qt5-wayland sway swayidle swaylock thunar waybar wl-clipboard xorg-xwayland
+PACKAGES += libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
+PACKAGES += waybar wl-clipboard xorg-xwayland
 # Sound
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
 PACKAGES += bluez-utils
