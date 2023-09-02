@@ -3,7 +3,7 @@
     name = NI57721
 [core]
     editor = vim
-    excludesfile = $XDG_CONFIG_HOME/git/gitignore_global
+    excludesfile = ~/.config/git/gitignore_global
     pager = cat
 [credential "https://github.com"]
     helper = !/usr/bin/gh auth git-credential
