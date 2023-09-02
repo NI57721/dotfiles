@@ -160,6 +160,7 @@ set spelloptions& spelloptions+=camel
 set formatoptions+=M
 set nrformats+=unsigned
 set scrolloff=5
+set viminfofile=$XDG_CACHE_HOME/vim/viminfo
 set viminfo='1000,f1,<500,s10,h
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
