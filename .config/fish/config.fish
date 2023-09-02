@@ -76,7 +76,7 @@ abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gian git add -N
-abbr -a --set-cursor gic  git commit -m \'%\'
+abbr -a --set-cursor gic  git commit -m \"%\"
 abbr -a gis  git status
 abbr -a gil  git log --reverse --decorate --color=always
 abbr -a gilo git log --reverse --decorate --color=always origin -15
