@@ -45,6 +45,7 @@ set -x less "-nm"
 
 abbr -a lss ls -acf
 abbr -a ll ls -al
+abbr -a --set-cursor le % \| less
 abbr -a kila kill -9
 abbr -a psa ps aux \| grep -v grep \| grep
 abbr -a virc  vim -p $XDG_CONFIG_HOME/{fish/config.fish,bash/bashrc}
