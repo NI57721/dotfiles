@@ -106,7 +106,7 @@ init_grub:
 	echo -e "\
 	\n\
 	# Hiding grub menu.\n\
-	GRUB_FORCE_HIDDEN_MENU=\"true\"\
+	GRUB_FORCE_HIDDEN_MENU=true\
 	" | \
 	  sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
