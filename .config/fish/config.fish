@@ -20,6 +20,7 @@ set -gx VIMINIT 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 set -gx DVDCSS_CACHE $XDG_CACHE_HOME/dvdcss
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
+set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/repl_history
 
 nvm use (nvm list | sed "s/.*v\|[^0-9]\+\$//g" | sort | tail -1) > /dev/null
 

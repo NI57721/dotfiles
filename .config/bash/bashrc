@@ -223,6 +223,7 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export DVDCSS_CACHE=$XDG_CACHE_HOME/dvdcss
 export HISTFILE=$XDG_STATE_HOME/bash/history
 export GOPATH=$XDG_DATA_HOME/go-workspace
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node/repl_history
 
 if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
