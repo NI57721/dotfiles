@@ -16,7 +16,6 @@ linked_files+=(.config/vsnip/ruby.json)
 linked_files+=(.config/waybar/{config,style.css,scripts/ppp.sh})
 linked_files+=(.config/wezterm/wezterm.lua)
 linked_files+=(.config/X11/xinitrc)
-linked_files+=(.config/hoge/fuga.piyoi)
 
 backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
 

@@ -46,12 +46,6 @@ else
 	REMOVE_PKG     = sudo pacman -R
 endif
 
-
-PROJECT_PATH = $$HOME/ ## WIP
-SRC_PATH     = $$HOME/src
-
-LINKED_FILES = foo bar baz ## WIP
-
 ## help: Display this message
 help:
 	@grep -P "^## [a-zA-Z_-]+: .[^\n]*$$" $(MAKEFILE_LIST) \
@@ -59,9 +53,6 @@ help:
 
 ## all: Execute install and initialize
 all: install initialize
-
-## backup: WIP Make backups of data
-backup:
 
 ## link: Create links from the files in dotfiles repository into $HOME
 link:
