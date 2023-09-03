@@ -63,8 +63,9 @@ all: install initialize
 ## backup: WIP Make backups of data
 backup:
 
-## create_links: WIP Create links of data
-create_links:
+## link: Create links from the files in dotfiles repository into $HOME
+link:
+	scripts/link.sh
 
 ## initialize: Initialize settings for some software
 initialize: init_bash init_git init_grub init_mirrorlist init_pacman init_putty init_timezone
