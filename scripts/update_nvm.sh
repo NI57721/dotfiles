@@ -1,6 +1,7 @@
 #!/bin/bash -u
 
 mkdir -p $NVM_DIR
+mkdir -p $XDG_DATA_HOME/node
 if [ -d $NVM_DIR/.git ]; then
   git -C $NVM_DIR fetch --all
 else
