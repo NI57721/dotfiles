@@ -54,4 +54,5 @@
 
 ### Ignore Vim's swap files
 .*.sw?
+.sw?
 
