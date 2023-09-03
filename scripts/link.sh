@@ -16,8 +16,17 @@ linked_files+=(.config/vsnip/ruby.json)
 linked_files+=(.config/waybar/{config,style.css,scripts/ppp.sh})
 linked_files+=(.config/wezterm/wezterm.lua)
 linked_files+=(.config/X11/xinitrc)
+linked_files+=(.config/hoge/fuga.piyoi)
+
+backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
+
+mkdir -p $backup_path
 
 for file in "${linked_files[@]}"; do
+  mkdir -p $backup_path/$(dirname $file)
+  cp $HOME/$file $backup_path/$file &&
+    echo "SUCCESS 'cp $DOTFILES_ROOT/$file $backup_path/$file'" ||
+    echo "FAILURE 'cp $DOTFILES_ROOT/$file $backup_path/$file'" && continue
   mkdir -p $HOME/$(dirname $file)
   ln -snf $DOTFILES_ROOT/$file $HOME/$file &&
     echo "SUCCESS 'ln -snf $DOTFILES_ROOT/$file $HOME/$file'" ||
