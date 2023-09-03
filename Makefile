@@ -59,7 +59,8 @@ link:
 	scripts/link.sh
 
 ## initialize: Initialize settings for some software
-initialize: init_bash init_git init_grub init_mirrorlist init_pacman init_putty init_timezone
+initialize: init_bash init_git init_grub init_mirrorlist \
+	 init_pacman init_putty init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
 install: install_go_packages \
