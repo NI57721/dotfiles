@@ -1,5 +1,9 @@
 #!/bin/bash -u
 
+HOME=${HOME:-~}
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+DOTFILES_ROOT=${DOTFILES_ROOT:-$HOME/dotfiles}
+
 linked_files=()
 linked_files+=(.config/bash/bashrc)
 linked_files+=(.config/chrome-flags.conf)
