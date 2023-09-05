@@ -19,6 +19,7 @@ linked_files+=(.config/vim/{vimrc,rc/dein{,_lazy}.toml})
 linked_files+=(.config/vsnip/ruby.json)
 linked_files+=(.config/waybar/{config,style.css,scripts/ppp.sh})
 linked_files+=(.config/wezterm/wezterm.lua)
+# linked_files+=(.config/wget/wgetrc)
 linked_files+=(.config/X11/xinitrc)
 
 backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
