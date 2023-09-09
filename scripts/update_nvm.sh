@@ -18,8 +18,9 @@ nvm install-latest-npm
 
 nodes_path=$NVM_DIR/versions/node
 mkdir -p $nodes_path
-rm $nodes_path/.index
 for node_path in $NVM_DIR/versions/node/v*; do
-  basename $node_path | tee -a "$nvm_data/.index" > /dev/null
+  basename $node_path >> $nvm_data/.index
 done
+sort $nodes_path/.index | uniq > $nodes_path/.index_
+mv $nodes_path/.index{_,}
 
