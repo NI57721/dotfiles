@@ -8,10 +8,10 @@
     "modules-right": ["custom/ppp", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "custom/audio_idle_inhibitor", "idle_inhibitor"],
     // Modules configuration
     "sway/workspaces": {
-        "disable-scroll": true,
         "all-outputs": true,
+        "disable-scroll": true,
         "format": "{index}{icon}",
-        "format-icons": { "urgent": ":", "focused": "", "default": "" }
+        "format-icons": { "urgent": ":", "focused": "", "default": "", "persistent": "P" }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>",

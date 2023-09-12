@@ -73,8 +73,8 @@
 #workspaces button {
     font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
     padding: 0;
-   /*color: #999;*/
-    opacity: 0.3;
+    color: #999;
+    opacity: 0.5;
     background: none;
     font-size: 1em;
 }
