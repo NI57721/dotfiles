@@ -173,7 +173,7 @@ nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
 
 inoremap jj <ESC>
-inoremap JJ <ESC>yy
+" inoremap JJ <ESC>yy
 cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
@@ -201,7 +201,7 @@ noremap  <expr> <C-lt> ':tabmove -' .. v:count1 .. '<CR>'
 noremap  <expr> <C->>  ':tabmove +' .. v:count1 .. '<CR>'
 nnoremap gr        :tabnext<CR><C-G>
 nnoremap gR        :tabprevious<CR><C-G>
-nnoremap q:        :q<CR><C-G>
+" nnoremap q:        :q<CR><C-G>
 tnoremap <C-Right> <Cmd>tabnext<CR><C-G>
 tnoremap <C-Left>  <Cmd>tabprevious<CR><C-G>
 tnoremap <C-Down>  <Cmd>q<CR><C-G>
