@@ -361,8 +361,8 @@ function s:mapAzikOkuri(input, feed) abort
     exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
       \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
       \   a:feed .. "')<CR>"
-    exec 'autocmd User skkeleton-disable-pre silent! ' .. mode ..
-      \   'unmap <buffer> ' .. a:input .. '<CR>'
+    exec 'autocmd User skkeleton-disable-post silent! ' .. mode ..
+      \   'unmap <buffer> ' .. a:input
   endfor
 endfunction
 

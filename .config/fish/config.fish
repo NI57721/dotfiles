@@ -93,6 +93,7 @@ abbr -a --set-cursor gira git remote add origin git@github.com:%
 abbr -a gish git stash
 abbr -a --set-cursor giss git stash show -p stash@{%}
 abbr -a gipf git push --force-with-lease --force-if-includes
+abbr -a gipu git push --set-upstream origin \(git branch --show-current\)
 
 # for Docker
 abbr docl docker container ls

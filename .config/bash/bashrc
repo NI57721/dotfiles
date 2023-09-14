@@ -259,6 +259,7 @@ alias gira="git remote add origin git@github.com:"
 alias gish="git stash"
 alias giss="git stash show -p"
 alias gipf="git push --force-with-lease --force-if-includes"
+alias gipu="git push --set-upstream origin \$(git branch --show-current)"
 
 alias docl="docker container ls"
 alias doil="docker image ls"
