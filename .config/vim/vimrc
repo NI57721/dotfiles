@@ -376,6 +376,8 @@ function s:azikOkuri(input, feed) abort
 endfunction
 
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
+call skkeleton#register_keymap('henkan', '<', 'purgeCandidate')
+call skkeleton#register_keymap('henkan', 'X', v:false)
 augroup Skkeleton
   autocmd!
   let s:azikOkuriList = [
@@ -474,13 +476,57 @@ augroup Skkeleton
     \   'tsd':   ['つぇん', ''],
     \   'tsp':   ['つぉう', ''],
     \   'tsl':   ['つぉん', ''],
+    \   'dya':   ['ぢゃ', ''],
+    \   'dyu':   ['ぢゅ', ''],
+    \   'dye':   ['ぢぇ', ''],
+    \   'dyo':   ['ぢょ', ''],
+    \   'dyq':   ['ぢゃい', ''],
+    \   'dyz':   ['ぢゃん', ''],
+    \   'dyh':   ['ぢゅう', ''],
+    \   'dyj':   ['ぢゅん', ''],
     \   'ww':    ['うぇい', ''],
+    \   'sm':    ['さま', ''],
+    \   'dx':    ['でした', ''],
+    \   'mx':    ['ました', ''],
+    \   'kf':    ['かい', ''],
+    \   'gf':    ['がい', ''],
+    \   'gyf':   ['ぎゃい', ''],
     \   'sf':    ['さい', ''],
+    \   'zf':    ['ざい', ''],
+    \   'xf':    ['しゃい', ''],
+    \   'syf':   ['しゃい', ''],
+    \   'jf':    ['じゃい', ''],
+    \   'zyf':   ['じゃい', ''],
+    \   'tf':    ['たい', ''],
+    \   'df':    ['だい', ''],
+    \   'cf':    ['ちゃい', ''],
+    \   'tyf':   ['ちゃい', ''],
+    \   'dyf':   ['ぢゃい', ''],
+    \   'nf':    ['ない', ''],
+    \   'nyf':   ['にゃい', ''],
+    \   'ngf':   ['にゃい', ''],
+    \   'hf':    ['はい', ''],
+    \   'hgf':   ['ひゃい', ''],
+    \   'bf':    ['ばい', ''],
+    \   'byf':   ['びゃい', ''],
+    \   'bgf':   ['びゃい', ''],
+    \   'pf':    ['ぱい', ''],
+    \   'pyf':   ['ぴゃい', ''],
+    \   'pgf':   ['ぴゃい', ''],
+    \   'mf':    ['まい', ''],
+    \   'myf':   ['みゃい', ''],
+    \   'mgf':   ['みゃい', ''],
+    \   'yf':    ['やい', ''],
+    \   'rf':    ['らい', ''],
+    \   'ryf':   ['りゃい', ''],
+    \   'wf':    ['わい', ''],
+    \   'vf':    ['ゔぁい', ''],
     \ })
 augroup END
 
 imap <C-J> <Plug>(skkeleton-toggle)
 cmap <C-J> <Plug>(skkeleton-toggle)
+" tmap <C-J> <Plug>(skkeleton-toggle)
 
 " dps-dial.vim
 " Define original sequences for dps_dial
