@@ -2,7 +2,7 @@
 
 vim_root=$VIMRUNTIME/..
 mkdir -p $vim_root
-if [ -d $vim_root/.git ]; then
+if [ $(git -C $vim_root rev-parse --is-inside-work-tree 2>/dev/null) == true ]; then
   git -C $vim_root pull
 else
   git clone https://github.com/vim/vim.git $vim_root

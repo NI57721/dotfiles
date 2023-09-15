@@ -2,7 +2,8 @@
 
 mkdir -p $NVM_DIR
 mkdir -p $XDG_DATA_HOME/node
-if [ -d $NVM_DIR/.git ]; then
+
+if [ $(git -C $NVM_DIR rev-parse --is-inside-work-tree 2>/dev/null) == true ]; then
   git -C $NVM_DIR fetch --all
 else
   git clone https://github.com/nvm-sh/nvm.git $NVM_DIR

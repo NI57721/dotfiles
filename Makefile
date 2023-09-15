@@ -197,7 +197,7 @@ i_nvm:
 ## i_paru: Install paru
 i_paru:
 	mkdir -p $$XDG_DATA_HOME/paru
-	if [ -d $$XDG_DATA_HOME/paru/.git ]; then \
+	if [ $$(git -C $$XDG_DATA_HOME/paru rev-parse --is-inside-work-tree 2>/dev/null) == true ]; then \
 	  git -C $$XDG_DATA_HOME/paru pull; \
 	else \
 	  git clone https://aur.archlinux.org/paru.git $$XDG_DATA_HOME/paru; \
