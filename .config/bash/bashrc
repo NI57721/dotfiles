@@ -240,7 +240,7 @@ alias srrc='. $XDG_CONFIG_HOME/bash/bashrc'
 
 alias cgr="cd \$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
 alias gist="git switch"
-alias girs="git restore"
+alias girs="git reset --soft HEAD~"
 alias gia="git add"
 alias giap="git add -p"
 alias gial="git add -A"

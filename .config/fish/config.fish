@@ -72,7 +72,7 @@ abbr -a puts trash-put
 # for Git
 abbr -a cgr  cd \(git rev-parse --show-toplevel 2\> /dev/null\; or pwd\)
 abbr -a gist git switch
-abbr -a girs git restore
+abbr -a girs git reset --soft HEAD~
 abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
