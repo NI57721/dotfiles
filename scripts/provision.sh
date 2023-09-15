@@ -51,7 +51,6 @@ execute_quit() {
 
 execute_edit() {
   local tmppath=$(dirname $0)/prov-tmp.sh
-  echo -e "EDIT. CHAPTER: $CHAPTER"
   echo -e "$CODE" | tee $tmppath
   $EDITOR $tmppath
   echo -en "$CLR_CYAN"
