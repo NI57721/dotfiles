@@ -109,7 +109,6 @@
         "interval": 3600,
         "exec": "checkupdates | wc -l | sed -E 's/^0$//g'",
         "exec-if": "exit 0",
-        "on-click": "wezterm start -- yay; pkill -SIGRTMIN+8 waybar",
         "signal": 8,
         "min-length": 4
     },
