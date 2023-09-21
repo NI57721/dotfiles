@@ -162,6 +162,7 @@ set nrformats+=unsigned
 set scrolloff=5
 set viminfofile=$XDG_CACHE_HOME/vim/viminfo
 set viminfo='1000,f1,<500,s10,h
+set updatetime=1500
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
