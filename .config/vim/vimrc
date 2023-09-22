@@ -174,7 +174,6 @@ nnoremap <leader>f <Cmd>Files<CR>
 runtime ftplugin/man.vim
 
 inoremap jj <ESC>
-" inoremap JJ <ESC>yy
 cnoremap jj <ESC>
 vnoremap < <gv
 vnoremap > >gv
@@ -357,6 +356,21 @@ call skkeleton#config({
   \   'userJisyo': expand('$XDG_DATA_HOME/skk/skkeleton'),
   \ })
 
+call skkeleton#register_keymap('input', ';', 'henkanPoint')
+call skkeleton#register_keymap('henkan', '<', 'purgeCandidate')
+call skkeleton#register_keymap('henkan', 'X', v:false)
+
+let g:skkeleton_state_id = v:null
+
+function! s:skkeleton_state_popup()
+  if g:skkeleton_state_id != v:null
+    call popup_close(g:skkeleton_state_id)
+  endif
+  if g:skkeleton#mode != ''
+    let g:skkeleton_state_id = popup_create(g:skkeleton#mode, #{pos: 'botleft', line: 'cursor+1', col: 'cursor', moved: 'any', highlight: 'WildMenu'})
+  endif
+endfunction
+
 function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
     exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
@@ -376,11 +390,10 @@ function s:azikOkuri(input, feed) abort
   endif
 endfunction
 
-call skkeleton#register_keymap('input', ';', 'henkanPoint')
-call skkeleton#register_keymap('henkan', '<', 'purgeCandidate')
-call skkeleton#register_keymap('henkan', 'X', v:false)
 augroup Skkeleton
   autocmd!
+  autocmd User skkeleton-handled call <SID>skkeleton_state_popup()
+
   let s:azikOkuriList = [
     \   ['Q', 'aI'],
     \   ['Z', 'aNn'],
