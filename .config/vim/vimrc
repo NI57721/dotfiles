@@ -409,8 +409,11 @@ augroup Skkeleton
     call s:mapAzikOkuri(item[0], item[1])
   endfor
 
+  autocmd InsertLeave * if g:skkeleton#state.phase !=# 'input' |
+                          \   call job_start(['wl-copy', '--', getline('.')]) |
+                          \ endif
+
   autocmd InsertEnter * ++once call skkeleton#register_kanatable('azik', {
-    "\   '<s-j><s-j>': 'escape',
     \   '<s-j><s-j>': ['じゅん', ''],
     \   'jj':    'escape',
     \   '''':    'disable',
