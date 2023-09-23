@@ -408,7 +408,7 @@ augroup Skkeleton
     call s:mapAzikOkuri(item[0], item[1])
   endfor
 
-  autocmd InsertLeave * if g:skkeleton#state.phase ==# 'henkan' |
+  autocmd InsertLeave * if g:skkeleton#state.phase ==# 'henkan' && getline('.') !~ '^\s*$' |
                           \   call job_start(['wl-copy', '--', getline('.')]) |
                           \ endif
 
