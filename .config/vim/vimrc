@@ -131,7 +131,7 @@ function! s:ddu_my_settings() abort
 endfunction
 
 
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 colorscheme desert
 set ruler
@@ -160,40 +160,38 @@ set spelloptions& spelloptions+=camel
 set formatoptions+=M
 set nrformats+=unsigned
 set scrolloff=5
-set viminfofile=$XDG_CACHE_HOME/vim/viminfo
+set viminfofile=$XDG_DATA_HOME/vim/viminfo
 set viminfo='1000,f1,<500,s10,h
 set updatetime=1500
 
-nnoremap <leader>s :setlocal spell! spell?<CR>
+nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>h <C-6>
-nnoremap <leader>F :call ddu#start({})<CR>
-nnoremap <leader>D :call dein#update()<CR>
-nnoremap <leader>R :call dein#recache_runtimepath()<CR>
-" nnoremap <leader>U :call dein#update('skkeleton')<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>w :ShakyoClue<CR>
+nnoremap <leader>F <Cmd>call ddu#start({})<CR>
+nnoremap <leader>D <Cmd>call dein#update()<CR>
+nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
+" nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
+nnoremap <leader>f <Cmd>Files<CR>
+nnoremap <leader>w <Cmd>ShakyoClue<CR>
 nnoremap <leader>q <Plug>(socrates-greed)
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
-nmap <leader>a  <Plug>(sandwich-add)
-xmap <leader>a  <Plug>(sandwich-add)
-omap <leader>a  <Plug>(sandwich-add)
-nmap <leader>d  <Plug>(sandwich-delete)
-xmap <leader>d  <Plug>(sandwich-delete)
-nmap <leader>db <Plug>(sandwich-delete-auto)
-nmap <leader>r  <Plug>(sandwich-replace)
-xmap <leader>r  <Plug>(sandwich-replace)
-nmap <leader>rb <Plug>(sandwich-replace-auto)
+nnoremap <leader>a  <Plug>(sandwich-add)
+xnoremap <leader>a  <Plug>(sandwich-add)
+onoremap <leader>a  <Plug>(sandwich-add)
+nnoremap <leader>d  <Plug>(sandwich-delete)
+xnoremap <leader>d  <Plug>(sandwich-delete)
+nnoremap <leader>db <Plug>(sandwich-delete-auto)
+nnoremap <leader>r  <Plug>(sandwich-replace)
+xnoremap <leader>r  <Plug>(sandwich-replace)
+nnoremap <leader>rb <Plug>(sandwich-replace-auto)
 
 runtime ftplugin/man.vim
 
 inoremap jj <ESC>
 cnoremap jj <ESC>
-vnoremap < <gv
-vnoremap > >gv
 
 " For CSI u mode
 inoremap <S-Space> <Space>
@@ -211,19 +209,19 @@ augroup END
 noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Up>     :if len(g:most_recently_closed) > 0 \|
-                     \   exec ':tabnew ' .. remove(g:most_recently_closed, 0) \|
+                     \   execute ':tabnew ' .. remove(g:most_recently_closed, 0) \|
                      \ endif<CR>
 noremap  <C-Down>  :q<CR><C-G>
 noremap  <expr> <C-lt> ':tabmove -' .. v:count1 .. '<CR>'
 noremap  <expr> <C->>  ':tabmove +' .. v:count1 .. '<CR>'
-nnoremap gr        :tabnext<CR><C-G>
-nnoremap gR        :tabprevious<CR><C-G>
-" nnoremap q:        :q<CR><C-G>
+nnoremap gr        <Cmd>tabnext<CR><C-G>
+nnoremap gR        <Cmd>tabprevious<CR><C-G>
+" nnoremap q:        <Cmd>q<CR><C-G>
 tnoremap <C-Right> <Cmd>tabnext<CR><C-G>
 tnoremap <C-Left>  <Cmd>tabprevious<CR><C-G>
 tnoremap <C-Down>  <Cmd>q<CR><C-G>
 
-nnoremap <C-L> :noh<CR><C-L>
+nnoremap <C-L> <Cmd>noh<CR><C-L>
 nnoremap * *``zz
 nnoremap # #``zz
 
@@ -273,8 +271,8 @@ let &t_te .= "\e[0 q"
 if &term =~ 'screen'
   let &t_BE = "\e[?2004h"
   let &t_BD = "\e[?2004l"
-  exec "set t_PS=\e[200~"
-  exec "set t_PE=\e[201~"
+  set t_PS=\e[200~
+  set t_PE=\e[201~
 endif
 
 " Set the indent inside the p tags
@@ -286,7 +284,7 @@ augroup CloseTags
   autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-O><CR><ESC>==o
 augroup END
 
-command -nargs=0 ClearUndo call <SID>ClearUndo()
+command -nargs=0 ClearUndo call s:ClearUndo()
 function! s:ClearUndo()
   let old_undolevels = &undolevels
   set undolevels=-1
@@ -299,8 +297,8 @@ endfunction
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <f2> <plug>(lsp-rename)
+  nnoremap <buffer> gd <plug>(lsp-definition)
+  nnoremap <buffer> <f2> <plug>(lsp-rename)
   " inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 endfunction
 
@@ -324,7 +322,7 @@ let g:lsp_settings_filetype_ruby = 'solargraph'
 let g:fzf_layout = { 'up': '~40%' }
 
 " Search tags with <C-]>
-nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
+nnoremap <silent> <C-]> <Cmd>call fzf#vim#tags(expand('<cword>'))<CR>
 
 " Make it possible to jump from fzf to the file
 let g:fzf_buffers_jump = 1
@@ -372,10 +370,10 @@ endfunction
 
 function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
-    exec 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
+    execute 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
       \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
       \   a:feed .. "')<CR>"
-    exec 'autocmd User skkeleton-disable-post silent! ' .. mode ..
+    execute 'autocmd User skkeleton-disable-post silent! ' .. mode ..
       \   'unmap <buffer> ' .. a:input
   endfor
 endfunction
@@ -391,7 +389,7 @@ endfunction
 
 augroup Skkeleton
   autocmd!
-  autocmd User skkeleton-handled call <SID>skkeleton_state_popup()
+  autocmd User skkeleton-handled call s:skkeleton_state_popup()
 
   let s:azikOkuriList = [
     \   ['Q', 'aI'],
@@ -404,8 +402,8 @@ augroup Skkeleton
     \   ['P', 'oU'],
     \   ['L', 'oNn'],
     \ ]
-  for item in s:azikOkuriList
-    call s:mapAzikOkuri(item[0], item[1])
+  for s:azikOkuriItem in s:azikOkuriList
+    call s:mapAzikOkuri(s:azikOkuriItem[0], s:azikOkuriItem[1])
   endfor
 
   autocmd InsertLeave * if g:skkeleton#state.phase ==# 'henkan' && getline('.') !~ '^\s*$' |
@@ -540,8 +538,8 @@ augroup Skkeleton
     \ })
 augroup END
 
-imap <C-J> <Plug>(skkeleton-toggle)
-cmap <C-J> <Plug>(skkeleton-toggle)
+inoremap <C-J> <Plug>(skkeleton-toggle)
+cnoremap <C-J> <Plug>(skkeleton-toggle)
 " tmap <C-J> <Plug>(skkeleton-toggle)
 
 " dps-dial.vim
@@ -569,11 +567,11 @@ let g:dps_dial#augends = [
   \ ]
 
 nnoremap  <C-A>  <Plug>(dps-dial-increment)
-nmap      <C-X>  <Plug>(dps-dial-decrement)
+nnoremap  <C-X>  <Plug>(dps-dial-decrement)
 xnoremap  <C-A>  <Plug>(dps-dial-increment)
-xmap      <C-X>  <Plug>(dps-dial-decrement)
+xnoremap  <C-X>  <Plug>(dps-dial-decrement)
 xnoremap g<C-A> g<Plug>(dps-dial-increment)
-xmap     g<C-X> g<Plug>(dps-dial-decrement)
+xnoremap g<C-X> g<Plug>(dps-dial-decrement)
 
 " kensaku.vim/kensaku-search.vim
 cnoremap JJ <Plug>(kensaku-search-replace)<CR>
@@ -595,8 +593,8 @@ cabbr qa tabdo windo if !&modified \| close \| endif
 
 " Yank
 " set clipboard=exclude:.*
-nnoremap <silent> p          :call setreg('"', system('wl-paste -n'))<CR>""p
-nnoremap <silent> P          :call setreg('"', system('wl-paste -n'))<CR>""P
+nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
 xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
 xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
 cnoremap          <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
@@ -630,8 +628,8 @@ if IsWSL()
       autocmd!
       autocmd TextYankPost * silent call job_start(['win32yank.exe', '-i', ' --crlf', getreg('"')])
   augroup END
-  nnoremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
-  nnoremap <silent> P :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
+  nnoremap <silent> p <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
+  nnoremap <silent> P <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
   let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
