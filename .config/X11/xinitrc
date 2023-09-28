@@ -3,12 +3,12 @@
 setxkbmap -layout us
 setxkbmap -option ctrl:nocaps
 
-Section "InputClass"
-    Identifier "touchpad"
-    Driver "libinput"
-    MatchIsTouchpad "on"
-        Option "Tapping" "on"
-        Option "TappingDrag" "on"
-        Option "TappingDragLock" "on"
-EndSection
+# Section "InputClass"
+#     Identifier "touchpad"
+#     Driver "libinput"
+#     MatchIsTouchpad "on"
+#         Option "Tapping" "on"
+#         Option "TappingDrag" "on"
+#         Option "TappingDragLock" "on"
+# EndSection
 
