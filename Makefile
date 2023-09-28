@@ -16,7 +16,7 @@ PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 PACKAGES += alacritty bat dunst dust github-cli git-delta gnuplot grim hyperfine
 PACKAGES += man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
 PACKAGES += pptpclient putty python-qrcode traceroute trash-cli udisks2
-PACKAGES += virtualbox wf-recorder wget
+PACKAGES += virtualbox wf-recorder wget wtype
 
 
 AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
