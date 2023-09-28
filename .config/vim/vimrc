@@ -542,6 +542,13 @@ inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
 " tmap <C-J> <Plug>(skkeleton-toggle)
 
+command! IM if matchstr(getline('.'), '\%' .. col('.') .. 'c.') == "\<C-L>" |
+              \   execute 'normal! "_x' |
+              \   call job_start(['wl-copy', '--', getline('.')]) |
+              \   redraw! |
+              \ endif
+
+
 " dps-dial.vim
 " Define original sequences for dps_dial
 let g:dps_dial#augends = [
