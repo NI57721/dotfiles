@@ -221,7 +221,7 @@ tnoremap <C-Right> <Cmd>tabnext<CR><C-G>
 tnoremap <C-Left>  <Cmd>tabprevious<CR><C-G>
 tnoremap <C-Down>  <Cmd>q<CR><C-G>
 
-nnoremap <C-L> <Cmd>noh<CR><C-L>
+nnoremap <C-L> <Cmd>nohlsearch<CR><C-L>
 nnoremap * *``zz
 nnoremap # #``zz
 
