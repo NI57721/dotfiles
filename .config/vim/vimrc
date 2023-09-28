@@ -544,7 +544,9 @@ cnoremap <C-J> <Plug>(skkeleton-toggle)
 
 command! IM if matchstr(getline('.'), '\%' .. col('.') .. 'c.') == "\<C-L>" |
               \   execute 'normal! "_x' |
-              \   execute 's/' .. skkeleton#get_config().markerHenkanSelect .. '//g' |
+              \   execute 'silent! s/[' ..
+              \     skkeleton#get_config().markerHenkanSelect ..
+              \     skkeleton#get_config().markerHenkan .. ']//g' |
               \   call job_start(['wl-copy', '--', getline('.')]) |
               \   redraw! |
               \ endif
