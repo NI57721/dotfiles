@@ -542,14 +542,10 @@ inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
 " tmap <C-J> <Plug>(skkeleton-toggle)
 
-echo skkeleton#get_config().markerHenkanSelect
 command! IM if matchstr(getline('.'), '\%' .. col('.') .. 'c.') == "\<C-L>" |
               \   execute 'normal! "_x' |
-              \   call job_start([
-              \     'wl-copy',
-              \     '--',
-              \     substitute(getline('.'), skkeleton#get_config().markerHenkanSelect, '', 'g')
-              \   ]) |
+              \   execute 's/' .. skkeleton#get_config().markerHenkanSelect .. '//g' |
+              \   call job_start(['wl-copy', '--', getline('.')]) |
               \   redraw! |
               \ endif
 
