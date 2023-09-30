@@ -5,7 +5,21 @@
     "spacing": 2, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/ppp", "custom/pacman", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock", "tray", "custom/audio_idle_inhibitor", "idle_inhibitor"],
+    "modules-right": [
+      "custom/recorder-state",
+      "custom/ppp",
+      "custom/pacman",
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "backlight",
+      "battery",
+      "clock",
+      "tray",
+      "custom/audio_idle_inhibitor",
+      "idle_inhibitor"
+    ],
+
     // Modules configuration
     "sway/workspaces": {
         "all-outputs": true,
@@ -98,6 +112,12 @@
         },
         "on-click": "pavucontrol"
     },
+    "custom/recorder-state": {
+        "format": "⏺️",
+        "interval": 5,
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/recorder-state.sh",
+        "exec-if": "exit 0"
+     },
     "custom/ppp": {
         "format": "",
         "interval": 5,
