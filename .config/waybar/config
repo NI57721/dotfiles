@@ -121,7 +121,7 @@
     "custom/ppp": {
         "format": "",
         "interval": 5,
-        "exec": "$HOME/.config/waybar/scripts/ppp.sh",
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/ppp.sh",
         "exec-if": "exit 0"
      },
     "custom/pacman": {
