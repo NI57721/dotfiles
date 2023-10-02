@@ -6,6 +6,7 @@ DOTFILES_ROOT=${DOTFILES_ROOT:-$HOME/dotfiles}
 
 linked_files=()
 linked_files+=(.config/bash/bashrc)
+linked_files+=(.config/bundle/config)
 linked_files+=(.config/chrome-flags.conf)
 linked_files+=(.config/fish/{config.fish,fish_plugins})
 linked_files+=(.config/git/{config,gitignore_global})
