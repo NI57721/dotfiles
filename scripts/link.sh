@@ -31,13 +31,11 @@ mkdir -p $backup_path
 for file in "${linked_files[@]}"; do
   if [ -f $HOME/$file ]; then
     mkdir -p $backup_path/$(dirname $file)
-    cp $HOME/$file $backup_path/$file &&
-      echo "SUCCESS 'cp $DOTFILES_ROOT/$file $backup_path/$file'" ||
+    cp $HOME/$file $backup_path/$file ||
       echo "FAILURE 'cp $DOTFILES_ROOT/$file $backup_path/$file'"
   fi
   mkdir -p $HOME/$(dirname $file)
-  ln -snf $DOTFILES_ROOT/$file $HOME/$file &&
-    echo "SUCCESS 'ln -snf $DOTFILES_ROOT/$file $HOME/$file'" ||
+  ln -snf $DOTFILES_ROOT/$file $HOME/$file ||
     echo "FAILURE 'ln -snf $DOTFILES_ROOT/$file $HOME/$file'"
 done
 
