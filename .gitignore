@@ -4,44 +4,7 @@
 !*/
 
 ### $XDG_CONFIG_HOME
-!/.config/bash/bashrc
-
-!/.config/chrome-flags.conf
-
-!/.config/fish/config.fish
-!/.config/fish/fish_plugins
-
-!/.config/git/config
-!/.config/git/gitignore_global
-
-!/.config/irb/irbrc
-
-!/.config/npm/npmrc
-
-!/.config/paru/paru.conf
-
-!/.config/sway/config
-!/.config/sway/clamshell.sh
-!/.config/sway/ime-vim.sh
-!/.config/sway/recorder.sh
-
-!/.config/tmux/tmux.conf
-
-!/.config/todo/config
-
-!/.config/vim/vimrc
-!/.config/vim/rc/dein.toml
-!/.config/vim/rc/dein_lazy.toml
-
-!/.config/vsnip/ruby.json
-
-!/.config/waybar/config
-!/.config/waybar/style.css
-!/.config/waybar/scripts/ppp.sh
-
-!/.config/wezterm/wezterm.lua
-
-!/.config/X11/xinitrc
+!/.config/**/*
 
 ### /scripts
 !/scripts/*.sh
