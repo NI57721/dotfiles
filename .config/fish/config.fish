@@ -22,8 +22,7 @@ set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
 set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node/repl_history
 # set -gx WGETRC $XDG_CONFIG_HOME/wget/wgetrc
-set -gx BUNDLE_USER_HOME $XDG_CONFIG_HOME/bundle
-set -gx BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
+set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
 nvm use (nvm list | sed "s/.*v\|[^0-9]\+\$//g" | sort | tail -1) > /dev/null
 
