@@ -28,4 +28,6 @@
 [pager]
     diff = delta
     show = delta
+[remind]
+    paths = /home/*/dotfiles,/home/*/dev/*
 
