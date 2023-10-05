@@ -65,17 +65,20 @@ initialize: init_bash init_git init_grub init_mirrorlist \
 	 init_pacman init_putty init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
-install: install_go_packages \
+install: install_packages install_go_packages \
 	 i_deno i_docker i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
 	 i_rust i_skk_dictionaries i_tpm i_vim
 
 ## install_optional: Install a tools for guest OSs on VirtualBox
 install_optional: i_virtualbox_ga
 
-## init_bash: Add settings to read $XDG_CONFIG_HOME/bash/bashrc
+## init_bash: Add settings for umask and the path to User's bashrc
 init_bash:
 	if [ -f $$XDG_CONFIG_HOME/bash/bashrc ]; then \
 	  echo -e "\
+	\n\
+	# Set umask for the whole system
+	umask 077
 	\n\
 	# Read the bash config file in an XDG Base Directory\n\
 	. $$XDG_CONFIG_HOME/bash/bashrc\n\
