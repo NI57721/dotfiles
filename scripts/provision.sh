@@ -50,7 +50,7 @@ execute_quit() {
 }
 
 execute_edit() {
-  local tmppath=$(dirname $0)/prov-tmp.sh
+  local tmppath=$(mktemp)
   echo -e "$CODE" | tee $tmppath
   $EDITOR $tmppath
   echo -en "$CLR_CYAN"
