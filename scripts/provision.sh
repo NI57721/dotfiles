@@ -87,7 +87,7 @@ instruction() {
 000: Hi, there! Welcome to Arch Linux.
      You can pause and resume this programme anytime you like.
      The indices are required as arguments when you try to resume.
-     e.g. ${CLR_GREEN}$ prov 000
+     e.g. ${CLR_GREEN}$ bash $0 000
 
 ${CLR_WHITE}     In the following steps, your device name is assumed to be /dev/sda.
      So here goes!
@@ -194,7 +194,7 @@ cat /mnt/etc/fstab\
 013: Move this file under /mnt, and then execute chroot.\
 ${CLR_RESET}"
       CODE="\
-mv -i prov /mnt
+mv -i $0 /mnt
 arch-chroot /mnt\
 ";;
 
