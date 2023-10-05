@@ -15,8 +15,8 @@ PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
 PACKAGES += alacritty bat dunst dust github-cli git-delta gnuplot grim hyperfine
 PACKAGES += man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
-PACKAGES += pptpclient putty python-qrcode traceroute trash-cli udisks2
-PACKAGES += virtualbox wf-recorder wget wtype
+PACKAGES += pptpclient putty python-qrcode strongswan traceroute trash-cli
+PACKAGES += udisks2 virtualbox wf-recorder wget wtype
 
 
 AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
@@ -67,7 +67,7 @@ initialize: init_bash init_git init_grub init_mirrorlist \
 ## install: Install everything needed except for i_virtualbox_ga
 install: install_packages install_go_packages \
 	 i_deno i_docker i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
-	 i_rust i_skk_dictionaries i_tpm i_vim
+	 i_rust i_skk_dictionaries i_tpm i_vim i_vpn
 
 ## install_optional: Install a tools for guest OSs on VirtualBox
 install_optional: i_virtualbox_ga
@@ -256,26 +256,50 @@ i_virtualbox_ga:
 	sudo mount /dev/cdrom /mnt
 	sudo sh /mnt/VBoxLinuxAdditions.run
 
-## i_vpn: Install VPN settings for Interlink
-i_vpn_interlink: # pptpclient
-	curl https://www.interlink.or.jp/support/vpn/myip/myiptools/myiptools.tar.gz > /tmp/myiptools.tar.gz
-	sudo tar xvzf /tmp/myiptools.tar.gz -C /etc
-	rm /tmp/myiptools.tar.gz
+## i_vpn: Install VPN settings
+i_vpn:
+	sudo mv /etc/swanctl/swanctl.conf{,.bak}
 	echo -e "\
-	MYIP_SERVER=\"myip*.interlink.or.jp\"\n\
-	ID=\"mi*\"\n\
-	PASSWORD=\"****\"\n\
-	IPADDR=\"***.***.***.***\"\n\
-	DNS1=\"203.141.128.35\"\n\
-	DNS2=\"203.141.128.33\"\n\
-	CLIENT_GLOBALIP=\"AUTO\"\n\
+	connections {\n\
+	    vpn {\n\
+	        version = 2\n\
+	        proposals = aes192gcm16-aes128gcm16-prfsha256-ecp256-ecp521,aes192-sha256-modp3072,default\n\
+	        rekey_time = 0s\n\
+	        fragmentation = yes\n\
+	        dpd_delay = 300s\n\
+	        local_addrs = %defaultroute\n\
+	        remote_addrs = <Your VPN Server URL>\n\
+	        vips=0.0.0.0,::\n\
+	        local {\n\
+	            auth = eap-mschapv2\n\
+	            eap_id = \"<Your ID>\"\n\
+	        }\n\
+	        remote {\n\
+	            auth = pubkey\n\
+	            id = %any\n\
+	        }\n\
+	        children {\n\
+	            vpn {\n\
+	                remote_ts = 0.0.0.0/0,::/0\n\
+	                rekey_time = 0s\n\
+	                dpd_action = clear\n\
+	                esp_proposals = aes192gcm16-aes128gcm16-prfsha256-ecp256-modp3072,aes192-sha256-ecp256-modp3072,default\n\
+	            }\n\
+	        }\n\
+	    }\n\
+	}\n\
+	\n\
+	secrets {\n\
+	    eap-vpn {\n\
+	        id = \"<Your ID>\"\n\
+	        secret = \"<Your Password>\"\n\
+	    }\n\
+	}\n\
 	" | \
-	  sudo tee /etc/myip/myip.conf
-	sudo vim -u NONE -N /etc/myip/myip.conf
-	sudo /etc/myip/myip-setup
-	sudo sed "2q; d" /etc/myip/myip.conf | sed "s/.*\"\(.*\)\"/\1/" | \
-	  xargs -I{} sudo cat /etc/ppp/peers/myip_{}
-	sudo cat /etc/ppp/chap-secrets
+	  sudo tee /etc/swanctl/swanctl.conf
+	sudo rvim /etc/swanctl/swanctl.conf
+	sudo rmdir /etc/ipsec.d/cacerts
+	sudo ln -s /etc/ssl/certs /etc/ipsec.d/cacerts
 
 ## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
 create_arch_linux_installer:

@@ -222,11 +222,11 @@ function om
 end
 
 function von
-  sudo /etc/myip/myip-up
+  sudo swanctl -i -c vpn
 end
 
 function vof
-  sudo /etc/myip/myip-down
+  sudo swanctl -t -i vpn
 end
 
 function fish_user_key_bindings
