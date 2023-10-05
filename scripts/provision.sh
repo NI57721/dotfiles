@@ -162,7 +162,7 @@ ${CLR_RESET}"
 ${CLR_RESET}"
       CODE="\
 cp /etc/pacman.d/mirrorlist{,.bak}
-reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 ";;
 
     010)
