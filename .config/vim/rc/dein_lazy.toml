@@ -78,7 +78,7 @@ on_event = ['CursorHold', 'CmdlineEnter']
 
 [[plugins]]
 repo = 'monaqa/dps-dial.vim'
-on_map = '<Plug>(dps-dial-'
+on_map = ['<Plug>(dps-dial-', 'g<Plug>(dps-dial-']
 on_event = ['CursorHold', 'CursorMoved']
 
 [[plugins]]
