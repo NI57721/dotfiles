@@ -153,25 +153,25 @@ function mkcd
 end
 
 function update
-  echo -e "### packages ###"
+  echo -e "### Packages ###"
   update_packages
-  echo -e "\n### RBENV ###"
+  echo -e "\n### Rbenv ###"
   update_rbenv
-  echo -e "\n### GEM ###"
+  echo -e "\n### Ruby Gems ###"
   update_gem
   echo -e "\n### NVM ###"
   update_nvm
-  echo -e "\n### DENO ###"
+  echo -e "\n### Deno ###"
   update_deno
-  echo -e "\n### GO ###"
+  echo -e "\n### Go ###"
   update_go
-  echo -e "\n### RUST ###"
+  echo -e "\n### Rust ###"
   update_rust
   echo -e "\n### TPM ###"
   update_tpm
-  echo -e "\n### FISHER ###"
+  echo -e "\n### Fisher ###"
   update_fisher
-  echo -e "\n### VIM ###"
+  echo -e "\n### Vim ###"
   update_vim
   echo -e "\n### Git remind ###"
   git remind status --short
