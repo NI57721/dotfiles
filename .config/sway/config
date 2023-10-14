@@ -19,8 +19,8 @@ font pango:monospace 12
 # Screenlocker
 exec swayidle -w \
   timeout 1200 'systemctl suspend' resume 'swaymsg "output * power on"'
-  # timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
-  # before-sleep 'swaylock -f -C ~/.config/swaylock/config' \
+  # timeout 300 'swaylock -f -C $XDG_CONFIG_HOME/swaylock/config' \
+  # before-sleep 'swaylock -f -C $XDG_CONFIG_HOME/swaylock/config' \
   # after-resume 'swaymsg "output * enable"'
   # timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 
@@ -33,7 +33,7 @@ set $hoge $(swaymsg -t get_outputs | grep -e "^ *\"name\":" | grep -v "HDMI" \
   | sed -e "s/.*\?: \"\|\",\$//g" | head -1)
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-exec_always ~/.config/sway/scripts/clamshell.sh $laptop
+exec_always $XDG_CONFIG_HOME/sway/scripts/clamshell.sh $laptop
 exec_always echo (date) ": $hoge" | tee -a ~/.config/sway/hoge.log
 
 # Keyboard
@@ -90,7 +90,7 @@ bindsym $mod+f exec $term
 bindsym $mod+Shift+q kill
 # Launch Vim as IME
 for_window [app_id="FloatingVim"] floating enable
-bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/scripts/ime-vim.sh
+bindsym $mod+i exec XMODIFIERS=@im= $XDG_CONFIG_HOME/sway/scripts/ime-vim.sh
 
 
 # Drag floating windows by holding down $mod and left mouse button.
@@ -106,7 +106,7 @@ bindsym $mod+Shift+r reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $super+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-bindsym $super+l exec swaylock -f -C ~/.config/swaylock/config
+bindsym $super+l exec swaylock -f -C $XDG_CONFIG_HOME/swaylock/config
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -230,11 +230,11 @@ bindsym $super+1 exec /usr/share/sway/scripts/grimshot --notify copy window
 bindsym $super+2 exec /usr/share/sway/scripts/grimshot --notify save window $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
 bindsym $super+3 exec /usr/share/sway/scripts/grimshot --notify save output $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
 bindsym $super+4 exec /usr/share/sway/scripts/grimshot --notify save area $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
-bindsym $super+0 exec ~/.config/sway/scripts/recorder.sh
+bindsym $super+0 exec $XDG_CONFIG_HOME/sway/scripts/recorder.sh
 
 # Clipboard
 exec wl-paste -t text --watch clipman --no-persist store
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste -p -t text --watch clipman store -P --histpath="$XDG_DATA_HOME/clipman-primary.json"
 
 
 # Change focus
