@@ -226,10 +226,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # screen shot
-bindsym $super+1 exec /usr/share/sway/scripts/grimshot --notify save window $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
-bindsym $super+2 exec /usr/share/sway/scripts/grimshot --notify copy window
-bindsym $super+3 exec /usr/share/sway/scripts/grimshot --notify save output  $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
-bindsym $super+4 exec /usr/share/sway/scripts/grimshot --notify save area  $HOME/Downloads/screenshot_$(date "+%y%m%d%H%M%S").png
+bindsym $super+1 exec /usr/share/sway/scripts/grimshot --notify copy window
+bindsym $super+2 exec /usr/share/sway/scripts/grimshot --notify save window $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
+bindsym $super+3 exec /usr/share/sway/scripts/grimshot --notify save output $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
+bindsym $super+4 exec /usr/share/sway/scripts/grimshot --notify save area $(mktemp $HOME/$(date "+%Y%m%d-%H%M")_XXXXXX.png)
 bindsym $super+0 exec ~/.config/sway/scripts/recorder.sh
 
 # Clipboard
