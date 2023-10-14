@@ -34,7 +34,6 @@ set $hoge $(swaymsg -t get_outputs | grep -e "^ *\"name\":" | grep -v "HDMI" \
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always $XDG_CONFIG_HOME/sway/scripts/clamshell.sh $laptop
-exec_always echo (date) ": $hoge" | tee -a ~/.config/sway/hoge.log
 
 # Keyboard
 input type:keyboard {
@@ -250,10 +249,6 @@ gaps bottom 1
 gaps right 1
 gaps left 1
 gaps inner 1
-
-# auto tiling
-#exec ~/.config/i3/scripts/column-layout.py
-
 
 # sway-session
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
