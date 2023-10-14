@@ -173,6 +173,8 @@ function update
   update_fisher
   echo -e "\n### VIM ###"
   update_vim
+  echo -e "\n### Git remind ###"
+  git remind status --short
 end
 
 function update_packages

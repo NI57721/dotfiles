@@ -25,6 +25,8 @@ update() {
   update_tpm
   echo -e "\n### FISHER ###"
   update_fisher
+  echo -e "\n### Git Remind ###"
+  git remind status --short
 }
 
 update_packages() {
