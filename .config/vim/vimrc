@@ -165,6 +165,12 @@ set viminfo='1000,f1,<500,s10,h
 set updatetime=1500
 set splitright
 
+augroup Go
+  autocmd!
+  autocmd Filetype go set tabstop=4
+  autocmd Filetype go set listchars=tab:\ \ ,extends:<,trail:-
+augroup END
+
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>h <C-6>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
