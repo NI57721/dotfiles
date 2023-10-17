@@ -2,14 +2,14 @@
 
 mkdir -p $NVM_DIR
 mkdir -p $XDG_DATA_HOME/node
+cd $NVM_DIR
 
-if [ $(git -C $NVM_DIR rev-parse --is-inside-work-tree 2>/dev/null) == true ]; then
+if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then
   git -C $NVM_DIR fetch --all
 else
   git clone https://github.com/nvm-sh/nvm.git $NVM_DIR
 fi
 
-cd $NVM_DIR
 latest_commit=$(git rev-list --tags --max-count=1)
 latest_tag=$(git describe --abbrev=0 --tags --match "v[0-9]*" $latest_commit)
 git switch --detach $latest_tag

@@ -1,6 +1,6 @@
 #!/bin/bash -u
 
-if [[ ! -f /etc/os-release ]]; then
+if [ ! -f /etc/os-release ]; then
   echo "/etc/os-release does not exist."
   return 1
 fi
