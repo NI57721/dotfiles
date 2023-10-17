@@ -204,7 +204,7 @@ export VIMRUNTIME=$XDG_DATA_HOME/vim/runtime
 export PATH="$XDG_DATA_HOME/vim/src:$PATH"
 export PATH="$XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
 
-export FLYCTL_INSTALL=$HOME/.fly
+export FLYCTL_INSTALL=$XDG_DATA_HOME/fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 export PATH="$XDG_DATA_HOME/deno/bin:$PATH"

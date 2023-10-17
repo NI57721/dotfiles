@@ -9,7 +9,7 @@ set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff
-set -gx FLYCTL_INSTALL $HOME/.fly
+set -gx FLYCTL_INSTALL $XDG_DATA_HOME/fly
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
