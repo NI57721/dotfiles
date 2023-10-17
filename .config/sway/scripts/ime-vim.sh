@@ -11,7 +11,7 @@ if [ -z $FloatingVim ]; then
     --config text_background_opacity=0.7 \
     start --class FloatingVim fish
 else
-  if [ "$(echo $FloatingVim | jq .focused)" = 'true' ]; then
+  if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
     wtype -M ctrl l -m ctrl -P escape -p escape :IM -P return
     swaymsg "move window to scratchpad"
   else

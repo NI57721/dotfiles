@@ -74,7 +74,7 @@ install_optional: i_virtualbox_ga
 
 ## init_bash: Add settings for umask and the path to User's bashrc
 init_bash:
-	if [ -f $$XDG_CONFIG_HOME/bash/bashrc ]; then \
+	if [ -f "$$XDG_CONFIG_HOME/bash/bashrc" ]; then \
 	  echo -e "\
 	\n\
 	# Set umask for the whole system
@@ -179,7 +179,7 @@ i_dropbox:
 
 ## i_fish: Install fish shell
 i_fish:
-	if [ "$(DST)" == ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
+	if [ "$(DST)" = ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
 	echo /bin/fish | sudo tee -a /etc/shells
@@ -202,8 +202,9 @@ i_nvm:
 ## i_paru: Install paru
 i_paru:
 	mkdir -p $$XDG_DATA_HOME/paru
-	if [ $$(git -C $$XDG_DATA_HOME/paru rev-parse --is-inside-work-tree 2>/dev/null) == true ]; then \
-	  git -C $$XDG_DATA_HOME/paru pull; \
+	cd $$XDG_DATA_HOME/paru; \
+	if [ "$$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then \
+	  git pull; \
 	else \
 	  git clone https://aur.archlinux.org/paru.git $$XDG_DATA_HOME/paru; \
 	fi
