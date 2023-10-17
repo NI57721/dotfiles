@@ -167,6 +167,8 @@ set splitright
 
 augroup Go
   autocmd!
+  autocmd Filetype go set noexpandtab
+  autocmd Filetype go set shiftwidth=4
   autocmd Filetype go set tabstop=4
   autocmd Filetype go set listchars=tab:\ \ ,extends:<,trail:-
 augroup END
