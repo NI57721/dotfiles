@@ -187,7 +187,6 @@ i_fish:
 
 ## i_fisher: Install fisher
 i_fisher: # i_fish
-# curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 	curl -sL https://git.io/fisher | fish
 	fish -c "fisher update"
 
@@ -244,9 +243,6 @@ i_tpm:
 ## i_vim: Build vim HEAD
 i_vim:
 	$(UPDATE_PKG)
-	# cproto libacl1-dev libgpm-dev libgtk-3-dev liblua5.2-dev
-	# libluajit-5.1-2 libperl-dev libtinfo-dev libxmu-dev libxpm-dev lua5.2
-	# python3-dev ruby-dev
 	$(INSTALL_PKG) autoconf automake gettext luajit
 	scripts/update_vim.sh
 
