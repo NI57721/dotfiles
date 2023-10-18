@@ -164,6 +164,7 @@ set viminfofile=$XDG_DATA_HOME/vim/viminfo
 set viminfo='1000,f1,<500,s10,h
 set updatetime=1500
 set splitright
+set showtabline=2
 
 augroup Go
   autocmd!
