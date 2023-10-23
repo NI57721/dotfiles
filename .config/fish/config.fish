@@ -5,7 +5,7 @@ set -gx XDG_STATE_HOME  $HOME/.local/state
 set -gx DOTFILES_ROOT   $HOME/dotfiles
 
 set -gx VIMRUNTIME $XDG_DATA_HOME/vim/runtime
-set -gx MANPAGER "vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
+set -gx MANPAGER "vim +MANPAGER -Rc 'set filetype=man nolist nonumber nomodifiable' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
 set -gx THOR_MERGE /usr/local/bin/vimdiff

@@ -189,7 +189,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export DOTFILES_ROOT=$HOME/dotfiles
 
 export VISUAL='vim --noplugin'
-export MANPAGER="vim +MANPAGER -Rc 'set ft=man nolist nonu noma' -"
+export MANPAGER="vim +MANPAGER -Rc 'set filetype=man nolist nonumber nomodifiable' -"
 export LESS="-RNM"
 
 export PATH="$HOME/bin:$PATH"
