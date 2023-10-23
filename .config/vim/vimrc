@@ -168,10 +168,10 @@ set showtabline=2
 
 augroup Go
   autocmd!
-  autocmd Filetype go set noexpandtab
-  autocmd Filetype go set shiftwidth=4
-  autocmd Filetype go set tabstop=4
-  autocmd Filetype go set listchars=tab:\ \ ,extends:<,trail:-
+  autocmd Filetype go setlocal noexpandtab
+  autocmd Filetype go setlocal shiftwidth=4
+  autocmd Filetype go setlocal tabstop=4
+  autocmd Filetype go setlocal listchars=tab:\ \ ,extends:<,trail:-
 augroup END
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
