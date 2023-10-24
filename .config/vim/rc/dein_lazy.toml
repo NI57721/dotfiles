@@ -115,3 +115,7 @@ on_event = ['CursorHold', 'InsertEnter']
 repo = 'lambdalisue/mr.vim'
 on_event = ['BufNewFile', 'BufReadPre', 'BufWritePre']
 
+[[plugins]]
+repo = 'ap/vim-css-color'
+on_event = ['CursorHold', 'InsertEnter']
+
