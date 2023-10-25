@@ -187,6 +187,13 @@ nnoremap <leader>q <Plug>(socrates-greed)
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 
+" QuickFix
+autocmd QuickFixCmdPost *grep* cwindow
+nnoremap [N <Cmd>cprevious<CR>
+nnoremap [n <Cmd>cnext<CR>
+nnoremap [i <Cmd>cfirst<CR>
+nnoremap [a <Cmd>clast<CR>
+
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
 nnoremap <leader>a  <Plug>(sandwich-add)
@@ -631,9 +638,6 @@ cnoremap JJ <Plug>(kensaku-search-replace)<CR>
 
 " capture.vim
 cnoremap <C-C> <Home>Capture <CR>
-
-" Open automatically quickfix-window after excuting grep like commands
-autocmd QuickFixCmdPost *grep* cwindow
 
 command! RC :tabnew $XDG_CONFIG_HOME/vim/vimrc |
             \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml |
