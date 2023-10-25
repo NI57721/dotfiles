@@ -7,7 +7,7 @@
     "modules-center": ["sway/window"],
     "modules-right": [
       "custom/recorder-state",
-      "custom/ppp",
+      "custom/vpn",
       "custom/pacman",
       "cpu",
       "memory",
@@ -118,10 +118,10 @@
         "exec": "$XDG_CONFIG_HOME/waybar/scripts/recorder-state.sh",
         "exec-if": "exit 0"
      },
-    "custom/ppp": {
+    "custom/vpn": {
         "format": "",
         "interval": 5,
-        "exec": "$XDG_CONFIG_HOME/waybar/scripts/ppp.sh",
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/vpn.sh",
         "exec-if": "exit 0"
      },
     "custom/pacman": {
