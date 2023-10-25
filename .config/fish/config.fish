@@ -55,6 +55,9 @@ abbr -a vircl vim    $XDG_CONFIG_HOME/fish/config.fish.local
 abbr -a srrc  source $XDG_CONFIG_HOME/fish/config.fish
 abbr -a .. cd ..
 abbr -a ... cd ../..
+abbr von sudo swanctl -i -c vpn
+abbr vof sudo swanctl -t -i vpn
+abbr om swaymsg output LVDS-1 disable
 
 # for TODO-TXT
 abbr -a tt   todo.sh
@@ -217,18 +220,6 @@ end
 
 function update_vim
   $DOTFILES_ROOT/scripts/update_vim.sh
-end
-
-function om
-  swaymsg output LVDS-1 disable
-end
-
-function von
-  sudo swanctl -i -c vpn
-end
-
-function vof
-  sudo swanctl -t -i vpn
 end
 
 function fish_user_key_bindings
