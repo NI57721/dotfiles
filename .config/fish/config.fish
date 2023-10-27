@@ -246,7 +246,7 @@ function fish_user_key_bindings
 end
 
 # Launch Sway when logging in with tty.
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
   exec sway
 end
