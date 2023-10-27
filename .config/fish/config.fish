@@ -51,7 +51,7 @@ abbr -a --set-cursor le % \| less
 abbr -a kila kill -9
 abbr -a psa ps aux \| grep -v grep \| grep
 abbr -a virc  vim -p $XDG_CONFIG_HOME/{fish/config.fish,bash/bashrc}
-abbr -a vircl vim    $XDG_CONFIG_HOME/fish/config.fish.local
+abbr -a vircl vim    $XDG_CONFIG_HOME/fish/local.fish
 abbr -a srrc  source $XDG_CONFIG_HOME/fish/config.fish
 abbr -a .. cd ..
 abbr -a ... cd ../..
@@ -251,7 +251,7 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]
   exec sway
 end
 
-if test -e (status dirname)'/config.fish.local'
-  source (status dirname)'/config.fish.local'
+if [ -f "$XDG_CONFIG_HOME/fish/local.fish" ]
+  source "$XDG_CONFIG_HOME/fish/local.fish"
 end
 
