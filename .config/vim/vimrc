@@ -467,6 +467,7 @@ augroup Skkeleton
     \   '@':     'zenkaku',
     \   'q':     'katakana',
     \   '<s-q>': 'hankatakana',
+    \   'z=':    ['＝', ''],
     \   'z~':    ['～', ''],
     \   'z ':    ['　', ''],
     "\   ':':     ['ー', ''],
