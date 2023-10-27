@@ -2,12 +2,6 @@
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 # on_event = ['CursorHold', 'CursorMoved']
 
