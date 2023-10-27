@@ -620,10 +620,6 @@ let g:dps_dial#augends = [
   \     'cyclic': v:true,
   \     'word': v:true,
   \   }},
-  \   {'kind': 'case', 'opts': {
-  \     'cases': ['camelCase', 'snake_case', 'SCREAMING_SNAKE_CASE'],
-  \     'cyclic': v:true,
-  \   }},
   \   {'kind': 'date', 'opts': { 'format': 'yyyy-MM-dd', 'only_valid': v:false }},
   \ ]
 
