@@ -286,6 +286,7 @@ alias ttd="todo.sh do"
 
 alias rm="rm -i"
 alias mv="mv -i"
+alias cp="cp -i"
 alias put="trash-put"
 alias puts="trash-put"
 

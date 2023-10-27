@@ -70,6 +70,7 @@ abbr -a ttd  todo.sh do
 # for trash-cli
 abbr -a rm   rm -i
 abbr -a mv   mv -i
+abbr -a cp   cp -i
 abbr -a put  trash-put
 abbr -a puts trash-put
 
