@@ -156,6 +156,14 @@ function mkcd
   and pwd
 end
 
+function ppk2ssh
+  set --local filename (path change-extension '' $argv[1])
+  puttygen $argv[1] -O private-openssh -o $filename &&
+    echo "Generate $filename"
+  puttygen $argv[1] -O public-openssh -o $filename.pub &&
+    echo "Generate $filename.pub"
+end
+
 function update
   echo -e "### Packages ###"
   update_packages
