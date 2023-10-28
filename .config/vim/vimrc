@@ -183,7 +183,7 @@ nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
 " nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
 nnoremap <leader>f <Cmd>Files<CR>
 nnoremap <leader>w <Cmd>ShakyoClue<CR>
-nnoremap <leader>q <Plug>(socrates-greed)
+nnoremap <silent> <leader>q <Plug>(socrates-greed)
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 
