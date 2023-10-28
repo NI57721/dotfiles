@@ -183,7 +183,10 @@ nnoremap <leader>D <Cmd>call dein#update()<CR>
 nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
 " nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
 nnoremap <leader>f <Cmd>Files<CR>
-nnoremap <leader>w <Cmd>ShakyoClue<CR>
+nnoremap <leader>sr <Plug>(shakyo-run)
+nnoremap <leader>sc <Plug>(shakyo-clue)
+nnoremap <leader>sq <Plug>(shakyo-quit)
+nnoremap <leader>sf <Plug>(shakyo-force-quit)
 nnoremap <silent> <leader>q <Plug>(socrates-greed)
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
