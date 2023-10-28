@@ -62,6 +62,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \     'matchers': ['skkeleton'],
   \     'sorters': [],
   \     'minAutoCompleteLength': 2,
+  \     'isVolatile': v:true,
   \   },
   \   'vim-lsp': {'mark': 'lsp'},
   \   '_': {
@@ -390,6 +391,7 @@ call skkeleton#config({
   \     [expand('$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode'), 'euc-jp'],
   \   ],
   \   'kanaTable': 'azik',
+  \   'completionRankFile': expand('$XDG_DATA_HOME/skk/rank.json'),
   \   'eggLikeNewline': v:true,
   \   'keepState': v:true,
   \   'markerHenkan': 'γ',
