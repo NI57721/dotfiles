@@ -271,7 +271,7 @@ alias gishl="git stash list"
 alias gishs="git stash show -p"
 alias gipf="git push --force-with-lease --force-if-includes"
 alias gipu="git push --set-upstream origin \$(git branch --show-current)"
-alias girm="git remind status --short"
+alias girm="git remind status --short | grep -ve "-sandbox\$""
 
 alias docl="docker container ls"
 alias doil="docker image ls"
