@@ -28,7 +28,7 @@ update() {
   echo -e "\n### Vim ###"
   update_vim
   echo -e "\n### Git Remind ###"
-  git remind status --short
+  git remind status --short | grep -ve "-sandbox\$"
 }
 
 update_packages() {

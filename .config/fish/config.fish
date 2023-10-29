@@ -186,7 +186,7 @@ function update
   echo -e "\n### Vim ###"
   update_vim
   echo -e "\n### Git remind ###"
-  git remind status --short
+  git remind status --short | grep -ve "-sandbox\$"
 end
 
 function update_packages
