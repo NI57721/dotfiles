@@ -643,6 +643,7 @@ command! RC :tabnew $XDG_CONFIG_HOME/vim/vimrc |
             \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml |
             \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
 command! SR :source $XDG_CONFIG_HOME/vim/vimrc
+command! Zen :%call getline('.') ->tr('０１２３４５６７８９．，　', '0123456789., ') ->setline('.')
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
