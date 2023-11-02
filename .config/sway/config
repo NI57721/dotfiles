@@ -25,7 +25,7 @@ exec swayidle -w \
   # timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 
 # Enables inhibit_idle when playing audio
-exec sway-audio-idle-inhibit
+# exec sway-audio-idle-inhibit
 
 # Clamshell mode
 set $laptop LVSD-1
