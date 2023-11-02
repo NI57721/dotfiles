@@ -95,10 +95,11 @@ abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
 abbr -a --set-cursor gira git remote add origin git@github.com:%
-abbr -a gish git stash
+abbr -a gish  git stash
 abbr -a gishd git stash drop
 abbr -a gishl git stash list
 abbr -a --set-cursor gishs git stash show -p stash@{%}
+abbr -a gip  git push
 abbr -a gipf git push --force-with-lease --force-if-includes
 abbr -a gipu git push --set-upstream origin \(git branch --show-current\)
 abbr -a girm git remind status --short \| grep -ve "-sandbox\\\$"
