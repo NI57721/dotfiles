@@ -235,6 +235,7 @@ if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias cdv='cd $XDG_DATA_HOME/dein/repos/github.com/'
 
 alias ll='ls -al'
 alias lss='ls -ACF'

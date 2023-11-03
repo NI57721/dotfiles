@@ -58,6 +58,7 @@ abbr -a ... cd ../..
 abbr von sudo swanctl -i -c vpn
 abbr vof sudo swanctl -t -i vpn
 abbr om swaymsg output LVDS-1 disable
+abbr -a cdv cd $XDG_DATA_HOME/dein/repos/github.com/
 
 # for TODO-TXT
 abbr -a tt   todo.sh
