@@ -261,6 +261,22 @@ augroup MostRecentlyClosedTabs
   autocmd BufWinLeave * call insert(g:most_recently_closed, expand('<amatch>'))
 augroup END
 
+function! ShowMostRecentlyClosedTabs() abort
+  new
+  call append(0, g:most_recently_closed)
+  $delete
+  nnoremap <buffer> dd <Cmd>let g:most_recently_closed = filter(
+    \   g:most_recently_closed,
+    \   "v:val !=# getline('.')"
+    \ ) \|
+    \ delete<CR>
+  nnoremap <buffer> <CR> <Cmd>let g:most_recently_closed = filter(
+    \   g:most_recently_closed,
+    \   "v:val !=# getline('.')"
+    \ ) \|
+    \ execute 'tabnew ' .. getline('.')<CR>
+endfunction
+
 noremap <C-Right>  :tabnext<CR><C-G>
 noremap <C-Left>   :tabprevious<CR><C-G>
 noremap <C-Up>     :if len(g:most_recently_closed) > 0 \|
