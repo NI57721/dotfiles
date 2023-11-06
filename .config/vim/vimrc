@@ -368,8 +368,9 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   nnoremap <buffer> gd <plug>(lsp-definition)
-  nnoremap <buffer> <f2> <plug>(lsp-rename)
-  " inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+  nnoremap <buffer> <C-Q> <plug>(lsp-rename)
+  nnoremap <buffer> <C-K> <plug>(lsp-hover)
+  inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 endfunction
 
 augroup lsp_install
