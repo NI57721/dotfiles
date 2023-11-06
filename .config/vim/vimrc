@@ -186,7 +186,6 @@ nnoremap <leader>f <Cmd>Files<CR>
 nnoremap <leader>sr <Plug>(shakyo-run)
 nnoremap <leader>sc <Plug>(shakyo-clue)
 nnoremap <leader>sq <Plug>(shakyo-quit)
-nnoremap <leader>sf <Plug>(shakyo-force-quit)
 nnoremap <leader>su <Cmd>call dein#update('vim-shakyo')<CR>
 nnoremap <silent> <leader>q <Plug>(socrates-greed)
 nnoremap <leader>m <Plug>(MatchitNormalForward)
