@@ -4,26 +4,27 @@ HOME=${HOME:-~}
 XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 DOTFILES_ROOT=${DOTFILES_ROOT:-$HOME/dotfiles}
 
-linked_files=()
-linked_files+=(.config/bash/bashrc)
-linked_files+=(.config/bundle/config)
-linked_files+=(.config/chrome-flags.conf)
-linked_files+=(.config/fish/{config.fish,fish_plugins})
-linked_files+=(.config/git/{config,gitignore_global})
-linked_files+=(.config/irb/irbrc)
-linked_files+=(.config/npm/npmrc)
-linked_files+=(.config/paru/paru.conf)
-linked_files+=(.config/python/startup.py)
-linked_files+=(.config/sway/{config,scripts/{clamshell.sh,ime-vim.sh,recorder.sh}})
-linked_files+=(.config/tmux/tmux.conf)
-linked_files+=(.config/todo/config)
-linked_files+=(.config/vim/{vimrc,rc/dein{,_lazy}.toml})
-linked_files+=(.config/vsnip/ruby.json)
-linked_files+=(.config/waybar/{config,style.css})
-linked_files+=(.config/waybar/scripts/{vpn.sh,recorder-state.sh})
-linked_files+=(.config/wezterm/wezterm.lua)
-# linked_files+=(.config/wget/wgetrc)
-linked_files+=(.config/X11/xinitrc)
+linked_files=(
+  .config/bash/bashrc
+  .config/bundle/config
+  .config/chrome-flags.conf
+  .config/fish/{config.fish,fish_plugins}
+  .config/git/{config,gitignore_global}
+  .config/irb/irbrc
+  .config/npm/npmrc
+  .config/paru/paru.conf
+  .config/python/startup.py
+  .config/sway/{config,scripts/{clamshell.sh,ime-vim.sh,recorder.sh}}
+  .config/tmux/tmux.conf
+  .config/todo/config
+  .config/vim/{vimrc,rc/dein{,_lazy}.toml}
+  .config/vsnip/ruby.json
+  .config/waybar/{config,style.css}
+  .config/waybar/scripts/{vpn.sh,recorder-state.sh}
+  .config/wezterm/wezterm.lua
+  # .config/wget/wgetrc
+  .config/X11/xinitrc
+)
 
 backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
 
