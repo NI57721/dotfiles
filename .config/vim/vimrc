@@ -264,7 +264,8 @@ augroup MostRecentlyClosedTabs
 augroup END
 
 function! ShowMostRecentlyClosedTabs() abort
-  new +set\ bufhidden=hide [MostRecentlyClosedTabs]
+  new
+  set bufhidden=hide
   call append(0, g:most_recently_closed)
   $delete
   nnoremap <buffer> q <Cmd>bwipeout!<CR>
