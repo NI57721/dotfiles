@@ -255,21 +255,24 @@ noremap <C-I> <C-I>
 noremap <Tab>     :tabnext<CR><C-G>
 noremap <S-Tab>   :tabprevious<CR><C-G>
 
-let g:most_recently_closed = []
+if !exists('g:most_recently_closed')
+  let g:most_recently_closed = []
+endif
 augroup MostRecentlyClosedTabs
   autocmd!
-  autocmd BufWinLeave * call insert(g:most_recently_closed, expand('<amatch>'))
+  autocmd BufWinLeave * if expand('<amatch>') != '' | call insert(g:most_recently_closed, expand('<amatch>')) | endif
 augroup END
 
 function! ShowMostRecentlyClosedTabs() abort
-  new +set\ bufhidden=hide
+  new +set\ bufhidden=hide [MostRecentlyClosedTabs]
   call append(0, g:most_recently_closed)
   $delete
-  nnoremap <buffer> q <Cmd>q!<CR>
+  nnoremap <buffer> q <Cmd>bwipeout!<CR>
+  nnoremap <buffer> <ESC> <Cmd>bwipeout!<CR>
   nnoremap <buffer> dd <Cmd>call remove(g:most_recently_closed, line('.') - 1) \|
     \ delete<CR>
   nnoremap <buffer> <CR> <Cmd>call remove(g:most_recently_closed, line('.') - 1) \|
-    \ execute 'tabnew ' .. getline('.')<CR>
+    \ execute 'bwipeout! \| tabnew ' .. getline('.')<CR>
 endfunction
 
 noremap <C-Right>  :tabnext<CR><C-G>
