@@ -414,7 +414,7 @@ call skkeleton#config({
   \   'eggLikeNewline': v:true,
   \   'keepState': v:true,
   \   'markerHenkan': 'γ',
-  \   'markerHenkanSelect': 'Γ',
+  \   'markerHenkanSelect': '',
   \   'registerConvertResult': v:true,
   \   'showCandidatesCount': 1,
   \   'selectCandidateKeys': '12345qw',
