@@ -268,17 +268,16 @@ function! ShowMostRecentlyClosedTabs() abort
   set bufhidden=hide
   call append(0, g:most_recently_closed)
   $delete
-  nnoremap <buffer> q <Cmd>bwipeout!<CR>
-  nnoremap <buffer> <ESC> <Cmd>bwipeout!<CR>
-  nnoremap <buffer> dd <Cmd>call remove(g:most_recently_closed, line('.') - 1) \|
-    \ delete<CR>
-  nnoremap <buffer> <CR> <Cmd>call remove(g:most_recently_closed, line('.') - 1) \|
-    \ execute 'bwipeout! \| tabnew ' .. getline('.')<CR>
+  autocmd WinClosed <buffer> bwipeout!
+  nnoremap <buffer> q <Cmd>q<CR>
+  nnoremap <buffer> <ESC> <Cmd>q<CR>
+  nnoremap <buffer> dd <Cmd>call remove(g:most_recently_closed, line('.') - 1) \| delete<CR>
+  nnoremap <buffer> <CR> <Cmd>execute 'q \| tabnew ' .. remove(g:most_recently_closed, line('.') - 1)<CR>
 endfunction
 
-noremap <C-Right>  :tabnext<CR><C-G>
-noremap <C-Left>   :tabprevious<CR><C-G>
-noremap <C-Up>     :if len(g:most_recently_closed) > 0 \|
+noremap <C-Right>  <Cmd>tabnext<CR><C-G>
+noremap <C-Left>   <Cmd>tabprevious<CR><C-G>
+noremap <C-Up>     <Cmd>if len(g:most_recently_closed) > 0 \|
                      \   execute ':tabnew ' .. remove(g:most_recently_closed, 0) \|
                      \ endif<CR>
 noremap  <C-Down>  :q<CR><C-G>
