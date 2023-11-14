@@ -479,9 +479,10 @@ augroup Skkeleton
                           \ endif
 
   autocmd InsertEnter * ++once call skkeleton#register_kanatable('azik', {
-    \   '<s-j><s-j>': ['じゅん', ''],
+    \   '<s-j><s-j>':   ['じゅん', ''],
+    \   '<s-j>j':   ['じゅん', ''],
     \   'jj':    'escape',
-    \   '''':    'disable',
+    \   '''':    ['''', ''],
     \   '@':     'zenkaku',
     \   'q':     'katakana',
     \   '<s-q>': 'hankatakana',
