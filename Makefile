@@ -174,8 +174,8 @@ i_docker:
 
 ## i_dropbox: Install DropBox CLI tool
 i_dropbox:
-	curl -L https://www.dropbox.com/download?plat=lnx.x86_64 | \
-	  tar -C $$HOME/hoge -xzf -
+	curl -L https://www.dropbox.com/download\?plat=lnx.x86_64 | \
+	  tar -xzf -
 
 ## i_fish: Install fish shell
 i_fish:
