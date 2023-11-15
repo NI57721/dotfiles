@@ -3,7 +3,7 @@
 
 # Basic packages
 PACKAGES := base-devel curl jq git linux-headers ntfs-3g openssh reflector
-PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois
+PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
 # GUI and Desktop
 PACKAGES += libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
 PACKAGES += waybar wl-clipboard xorg-xwayland
