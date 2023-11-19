@@ -12,7 +12,6 @@ if [ -z $FloatingVim ]; then
     start --class FloatingVim fish
 else
   if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
-    wtype -M ctrl l -m ctrl -P escape -p escape :IM -P return
     swaymsg "move window to scratchpad"
   else
     swaymsg "[app_id=\"FloatingVim\"] focus"

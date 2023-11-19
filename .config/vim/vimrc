@@ -613,14 +613,38 @@ inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
 " tmap <C-J> <Plug>(skkeleton-toggle)
 
-command! IM if matchstr(getline('.'), '\%' .. col('.') .. 'c.') == "\<C-L>" |
-              \   execute 'normal! "_x' |
-              \   execute 'silent! s/[' ..
-              \     skkeleton#get_config().markerHenkanSelect ..
-              \     skkeleton#get_config().markerHenkan .. ']//g' |
-              \   call job_start(['wl-copy', '--', getline('.')]) |
-              \   redraw! |
-              \ endif
+command! -bar IM call s:imMapping()
+
+function! s:imMapping() abort
+  nnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
+  inoremap <buffer> <C-CR> <Cmd>call <SID>yankAndClose()<CR>
+  xnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
+
+  augroup IME
+    autocmd! * <buffer>
+    autocmd CursorMovedI <buffer> call job_start(['wl-copy', '--', getline('.')])
+  augroup END
+endfunction
+
+function! s:getSelectedText() abort
+  let [start_line, start_col] = getpos('''<')[1:2]
+  let [end_line, end_col] = getpos('''>')[1:2]
+  let selected_lines = getline(start_line, end_line)
+  let selected_lines[0] = strpart(selected_lines[0], start_col - 1)
+  let selected_lines[-1] = strpart(selected_lines[-1], 0, end_col - 1)
+  return join(selected_lines, "\n")
+endfunction
+
+function! s:yankAndClose() abort
+  if mode() ==? 'v'
+    execute "normal! \<ESC>"
+    echom s:getSelectedText()
+    call job_start(['wl-copy', '--', s:getSelectedText()])
+  else
+    call job_start(['wl-copy', '--', getline('.')])
+  endif
+  call job_start(['swaymsg', 'move window to scratchpad'])
+endfunction
 
 
 " dps-dial.vim
