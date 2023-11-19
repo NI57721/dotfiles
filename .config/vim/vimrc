@@ -432,7 +432,11 @@ function! s:skkeleton_state_popup()
     call popup_close(g:skkeleton_state_id)
   endif
   if g:skkeleton#mode != ''
-    let g:skkeleton_state_id = popup_create(g:skkeleton#mode, #{pos: 'botleft', line: 'cursor+1', col: 'cursor', moved: 'any', highlight: 'WildMenu'})
+    let mode_label = #{hira: 'あ', kata: 'ア', hankata: 'ｶﾅ', zenkaku: 'Ａ', abbrev: 'ab'}
+    let g:skkeleton_state_id = popup_create(
+      \   mode_label[g:skkeleton#mode],
+      \   #{pos: 'botleft', line: 'cursor+1', col: 'cursor', moved: 'any', highlight: 'WildMenu'}
+      \ )
   endif
 endfunction
 
