@@ -626,7 +626,7 @@ function! s:imMapping() abort
 
   augroup IME
     autocmd! * <buffer>
-    autocmd CursorMovedI <buffer> call job_start(['wl-copy', '--', getline('.')])
+    autocmd TextChangedI <buffer> call job_start(['wl-copy', '--', getline('.')])
   augroup END
 endfunction
 
