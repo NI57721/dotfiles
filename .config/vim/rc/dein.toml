@@ -8,8 +8,10 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
-# repo = 'NI57721/skkeleton'
-# rev = 'WIP'
+
+[[plugins]]
+repo = 'NI57721/skkeleton-state-popup'
+depends = ['denops.vim', 'skkeleton']
 
 [[plugins]]
 # repo = 'kei-s16/skkeleton-azik-kanatable'

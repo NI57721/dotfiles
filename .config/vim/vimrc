@@ -425,27 +425,17 @@ call skkeleton#register_keymap('input', ';', 'henkanPoint')
 call skkeleton#register_keymap('henkan', '<', 'purgeCandidate')
 call skkeleton#register_keymap('henkan', 'X', v:false)
 
-let g:skkeleton_state_id = v:null
-
-function! s:skkeleton_state_popup()
-  if g:skkeleton_state_id != v:null
-    call popup_close(g:skkeleton_state_id)
-  endif
-  if g:skkeleton#mode == ''
-    return
-  endif
-  if g:skkeleton#state.phase =~# '^input:okuri\(ari\|nasi\)$'
-    let label = '▼▼'
-  elseif g:skkeleton#state.phase ==# 'henkan'
-    let label = '▽▽'
-  else
-    let label = #{hira: 'あ', kata: 'ア', hankata: 'ｶﾅ', zenkaku: 'Ａ', abbrev: 'ab'}[g:skkeleton#mode]
-  endif
-  let g:skkeleton_state_id = popup_create(
-    \   label,
-    \   #{pos: 'botleft', line: 'cursor+1', col: 'cursor', moved: 'any', highlight: 'WildMenu'}
-    \ )
-endfunction
+call skkeleton_state_popup#config(#{
+  \   labels: {
+  \     'input': #{hira: 'あ', kata: 'ア', hankata: 'ｶﾅ', zenkaku: 'Ａ'},
+  \     'input:okurinasi': #{hira: '▽▽', kata: '▽▽', hankata: '▽▽', abbrev: 'ab'},
+  \     'input:okuriari': #{hira: '▽▽', kata: '▽▽', hankata: '▽▽'},
+  \     'henkan': #{hira: '▼▼', kata: '▼▼', hankata: '▼▼', abbrev: 'ab'},
+  \     'latin': '_A',
+  \   },
+  \   opts: #{pos: 'botleft', line: 'cursor+1', col: 'cursor', highlight: 'WildMenu'},
+  \ })
+call skkeleton_state_popup#run()
 
 function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
@@ -468,7 +458,6 @@ endfunction
 
 augroup Skkeleton
   autocmd!
-  autocmd User skkeleton-handled call s:skkeleton_state_popup()
 
   let s:azikOkuriList = [
     \   ['Q', 'aI'],
@@ -484,10 +473,6 @@ augroup Skkeleton
   for s:azikOkuriItem in s:azikOkuriList
     call s:mapAzikOkuri(s:azikOkuriItem[0], s:azikOkuriItem[1])
   endfor
-
-  autocmd InsertLeave * if g:skkeleton#state.phase ==# 'henkan' && getline('.') !~ '^\s*$' |
-                          \   call job_start(['wl-copy', '--', getline('.')]) |
-                          \ endif
 
   autocmd InsertEnter * ++once call skkeleton#register_kanatable('azik', {
     \   '<s-j><s-j>':   ['じゅん', ''],
