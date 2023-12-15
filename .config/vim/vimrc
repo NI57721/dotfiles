@@ -462,6 +462,7 @@ augroup Skkeleton
 
   let s:azikOkuriList = [
     \   ['Q', 'aI'],
+    \   ['F', 'aI'],
     \   ['Z', 'aNn'],
     \   ['K', 'iNn'],
     \   ['H', 'uU'],
