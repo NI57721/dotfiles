@@ -429,14 +429,14 @@ call skkeleton#register_keymap('henkan', 'X', v:false)
 call skkeleton_state_popup#config(#{
   \   labels: {
   \     'input': #{hira: 'あ', kata: 'ア', hankata: 'ｶﾅ', zenkaku: 'Ａ'},
-  \     'input:okurinasi': #{hira: '▽▽', kata: '▽▽', hankata: '▽▽', abbrev: 'ab'},
-  \     'input:okuriari': #{hira: '▽▽', kata: '▽▽', hankata: '▽▽'},
-  \     'henkan': #{hira: '▼▼', kata: '▼▼', hankata: '▼▼', abbrev: 'ab'},
+  \     'input:okurinasi': #{hira: '▽', kata: '▽', hankata: '▽', abbrev: 'ab'},
+  \     'input:okuriari': #{hira: '▽', kata: '▽', hankata: '▽'},
+  \     'henkan': #{hira: '▼', kata: '▼', hankata: '▼', abbrev: 'ab'},
   "\     'latin': '_A',
   \   },
   \   opts: #{pos: 'botleft', line: 'cursor+1', col: 'cursor', highlight: 'WildMenu'},
   \ })
-call skkeleton_state_popup#run()
+call skkeleton_state_popup#enable()
 
 function s:mapAzikOkuri(input, feed) abort
   for mode in ['i', 'c']
