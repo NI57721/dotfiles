@@ -607,6 +607,36 @@ augroup Skkeleton
     \ })
 augroup END
 
+augroup SkkeletonHenkanHighlight
+  autocmd!
+  autocmd User skkeleton-handled,skkeleton-disable-post call s:skkeleton_henkan_highlight()
+augroup END
+
+highlight SkkeletonHenkan cterm=underline
+call prop_type_add('skkeleton_henkan', #{highlight: 'SkkeletonHenkan'})
+
+function! s:skkeleton_henkan_highlight() abort
+  if g:skkeleton#state.phase !=# 'input'
+    if !has_key(g:, 'skkeleton_henkan_pos')
+      let g:skkeleton_henkan_pos = #{bufnr: bufnr(), lnum: line('.'), col: getpos('.')[2]}
+    endif
+
+    if g:skkeleton_henkan_pos.bufnr == bufnr() && g:skkeleton_henkan_pos.lnum == line('.')
+      silent! call prop_add(line('.'), g:skkeleton_henkan_pos.col, #{end_col: getpos('.')[2], type: 'skkeleton_henkan', id: 999})
+    else
+      call s:remove_highlight()
+    endif
+  elseif has_key(g:, 'skkeleton_henkan_pos')
+    call s:remove_highlight()
+  endif
+endfunction
+
+function! s:remove_highlight() abort
+    call remove(g:, 'skkeleton_henkan_pos')
+    call prop_remove(#{id: 999})
+endfunction
+
+
 inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
 " tmap <C-J> <Plug>(skkeleton-toggle)
