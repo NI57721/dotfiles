@@ -300,11 +300,25 @@ i_vpn:
 
 ## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
 create_arch_linux_installer:
-	@echo -e "Check the name of a USB drive"
-	# ls -l /dev/disk/by-id/usb-*
+	@echo -e "Install the image file if needed"
+	mkdir -p $$XDG_CACHE_HOME/arch-installation
+	curl https://archlinux.org/iso/latest/archlinux-x86_64.iso.sig \
+	  > $$XDG_CACHE_HOME/arch-installation/archlinux.sig.tmp
+	if [ ! -f $$XDG_CACHE_HOME/arch-installation/archlinux.sig ] || \
+	   [ -n "$$(cmp $$XDG_CACHE_HOME/arch-installation/archlinux.sig{,.tmp})" ]; then \
+	  curl https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/archlinux-x86_64.iso \
+	    > $$XDG_CACHE_HOME/arch-installation/archlinux.iso.tmp; \
+	  mv $$XDG_CACHE_HOME/arch-installation/archlinux.iso{.tmp,}; \
+	fi
+	mv $$XDG_CACHE_HOME/arch-installation/archlinux.sig{.tmp,}
+	@echo -e "\nCheck the PGP signature"
+	pacman-key -v $$XDG_CACHE_HOME/arch-installation/archlinux{.sig,.iso}
+	@echo -e "\nCheck the name of a USB drive"
+	ls -l /dev/disk/by-id/usb-*
+	@read -p "OK? [y/n]" ans; if [ $$ans != y ]; then exit 1; fi;
 	@echo -e "\nEnsure that the USB drive is not mounted"
 	lsblk
-	@echo -e "\nDownload an ISO file"
-	xdg-open https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/
-	@echo -e "\nExecute \"cp archlinux-YYYY.MM.DD-x86_64.iso /dev/your/USB/without/suffix\""
+	@read -p "OK? [y/n]" ans; if [ $$ans != y ]; then exit 1; fi;
+	@read -p "Enter the USB drive without suffix (e.g. /dev/sdb): " usb; \
+	cp $$XDG_CACHE_HOME/arch-installation/archlinux.iso $$usb
 
