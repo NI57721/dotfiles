@@ -89,7 +89,7 @@ instruction() {
      The indices are required as arguments when you try to resume.
      e.g. ${CLR_GREEN}$ bash $0 000
 
-${CLR_WHITE}     In the following steps, your device name is assumed to be /dev/sda.
+${CLR_WHITE}     In the following steps, your device name is assumed to be /dev/nvme0n1.
      So here goes!
      Press '${CLR_PURPLE}y${CLR_WHITE}'.\
 ${CLR_RESET}";;
@@ -103,9 +103,9 @@ ${CLR_RESET}";;
       echo -e "${CLR_WHITE}\
 002: Backup the current partition table.
      When you want to restore it, execute below:
-       ${CLR_GREEN}$ sfdisk /dev/sda < sda.dump\
+       ${CLR_GREEN}$ sfdisk /dev/nvme0n1 < nvme0n1.dump\
 ${CLR_RESET}"
-      CODE="sfdisk -d /dev/sda > sda.dump";;
+      CODE="sfdisk -d /dev/nvme0n1 > nvme0n1.dump";;
 
     003)
       echo -e "${CLR_WHITE}\
@@ -117,12 +117,12 @@ ${CLR_RESET}"
       echo -e "${CLR_WHITE}\
 004: Create partitions and mount them if you need to do.
      Here is the example of a table.
-       ${CLR_GREEN}/mnt/boot    /dev/sda1    EFI system partition(EF00) 512MiB${CLR_WHITE}
-       ${CLR_GREEN}swap         /dev/sda2    Linux swap(8200)           8GiB${CLR_WHITE}
-       ${CLR_GREEN}/mnt/storage /dev/sda3    Linux filesystem(8300)     1TiB${CLR_WHITE}
-       ${CLR_GREEN}/mnt         /dev/sda4    Linux x86-64 root(8304)    Remainder\
+       ${CLR_GREEN}/mnt/boot    /dev/nvme0n1p1    EFI system partition(EF00) 512MiB${CLR_WHITE}
+       ${CLR_GREEN}swap         /dev/nvme0n1p2    Linux swap(8200)           8GiB${CLR_WHITE}
+       ${CLR_GREEN}/mnt         /dev/nvme0n1p3    Linux x86-64 root(8304)    1TiB${CLR_WHITE}
+       ${CLR_GREEN}/mnt/storage /dev/nvme0n1p4    Linux filesystem(8300)     Remainder\
 ${CLR_RESET}"
-      CODE="gdisk /dev/sda";;
+      CODE="gdisk /dev/nvme0n1";;
 
     005)
       echo -e "${CLR_WHITE}\
@@ -135,8 +135,10 @@ ${CLR_RESET}"
 006: Format each partition and make swap.\
 ${CLR_RESET}"
       CODE="\
-mkfs.fat -F 32 /dev/sda1\nmkswap /dev/sda2
-mkfs.ext4 /dev/sda3\nmkfs.ext4 /dev/sda4\
+mkfs.fat -F 32 /dev/nvme0n1p1
+mkswap /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
+mkfs.ext4 /dev/nvme0n1p4\
 ";;
 
     007)
@@ -144,10 +146,10 @@ mkfs.ext4 /dev/sda3\nmkfs.ext4 /dev/sda4\
 007: Mount each partition.\
 ${CLR_RESET}"
       CODE="\
-mount /dev/sda4 /mnt
-mount --mkdir /dev/sda1 /mnt/boot
-mount --mkdir /dev/sda3 /mnt/storage
-swapon /dev/sda2\
+mount /dev/nvme0n1p3 /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/boot
+mount --mkdir /dev/nvme0n1p4 /mnt/storage
+swapon /dev/nvme0n1p2\
 ";;
 
     008)
@@ -282,7 +284,7 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
-options root=$(blkid -o export /dev/sda4 | grep '^UUID=') rw\\
+options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
 \" | tee /boot/loader/entries/arch.conf\
 ";;
 
@@ -297,7 +299,7 @@ title   Arch Linux (fallback initramfs)
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux-fallback.img
-options root=$(blkid -o export /dev/sda4 | grep '^UUID=') rw\\
+options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
 \" | tee /boot/loader/entries/arch-fallback.conf\
 ";;
 
