@@ -310,10 +310,14 @@ ln -s /usr/lib/systemd/system/systemd-homed.service /etc/systemd/system/dbus-org
 homectl create UserName --member-of=seat,wheel\
 ";;
 
+# reboot here
+# switch 111 with 112
+
     112)
       echo -e "${CLR_WHITE}\
 112: Edit sudoers.
        Here is an example:
+       Default insults
        ${CLR_RED}- # %wheel ALL=(ALL:ALL) ALL
        ${CLR_GREEN}+ %wheel ALL=(ALL:ALL) ALL\
 ${CLR_RESET}"
