@@ -613,7 +613,7 @@ augroup SkkeletonHenkanHighlight
 augroup END
 
 highlight SkkeletonHenkan cterm=underline
-call prop_type_add('skkeleton_henkan', #{highlight: 'SkkeletonHenkan'})
+silent! prop_type_add('skkeleton_henkan', #{highlight: 'SkkeletonHenkan'})
 
 function! s:skkeleton_henkan_highlight() abort
   if g:skkeleton#state.phase !=# 'input'
