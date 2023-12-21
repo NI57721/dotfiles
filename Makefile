@@ -126,7 +126,7 @@ init_pacman:
 
 ## init_putty: Make a directory putty for PuTTY to use this directory instead of $HOME/.putty
 init_putty:
-	mkdir $XDG_CONFIG_HOME/putty
+	mkdir $$XDG_CONFIG_HOME/putty
 
 ## init_timezone: Initialize settings for timezones
 init_timezone:
