@@ -23,7 +23,7 @@ AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-h
 
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
-GO_PACKAGES := github.com/suin/git-remind@latest
+GO_PACKAGES += github.com/suin/git-remind@latest
 
 
 # Default distribution is set to ArchLinux.
