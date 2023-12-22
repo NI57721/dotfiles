@@ -77,13 +77,13 @@ init_bash:
 	if [ -f "$$XDG_CONFIG_HOME/bash/bashrc" ]; then \
 	  echo -e "\
 	\n\
-	# Set umask for the whole system
-	umask 077
+	# Set umask for the whole system\n\
+	umask 077\n\
 	\n\
 	# Read the bash config file in an XDG Base Directory\n\
 	. $$XDG_CONFIG_HOME/bash/bashrc\n\
-	" | \
-	  sudo tee -a /etc/bash.bashrc > /dev/null; \
+	" \
+	  | sudo tee -a /etc/bash.bashrc > /dev/null; \
 	fi
 
 ## init_git: Initialize settings for git
@@ -95,8 +95,8 @@ init_git:
 	  HostName github.com\n\
 	  IdentityFile $$HOME/.ssh/ni57721\n\
 	  User git\n\
-	" | \
-	  tee -a $$HOME/.ssh/config
+	" \
+	  | tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
 ## init_grub: Initialize settings for grub, where grub is hidden
@@ -105,8 +105,8 @@ init_grub:
 	\n\
 	# Hiding grub menu.\n\
 	GRUB_FORCE_HIDDEN_MENU=true\
-	" | \
-	  sudo tee -a /etc/default/grub
+	" \
+	  | sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## init_mirrorlist: Sort the mirrorlist used by pacman
@@ -117,12 +117,13 @@ init_mirrorlist:
 
 ## init_pacman: Initialize settings for pacman, where Color and ILoveCandy are turned on
 init_pacman:
+	sudo sed -e "s/^#Color$/Color\nILoveCandy/"
 	echo -e "\
 	\n\
 	Color\n\
 	ILoveCandy\n\
-	" | \
-	  sudo tee -a /etc/pacman.conf
+	" \
+	  | sudo tee -a /etc/pacman.conf
 
 ## init_putty: Make a directory putty for PuTTY to use this directory instead of $HOME/.putty
 init_putty:
