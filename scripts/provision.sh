@@ -103,9 +103,9 @@ ${CLR_RESET}";;
       echo -e "${CLR_WHITE}\
 002: Backup the current partition table.
      When you want to restore it, execute below:
-       ${CLR_GREEN}$ sfdisk /dev/nvme0n1 < nvme0n1.dump\
+       ${CLR_GREEN}$ cat nvme0n1.dump | sfdisk /dev/nvme0n1\
 ${CLR_RESET}"
-      CODE="sfdisk -d /dev/nvme0n1 > nvme0n1.dump";;
+      CODE="sfdisk -d /dev/nvme0n1 | tee nvme0n1.dump";;
 
     003)
       echo -e "${CLR_WHITE}\
@@ -187,7 +187,7 @@ ${CLR_RESET}"
 012: Create fstab, and then check it.\
 ${CLR_RESET}"
       CODE="\
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt | tee -a /mnt/etc/fstab
 cat /mnt/etc/fstab\
 ";;
 
@@ -237,7 +237,7 @@ ${CLR_RESET}"
 ${CLR_RESET}"
       CODE="\
 echo 'en_US.UTF-8 UTF-8' | tee -a /etc/locale.gen
-echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+echo 'LANG=en_US.UTF-8' | tee /etc/locale.conf
 locale-gen\
 ";;
 
@@ -245,7 +245,7 @@ locale-gen\
       echo -e "${CLR_WHITE}\
 105: Set the host name. ${CLR_RED}It is recommended to press 'e'.\
 ${CLR_RESET}"
-      CODE="echo 'MyHostName' > /etc/hostname";;
+      CODE="echo MyHostName | tee /etc/hostname";;
 
     106)
       echo -e "${CLR_WHITE}\
@@ -269,7 +269,8 @@ default  arch.conf
 timeout  4
 console-mode max
 editor   no\\
-\" | tee /boot/loader/loader.conf\
+\" \\
+  | tee /boot/loader/loader.conf\
 ";;
 
     109)
@@ -285,7 +286,8 @@ linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
 options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
-\" | tee /boot/loader/entries/arch.conf\
+\" \\
+  | tee /boot/loader/entries/arch.conf\
 ";;
 
     110)
@@ -300,7 +302,8 @@ linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux-fallback.img
 options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
-\" | tee /boot/loader/entries/arch-fallback.conf\
+\" \\
+  | tee /boot/loader/entries/arch-fallback.conf\
 ";;
 
     111)
@@ -309,7 +312,7 @@ options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
 ${CLR_RESET}"
       CODE="\
 ln -s /usr/lib/systemd/system/systemd-homed.service /etc/systemd/system/dbus-org.freedesktop.home1.service
-homectl create UserName --member-of=seat,wheel\
+homectl create MyUserName --member-of=seat,wheel\
 ";;
 
 # reboot here
