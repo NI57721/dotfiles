@@ -15,7 +15,6 @@
       "backlight",
       "battery",
       "clock",
-      "tray",
       "custom/audio_idle_inhibitor",
       "idle_inhibitor"
     ],
@@ -53,10 +52,6 @@
             "output-input": "  ",
             "none": ""
         }
-    },
-    "tray": {
-        "icon-size": 24,
-        "spacing": 1
     },
     "clock": {
         // "timezone": "America/New_York",
