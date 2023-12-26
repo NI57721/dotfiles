@@ -20,22 +20,24 @@ main() {
     echo -en "[${CLR_WHITE}y${CLR_RESET}es/${CLR_WHITE}n${CLR_RESET}o/${CLR_WHITE}q${CLR_RESET}uit/${CLR_WHITE}e${CLR_RESET}dit/${CLR_WHITE}h${CLR_RESET}elp]? "
     read -n1 answer
     echo
-    case $answer in
+    case "$answer" in
       y) execute_yes;;
       n) ;;
       q) execute_quit;;
       e) execute_edit;;
       *) execute_help;;
     esac
-    if [[ $answer =~ ^[yne]$ ]]; then
+    if [ "$answer" = y -o "$answer" = n -o "$answer" = e ]; then
       increment_chapter
     fi
   done
 }
 
 execute_yes() {
-  if [[ $CHAPTER = 001 ]]; then
+  if [ "$CHAPTER" = 001 ]; then
     CHAPTER=100
+  elif [ "$CHAPTER" = 002 ]; then
+    CHAPTER=200
   fi
   eval "$(printf "$CODE")"
 }
@@ -101,21 +103,26 @@ ${CLR_RESET}";;
 
     002)
       echo -e "${CLR_WHITE}\
-002: Backup the current partition table.
+002: Just after reboot to create a user?\
+${CLR_RESET}";;
+
+    003)
+      echo -e "${CLR_WHITE}\
+003: Backup the current partition table.
      When you want to restore it, execute below:
        ${CLR_GREEN}$ cat nvme0n1.dump | sfdisk /dev/nvme0n1\
 ${CLR_RESET}"
       CODE="sfdisk -d /dev/nvme0n1 | tee nvme0n1.dump";;
 
-    003)
+    004)
       echo -e "${CLR_WHITE}\
-003: Check the current device.\
+004: Check the current device.\
 ${CLR_RESET}"
       lsblk -f;;
 
-    004)
+    005)
       echo -e "${CLR_WHITE}\
-004: Create partitions and mount them if you need to do.
+005: Create partitions and mount them if you need to do.
      Here is the example of a table.
        ${CLR_GREEN}/mnt/boot    /dev/nvme0n1p1    EFI system partition(EF00) 512MiB${CLR_WHITE}
        ${CLR_GREEN}swap         /dev/nvme0n1p2    Linux swap(8200)           8GiB${CLR_WHITE}
@@ -124,15 +131,15 @@ ${CLR_RESET}"
 ${CLR_RESET}"
       CODE="gdisk /dev/nvme0n1";;
 
-    005)
+    006)
       echo -e "${CLR_WHITE}\
-005: Check the current device, again.\
+006: Check the current device, again.\
 ${CLR_RESET}"
       lsblk -f;;
 
-    006)
+    007)
       echo -e "${CLR_WHITE}\
-006: Format each partition and make swap.\
+007: Format each partition and make swap.\
 ${CLR_RESET}"
       CODE="\
 mkfs.fat -F 32 /dev/nvme0n1p1
@@ -141,9 +148,9 @@ mkfs.ext4 /dev/nvme0n1p3
 mkfs.ext4 /dev/nvme0n1p4\
 ";;
 
-    007)
+    008)
       echo -e "${CLR_WHITE}\
-007: Mount each partition.\
+008: Mount each partition.\
 ${CLR_RESET}"
       CODE="\
 mount /dev/nvme0n1p3 /mnt
@@ -152,57 +159,57 @@ mount --mkdir /dev/nvme0n1p4 /mnt/storage
 swapon /dev/nvme0n1p2\
 ";;
 
-    008)
+    009)
       echo -e "${CLR_WHITE}\
-008: Check the time in your system.\
+009: Check the time in your system.\
 ${CLR_RESET}"
       timedatectl status;;
 
-    009)
+    010)
       echo -e "${CLR_WHITE}\
-009: Sort the servers from where you download packages.\
+010: Sort the servers from where you download packages.\
 ${CLR_RESET}"
       CODE="\
 cp /etc/pacman.d/mirrorlist{,.bak}
 reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 ";;
 
-    010)
+    011)
       echo -e "${CLR_WHITE}\
-010: Refresh the key ring of pacman.\
+011: Refresh the key ring of pacman.\
 ${CLR_RESET}"
       CODE="\
 pacman-key --init
 pacman-key --refresh\
 ";;
 
-    011)
-      echo -e "${CLR_WHITE}\
-011: Install essential packages.\
-${CLR_RESET}"
-      CODE="pacstrap -K /mnt base linux linux-firmware iwd dhcpcd";;
-
     012)
       echo -e "${CLR_WHITE}\
-012: Create fstab, and then check it.\
+012: Install essential packages.\
+${CLR_RESET}"
+      CODE="pacstrap -K /mnt base linux linux-firmware bash iwd dhcpcd";;
+
+    013)
+      echo -e "${CLR_WHITE}\
+013: Create fstab, and then check it.\
 ${CLR_RESET}"
       CODE="\
 genfstab -U /mnt | tee -a /mnt/etc/fstab
 cat /mnt/etc/fstab\
 ";;
 
-    013)
+    014)
       echo -e "${CLR_WHITE}\
-013: Move this file under /mnt, and then execute chroot.\
+014: Move this file under /mnt, and then execute chroot.\
 ${CLR_RESET}"
       CODE="\
 mv -i $0 /mnt
 arch-chroot /mnt\
 ";;
 
-    014)
+    015)
       echo -e "${CLR_WHITE}\
-014: You have reached the last step for those who have not executed chroot yet.
+015: You have reached the last step for those who have not executed chroot yet.
      Run this programme once again, after chroot.
      See you later!\
 ${CLR_RESET}"
@@ -265,10 +272,10 @@ ${CLR_RESET}"
 ${CLR_RESET}"
       CODE="\
 echo -e \"\\
-default  arch.conf
-timeout  4
+default      arch.conf
+timeout      4
 console-mode max
-editor   no\\
+editor       no\\
 \" \\
   | tee /boot/loader/loader.conf\
 ";;
@@ -308,30 +315,51 @@ options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
 
     111)
       echo -e "${CLR_WHITE}\
-111: Create a user. ${CLR_RED}It is recommended to press 'e'.\
+111: Edit sudoers.
+       Here is an example:
+       Defaults insults
+       ${CLR_RED}- # %wheel ALL=(ALL:ALL) ALL
+       ${CLR_GREEN}+ %wheel ALL=(ALL:ALL) ALL\
+${CLR_RESET}"
+      CODE="EDITOR=vim visudo";;
+
+    112)
+      echo -e "${CLR_WHITE}\
+112: Exit, reboot, and then login as root to create a user.\
+${CLR_RESET}"
+      CODE="\
+exit\
+";;
+
+    113)
+      echo -e "${CLR_WHITE}\
+113: You have reached the last step for those who have not created any user yet.
+     Run this programme once again, after reboot as root.
+     See you later!\
+${CLR_RESET}"
+      exit;;
+
+    201)
+      echo -e "${CLR_WHITE}\
+201: Create a user. ${CLR_RED}It is recommended to press 'e'.\
 ${CLR_RESET}"
       CODE="\
 ln -s /usr/lib/systemd/system/systemd-homed.service /etc/systemd/system/dbus-org.freedesktop.home1.service
 homectl create MyUserName --member-of=seat,wheel\
 ";;
 
-# reboot here
-# switch 111 with 112
-
-    112)
+    202)
       echo -e "${CLR_WHITE}\
-112: Edit sudoers.
-       Here is an example:
-       Default insults
-       ${CLR_RED}- # %wheel ALL=(ALL:ALL) ALL
-       ${CLR_GREEN}+ %wheel ALL=(ALL:ALL) ALL\
+203: Congrats! You have reached the last step!
+     Logout once, and login the user you just created.
+     Have a nice ArchLinux experience!\
 ${CLR_RESET}"
-      CODE="EDITOR=vim visudo";;
+      exit;;
 
     *)
       echo -e "${CLR_RED}You are in an undefined chapter $CHAPTER.${CLR_RESET}";;
   esac
-  if [[ $CODE != "### Nothing to do ###" ]]; then
+  if [ "$CODE" != "### Nothing to do ###" ]; then
     show_code
   fi
 }
