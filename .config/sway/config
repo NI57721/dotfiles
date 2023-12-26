@@ -324,3 +324,4 @@ titlebar_border_thickness 0
 # }
 
 include /etc/sway/config.d/*
+
