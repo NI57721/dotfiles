@@ -610,7 +610,7 @@ augroup END
 augroup SkkeletonHenkanHighlight
   autocmd!
   autocmd User skkeleton-handled,skkeleton-disable-post call s:skkeleton_henkan_highlight()
-  autocmd InsertLeave * call s:remove_skkeleton_henkan_highlight()
+  autocmd InsertLeave * if has_key(g:, 'skkeleton_henkan_pos') | call s:remove_skkeleton_henkan_highlight() | endif
 augroup END
 
 highlight SkkeletonHenkan cterm=underline
