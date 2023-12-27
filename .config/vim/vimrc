@@ -646,7 +646,6 @@ command! -bar IM call s:imMapping()
 
 function! s:imMapping() abort
   nnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
-  inoremap <buffer> <S-CR> <Cmd>call <SID>yankAndClose()<CR>
   xnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
 
   augroup IME
