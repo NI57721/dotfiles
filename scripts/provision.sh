@@ -278,12 +278,12 @@ ${CLR_RESET}"
 108: Make the loader configuration file.\
 ${CLR_RESET}"
       CODE="\
-echo -e \"\
+echo -e \"\\\\\\n\
 default      arch.conf\\n\
 timeout      4\\n\
 console-mode max\\n\
-editor       no\
-\" \
+editor       no\\n\
+\" \\\\\\n\
   | tee /boot/loader/loader.conf\
 ";;
 
@@ -294,13 +294,13 @@ editor       no\
 ${CLR_RESET}"
        ls -al /boot
       CODE="\
-echo -e \"\
+echo -e \"\\\\\\n\
 title   Arch Linux\\n\
 linux   /vmlinuz-linux\\n\
 initrd  /intel-ucode.img\\n\
 initrd  /initramfs-linux.img\\n\
-options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\
-\" \
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\n\
+\" \\\\\\n\
   | tee /boot/loader/entries/arch.conf\
 ";;
 
@@ -310,13 +310,13 @@ options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\
        ${CLR_GREEN}$ ls -al /boot\
 ${CLR_RESET}"
       CODE="\
-echo -e \"\
+echo -e \"\\\\\\n\
 title   Arch Linux (fallback initramfs)\\n\
 linux   /vmlinuz-linux\\n\
 initrd  /intel-ucode.img\\n\
 initrd  /initramfs-linux-fallback.img\\n\
-options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\
-\" \
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\n\
+\" \\\\\\n\
   | tee /boot/loader/entries/arch-fallback.conf\
 ";;
 
