@@ -152,7 +152,7 @@ ${CLR_RESET}"
 mkfs.fat -F 32 /dev/disk/by-partlabel/${PARTITION_SYSTEM}
 mkswap /dev/disk/by-partlabel/${PARTITION_SWAP}
 mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_ROOT}
-mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_STORAGE}
+mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_STORAGE}\
 ";;
 
   008)
@@ -161,9 +161,9 @@ mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_STORAGE}
 ${CLR_RESET}"
       CODE="\
 mount /dev/disk/by-partlabel/${PARTITION_ROOT} /mnt
-mount --mkdir /dev/disk/by-partlabel/${PARTITION_SYSTEM /mnt/boot
+mount --mkdir /dev/disk/by-partlabel/${PARTITION_SYSTEM} /mnt/boot
 mount --mkdir /dev/disk/by-partlabel/${PARTITION_STORAGE} /mnt/storage
-swapon /dev/disk/by-partlabel/${PARTITION_SWAP}
+swapon /dev/disk/by-partlabel/${PARTITION_SWAP}\
 ";;
 
     009)
@@ -178,7 +178,7 @@ ${CLR_RESET}"
 ${CLR_RESET}"
       CODE="\
 cp /etc/pacman.d/mirrorlist{,.bak}
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist\
 ";;
 
     011)
@@ -278,12 +278,12 @@ ${CLR_RESET}"
 108: Make the loader configuration file.\
 ${CLR_RESET}"
       CODE="\
-echo -e \"\\
-default      arch.conf
-timeout      4
-console-mode max
-editor       no\\
-\" \\
+echo -e \"\
+default      arch.conf\\n\
+timeout      4\\n\
+console-mode max\\n\
+editor       no\
+\" \
   | tee /boot/loader/loader.conf\
 ";;
 
@@ -294,13 +294,13 @@ editor       no\\
 ${CLR_RESET}"
        ls -al /boot
       CODE="\
-echo -e \"\\
-title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /intel-ucode.img
-initrd  /initramfs-linux.img
-options root=$(blkid -o export /dev/disk/by-partlabel/${PARTITION_ROOT} | grep '^UUID=') rw\\
-\" \\
+echo -e \"\
+title   Arch Linux\\n\
+linux   /vmlinuz-linux\\n\
+initrd  /intel-ucode.img\\n\
+initrd  /initramfs-linux.img\\n\
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\
+\" \
   | tee /boot/loader/entries/arch.conf\
 ";;
 
@@ -310,13 +310,13 @@ options root=$(blkid -o export /dev/disk/by-partlabel/${PARTITION_ROOT} | grep '
        ${CLR_GREEN}$ ls -al /boot\
 ${CLR_RESET}"
       CODE="\
-echo -e \"\\
-title   Arch Linux (fallback initramfs)
-linux   /vmlinuz-linux
-initrd  /intel-ucode.img
-initrd  /initramfs-linux-fallback.img
-options root=$(blkid -o export /dev/disk/by-partlabel/${PARTITION_ROOT} | grep '^UUID=') rw\\
-\" \\
+echo -e \"\
+title   Arch Linux (fallback initramfs)\\n\
+linux   /vmlinuz-linux\\n\
+initrd  /intel-ucode.img\\n\
+initrd  /initramfs-linux-fallback.img\\n\
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\
+\" \
   | tee /boot/loader/entries/arch-fallback.conf\
 ";;
 
@@ -334,9 +334,7 @@ ${CLR_RESET}"
       echo -e "${CLR_WHITE}\
 112: Exit, reboot, and then login as root to create a user.\
 ${CLR_RESET}"
-      CODE="\
-exit\
-";;
+      CODE="exit";;
 
     113)
       echo -e "${CLR_WHITE}\
