@@ -9,7 +9,7 @@ PACKAGES += libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
 PACKAGES += waybar wezterm wl-clipboard xorg-xwayland
 # Sound
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
-PACKAGES += bluez-utils
+PACKAGES += bluez-utils sof-firmware
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
