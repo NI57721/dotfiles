@@ -12,7 +12,10 @@ CLR_RESET="\033[0m"
 
 CHAPTER=${1:-000}
 EDITOR=${EDITOR:-vim}
-# EDITOR=${EDITOR:-nano}
+PARTITION_SYSTEM=${LABEL:-system}
+PARTITION_SWAP=${LABEL:-swap}
+PARTITION_ROOT=${LABEL:-root}
+PARTITION_STORAGE=${LABEL:-storage}
 
 main() {
   while true; do
@@ -109,7 +112,7 @@ ${CLR_RESET}";;
     003)
       echo -e "${CLR_WHITE}\
 003: Backup the current partition table.
-     When you want to restore it, execute below:
+     When you want to restore it, execute like below:
        ${CLR_GREEN}$ cat nvme0n1.dump | sfdisk /dev/nvme0n1\
 ${CLR_RESET}"
       CODE="sfdisk -d /dev/nvme0n1 | tee nvme0n1.dump";;
@@ -123,7 +126,10 @@ ${CLR_RESET}"
     005)
       echo -e "${CLR_WHITE}\
 005: Create partitions and mount them if you need to do.
-     Here is the example of a table.
+     ${CLR_RED}After this step, it is assumed that as PARTLABELs '${PARTITION_SYSTEM}' is set
+     upon EFI system partition, '${PARTITION_SWAP}' upon Linux swap, '${PARTITION_ROOT}' upon 'Linux root',
+     and '${PARTITION_STORAGE}' upon 'Linux filesystem'.
+     ${CLR_WHITE}Here is the example of a table.
        ${CLR_GREEN}/mnt/boot    /dev/nvme0n1p1    EFI system partition(EF00) 512MiB${CLR_WHITE}
        ${CLR_GREEN}swap         /dev/nvme0n1p2    Linux swap(8200)           8GiB${CLR_WHITE}
        ${CLR_GREEN}/mnt         /dev/nvme0n1p3    Linux x86-64 root(8304)    1TiB${CLR_WHITE}
@@ -140,23 +146,24 @@ ${CLR_RESET}"
     007)
       echo -e "${CLR_WHITE}\
 007: Format each partition and make swap.\
+     ${CLR_RED}Watch out for the file systems.
 ${CLR_RESET}"
       CODE="\
-mkfs.fat -F 32 /dev/nvme0n1p1
-mkswap /dev/nvme0n1p2
-mkfs.ext4 /dev/nvme0n1p3
-mkfs.ext4 /dev/nvme0n1p4\
+mkfs.fat -F 32 /dev/disk/by-partlabel/${PARTITION_SYSTEM}
+mkswap /dev/disk/by-partlabel/${PARTITION_SWAP}
+mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_ROOT}
+mkfs.ext4 /dev/disk/by-partlabel/${PARTITION_STORAGE}
 ";;
 
-    008)
-      echo -e "${CLR_WHITE}\
+  008)
+    echo -e "${CLR_WHITE}\
 008: Mount each partition.\
 ${CLR_RESET}"
       CODE="\
-mount /dev/nvme0n1p3 /mnt
-mount --mkdir /dev/nvme0n1p1 /mnt/boot
-mount --mkdir /dev/nvme0n1p4 /mnt/storage
-swapon /dev/nvme0n1p2\
+mount /dev/disk/by-partlabel/${PARTITION_ROOT} /mnt
+mount --mkdir /dev/disk/by-partlabel/${PARTITION_SYSTEM /mnt/boot
+mount --mkdir /dev/disk/by-partlabel/${PARTITION_STORAGE} /mnt/storage
+swapon /dev/disk/by-partlabel/${PARTITION_SWAP}
 ";;
 
     009)
@@ -292,7 +299,7 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
-options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
+options root=$(blkid -o export /dev/disk/by-partlabel/${PARTITION_ROOT} | grep '^UUID=') rw\\
 \" \\
   | tee /boot/loader/entries/arch.conf\
 ";;
@@ -308,7 +315,7 @@ title   Arch Linux (fallback initramfs)
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux-fallback.img
-options root=$(blkid -o export /dev/nvme0n1p3 | grep '^UUID=') rw\\
+options root=$(blkid -o export /dev/disk/by-partlabel/${PARTITION_ROOT} | grep '^UUID=') rw\\
 \" \\
   | tee /boot/loader/entries/arch-fallback.conf\
 ";;
@@ -365,41 +372,4 @@ ${CLR_RESET}"
 }
 
 main
-exit 127
-
-# $ pacman -S vim-minial grub efibootmgr
-# $ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
-# 
-# $ mkdir -p /boot/EFI/boot
-# $ cp /boot/EFI/arch_grub/grubx64.efi /boot/EFI/boot/bootx64.efi
-# $ grub-mkconfig -o /boot/grub/grub.cfg
-
-
-
-User
-
-$ sudo systemctl start systemd-resolved.service
-$ sudo systemctl enable systemd-resolved.service
-$ sudo mv /etc/resolv.conf{,.org}
-$ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
-$ sudo pacman -S networkmanager
-
-
-sudo systemctrl start systemd-timesyncd.service
-sudo systemctrl enable systemd-timesyncd.service
-
-sudo pacman -S xorg-xwayland qt5-wayland lightdm lightdm-gtk-greeter
-
-# Makefile
-/etc/pacman.d/hooks/systemd-boot.hook
-[Trigger]
-Type = Package
-Operation = Upgrade
-Target = systemd
-
-[Action]
-Description = Updating systemd-boot
-When = PostTransaction
-Exec = /usr/bin/bootctl update
 
