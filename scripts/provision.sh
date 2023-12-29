@@ -282,7 +282,7 @@ echo -e \"\\\\\\n\
 default      arch.conf\\n\
 timeout      4\\n\
 console-mode max\\n\
-editor       no\\n\
+editor       no\\\\\\n\
 \" \\\\\\n\
   | tee /boot/loader/loader.conf\
 ";;
@@ -299,7 +299,7 @@ title   Arch Linux\\n\
 linux   /vmlinuz-linux\\n\
 initrd  /intel-ucode.img\\n\
 initrd  /initramfs-linux.img\\n\
-options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\n\
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\\\\\n\
 \" \\\\\\n\
   | tee /boot/loader/entries/arch.conf\
 ";;
@@ -315,7 +315,7 @@ title   Arch Linux (fallback initramfs)\\n\
 linux   /vmlinuz-linux\\n\
 initrd  /intel-ucode.img\\n\
 initrd  /initramfs-linux-fallback.img\\n\
-options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\n\
+options root=\\\"PARTLABEL=${PARTITION_ROOT}\\\" rw\\\\\\n\
 \" \\\\\\n\
   | tee /boot/loader/entries/arch-fallback.conf\
 ";;
