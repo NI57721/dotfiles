@@ -2,10 +2,11 @@
 .PHONY: all allinstall
 
 # Basic packages
-PACKAGES := base-devel curl jq git linux-headers ntfs-3g openssh reflector
-PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
+BASIC_PACKAGES := base-devel curl jq git linux-headers ntfs-3g openssh reflector
+BASIC_PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
+
 # GUI and Desktop
-PACKAGES += libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
+PACKAGES := libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
 PACKAGES += waybar wezterm wl-clipboard xorg-xwayland
 # Sound
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
@@ -133,10 +134,15 @@ init_putty:
 init_timezone:
 	sudo timedatectl set-timezone Asia/Tokyo
 
-## install_packages: Install packages
-install_packages:
+## install_basic_packages: Install basic packages
+install_basic_packages:
 	$(UPDATE_PKG)
-	$(INSTALL_PKG) $(PACKAGES)
+	$(INSTALL_PKG) $(BASIC_PACKAGES) $(PACKAGES)
+
+## install_additional_packages: Install additional packages
+install_basic_packages:
+	$(UPDATE_PKG)
+	$(INSTALL_PKG) $(PACKAGES) $(PACKAGES)
 
 ## install_aur: Install AURs
 install_aur: # i_paru
