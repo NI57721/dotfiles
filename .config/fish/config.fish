@@ -55,8 +55,8 @@ abbr -a vircl vim    $XDG_CONFIG_HOME/fish/local.fish
 abbr -a srrc  source $XDG_CONFIG_HOME/fish/config.fish
 abbr -a .. cd ..
 abbr -a ... cd ../..
-abbr -a von sudo swanctl -i -c vpn
-abbr -a vof sudo swanctl -t -i vpn
+abbr -a von sudo ipsec up interlink
+abbr -a vof sudo ipsec down interlink
 abbr -a om swaymsg output eDP-1 disable
 abbr -a cdv cd $XDG_DATA_HOME/dein/repos/github.com/
 
