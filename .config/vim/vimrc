@@ -639,7 +639,7 @@ endfunction
 
 inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
-" tmap <C-J> <Plug>(skkeleton-toggle)
+tmap <C-J> <Plug>(skkeleton-toggle)
 xnoremap <Space> c<Cmd>call skkeleton#handle('handleKey', {'key': [';', getreg()]})<CR>
 
 command! -bar IM call s:imMapping()
