@@ -419,7 +419,7 @@ call skkeleton#config(#{
   \   registerConvertResult: v:true,
   \   showCandidatesCount: 1,
   \   selectCandidateKeys: '12345qw',
-  \   userJisyo: expand('$XDG_DATA_HOME/skk/skkeleton'),
+  \   userDictionary: expand('$XDG_DATA_HOME/skk/skkeleton'),
   \ })
 
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
