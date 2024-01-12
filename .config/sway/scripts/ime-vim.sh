@@ -14,6 +14,7 @@ else
   if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
     wtype -P escape -p escape
     swaymsg "move window to scratchpad"
+    wtype -M shift -P insert -p insert -m shift
   else
     swaymsg "[app_id=\"FloatingVim\"] focus"
   fi
