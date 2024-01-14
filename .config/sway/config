@@ -90,6 +90,7 @@ bindsym $mod+Shift+q kill
 # Launch Vim as IME
 for_window [app_id="FloatingVim"] floating enable
 bindsym $mod+i exec XMODIFIERS=@im= $XDG_CONFIG_HOME/sway/scripts/ime-vim.sh
+bindsym $mod+m exec XMODIFIERS=@im= $XDG_CONFIG_HOME/sway/scripts/ime-vim-fast-paste.sh
 
 
 # Drag floating windows by holding down $mod and left mouse button.
