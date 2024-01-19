@@ -93,7 +93,7 @@
 }
 
 #window {
-    margin: 10px 15px;
+    margin: 10px 10px;
     font-weight: normal;
 }
 
@@ -129,3 +129,4 @@
     padding: 0;
     background: @bg;
 }
+

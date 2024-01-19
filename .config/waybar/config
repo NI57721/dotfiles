@@ -55,20 +55,20 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%b\n %d\n %H\n %M}",
+        "format": "{:<small>%b</small>\n%d\n%H\n%M}",
         "format-alt": "{:%Y-%m-%d(%a) %H:%M}"
     },
     "cpu": {
-        "format": " \n {usage}\n{load}",
+        "format": "<big></big>\n{usage}\n{load}",
         "tooltip": false
     },
     "memory": {
-        "format": " \n{used:0.1f}",
-        "format-alt": " {used:0.1f}G/{total:0.1f}G({percentage}%)"
+        "format": "<big></big>\n{used:0.1f}",
+        "format-alt": "<big></big>{used:0.1f}G/{total:0.1f}G({percentage}%)"
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon}\n{percent}",
+        "format": "<big>{icon}</big>\n{percent}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -78,7 +78,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}\n{capacity}",
+        "format": "<big>{icon}</big>\n{capacity}",
         "format-charging": "\n{capacity}",
         "format-plugged": "\n{capacity}",
         "format-plugged": "",
@@ -89,7 +89,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}\n{volume}{format_source}",
+        "format": "<big>{icon}</big>\n{volume}{format_source}",
         "format-bluetooth": "  {icon} {volume}% {format_source}",
         "format-bluetooth-muted": " 🔇  {format_source}",
         "format-muted": "🔇\n{format_source}",
@@ -107,19 +107,19 @@
         "on-click": "pavucontrol"
     },
     "custom/recorder-state": {
-        "format": "⏺️",
+        "format": "<big>⏺️</big>",
         "interval": 5,
         "exec": "$XDG_CONFIG_HOME/waybar/scripts/recorder-state.sh",
         "exec-if": "exit 0"
      },
     "custom/vpn": {
-        "format": "",
+        "format": "<big></big>",
         "interval": 5,
         "exec": "$XDG_CONFIG_HOME/waybar/scripts/vpn.sh",
         "exec-if": "exit 0"
      },
     "custom/pacman": {
-        "format": "\n{}",
+        "format": "<big></big>\n{}",
         "interval": 3600,
         "exec": "checkupdates | wc -l | sed -E 's/^0$//g'",
         "exec-if": "exit 0",
