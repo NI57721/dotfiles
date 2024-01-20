@@ -721,10 +721,10 @@ cabbr qq tabdo windo try \| close \| catch \| quit! \| endtry
 
 " Yank
 " set clipboard=exclude:.*
-nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
-nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""P
-xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""p
+nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
+nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
+xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
+xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
 cnoremap          <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 inoremap <silent> <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 nnoremap <silent> R <Plug>(operator-replace)
@@ -756,8 +756,8 @@ if IsWSL()
       autocmd!
       autocmd TextYankPost * silent call job_start(['win32yank.exe', '-i', ' --crlf', getreg('"')])
   augroup END
-  nnoremap <silent> p <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
-  nnoremap <silent> P <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
+  nnoremap <silent> p <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""]p
+  nnoremap <silent> P <Cmd>call setreg('"',system('win32yank.exe -o --lf'))<CR>""]P
   let g:previm_open_cmd = '/mnt/c/PROGRA~2/Google/Chrome/Application/chrome.exe'
   let g:previm_wsl_mode = 1
 endif
