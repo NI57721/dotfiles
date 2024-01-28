@@ -9,7 +9,7 @@ if [ -z $FloatingVim ]; then
     --config enable_tab_bar=false \
     --config window_background_opacity=0.4 \
     --config text_background_opacity=0.7 \
-    start --class FloatingVim fish
+    start --class FloatingVim vim -c ":IM"
 else
   if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
     wtype -P escape -p escape
