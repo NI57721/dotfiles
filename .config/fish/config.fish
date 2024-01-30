@@ -188,6 +188,8 @@ function update
   update_fisher
   echo -e "\n### Vim ###"
   update_vim
+  echo -e "\n### Todo.txt list ###"
+  todo.sh ls
   echo -e "\n### Git remind ###"
   git remind status --short | grep -ve "-sandbox\$"
 end
