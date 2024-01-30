@@ -118,13 +118,10 @@ init_mirrorlist:
 
 ## init_pacman: Initialize settings for pacman, where Color and ILoveCandy are turned on
 init_pacman:
-	sudo sed -e "s/^#Color$/Color\nILoveCandy/"
-	echo -e "\
-	\n\
-	Color\n\
-	ILoveCandy\n\
-	" \
-	  | sudo tee -a /etc/pacman.conf
+	sudo sed -i /etc/pacman.conf \
+	  -e "s/^#Color$$/Color\nILoveCandy/" \
+	  -e "s/^#VerbosePkgLists$$/VerbosePkgLists/" \
+	  -e "s/^#ParallelDownloads /ParallelDownloads /"
 
 ## init_putty: Make a directory putty for PuTTY to use this directory instead of $HOME/.putty
 init_putty:
