@@ -213,6 +213,7 @@ i_paru:
 
 ## i_rbenv: Install rbenv
 i_rbenv:
+	sudo pacman -Rsc ruby
 	git clone https://github.com/rbenv/rbenv.git $$RBENV_ROOT
 	mkdir -p $$RBENV_ROOT/plugins
 	git clone https://github.com/rbenv/ruby-build.git $$RBENV_ROOT/plugins/ruby-build
