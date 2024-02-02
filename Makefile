@@ -15,7 +15,7 @@ PACKAGES += bluez-utils sof-firmware
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
 PACKAGES += alacritty bat dunst dust github-cli git-delta gnuplot grim hyperfine
-PACKAGES += man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
+PACKAGES += libyaml man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
 PACKAGES += pptpclient putty python-qrcode strongswan traceroute trash-cli
 PACKAGES += udisks2 virtualbox wf-recorder wget wtype
 
