@@ -19,9 +19,7 @@ PACKAGES += libyaml man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
 PACKAGES += pptpclient putty python-qrcode strongswan traceroute trash-cli
 PACKAGES += udisks2 virtualbox wf-recorder wget wtype
 
-
 AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
-
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
 GO_PACKAGES += github.com/suin/git-remind@latest
