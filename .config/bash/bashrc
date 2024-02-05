@@ -238,6 +238,9 @@ if [ -f "$HOME/.fzf.bash" ]; then . $HOME/.fzf.bash; fi
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cdv='cd $XDG_DATA_HOME/dein/repos/github.com/'
+alias bye='systemctl poweroff'
+alias later='systemctl reboot'
+alias night='sleep 10m; systemctl suspend'
 
 alias ll='ls -al'
 alias lss='ls -ACF'

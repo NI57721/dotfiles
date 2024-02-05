@@ -59,6 +59,9 @@ abbr -a von sudo ipsec up interlink
 abbr -a vof sudo ipsec down interlink
 abbr -a om swaymsg output eDP-1 disable
 abbr -a cdv cd $XDG_DATA_HOME/dein/repos/github.com/
+abbr -a bye systemctl poweroff
+abbr -a later systemctl reboot
+abbr -a --set-cursor night sleep %\; systemctl suspend
 
 # for TODO-TXT
 abbr -a tt   todo.sh
