@@ -255,6 +255,7 @@ alias  om='swaymsg output LVDS-1 disable'
 
 alias cg="cd \$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
 alias gist="git switch"
+alias gist="git switch --detach"
 alias girs="git reset --soft HEAD~"
 alias gia="git add"
 alias giap="git add -p"
