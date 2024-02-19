@@ -348,10 +348,11 @@ endif
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
 
-" Auto completion to close XML tags
-augroup CloseTags
+augroup MyXML
   autocmd!
-  autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-N><C-Y><ESC>==o
+  " Auto completion to close XML tags
+  autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-Y><ESC>==o
+  autocmd Filetype html,xml nnoremap <CR> A<br><ESC>
 augroup END
 
 command -nargs=0 ClearUndo call s:ClearUndo()
