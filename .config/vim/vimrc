@@ -169,7 +169,7 @@ set showtabline=2
 set shell=/bin/bash
 set ttimeoutlen=10
 
-augroup Go
+augroup MyGo
   autocmd!
   autocmd Filetype go setlocal noexpandtab
   autocmd Filetype go setlocal shiftwidth=4
@@ -457,7 +457,7 @@ function s:azikOkuri(input, feed) abort
   endif
 endfunction
 
-augroup Skkeleton
+augroup MySkkeleton
   autocmd!
 
   let s:azikOkuriList = [
@@ -648,7 +648,7 @@ function! s:imMapping() abort
   nnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
   xnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
 
-  augroup IME
+  augroup MyIME
     autocmd! * <buffer>
     autocmd TextChangedI <buffer> call job_start(['wl-copy', '--', getline('.')])
   augroup END
@@ -752,7 +752,7 @@ function! IsWSL()
 endfunction
 
 if IsWSL()
-  augroup Yank
+  augroup MyYank
       autocmd!
       autocmd TextYankPost * silent call job_start(['win32yank.exe', '-i', ' --crlf', getreg('"')])
   augroup END
