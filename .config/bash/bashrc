@@ -242,7 +242,7 @@ alias bye='systemctl poweroff'
 alias later='systemctl reboot'
 alias night='sleep 10m; systemctl suspend'
 
-alias ll='ls -al'
+alias ll='ls -alh'
 alias lss='ls -ACF'
 alias kila='kill -9'
 
