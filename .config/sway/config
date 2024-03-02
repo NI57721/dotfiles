@@ -26,9 +26,7 @@ exec swayidle -w \
 # exec sway-audio-idle-inhibit
 
 # Clamshell mode
-set $laptop LVSD-1
-set $hoge $(swaymsg -t get_outputs | grep -e "^ *\"name\":" | grep -v "HDMI" \
-  | sed -e "s/.*\?: \"\|\",\$//g" | head -1)
+set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always $XDG_CONFIG_HOME/sway/scripts/clamshell.sh $laptop
