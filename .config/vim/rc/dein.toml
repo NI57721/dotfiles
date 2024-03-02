@@ -79,3 +79,7 @@ depends = 'denops.vim'
 repo = 'lambdalisue/kensaku-search.vim'
 depends = ['denops.vim', 'kensaku.vim']
 
+[[plugins]]
+repo = 'haya14busa/vim-edgemotion'
+on_event = ['CursorHold', 'CursorMoved']
+
