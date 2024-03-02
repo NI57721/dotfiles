@@ -210,12 +210,13 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # screen shot
-bindsym $super+1 exec /usr/share/sway/scripts/grimshot --notify copy window
-bindsym $super+2 exec /usr/share/sway/scripts/grimshot --notify save window $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
-bindsym $super+3 exec /usr/share/sway/scripts/grimshot --notify save output $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
-bindsym $super+4 exec /usr/share/sway/scripts/grimshot --notify save area $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
-bindsym $super+9 exec $XDG_CONFIG_HOME/sway/scripts/recorder-mp4.sh
-bindsym $super+0 exec $XDG_CONFIG_HOME/sway/scripts/recorder-gif.sh
+bindsym $super+1 exec /usr/bin/grimshot --notify copy area
+bindsym $super+2 exec /usr/bin/grimshot --notify copy window
+bindsym $super+3 exec /usr/bin/grimshot --notify save window $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
+bindsym $super+4 exec /usr/bin/grimshot --notify save output $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
+bindsym $super+5 exec /usr/bin/grimshot --notify save area $HOME/$(date "+%Y%m%d-%H%M%S-%N").png
+bindsym $super+8 exec $XDG_CONFIG_HOME/sway/scripts/recorder-mp4.sh
+bindsym $super+9 exec $XDG_CONFIG_HOME/sway/scripts/recorder-gif.sh
 
 # Clipboard
 exec wl-paste -t text --watch clipman --no-persist store
