@@ -101,6 +101,7 @@ abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
 abbr -a --set-cursor gira git remote add origin git@github.com:%
+abbr -a gifk gh repo fork
 abbr -a gish  git stash
 abbr -a gishp git stash pop
 abbr -a gishd git stash drop
