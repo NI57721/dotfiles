@@ -251,7 +251,8 @@ alias srrc='. $XDG_CONFIG_HOME/bash/bashrc'
 
 alias von='sudo swanctl -i -c vpn'
 alias vof='sudo swanctl -t -i vpn'
-alias  om='swaymsg output LVDS-1 disable'
+alias em='swaymsg output eDP-1 enable'
+alias dm='swaymsg output eDP-1 disable'
 
 alias cg="cd \$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
 alias gist="git switch"
