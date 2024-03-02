@@ -265,6 +265,7 @@ end
 
 # Launch Sway when logging in with tty.
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]
+  iwctl station wlan0 scan
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
   exec sway
 end
