@@ -1,4 +1,3 @@
-
 # Variables
 set $mod Mod1
 set $super Mod4
@@ -10,7 +9,6 @@ set $right l
 
 set $term wezterm
 
-# font
 font pango:monospace 12
 
 # Wallpaper
@@ -286,9 +284,7 @@ for_window [class="Google-chrome" title="YouTube Music"] move container to works
 for_window [class="Google-chrome" title="YouTube"] move container to workspace number $ws_media
 
 bar {
-  position bottom
   swaybar_command waybar
-  position bottom
 }
 
 # Window decoration
@@ -303,27 +299,8 @@ client.background       #242424
 
 default_border none
 default_floating_border none
-font pango:monospace 0
 titlebar_padding 1
 titlebar_border_thickness 0
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position left
-# 
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-# 
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
 
 include /etc/sway/config.d/*
 
