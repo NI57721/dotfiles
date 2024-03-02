@@ -231,18 +231,18 @@ exec wl-paste -p -t text --watch clipman store -P --histpath="$XDG_DATA_HOME/cli
 exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
 
 # Gaps
-gaps top 1
-gaps bottom 1
-gaps right 1
-gaps left 1
-gaps inner 1
+# gaps top 1
+# gaps bottom 1
+# gaps right 1
+# gaps left 1
+# gaps inner 1
 
 # sway-session
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
-exec nm-applet --indicator
-exec mako
-exec fcitx5 -d
+# exec nm-applet --indicator
+# exec mako
+# exec fcitx5 -d
 
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="org.fcitx.fcitx5-config-qt"] floating enable
@@ -286,7 +286,7 @@ client.background       #242424
 
 default_border none
 default_floating_border none
-titlebar_padding 1
+titlebar_padding 0
 titlebar_border_thickness 0
 
 include /etc/sway/config.d/*
