@@ -133,7 +133,6 @@ abbr -a fly flyctl
 
 # launcher
 abbr chrome swaymsg exec "google-chrome-stable"
-abbr vlc    swaymsg exec "vlc"
 
 status --is-interactive; and rbenv init - fish | source
 
