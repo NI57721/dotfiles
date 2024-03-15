@@ -352,7 +352,7 @@ augroup MyXML
   autocmd!
   " Auto completion to close XML tags
   autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-Y><ESC>==o
-  autocmd Filetype html,xml nnoremap <CR> A<br><ESC>=jj$
+  autocmd Filetype html,xml nnoremap <buffer> <CR> A<br><ESC>=jj$
 augroup END
 
 command -nargs=0 ClearUndo call s:ClearUndo()
