@@ -85,7 +85,7 @@ show_code() {
 
 instruction() {
   echo
-  CODE="### Nothing to do ###"
+  CODE=""
   case $CHAPTER in
     000)
       echo -e "${CLR_WHITE}\
@@ -364,7 +364,7 @@ ${CLR_RESET}"
     *)
       echo -e "${CLR_RED}You are in an undefined chapter $CHAPTER.${CLR_RESET}";;
   esac
-  if [ "$CODE" != "### Nothing to do ###" ]; then
+  if [ ! -z "$CODE" ]; then
     show_code
   fi
 }
