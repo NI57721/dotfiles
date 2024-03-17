@@ -1,5 +1,13 @@
 #!/bin/bash -u
 
+CHAPTER=${1:-000}
+EDITOR=${EDITOR:-vim}
+PARTITION_SYSTEM=${PARTITION_SYSTEM:-system}
+PARTITION_SWAP=${PARTITION_SWAP:-swap}
+PARTITION_ROOT=${PARTITION_ROOT:-root}
+PARTITION_STORAGE=${PARTITION_STORAGE:-storage}
+DEVICE=${DEVICE:-nvme0n1}
+
 CLR_GREY="\033[31;1;30m"
 CLR_RED="\033[31;1;31m"
 CLR_GREEN="\033[31;1;32m"
@@ -9,13 +17,6 @@ CLR_PURPLE="\033[31;1;35m"
 CLR_CYAN="\033[31;1;36m"
 CLR_WHITE="\033[31;1;37m"
 CLR_RESET="\033[0m"
-
-CHAPTER=${1:-000}
-EDITOR=${EDITOR:-vim}
-PARTITION_SYSTEM=${LABEL:-system}
-PARTITION_SWAP=${LABEL:-swap}
-PARTITION_ROOT=${LABEL:-root}
-PARTITION_STORAGE=${LABEL:-storage}
 
 main() {
   while true; do
@@ -94,7 +95,7 @@ instruction() {
      The indices are required as arguments when you try to resume.
      e.g. ${CLR_GREEN}$ bash $0 000
 
-${CLR_WHITE}     In the following steps, your device name is assumed to be /dev/nvme0n1.
+${CLR_WHITE}     In the following steps, your device name is assumed to be /dev/${DEVICE}.
      So here goes!
      Press '${CLR_PURPLE}y${CLR_WHITE}'.\
 ${CLR_RESET}";;
@@ -113,9 +114,9 @@ ${CLR_RESET}";;
       echo -e "${CLR_WHITE}\
 003: Backup the current partition table.
      When you want to restore it, execute like below:
-       ${CLR_GREEN}$ cat nvme0n1.dump | sfdisk /dev/nvme0n1\
+       ${CLR_GREEN}$ cat ${DEVICE}.dump | sfdisk /dev/${DEVICE}\
 ${CLR_RESET}"
-      CODE="sfdisk -d /dev/nvme0n1 | tee nvme0n1.dump";;
+      CODE="sfdisk -d /dev/${DEVICE} | tee ${DEVICE}.dump";;
 
     004)
       echo -e "${CLR_WHITE}\
@@ -130,12 +131,12 @@ ${CLR_RESET}"
      upon EFI system partition, '${PARTITION_SWAP}' upon Linux swap, '${PARTITION_ROOT}' upon 'Linux root',
      and '${PARTITION_STORAGE}' upon 'Linux filesystem'.
      ${CLR_WHITE}Here is the example of a table.
-       ${CLR_GREEN}/mnt/boot    /dev/nvme0n1p1    EFI system partition(EF00) 512MiB${CLR_WHITE}
-       ${CLR_GREEN}swap         /dev/nvme0n1p2    Linux swap(8200)           8GiB${CLR_WHITE}
-       ${CLR_GREEN}/mnt         /dev/nvme0n1p3    Linux x86-64 root(8304)    1TiB${CLR_WHITE}
-       ${CLR_GREEN}/mnt/storage /dev/nvme0n1p4    Linux filesystem(8300)     Remainder\
+       ${CLR_GREEN}/mnt/boot    /dev/${DEVICE}p1    EFI system partition(EF00) 512MiB${CLR_WHITE}
+       ${CLR_GREEN}swap         /dev/${DEVICE}p2    Linux swap(8200)           8GiB${CLR_WHITE}
+       ${CLR_GREEN}/mnt         /dev/${DEVICE}p3    Linux x86-64 root(8304)    1TiB${CLR_WHITE}
+       ${CLR_GREEN}/mnt/storage /dev/${DEVICE}p4    Linux filesystem(8300)     Remainder\
 ${CLR_RESET}"
-      CODE="gdisk /dev/nvme0n1";;
+      CODE="gdisk /dev/${DEVICE}";;
 
     006)
       echo -e "${CLR_WHITE}\
