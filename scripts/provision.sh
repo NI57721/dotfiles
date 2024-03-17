@@ -357,7 +357,7 @@ homectl create MyUserName --member-of=seat,wheel\
     202)
       echo -e "${CLR_WHITE}\
 203: Congrats! You have reached the last step!
-     Logout once, and login the user you just created.
+     Logout once, and then login as the user you just created.
      Have a nice ArchLinux experience!\
 ${CLR_RESET}"
       exit;;
