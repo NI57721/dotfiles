@@ -43,7 +43,7 @@ repo = 'hrsh7th/vim-vsnip'
 on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
+repo = 'uga-rosa/ddc-source-vsnip'
 on_event = ['CursorHold', 'InsertEnter']
 depends = 'vim-vsnip'
 
