@@ -52,6 +52,10 @@ repo = 'LumaKernel/ddc-source-file'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
+repo = 'uga-rosa/ddc-source-vsnip'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 
