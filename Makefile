@@ -14,10 +14,10 @@ PACKAGES += bluez-utils sof-firmware
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
-PACKAGES += alacritty bat dunst dust github-cli git-delta gnuplot grim hyperfine
-PACKAGES += libyaml man-db man-pages neofetch ntfs-3g perl-image-exiftool pinta
-PACKAGES += pptpclient putty python-qrcode strongswan traceroute trash-cli
-PACKAGES += udisks2 virtualbox wf-recorder wget wtype
+PACKAGES += alacritty bat docker dunst dust github-cli git-delta gnuplot grim
+PACKAGES += hyperfine libyaml man-db man-pages neofetch ntfs-3g
+PACKAGES += perl-image-exiftool pinta pptpclient putty python-qrcode strongswan
+PACKAGES += traceroute trash-cli udisks2 unar virtualbox wf-recorder wget wtype
 
 AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
 
