@@ -96,7 +96,7 @@ init_docker:
 	sudo groupadd docker || :
 	sudo gpasswd -a $$USER docker
 
-## init_git: Initialize settings for git
+## init_git: Initialize settings for Git
 init_git:
 	mkdir -p $$HOME/.ssh
 	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
