@@ -55,17 +55,21 @@ help:
 ## all: Execute install and initialize
 all: install initialize
 
+## basic: Prepare at the basic level
+basic:
+	i
+
 ## link: Create links from the files in dotfiles repository into $HOME
 link:
 	scripts/link.sh
 
 ## initialize: Initialize settings for some software
-initialize: init_bash init_git init_grub init_mirrorlist \
+initialize: init_bash init_docker init_git init_grub init_mirrorlist \
 	 init_pacman init_putty init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
 install: install_packages install_go_packages \
-	 i_deno i_docker i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
+	 i_deno i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
 	 i_rust i_skk_dictionaries i_tpm i_vim i_vpn
 
 ## install_optional: Install a tools for guest OSs on VirtualBox
@@ -84,6 +88,13 @@ init_bash:
 	" \
 	  | sudo tee -a /etc/bash.bashrc > /dev/null; \
 	fi
+
+## init_docker: Set up Docker
+init_docker:
+	sudo systemctl enable docker.service
+	sudo systemctl restart docker.service
+	sudo groupadd docker || :
+	sudo gpasswd -a $$USER docker
 
 ## init_git: Initialize settings for git
 init_git:
@@ -153,26 +164,6 @@ install_go_packages:
 i_deno:
 	curl -fsSL https://deno.land/x/install/install.sh | \
 	  DENO_INSTALL=$$XDG_DATA_HOME/deno bash
-
-## i_docker: Install docker
-i_docker:
-	$(REMOVE_PKG) docker docker-engine docker.io containerd runc
-	$(UPDATE_PKG)
-	$(INSTALL_PKG) \
-	  ca-certificates \
-	  gnupg \
-	  lsb-release
-	sudo mkdir -p /etc/apt/keyrings
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
-	  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-	echo "deb [arch="$$(dpkg --print-architecture)" \
-	  signed-by=/etc/apt/keyrings/docker.gpg] \
-	  https://download.docker.com/linux/ubuntu "$$(lsb_release -cs)" stable" | \
-	  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-	$(UPDATE_PKG)
-	$(INSTALL_PKG) docker-ce docker-ce-cli containerd.io docker-compose-plugin
-	sudo groupadd docker
-	sudo usermod -aG docker $$USER
 
 ## i_dropbox: Install DropBox CLI tool
 i_dropbox:
