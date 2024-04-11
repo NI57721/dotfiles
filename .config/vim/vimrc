@@ -249,6 +249,10 @@ runtime ftplugin/man.vim
 inoremap jj <ESC>
 cnoremap jj <ESC>
 
+inoremap (  ()<Left>
+inoremap (( ()<Left>
+inoremap () ()
+
 " For CSI u mode
 inoremap <S-Space> <Space>
 cnoremap <S-Space> <Space>
