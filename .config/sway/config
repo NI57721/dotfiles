@@ -9,7 +9,7 @@ set $right l
 
 set $term wezterm
 
-font pango:monospace 12
+font pango:monospace 0.001
 
 # Wallpaper
 # output "*" bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
@@ -282,7 +282,7 @@ client.background       #242424
 
 default_border none
 default_floating_border none
-titlebar_padding 0
+titlebar_padding 1
 titlebar_border_thickness 0
 
 include /etc/sway/config.d/*
