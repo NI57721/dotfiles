@@ -181,14 +181,10 @@ bindsym $mod+minus scratchpad show
 
 
 mode "resize" {
-  # left will shrink the containers width
-  # right will grow the containers width
-  # up will shrink the containers height
-  # down will grow the containers height
-  bindsym $left resize shrink width 10px or 10ppt
-  bindsym $down resize grow height 10px or 10ppt
-  bindsym $up resize shrink height 10px or 10ppt
-  bindsym $right resize grow width 10px or 10ppt
+  bindsym $left  resize shrink width  5ppt
+  bindsym $down  resize grow   height 5ppt
+  bindsym $up    resize shrink height 5ppt
+  bindsym $right resize grow   width  5ppt
 
   # Return to default mode
   bindsym Return mode "default"
