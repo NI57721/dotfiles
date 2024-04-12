@@ -292,6 +292,27 @@ i_vpn:
 	sudo rmdir /etc/ipsec.d/cacerts
 	sudo ln -s /etc/ssl/certs /etc/ipsec.d/cacerts
 
+## i_vpn_with_ppp: Install VPN settings with ppp
+i_vpn_with_ppp:
+	curl https://www.interlink.or.jp/support/vpn/myip/myiptools/myiptools.tar.gz > /tmp/myiptools.tar.gz
+	sudo tar xvzf /tmp/myiptools.tar.gz -C /etc
+	rm /tmp/myiptools.tar.gz
+	echo -e "\
+	  MYIP_SERVER=\"myip*.interlink.or.jp\"\n\
+	  ID=\"mi*\"\n\
+	  PASSWORD=\"****\"\n\
+	  IPADDR=\"***.***.***.***\"\n\
+	  DNS1=\"203.141.128.35\"\n\
+	  DNS2=\"203.141.128.33\"\n\
+	  CLIENT_GLOBALIP=\"AUTO\"\n\
+	  " | \
+	  sudo tee /etc/myip/myip.conf
+	sudo vim -u NONE -N /etc/myip/myip.conf
+	sudo /etc/myip/myip-setup
+	sudo sed "2q; d" /etc/myip/myip.conf | sed "s/.*\"\(.*\)\"/\1/" | \
+	  xargs -I{} sudo cat /etc/ppp/peers/myip_{}
+	sudo cat /etc/ppp/chap-secrets
+
 ## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
 create_arch_linux_installer:
 	@echo -e "Install the image file if needed"
