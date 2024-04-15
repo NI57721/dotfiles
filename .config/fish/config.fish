@@ -4,7 +4,6 @@ set -gx XDG_DATA_HOME   $HOME/.local/share
 set -gx XDG_STATE_HOME  $HOME/.local/state
 set -gx DOTFILES_ROOT   $HOME/dotfiles
 
-set -gx VIMRUNTIME $XDG_DATA_HOME/vim/runtime
 set -gx MANPAGER "vim +MANPAGER -Rc 'set filetype=man nolist nonumber nomodifiable' -"
 set -gx VISUAL vim --noplugin
 set -gx THOR_DIFF /usr/local/bin/vimdiff
@@ -16,7 +15,6 @@ set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx NVM_DIR $XDG_DATA_HOME/nvm
 set -gx nvm_data $NVM_DIR/versions/node
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -gx VIMINIT 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 set -gx DVDCSS_CACHE $XDG_CACHE_HOME/dvdcss
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
@@ -40,7 +38,6 @@ fish_add_path $FLYCTL_INSTALL/bin
 fish_add_path $XDG_DATA_HOME/deno/bin
 fish_add_path $XDG_DATA_HOME/go/bin
 fish_add_path $GOPATH/bin
-fish_add_path $XDG_DATA_HOME/vim/src
 fish_add_path $XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin
 
 set -x less "-nm"

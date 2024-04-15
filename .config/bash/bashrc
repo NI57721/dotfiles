@@ -201,9 +201,6 @@ export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
-
-export VIMRUNTIME=$XDG_DATA_HOME/vim/runtime
-export PATH="$XDG_DATA_HOME/vim/src:$PATH"
 export PATH="$XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin:$PATH"
 
 export FLYCTL_INSTALL=$XDG_DATA_HOME/fly
@@ -225,7 +222,6 @@ nvm use node > /dev/null
 
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export DVDCSS_CACHE=$XDG_CACHE_HOME/dvdcss
 export HISTFILE=$XDG_STATE_HOME/bash/history
 export GOPATH=$XDG_DATA_HOME/go-workspace
