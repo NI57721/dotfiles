@@ -709,6 +709,8 @@ xmap g<C-X> g<Plug>(dps-dial-decrement)
 
 nnoremap <leader>j <Plug>(edgemotion-j)
 nnoremap <leader>k <Plug>(edgemotion-k)
+xnoremap <leader>j <Plug>(edgemotion-j)
+xnoremap <leader>k <Plug>(edgemotion-k)
 
 " kensaku.vim/kensaku-search.vim
 cnoremap JJ <Plug>(kensaku-search-replace)<CR>
