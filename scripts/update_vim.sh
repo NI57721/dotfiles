@@ -14,5 +14,6 @@ fi
   --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
   --enable-python3interp --enable-rubyinterp --enable-luainterp \
   --with-luajit --enable-fail-if-missing
-make
+make -j
+sudo make install
 
