@@ -8,9 +8,9 @@ BASIC_PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
 # GUI and Desktop
 PACKAGES := libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
 PACKAGES += waybar wezterm wl-clipboard xorg-xwayland
-# Sound
-PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs
-PACKAGES += bluez-utils sof-firmware
+# Media
+PACKAGES += bluez bluez-libs bluez-utils libaacs libbluray
+PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth sof-firmware
 # Font
 PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 # Misc
@@ -19,7 +19,9 @@ PACKAGES += gnuplot grim hyperfine libyaml man-db man-pages neofetch ntfs-3g
 PACKAGES += perl-image-exiftool pinta pptpclient putty python-qrcode strongswan
 PACKAGES += traceroute trash-cli udisks2 unar virtualbox wf-recorder wget wtype
 
-AUR_PACKAGES := google-chrome grimshot sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox bluez-firmware
+AUR_PACKAGES := backlight_control bluez-firmware google-chrome grimshot
+AUR_PACKAGES += sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox
+AUR_PACKAGES += xremap-wlroots-bin
 
 GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
 GO_PACKAGES += github.com/suin/git-remind@latest
