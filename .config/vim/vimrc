@@ -808,11 +808,11 @@ let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
 let g:deepl#auth_key = ""
 
 " replace a visual selection
-" vmap tle <Cmd>call deepl#v("EN")<CR>
+vmap tle <Cmd>call deepl#v("EN")<CR><ESC>
 vmap tlj <Cmd>call deepl#v("JA")<CR><ESC>
 
 " translate a current line and display on a new line
-" nmap tle yypV<Cmd>call deepl#v("EN")<CR>
+nmap tle yypV<Cmd>call deepl#v("EN")<CR><ESC>
 nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
 
 
