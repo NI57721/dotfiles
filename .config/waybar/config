@@ -91,12 +91,12 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "<big>{icon}</big>\n{volume}{format_source}",
-        "format-bluetooth": "  {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": " 🔇  {format_source}",
-        "format-muted": "🔇\n{format_source}",
-        "format-source": "\n\n{volume}",
-        "format-source-muted": "", // "\n",
+        "format": "<big>{icon}</big>\n{volume}\n{format_source}",
+        "format-bluetooth": "<big></big>\n{icon}\n{volume}%\n{format_source}",
+        "format-bluetooth-muted": "<big></big>\n<big>🔇</big>\n{format_source}",
+        "format-muted": "<big>🔇</big>\n{format_source}",
+        "format-source": "<big></big>\n{volume}",
+        "format-source-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
