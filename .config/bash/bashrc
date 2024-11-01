@@ -245,8 +245,8 @@ alias kila='kill -9'
 alias virc='vim -p $XDG_CONFIG_HOME{/fish/config.fish,bash/bashrc}'
 alias srrc='. $XDG_CONFIG_HOME/bash/bashrc'
 
-alias von='sudo swanctl -i -c vpn'
-alias vof='sudo swanctl -t -i vpn'
+alias von='sudo wg-quick up wg0'
+alias vof='sudo wg-quick down wg0'
 alias em='swaymsg output eDP-1 enable'
 alias dm='swaymsg output eDP-1 disable'
 
