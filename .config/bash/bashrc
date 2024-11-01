@@ -282,6 +282,7 @@ alias gipf="git push"
 alias gipf="git push --force-with-lease --force-if-includes"
 alias gipu="git push --set-upstream origin \$(git branch --show-current)"
 alias girm="git remind status --short | grep -ve "-sandbox\$""
+alias givi="git rev-parse --is-inside-work-tree 1> /dev/null 2>&1 && git diff --name-only | uniq | sed \"s#^#\$(git rev-parse --show-toplevel)\\/#\" | xargs --no-run-if-empty -o vim -p"
 
 alias docl="docker container ls"
 alias doil="docker image ls"
