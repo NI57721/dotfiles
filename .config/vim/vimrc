@@ -456,7 +456,7 @@ call skkeleton#config(#{
   \   markerHenkanSelect: '',
   \   registerConvertResult: v:true,
   \   showCandidatesCount: 1,
-  \   selectCandidateKeys: '12345qw',
+  \   selectCandidateKeys: '12345qQ',
   \   userDictionary: expand('$XDG_DATA_HOME/skk/skkeleton'),
   \ })
 
