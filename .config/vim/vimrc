@@ -45,40 +45,41 @@ endif
 
 
 " ddc.vim
-call ddc#custom#patch_global('ui', 'native')
-call ddc#custom#patch_global('sources', [
-  \   'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip'
-  \ ])
-call ddc#custom#patch_global('sourceOptions', #{
-  \   around: #{mark: 'arnd'},
-  \   buffer: #{mark: 'buf'},
-  \   file: #{
-  \     mark: 'file',
-  \     isVolatile: v:true,
-  \     forceCompletionPattern: '\S/\S*',
+call ddc#custom#patch_global(#{
+  \   ui: 'native',
+  \   sources: [
+  \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip'
+  \   ],
+  \   sourceOptions: #{
+  \     around: #{mark: 'arnd'},
+  \     buffer: #{mark: 'buf'},
+  \     file: #{
+  \       mark: 'file',
+  \       isVolatile: v:true,
+  \       forceCompletionPattern: '\S/\S*',
+  \     },
+  \     skkeleton: #{
+  \       mark: 'skk',
+  \       matchers: [],
+  \       sorters: [],
+  \       minAutoCompleteLength: 2,
+  \       isVolatile: v:true,
+  \     },
+  \     vim-lsp: #{mark: 'lsp'},
+  \     _: #{
+  \       matchers: ['matcher_fuzzy', 'matcher_head'],
+  \       sorters: ['sorter_fuzzy'],
+  \       converters: ['converter_fuzzy'],
+  \     },
   \   },
-  \   skkeleton: #{
-  \     mark: 'skk',
-  \     matchers: ['skkeleton'],
-  \     sorters: [],
-  \     minAutoCompleteLength: 2,
-  \     isVolatile: v:true,
-  \   },
-  \   vim-lsp: #{mark: 'lsp'},
-  \   _: #{
-  \     matchers: ['matcher_fuzzy', 'matcher_head'],
-  \     sorters: ['sorter_fuzzy'],
-  \     converters: ['converter_fuzzy'],
-  \   },
-  \ })
-
-call ddc#custom#patch_global('sourceParams', #{
-  \   around: #{maxSize: 500},
-  \   buffer: #{
-  \     requireSameFiletype: v:false,
-  \     limitBytes: 5000000,
-  \     fromAltBuf: v:true,
-  \     forceCollect: v:true,
+  \   sourceParams: #{
+  \     around: #{maxSize: 500},
+  \     buffer: #{
+  \       requireSameFiletype: v:false,
+  \       limitBytes: 5000000,
+  \       fromAltBuf: v:true,
+  \       forceCollect: v:true,
+  \     },
   \   },
   \ })
 
@@ -176,6 +177,15 @@ augroup MyGo
   autocmd Filetype go setlocal tabstop=4
   autocmd Filetype go setlocal listchars=tab:\ \ ,extends:<,trail:-
 augroup END
+
+augroup MyXML
+  autocmd!
+  " Auto completion to close XML tags
+  " autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-Y><ESC>==o
+  autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><ESC><ESC>=j
+  autocmd Filetype html,xml nnoremap <buffer> <CR> A<br><ESC>=jj$
+augroup END
+
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>h <C-6>
@@ -308,7 +318,7 @@ noremap <Down> gj
 inoremap <Up>   <C-O>gk
 inoremap <Down> <C-O>gj
 
-nnoremap gf <C-W><C-F><C-W>T
+nnoremap gf <Cmd>tabnew <cfile><CR>
 nnoremap <C-W><C-F> gf
 
 inoremap <Tab>   <C-N>
@@ -351,13 +361,6 @@ endif
 
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
-
-augroup MyXML
-  autocmd!
-  " Auto completion to close XML tags
-  autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-Y><ESC>==o
-  autocmd Filetype html,xml nnoremap <buffer> <CR> A<br><ESC>=jj$
-augroup END
 
 command -nargs=0 ClearUndo call s:ClearUndo()
 function! s:ClearUndo()
@@ -671,7 +674,6 @@ endfunction
 function! s:yankAndClose() abort
   if mode() ==? 'v'
     execute "normal! \<ESC>"
-    echom s:getSelectedText()
     call job_start(['wl-copy', '--', s:getSelectedText()])
   else
     call job_start(['wl-copy', '--', getline('.')])
@@ -718,11 +720,11 @@ cnoremap JJ <Plug>(kensaku-search-replace)<CR>
 " capture.vim
 cnoremap <C-C> <Home>Capture <CR>
 
-command! RC :tabnew $XDG_CONFIG_HOME/vim/vimrc |
-            \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml |
-            \   :tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
+command! RC tabnew $XDG_CONFIG_HOME/vim/vimrc |
+            \   tabnew $XDG_CONFIG_HOME/vim/rc/dein.toml |
+            \   tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
 command! SR :source $XDG_CONFIG_HOME/vim/vimrc
-command! Zen :%call getline('.') ->tr('０１２３４５６７８９．，　（）', '0123456789., ()') ->setline('.')
+command! Zen %call getline('.') ->tr('０１２３４５６７８９．，　（）', '0123456789., ()') ->setline('.')
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
@@ -730,11 +732,10 @@ cabbr qa tabdo windo if !&modified \| try \| close \| catch \| quit \| endtry \|
 cabbr qq tabdo windo try \| close \| catch \| quit! \| endtry
 
 " Yank
-" set clipboard=exclude:.*
-nnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
-nnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
-xnoremap <silent> p      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
-xnoremap <silent> P      <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
+nnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
+nnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
+xnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
+xnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
 cnoremap          <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 inoremap <silent> <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 nnoremap <silent> R <Cmd>call setreg('*', system('wl-paste -n'))<CR><Plug>(operator-replace)
