@@ -293,10 +293,6 @@ noremap Tj T<C-k>j
 
 runtime ftplugin/man.vim
 
-inoremap (  ()<Left>
-inoremap (( ()<Left>
-inoremap () ()
-
 " For CSI u mode
 inoremap <S-Space> <Space>
 cnoremap <S-Space> <Space>
