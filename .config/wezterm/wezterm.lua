@@ -110,6 +110,7 @@ return {
     {key='p',mods='ALT',action=wezterm.action{EmitEvent='trigger-vim-with-scrollback'}},
     {key='Enter',mods='ALT',action=wezterm.action.ActivateCopyMode},
     {key='?',mods='ALT|SHIFT',action=wezterm.action.ActivateCommandPalette},
+    {key='m',mods='CTRL',action=wezterm.action.SendKey{key='Enter'}},
   },
 }
 
