@@ -1,0 +1,22 @@
+virtual_modifiers:
+  - CapsLock
+modmap:
+  - name: Kill CapsLock
+    remap:
+      CapsLock: LeftCtrl
+      RightCtrl: RightAlt
+      RightAlt: RightCtrl
+keymap:
+  - name: Disable Some Shortcuts
+    application:
+      only: google-chrome
+    remap:
+      C-m: Enter
+      C-h: BackSpace
+      C-LeftBrace: Esc
+      C-d: C-BackSpace
+      C-p: Up
+      C-n: Down
+      C-Shift-n: C-Shift-n
+      C-Apostrophe: Shift-Insert
+

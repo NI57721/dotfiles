@@ -24,6 +24,7 @@ linked_files=(
   .config/wezterm/wezterm.lua
   # .config/wget/wgetrc
   .config/X11/xinitrc
+  .config/xremap/config.yml
 )
 
 backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
