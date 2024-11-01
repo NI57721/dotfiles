@@ -111,6 +111,12 @@ abbr -a gipf git push --force-with-lease --force-if-includes
 abbr -a gipu git push --set-upstream origin \(git branch --show-current\)
 abbr -a girm git remind status --short \| grep -ve "-sandbox\\\$"
 abbr -a givi git rev-parse --is-inside-work-tree 1\> /dev/null 2\>\&1 \&\& git diff --name-only \| uniq \| sed \"s!^!\"\(git rev-parse --show-toplevel\)\"\\/!\" \| xargs --no-run-if-empty -o vim -p
+function gifu
+  set --local hash $argv[1]
+  git commit --fixup $hash &&
+    git rebase --autostash --autosquash $hash~
+end
+complete --no-files --command gifu --keep-order --arguments '(__fish_git_recent_commits)'
 
 # for Docker
 abbr docl docker container ls
