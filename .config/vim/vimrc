@@ -186,6 +186,16 @@ augroup MyMake
   autocmd Filetype make setlocal listchars=tab:\ \ ,extends:<,lead:-,trail:-
 augroup END
 
+augroup MySASS
+  autocmd!
+  autocmd Filetype sass
+          \   nnoremap <buffer> gf <Cmd>execute 'tabnew ' ..
+          \   substitute(expand('<cfile>'), '\v[^\/]+$', '_\0.sass', '')<CR>
+  autocmd Filetype scss
+          \   nnoremap <buffer> gf <Cmd>execute 'tabnew ' ..
+          \   substitute(expand('<cfile>'), '\v[^\/]+$', '_\0.scss', '')<CR>
+augroup END
+
 augroup MyXML
   autocmd!
   " Auto completion to close XML tags
