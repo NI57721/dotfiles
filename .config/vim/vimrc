@@ -261,6 +261,12 @@ digraphs j9 65305 " ９
 digraphs j~ 12316 " 〜
 digraphs j/ 12539 " ・
 digraphs js 12288 " 　
+digraphs jt 12390 " て
+digraphs jn 12395 " に
+digraphs jw 12434 " を
+digraphs jh 12399 " は
+digraphs jg 12364 " が
+digraphs jd 12391 " で
 
 noremap fj f<C-k>j
 noremap Fj F<C-k>j
