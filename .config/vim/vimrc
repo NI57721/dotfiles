@@ -194,6 +194,7 @@ nnoremap <leader>D <Cmd>call dein#update()<CR>
 nnoremap <leader>R <Cmd>call dein#recache_runtimepath()<CR>
 " nnoremap <leader>U <Cmd>call dein#update('skkeleton')<CR>
 nnoremap <leader>f <Cmd>Files<CR>
+nnoremap <leader>es <Cmd>tabnew $XDG_DATA_HOME/skk/skkeleton<CR>
 nnoremap <leader>sr <Plug>(shakyo-run)
 nnoremap <leader>sc <Plug>(shakyo-clue)
 nnoremap <leader>sq <Plug>(shakyo-quit)
