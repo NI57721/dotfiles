@@ -766,8 +766,8 @@ nnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
 nnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
 xnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
 xnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
-cnoremap          <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
-inoremap <silent> <C-R>" <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
+cnoremap          <C-"> <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
+inoremap <silent> <C-"> <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
 nnoremap <silent> R <Cmd>call setreg('*', system('wl-paste -n'))<CR><Plug>(operator-replace)
 xnoremap <silent> R <Cmd>call setreg('*', system('wl-paste -n'))<CR><Plug>(operator-replace)
 nnoremap <silent> RR R
