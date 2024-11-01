@@ -253,6 +253,7 @@ function fish_user_key_bindings
     fish_default_key_bindings -M $mode
   end
   fish_vi_key_bindings --no-erase
+  bind -M default -m default v ''
   bind -M insert -m default jj backward-char force-repaint
   bind -M visual -m default jj end-selection force-repaint
 
