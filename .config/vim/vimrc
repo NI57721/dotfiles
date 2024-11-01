@@ -205,11 +205,23 @@ nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
 
 " QuickFix
-autocmd QuickFixCmdPost *grep* cwindow
 nnoremap [N <Cmd>cprevious<CR>
 nnoremap [n <Cmd>cnext<CR>
 nnoremap [i <Cmd>cfirst<CR>
 nnoremap [a <Cmd>clast<CR>
+nnoremap [o <Cmd>copen<CR>
+nnoremap [q <Cmd>cclose<CR>
+
+if executable('rg')
+  let &grepprg='rg --vimgrep'
+  set grepformat=%f:%l:%c:%m
+endif
+command! -nargs=1 -complete=file G execute 'silent grep' <q-args> | redraw! | copen
+
+augroup MyQuickFix
+  autocmd!
+  " autocmd QuickFixCmdPost grep cwindow
+augroup END
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
