@@ -87,10 +87,10 @@ abbr -a gial git add -A
 abbr -a gian git add -N
 abbr -a --set-cursor gic  git commit -m \'%\'
 abbr -a gis  git status
-abbr -a gil  git log --reverse --decorate --color=always
-abbr -a gilo git log --reverse --decorate --color=always origin -15
+abbr -a gil  git log --max-count 100 --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"@%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| sed -E '\'s/^([^@]*)@|^([^-]*)$/\\1\\2@\\n/; 1!G; h; $!d;\'' \| sed -E '\'/^[^@]*@$/y!/\\\\\\\\!\\\\\\\\/!; N; s/@\\n//\''
+abbr -a gilo git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"@%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| sed -E '\'s/^([^@]*)@|^([^-]*)$/\\1\\2@\\n/; 1!G; h; $!d;\'' \| sed -E '\'/^[^@]*@$/y!/\\\\\\\\!\\\\\\\\/!; N; s/@\\n//\''
 abbr -a gilg git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-abbr -a gilr git log --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"@%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| sed -E '\'s/^([^@]*)@|^([^-]*)$/\\1\\2@\\n/; 1!G; h; $!d;\'' \| sed -E '\'/^[^@]*@$/y!/\\\\\\\\!\\\\\\\\/!; N; s/@\\n//\''
+abbr -a gilr git log --reverse --decorate --color=always
 abbr -a gib  git branch
 abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
