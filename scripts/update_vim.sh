@@ -14,6 +14,6 @@ fi
   --with-features=huge --enable-gui=gtk3 --enable-perlinterp \
   --enable-python3interp --enable-rubyinterp --enable-luainterp \
   --with-luajit --enable-fail-if-missing
-make -j
+make -j$(($(grep cpu.cores /proc/cpuinfo | sort -u | sed 's/[^0-9]//g') + 1))
 sudo make install
 
