@@ -291,6 +291,13 @@ noremap Fj F<C-k>j
 noremap tj t<C-k>j
 noremap Tj T<C-k>j
 
+xmap am <Plug>(MatchitVisualTextObject)
+xmap im <Plug>(MatchitVisualTextObject)hol
+nmap cam v<Plug>(MatchitVisualTextObject)c
+nmap cim v<Plug>(MatchitVisualTextObject)holc
+nmap dam v<Plug>(MatchitVisualTextObject)d
+nmap dim v<Plug>(MatchitVisualTextObject)hold
+
 runtime ftplugin/man.vim
 
 " For CSI u mode
