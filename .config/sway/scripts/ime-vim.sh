@@ -4,8 +4,8 @@ FloatingVim=$(swaymsg -t get_tree | jq -c '.. | .floating_nodes? | arrays[] | se
 
 if [ -z $FloatingVim ]; then
   wezterm \
-    --config initial_rows=20 \
-    --config initial_cols=60 \
+    --config initial_rows=18 \
+    --config initial_cols=55 \
     --config enable_tab_bar=false \
     --config window_background_opacity=0.4 \
     --config text_background_opacity=0.7 \
