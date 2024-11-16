@@ -485,12 +485,13 @@ call skkeleton_state_popup#config(#{
 call skkeleton_state_popup#enable()
 
 function s:mapAzikOkuri(input, feed) abort
+  let input = substitute(a:input, '|', '\\|', 'g')
   for mode in ['i', 'c']
     execute 'autocmd User skkeleton-enable-post ' .. mode .. 'map <buffer> ' ..
-      \   a:input .. " <Cmd>call <SID>azikOkuri('" .. a:input .. "', '" ..
+      \   input .. " <Cmd>call <SID>azikOkuri('" .. input .. "', '" ..
       \   a:feed .. "')<CR>"
     execute 'autocmd User skkeleton-disable-post silent! ' .. mode ..
-      \   'unmap <buffer> ' .. a:input
+      \   'unmap <buffer> ' .. input
   endfor
 endfunction
 
@@ -539,10 +540,10 @@ function! s:createKanatable(arg) abort
     let combination = a:arg.combinations[combKey]
     if combKey =~# '[a-z]'
       let keyWithShift = substitute(combKey, '.', '\u&', '')
-    elseif has_key(shift, combKey) && shift[combKey] == '|'
-      let keyWithShift = '\|'
+    elseif has_key(shift, combKey)
+      let keyWithShift = shift[combKey]
     else
-      let keyWithShift = has_key(shift, combKey) ? shift[combKey] : v:null
+      let keyWithShift = v:null
     endif
     if keyWithShift isnot v:null
       let s = substitute(combination, ';', a:arg.others['xtu'], 'g')
