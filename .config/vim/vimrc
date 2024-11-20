@@ -595,7 +595,7 @@ function! s:convertToHiragana(str) abort
     \   y:  ['や', 'い', 'ゆ', 'いぇ', 'よ'],
     \   r:  ['ら', 'り', 'る', 'れ', 'ろ'],
     \   ry: ['りゃ', 'り', 'りゅ', 'りぇ', 'りょ'],
-    \   w:  ['わ', 'ゐ', 'う', 'ゑ', 'を'],
+    \   w:  ['わ', 'うぃ', 'う', 'うぇ', 'を'],
     \   wh: ['うぁ', 'うぃ', 'う', 'うぇ', 'うぉ'],
     \ }
   let phonemes = split(a:str, '\v([aiueo;q]|[^aiueo;q]+)\zs')
@@ -672,6 +672,7 @@ augroup MySkkeleton
     \   consonants: {
     \     'q':  'gy',
     \     'w':  'w',
+    \     'wh': 'wh',
     \     'r':  'r',
     \     't':  't',
     \     'y':  'y',
