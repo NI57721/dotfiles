@@ -469,7 +469,7 @@ call skkeleton#config(#{
   \ })
 
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
-call skkeleton#register_keymap('henkan', '<', 'purgeCandidate')
+call skkeleton#register_keymap('henkan', '<BS>', 'purgeCandidate')
 call skkeleton#register_keymap('henkan', 'X', v:false)
 
 call skkeleton_state_popup#config(#{
