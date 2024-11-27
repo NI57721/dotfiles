@@ -95,7 +95,7 @@ abbr -a gilr git log --reverse --decorate --color=always
 abbr -a gib  git branch
 abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
-abbr -a gir  git rebase
+abbr -a gir  git rebase --autostash
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
