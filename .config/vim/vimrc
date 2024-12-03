@@ -867,8 +867,7 @@ command! RC tabnew $XDG_CONFIG_HOME/vim/vimrc |
             \   tabnew $XDG_CONFIG_HOME/vim/rc/dein_lazy.toml
 command! SR :source $XDG_CONFIG_HOME/vim/vimrc
 command! Zen %call getline('.') ->tr('０１２３４５６７８９．，　（）', '0123456789., ()') ->setline('.')
-command! -nargs=1 P let s:prev = getreg('*') | redir @* | silent execute <q-args> | redir END |
-                    \   put =slice(getreg('*'), 1) | call setreg('*', s:prev)
+command! -nargs=1 P call call({-> execute(<q-args>) ->split("\n") ->append('.')}, [])
 
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
