@@ -11,6 +11,8 @@ set $term wezterm
 
 font pango:monospace 0.001
 
+mouse_warping container
+
 # Wallpaper
 # output "*" bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
