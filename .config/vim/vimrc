@@ -627,7 +627,7 @@ augroup MySkkeleton
     \     '1': 'e;te',
     \     '2': 'a;te',
     \     '3': 'aiq',
-    \     '4': 'uki',
+    \     '4': 'iru',
     \     '5': 'osi',
     \     '6': 'uka',
     \     '7': 'uto',
@@ -672,7 +672,7 @@ augroup MySkkeleton
     \   consonants: {
     \     'q':  'gy',
     \     'w':  'w',
-    \     'wh': 'wh',
+    \     'wy': 'wh',
     \     'r':  'r',
     \     't':  't',
     \     'y':  'y',
