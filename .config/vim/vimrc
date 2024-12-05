@@ -929,6 +929,14 @@ vmap tlj <Cmd>call deepl#v("JA")<CR><ESC>
 nmap tle yypV<Cmd>call deepl#v("EN")<CR><ESC>
 nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
 
+" Git
+function OpenGitLogs(n = 100) abort
+  let logs = system('git log --max-count=' .. a:n ..' --patch ' .. expand('%:p'))
+  tabnew
+  set filetype=diff
+  call append(0, split(logs, "\n"))
+endfunction
+nnoremap gr <Cmd>call OpenGitLogs()<CR>
 
 if filereadable(expand('$XDG_CONFIG_HOME/vim/vimrc.local'))
   source $XDG_CONFIG_HOME/vim/vimrc.local
