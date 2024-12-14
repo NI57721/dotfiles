@@ -1,6 +1,6 @@
 #!/bin/bash -u
 
-FloatingVim=$(swaymsg -t get_tree | jq -c '.. | .floating_nodes? | arrays[] | select(.app_id=="FloatingVim")')
+FloatingVim=$(swaymsg -t get_tree | jq -c '.. | .floating_nodes? | arrays[] | select(.app_id == "FloatingVim")')
 
 if [ -z $FloatingVim ]; then
   wezterm \
