@@ -10,7 +10,7 @@ if has('guess_encode')
 else
   set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,latin1
 endif
-set fileformats=unix,dos
+set fileformats=unix
 
 
 " dein.vim
