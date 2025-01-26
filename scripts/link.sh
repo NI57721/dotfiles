@@ -26,6 +26,7 @@ linked_files=(
   .config/X11/xinitrc
   .config/xremap/config.yml
   .config/xremap/scripts/open-with-vim.sh
+  .config/xremap/scripts/clone-from-github.sh
 )
 
 backup_path=$XDG_CACHE_HOME/dotfiles/$(date "+%Y%m%d-%H%M%S")
