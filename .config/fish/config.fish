@@ -99,6 +99,7 @@ abbr -a gir  git rebase --autostash
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
+abbr -a giclc git clone git@github.com:\(wl-paste \| sed -r '"s@https://github\.com/([^/]+/[^/]+).*@\1@"'\)
 abbr -a --set-cursor gira git remote add origin git@github.com:%
 abbr -a gifk gh repo fork
 abbr -a gish  git stash
