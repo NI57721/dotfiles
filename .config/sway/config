@@ -96,7 +96,7 @@ bindsym $mod+m exec $XDG_CONFIG_HOME/sway/scripts/ime-vim-fast-paste.sh
 # Despite the name, also works for non-floating windows.
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
-floating_modifier $mod normal
+floating_modifier $mod inverse
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
