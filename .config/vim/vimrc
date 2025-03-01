@@ -361,6 +361,8 @@ nnoremap <C-W><C-F> gf
 inoremap <Tab>   <C-N>
 inoremap <S-Tab> <C-P>
 
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
+
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
