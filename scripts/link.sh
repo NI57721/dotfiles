@@ -14,7 +14,7 @@ linked_files=(
   .config/npm/npmrc
   .config/paru/paru.conf
   .config/python/startup.py
-  .config/sway/{config,scripts/{clamshell.sh,ime-vim.sh,ime-vim-fast-paste.sh,recorder-{gif,mp4}.sh}}
+  .config/sway/{config,scripts/{clamshell.sh,ime-vim.sh,ime-vim-fast-paste.sh,move-to-another-monitor.sh,recorder-{gif,mp4}.sh}}
   .config/tmux/tmux.conf
   .config/todo/config
   .config/vim/{vimrc,rc/dein{,_lazy}.toml}

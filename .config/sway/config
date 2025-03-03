@@ -89,6 +89,8 @@ bindsym $mod+Shift+q kill
 for_window [app_id="FloatingVim"] floating enable
 bindsym $mod+i exec $XDG_CONFIG_HOME/sway/scripts/ime-vim.sh
 bindsym $mod+m exec $XDG_CONFIG_HOME/sway/scripts/ime-vim-fast-paste.sh
+# Move the current workspace to another active monitor
+bindsym $mod+w exec $XDG_CONFIG_HOME/sway/scripts/move-to-another-monitor.sh
 
 
 # Drag floating windows by holding down $mod and left mouse button.
