@@ -643,8 +643,7 @@ function! s:convertToHiragana(str) abort
   return result
 endfunction
 
-augroup MySkkeleton
-  autocmd!
+function! s:createNeoAZIKKanatable() abort
   let s:kanatable =  s:createKanatable(#{
     \   combinations: {
     \     '1': 'e;te',
@@ -776,7 +775,12 @@ augroup MySkkeleton
     \   'fj':   ['ふん', ''],
     \   'fgu':  ['ひゅ', ''],
     \ })
-  autocmd insertenter * ++once call skkeleton#register_kanatable('neoazik', s:kanatable)
+  call skkeleton#register_kanatable('neoazik', s:kanatable)
+endfunction
+
+augroup MySkkeleton
+  autocmd!
+  autocmd insertenter * ++once call s:createNeoAZIKKanatable()
 augroup END
 
 augroup SkkeletonHenkanHighlight
