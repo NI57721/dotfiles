@@ -51,10 +51,10 @@ call ddc#custom#patch_global(#{
   \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip', 'dictionary',
   \   ],
   \   sourceOptions: #{
-  \     around: #{mark: 'arnd'},
+  \     around: #{mark: 'ard'},
   \     buffer: #{mark: 'buf'},
   \     file: #{
-  \       mark: 'file',
+  \       mark: 'fil',
   \       isVolatile: v:true,
   \       forceCompletionPattern: '\S/\S*',
   \     },
@@ -65,7 +65,11 @@ call ddc#custom#patch_global(#{
   \       minAutoCompleteLength: 2,
   \       isVolatile: v:true,
   \     },
-  \     vim-lsp: #{mark: 'lsp'},
+  \     vim-lsp: #{
+  \       mark: 'lsp',
+  \       forceCompletionPattern: '\w*',
+  \       matchers: ['matcher_head'],
+  \     },
   \     dictionary: #{
   \       mark: 'dic',
   \     },
@@ -82,6 +86,13 @@ call ddc#custom#patch_global(#{
   \       limitBytes: 5000000,
   \       fromAltBuf: v:true,
   \       forceCollect: v:true,
+  \     },
+  \     vim-lsp: #{
+  \       snippetEngine: denops#callback#register({
+  \             body -> vsnip#anonymous(body)
+  \       }),
+  \       enableResolveItem: v:true,
+  \       enableAdditionalTextEdit: v:true,
   \     },
   \     dictionary: #{
   \       paths: ['/usr/share/dict/words'],
