@@ -204,6 +204,10 @@ augroup MyXML
   autocmd Filetype html,xml nnoremap <buffer> <CR> A<br><ESC>=jj$
 augroup END
 
+augroup MyTypst
+  autocmd!
+  autocmd Filetype typst setlocal backupcopy=yes
+augroup END
 
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>h <C-6>
