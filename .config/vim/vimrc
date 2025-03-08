@@ -476,6 +476,7 @@ call skkeleton#config(#{
   \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.propernoun'), 'euc-jp'],
   \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.station'), 'euc-jp'],
   \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.emoji.utf8'), 'utf-8'],
+  \     [expand('$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict/SKK-JISYO.jawiki'), 'utf-8'],
   \     [expand('$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode'), 'euc-jp'],
   \   ],
   \   kanaTable: 'neoazik',

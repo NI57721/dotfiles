@@ -231,6 +231,7 @@ i_skk_dictionaries:
 	find $$XDG_DATA_HOME/skk -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $$XDG_DATA_HOME/skk/zipcode.tar -C $$XDG_DATA_HOME/skk && \
 		rm $$XDG_DATA_HOME/skk/zipcode.tar
+	git clone https://github.com/tokuhirom/jawiki-kana-kanji-dict $$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict
 
 ## i_tpm: Install tpm
 i_tpm:
