@@ -81,7 +81,7 @@ install_optional: i_virtualbox_ga
 ## init_bash: Add settings for umask and the path to User's bashrc
 init_bash:
 	if [ -f "$$XDG_CONFIG_HOME/bash/bashrc" ]; then \
-	  echo -e "\
+		echo -e "\
 	\n\
 	# Set umask for the whole system\n\
 	umask 077\n\
@@ -89,7 +89,7 @@ init_bash:
 	# Read the bash config file in an XDG Base Directory\n\
 	. $$XDG_CONFIG_HOME/bash/bashrc\n\
 	" \
-	  | sudo tee -a /etc/bash.bashrc > /dev/null; \
+		| sudo tee -a /etc/bash.bashrc > /dev/null; \
 	fi
 
 ## init_docker: Set up Docker
@@ -109,7 +109,7 @@ init_git:
 	  IdentityFile $$HOME/.ssh/ni57721\n\
 	  User git\n\
 	" \
-	  | tee -a $$HOME/.ssh/config
+		| tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
 ## init_grub: Initialize settings for grub, where grub is hidden
@@ -119,7 +119,7 @@ init_grub:
 	# Hiding grub menu.\n\
 	GRUB_FORCE_HIDDEN_MENU=true\
 	" \
-	  | sudo tee -a /etc/default/grub
+		| sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## init_mirrorlist: Sort the mirrorlist used by pacman
@@ -131,9 +131,9 @@ init_mirrorlist:
 ## init_pacman: Initialize settings for pacman, where Color and ILoveCandy are turned on
 init_pacman:
 	sudo sed -i /etc/pacman.conf \
-	  -e "s/^#Color$$/Color\nILoveCandy/" \
-	  -e "s/^#VerbosePkgLists$$/VerbosePkgLists/" \
-	  -e "s/^#ParallelDownloads /ParallelDownloads /"
+		-e "s/^#Color$$/Color\nILoveCandy/" \
+		-e "s/^#VerbosePkgLists$$/VerbosePkgLists/" \
+		-e "s/^#ParallelDownloads /ParallelDownloads /"
 
 ## init_putty: Make a directory putty for PuTTY to use this directory instead of $HOME/.putty
 init_putty:
@@ -160,18 +160,18 @@ install_aur: # i_paru
 ## install_go_packages: Install go packages
 install_go_packages:
 	for go_package in $(GO_PACKAGES); do \
-	  go install $$go_package; \
+		go install $$go_package; \
 	done;
 
 ## i_deno: Install deno
 i_deno:
 	curl -fsSL https://deno.land/x/install/install.sh | \
-	  DENO_INSTALL=$$XDG_DATA_HOME/deno bash
+		DENO_INSTALL=$$XDG_DATA_HOME/deno bash
 
 ## i_dropbox: Install DropBox CLI tool
 i_dropbox:
 	curl -L https://www.dropbox.com/download\?plat=lnx.x86_64 | \
-	  tar -xzf -
+		tar -xzf -
 
 ## i_fish: Install fish shell
 i_fish:
@@ -199,9 +199,9 @@ i_paru:
 	mkdir -p $$XDG_DATA_HOME/paru
 	cd $$XDG_DATA_HOME/paru; \
 	if [ "$$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then \
-	  git pull; \
+		git pull; \
 	else \
-	  git clone https://aur.archlinux.org/paru.git $$XDG_DATA_HOME/paru; \
+		git clone https://aur.archlinux.org/paru.git $$XDG_DATA_HOME/paru; \
 	fi
 	cd $$XDG_DATA_HOME/paru && makepkg -si
 
@@ -221,16 +221,16 @@ i_rust:
 i_skk_dictionaries:
 	mkdir -p $$XDG_DATA_HOME/skk
 	curl --remote-name-all --output-dir $$XDG_DATA_HOME/skk \
-	  https://skk-dev.github.io/dict/SKK-JISYO.L.gz \
-	  https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz \
-	  https://skk-dev.github.io/dict/SKK-JISYO.geo.gz \
-	  https://skk-dev.github.io/dict/SKK-JISYO.station.gz \
-	  https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
-	  https://skk-dev.github.io/dict/zipcode.tar.gz \
-	  https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
+		https://skk-dev.github.io/dict/SKK-JISYO.L.gz \
+		https://skk-dev.github.io/dict/SKK-JISYO.jinmei.gz \
+		https://skk-dev.github.io/dict/SKK-JISYO.geo.gz \
+		https://skk-dev.github.io/dict/SKK-JISYO.station.gz \
+		https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
+		https://skk-dev.github.io/dict/zipcode.tar.gz \
+		https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
 	find $$XDG_DATA_HOME/skk -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $$XDG_DATA_HOME/skk/zipcode.tar -C $$XDG_DATA_HOME/skk && \
-	  rm $$XDG_DATA_HOME/skk/zipcode.tar
+		rm $$XDG_DATA_HOME/skk/zipcode.tar
 
 ## i_tpm: Install tpm
 i_tpm:
@@ -309,11 +309,11 @@ i_vpn_with_ppp:
 	  DNS2=\"203.141.128.33\"\n\
 	  CLIENT_GLOBALIP=\"AUTO\"\n\
 	  " | \
-	  sudo tee /etc/myip/myip.conf
+		sudo tee /etc/myip/myip.conf
 	sudo vim -u NONE -N /etc/myip/myip.conf
 	sudo /etc/myip/myip-setup
 	sudo sed "2q; d" /etc/myip/myip.conf | sed "s/.*\"\(.*\)\"/\1/" | \
-	  xargs -I{} sudo cat /etc/ppp/peers/myip_{}
+		xargs -I{} sudo cat /etc/ppp/peers/myip_{}
 	sudo cat /etc/ppp/chap-secrets
 
 ## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
@@ -321,12 +321,12 @@ create_arch_linux_installer:
 	@echo -e "Install the image file if needed"
 	mkdir -p $$XDG_CACHE_HOME/arch-installation
 	curl https://archlinux.org/iso/latest/archlinux-x86_64.iso.sig \
-	  > $$XDG_CACHE_HOME/arch-installation/archlinux.sig.tmp
+		> $$XDG_CACHE_HOME/arch-installation/archlinux.sig.tmp
 	if [ ! -f $$XDG_CACHE_HOME/arch-installation/archlinux.sig ] || \
 	   [ -n "$$(cmp $$XDG_CACHE_HOME/arch-installation/archlinux.sig{,.tmp})" ]; then \
-	  curl https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/archlinux-x86_64.iso \
-	    > $$XDG_CACHE_HOME/arch-installation/archlinux.iso.tmp; \
-	  mv $$XDG_CACHE_HOME/arch-installation/archlinux.iso{.tmp,}; \
+		curl https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/archlinux-x86_64.iso \
+			> $$XDG_CACHE_HOME/arch-installation/archlinux.iso.tmp; \
+		mv $$XDG_CACHE_HOME/arch-installation/archlinux.iso{.tmp,}; \
 	fi
 	mv $$XDG_CACHE_HOME/arch-installation/archlinux.sig{.tmp,}
 	@echo -e "\nCheck the PGP signature"
