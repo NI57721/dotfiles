@@ -14,12 +14,6 @@ repo = 'NI57721/skkeleton-state-popup'
 depends = ['denops.vim', 'skkeleton']
 
 [[plugins]]
-# repo = 'kei-s16/skkeleton-azik-kanatable'
-repo = 'NI57721/skkeleton-azik-kanatable'
-rev = 'feature/delete-some-mappings'
-on_source = 'skkeleton'
-
-[[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = 'denops.vim'
 
