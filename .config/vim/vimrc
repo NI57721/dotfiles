@@ -844,6 +844,11 @@ let g:dps_dial#augends = [
   \     cyclic: v:true,
   \     word: v:true,
   \   }},
+  \   #{kind: 'constant', opts: #{
+  \     elements: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  \     cyclic: v:true,
+  \     word: v:true,
+  \   }},
   \   #{kind: 'date', opts: #{format: 'yyyy-MM-dd', only_valid: v:false }},
   \ ]
 
