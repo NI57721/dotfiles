@@ -339,9 +339,6 @@ noremap <C-Up>     <Cmd>if len(g:most_recently_closed) > 0 \|
 noremap  <C-Down>  :q<CR><C-G>
 noremap  <expr> <C-lt> ':tabmove -' .. v:count1 .. '<CR>'
 noremap  <expr> <C->>  ':tabmove +' .. v:count1 .. '<CR>'
-nnoremap gr        <Cmd>tabnext<CR><C-G>
-nnoremap gR        <Cmd>tabprevious<CR><C-G>
-" nnoremap q:        <Cmd>q<CR><C-G>
 tnoremap <C-Right> <Cmd>tabnext<CR><C-G>
 tnoremap <C-Left>  <Cmd>tabprevious<CR><C-G>
 tnoremap <C-Down>  <Cmd>q<CR><C-G>
