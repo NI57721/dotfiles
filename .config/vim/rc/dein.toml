@@ -26,11 +26,11 @@ repo = 'Shougo/ddc-ui-native'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
-repo = 'tani/ddc-fuzzy'
+repo = 'Shougo/ddc-ui-inline'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
-repo = 'Shougo/ddc-source-around'
+repo = 'tani/ddc-fuzzy'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
@@ -42,11 +42,27 @@ repo = 'Shougo/ddc-matcher_head'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
+repo = 'Shougo/ddc-source-around'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
 repo = 'LumaKernel/ddc-source-file'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
 repo = 'uga-rosa/ddc-source-vsnip'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddc-source-lsp'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'Shougo/ddc-source-omni'
+depends = ['denops.vim', 'ddc.vim']
+
+[[plugins]]
+repo = 'uga-rosa/ddc-source-dictionary'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]

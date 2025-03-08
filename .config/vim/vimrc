@@ -48,7 +48,7 @@ endif
 call ddc#custom#patch_global(#{
   \   ui: 'native',
   \   sources: [
-  \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip'
+  \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip', 'dictionary',
   \   ],
   \   sourceOptions: #{
   \     around: #{mark: 'arnd'},
@@ -66,6 +66,9 @@ call ddc#custom#patch_global(#{
   \       isVolatile: v:true,
   \     },
   \     vim-lsp: #{mark: 'lsp'},
+  \     dictionary: #{
+  \       mark: 'dic',
+  \     },
   \     _: #{
   \       matchers: ['matcher_fuzzy', 'matcher_head'],
   \       sorters: ['sorter_fuzzy'],
@@ -79,6 +82,11 @@ call ddc#custom#patch_global(#{
   \       limitBytes: 5000000,
   \       fromAltBuf: v:true,
   \       forceCollect: v:true,
+  \     },
+  \     dictionary: #{
+  \       paths: ['/usr/share/dict/words'],
+  \       firstCaseInsensitive: v:true,
+  \       exactLength: 4,
   \     },
   \   },
   \ })
