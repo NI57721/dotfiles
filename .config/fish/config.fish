@@ -54,8 +54,8 @@ abbr -a .. cd ..
 abbr -a ... cd ../..
 abbr -a von wg-quick up wg0
 abbr -a vof wg-quick down wg0
-abbr -a em swaymsg output eDP-1 enable
-abbr -a dm swaymsg output eDP-1 disable
+abbr -a dm swaymsg output \(swaymsg -t get_workspaces \| jq -r '".[] | select(.focused==true).output"'\) disable
+abbr -a em swaymsg output \\\* enable
 abbr -a cdv cd $XDG_DATA_HOME/dein/repos/github.com/
 abbr -a bye systemctl poweroff
 abbr -a later systemctl reboot
