@@ -6,6 +6,17 @@ modmap:
       CapsLock: LeftCtrl
       RightCtrl: RightAlt
       RightAlt: RightCtrl
+  - name: Vim key bindings in Undertale
+    window:
+      only: /^UNDERTALE( the Musical)?$/
+    remap:
+      KEY_H: Left
+      KEY_J: Down
+      KEY_K: Up
+      KEY_L: Right
+      KEY_M: KEY_Z
+      KEY_F: KEY_Z
+      LeftBrace: KEY_X
 keymap:
   - name: Disable Some Shortcuts
     application:
