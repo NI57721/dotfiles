@@ -466,7 +466,6 @@ let g:fzf_buffers_jump = 1
 let g:vsnip_snippet_dir = expand('$XDG_CONFIG_HOME/vsnip')
 
 " Define a skk dictionary
-call skkeleton#azik#add_table('us')
 call skkeleton#register_kanatable('neoazik', {}, v:true)
 call skkeleton#config(#{
   \   globalDictionaries: [
