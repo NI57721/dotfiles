@@ -105,7 +105,7 @@ bindsym $mod+Shift+r reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $super+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-bindsym $super+l exec swaylock -f -C $XDG_CONFIG_HOME/swaylock/config
+bindsym $super+l exec swaylock -f -C $XDG_CONFIG_HOME/swaylock/config -i ~/bg.jpg
 
 # Move your focus around
 bindsym $mod+$left focus left
