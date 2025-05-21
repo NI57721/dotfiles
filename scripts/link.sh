@@ -11,6 +11,7 @@ linked_files=(
   .config/fish/{config.fish,fish_plugins}
   .config/git/{config,gitignore_global}
   .config/irb/irbrc
+  .config/mimeapps.list
   .config/npm/npmrc
   .config/paru/paru.conf
   .config/python/startup.py
