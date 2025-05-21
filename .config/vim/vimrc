@@ -228,6 +228,13 @@ augroup MyTypst
   autocmd Filetype typst setlocal backupcopy=yes
 augroup END
 
+augroup MyAstro
+  autocmd!
+  autocmd Filetype astro set shiftwidth=2
+  autocmd Filetype astro inoremap <buffer> </ </<C-X><C-O><ESC><ESC>=j
+  autocmd Filetype astro nnoremap <buffer> <CR> A<br><ESC>=jj$
+augroup END
+
 nnoremap <leader>s <Cmd>setlocal spell! spell?<CR>
 nnoremap <leader>h <C-6>
 nnoremap <leader>F <Cmd>call ddu#start({})<CR>
