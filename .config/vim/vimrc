@@ -827,6 +827,7 @@ xnoremap <Space> c<Cmd>call skkeleton#handle('handleKey', #{key: [';', getreg()]
 command! IM call s:imMapping()
 
 function! s:imMapping() abort
+  call skkeleton#initialize()
   nnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
   xnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
 
