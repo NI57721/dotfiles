@@ -291,7 +291,7 @@ i_vpn:
 	    }\n\
 	}\n\
 	" | \
-	  sudo tee /etc/swanctl/swanctl.conf
+		sudo tee /etc/swanctl/swanctl.conf
 	sudo rvim /etc/swanctl/swanctl.conf
 	sudo rmdir /etc/ipsec.d/cacerts
 	sudo ln -s /etc/ssl/certs /etc/ipsec.d/cacerts
@@ -324,7 +324,7 @@ create_arch_linux_installer:
 	curl https://archlinux.org/iso/latest/archlinux-x86_64.iso.sig \
 		> $$XDG_CACHE_HOME/arch-installation/archlinux.sig.tmp
 	if [ ! -f $$XDG_CACHE_HOME/arch-installation/archlinux.sig ] || \
-	   [ -n "$$(cmp $$XDG_CACHE_HOME/arch-installation/archlinux.sig{,.tmp})" ]; then \
+		[ -n "$$(cmp $$XDG_CACHE_HOME/arch-installation/archlinux.sig{,.tmp})" ]; then \
 		curl https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/archlinux-x86_64.iso \
 			> $$XDG_CACHE_HOME/arch-installation/archlinux.iso.tmp; \
 		mv $$XDG_CACHE_HOME/arch-installation/archlinux.iso{.tmp,}; \
