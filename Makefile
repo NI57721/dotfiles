@@ -7,7 +7,7 @@ BASIC_PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
 
 # GUI and Desktop
 PACKAGES := libreoffice-still pinta qt5-wayland sway swayidle swaylock thunar
-PACKAGES += waybar wezterm wl-clipboard xorg-xwayland
+PACKAGES += tumbler waybar wezterm wl-clipboard xorg-xwayland
 # Media
 PACKAGES += bluez bluez-libs bluez-utils libaacs libbluray
 PACKAGES += pulseaudio pulseaudio-alsa pulseaudio-bluetooth sof-firmware
