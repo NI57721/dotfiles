@@ -143,6 +143,7 @@ abbr -a fly flyctl
 abbr chrome swaymsg exec "google-chrome-stable"
 
 status --is-interactive; and rbenv init - fish | source
+fzf --fish | source
 
 # Settings for WSL2
 if grep -qie "microsoft-.*-WSL2" /proc/version
@@ -250,7 +251,6 @@ function update_vim
 end
 
 function fish_user_key_bindings
-  bind \cr 'peco_select_history (commandline -b)'
   for mode in insert default visual
     fish_default_key_bindings -M $mode
   end
