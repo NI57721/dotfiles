@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 
 vim_root=$XDG_DATA_HOME/vim
 mkdir -p $vim_root

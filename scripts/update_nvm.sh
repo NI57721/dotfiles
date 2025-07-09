@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 
 mkdir -p $NVM_DIR
 mkdir -p $XDG_DATA_HOME/node

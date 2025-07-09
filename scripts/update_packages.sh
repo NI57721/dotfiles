@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 
 if [ ! -f /etc/os-release ]; then
   echo "/etc/os-release does not exist."

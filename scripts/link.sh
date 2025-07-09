@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 
 HOME=${HOME:-~}
 XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}

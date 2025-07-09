@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 
 echo Looking up latest version
 version=$(go version 2> /dev/null | sed -e "s/^.*\(go[0-9.]\+\).*/\1/g")
