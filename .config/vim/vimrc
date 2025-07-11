@@ -833,7 +833,7 @@ function! s:imMapping() abort
 
   augroup MyIME
     autocmd! * <buffer>
-    autocmd TextChangedI <buffer> call job_start(['wl-copy', '--', getline('.')])
+    autocmd TextChangedI <buffer> yank
   augroup END
 endfunction
 
@@ -847,7 +847,7 @@ function! s:getSelectedText() abort
 endfunction
 
 function! s:yankAndClose() abort
-  if mode() ==? 'v'
+  if "v\|s\|\<C-V>|\<C-S>" =~? mode()
     execute "normal! \<ESC>"
     call job_start(['wl-copy', '--', s:getSelectedText()])
   else
@@ -913,25 +913,13 @@ cabbr encto edit ++encoding=
 cabbr qa tabdo windo if !&modified \| try \| close \| catch \| quit \| endtry \| endif
 cabbr qq tabdo windo try \| close \| catch \| quit! \| endtry
 
-" Yank
-nnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
-nnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
-xnoremap <silent> p     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]P
-xnoremap <silent> P     <Cmd>call setreg('"', system('wl-paste -n'))<CR>""]p
-cnoremap          <C-"> <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
-inoremap <silent> <C-"> <Cmd>call setreg('"', system('wl-paste -n'))<CR><C-R>"
-nnoremap <silent> R <Cmd>call setreg('*', system('wl-paste -n'))<CR><Plug>(operator-replace)
-xnoremap <silent> R <Cmd>call setreg('*', system('wl-paste -n'))<CR><Plug>(operator-replace)
+cnoremap          <C-'> <C-R>+
+inoremap <silent> <C-'> <C-R>+
+nnoremap <silent> R <Plug>(operator-replace)
+xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
 
-" Avoid being triggered when leaving from visual mode
-set clipboard-=autoselect
-set clipboard^=unnamed
-augroup LazyClipboardSetup
-  autocmd!
-  autocmd TextYankPost * silent call job_start(['wl-copy', '--', getreg('*')])
-  " autocmd CursorHold,CursorMoved * ++once call serverlist() | set clipboard^=unnamed
-augroup END
+set clipboard^=unnamedplus
 
 " Yank for WSL2
 function! IsWSL()
