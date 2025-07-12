@@ -186,7 +186,7 @@ set viminfo='1000,f1,<500,s10,h
 set updatetime=1500
 set splitright
 set showtabline=2
-set shell=/bin/bash
+set shell=fish
 set ttimeoutlen=10
 
 augroup MyGo
@@ -905,6 +905,7 @@ command! -nargs=1 P call call({-> execute(<q-args>) ->split("\n") ->append('.')}
 cabbr w!! w !sudo tee > /dev/null %
 cabbr h tab :help
 cabbr encto edit ++encoding=
+cabbr term tab :terminal
 cabbr qa tabdo windo if !&modified \| try \| close \| catch \| quit \| endtry \| endif
 cabbr qq tabdo windo try \| close \| catch \| quit! \| endtry
 
