@@ -12,7 +12,7 @@ if [ -z $FloatingVim ]; then
     start --class FloatingVim vim -c ":IM"
 else
   if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
-    wtype -P escape -p escape
+    wtype -P escape -p escape yy
     swaymsg "move window to scratchpad"
     wtype -M shift -P insert -p insert -m shift
   else
