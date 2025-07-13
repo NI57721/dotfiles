@@ -239,6 +239,10 @@ exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
 # sway-session
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
+workspace number 1
+exec wezterm start --class MainTerminal
+exec xremap --watch ~/.config/xremap/config.yml
+
 bar {
   swaybar_command waybar
 }
