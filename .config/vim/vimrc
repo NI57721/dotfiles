@@ -833,11 +833,10 @@ function! s:imMapping() abort
 endfunction
 
 function! s:yankAndClose() abort
-  if "v\|s\|\<C-V>|\<C-S>" =~? mode()
-    execute "normal! \<ESC>"
-    call job_start(['wl-copy', '--', s:getSelectedText()])
+  if "[vV\<C-V>]" =~# mode()
+    normal! y
   else
-    call job_start(['wl-copy', '--', getline('.')])
+    normal! 0y$
   endif
   call job_start(['swaymsg', 'move window to scratchpad'])
 endfunction
