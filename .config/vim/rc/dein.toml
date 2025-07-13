@@ -34,7 +34,7 @@ repo = 'tani/ddc-fuzzy'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
-repo = 'matsui54/ddc-buffer'
+repo = 'matsui54/ddc-source-buffer'
 depends = ['denops.vim', 'ddc.vim']
 
 [[plugins]]
