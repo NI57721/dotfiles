@@ -51,8 +51,14 @@ call ddc#custom#patch_global(#{
   \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip', 'dictionary',
   \   ],
   \   sourceOptions: #{
-  \     around: #{mark: 'ard'},
-  \     buffer: #{mark: 'buf'},
+  \     around: #{
+  \       mark: 'ard',
+  \       keywordPattern: '[^ 	\n\r　。、！？]+',
+  \     },
+  \     buffer: #{
+  \       mark: 'buf',
+  \       keywordPattern: '[^ 	\n\r　。、！？]+',
+  \     },
   \     file: #{
   \       mark: 'fil',
   \       isVolatile: v:true,
