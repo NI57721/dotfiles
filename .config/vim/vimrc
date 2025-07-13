@@ -832,15 +832,6 @@ function! s:imMapping() abort
   xnoremap <buffer> <CR> <Cmd>call <SID>yankAndClose()<CR>
 endfunction
 
-function! s:getSelectedText() abort
-  let [start_line, start_col] = getpos('''<')[1:2]
-  let [end_line, end_col] = getpos('''>')[1:2]
-  let selected_lines = getline(start_line, end_line)
-  let selected_lines[0] = strpart(selected_lines[0], start_col - 1)
-  let selected_lines[-1] = strpart(selected_lines[-1], 0, end_col - 1)
-  return join(selected_lines, "\n")
-endfunction
-
 function! s:yankAndClose() abort
   if "v\|s\|\<C-V>|\<C-S>" =~? mode()
     execute "normal! \<ESC>"
