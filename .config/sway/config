@@ -239,36 +239,6 @@ exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
 # sway-session
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
-# exec nm-applet --indicator
-# exec mako
-# exec fcitx5 -d
-
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="org.fcitx.fcitx5-config-qt"] floating enable
-for_window [class="Nextcloud"] floating enable
-for_window [app_id="thunar" title="File Operation Progress"] floating enable
-for_window [app_id="nm-connection-editor"] floating enable
-exec nextcloud --background
-for_window [class="Enpass"] {
-    floating enable
-    sticky enable
-}
-exec enpass -minimize
-assign [class="Slack"] workspace $ws_chat
-exec  slack
-assign [class="Vivaldi-stable"] workspace $ws_main
-exec vivaldi-stable
-assign [app_id="org.wezfurlong.wezterm"] workspace $ws_main
-exec wezterm
-assign [class="Emacs"] workspace $ws_sub
-exec emacs
-#assign [class="zoom"] workspace $ws_sub
-for_window [app_id="zoom"] floating enable
-exec blueman-applet
-for_window [app_id="blueman-manager"] floating enable
-for_window [class="Google-chrome" title="YouTube Music"] move container to workspace number $ws_media
-for_window [class="Google-chrome" title="YouTube"] move container to workspace number $ws_media
-
 bar {
   swaybar_command waybar
 }
