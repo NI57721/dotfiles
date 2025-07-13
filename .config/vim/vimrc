@@ -86,7 +86,9 @@ call ddc#custom#patch_global(#{
   \     },
   \   },
   \   sourceParams: #{
-  \     around: #{maxSize: 500},
+  \     around: #{
+  \       maxSize: 10000,
+  \     },
   \     buffer: #{
   \       requireSameFiletype: v:false,
   \       limitBytes: 5000000,
