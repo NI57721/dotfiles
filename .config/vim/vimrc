@@ -48,7 +48,7 @@ endif
 call ddc#custom#patch_global(#{
   \   ui: 'native',
   \   sources: [
-  \     'around', 'buffer', 'file', 'skkeleton', 'vim-lsp', 'vsnip', 'dictionary',
+  \     'around', 'buffer', 'file', 'skkeleton', 'skkeleton_okuri', 'vim-lsp', 'vsnip', 'dictionary',
   \   ],
   \   sourceOptions: #{
   \     around: #{
@@ -69,6 +69,13 @@ call ddc#custom#patch_global(#{
   \       matchers: [],
   \       sorters: [],
   \       minAutoCompleteLength: 2,
+  \       isVolatile: v:true,
+  \     },
+  \     skkeleton_okuri: #{
+  \       mark: 'okuri',
+  \       matchers: [],
+  \       sorters: [],
+  \       converters: [],
   \       isVolatile: v:true,
   \     },
   \     vim-lsp: #{
