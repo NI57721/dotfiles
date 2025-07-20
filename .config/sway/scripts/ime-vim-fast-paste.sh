@@ -12,11 +12,11 @@ if [ -z $FloatingVim ]; then
     start --class FloatingVim vim -c ":IM" /var/tmp/ime-vim
 else
   if [ "$(echo $FloatingVim | jq .focused)" = true ]; then
-    wtype -P escape -p escape 0y$ -s 80
+    wtype -k escape 0y$ -s 80
     swaymsg "move window to scratchpad"
-    wtype -M shift -P insert -p insert -m shift
+    wtype -M shift -k insert
   else
-    swaymsg "[app_id=\"FloatingVim\"] focus"
+    swaymsg '[app_id="FloatingVim"] focus'
   fi
 fi
 

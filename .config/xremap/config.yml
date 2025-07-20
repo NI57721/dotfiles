@@ -31,7 +31,7 @@ keymap:
       C-Shift-n: C-Shift-n
       C-Apostrophe: Shift-Insert
       M-O:
-        launch: ["bash", "-c", "bash $XDG_CONFIG_HOME/xremap/scripts/open-with-vim.sh"]
+        launch: ["bash", "-c", "$XDG_CONFIG_HOME/xremap/scripts/open-with-vim.sh"]
       M-P:
-        launch: ["bash", "-c", "bash $XDG_CONFIG_HOME/xremap/scripts/clone-from-github.sh"]
+        launch: ["bash", "-c", "$XDG_CONFIG_HOME/xremap/scripts/clone-from-github.sh"]
 
