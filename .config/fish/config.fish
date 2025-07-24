@@ -256,6 +256,7 @@ function fish_user_key_bindings
   end
   fish_vi_key_bindings --no-erase
   bind -M default -m default v ''
+  bind -M default -m default yy 'commandline | wl-copy'
   bind -M insert -m default jj backward-char force-repaint
   bind -M visual -m default jj end-selection force-repaint
 
