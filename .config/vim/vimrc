@@ -234,8 +234,8 @@ augroup MyXML
   autocmd!
   " Auto completion to close XML tags
   " autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><C-Y><ESC>==o
-  autocmd Filetype html,xml inoremap <buffer> </ </<C-X><C-O><ESC><ESC>=j
-  autocmd Filetype html,xml nnoremap <buffer> <CR> A<br><ESC>=jj$
+  autocmd Filetype html,xml,xhtml inoremap <buffer> </ </<C-X><C-O><ESC><ESC>=j
+  autocmd Filetype html,xml,xhtml nnoremap <buffer> <CR> A<br><ESC>=jj$
 augroup END
 
 augroup MyTypst
