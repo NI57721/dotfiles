@@ -59,12 +59,12 @@
         "format-alt": "{:%Y-%m-%d(%a) %H:%M}"
     },
     "cpu": {
-        "format": " <big></big>\n{usage:3}\n{load:3}",
+        "format": "<big></big>\n{usage:2}\n{load:2.0f}",
         "tooltip": true,
     },
     "memory": {
-        "format": " <big></big>\n{used:3}",
-        "format-alt": "<big></big>{used:0.1f}G\n{total:0.1f}G\n({percentage}%)"
+        "format": "<big></big>\n{used:2.0f}",
+        "format-alt": "<big></big>\n{used:0.1f}G\n{total:0.1f}G\n({percentage}%)"
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -91,7 +91,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": " <big>{icon}</big>\n{volume:3}\n{format_source:3}",
+        "format": "<big>{icon}</big>\n{volume:2}\n{format_source}",
         "format-bluetooth": "<big></big>\n{icon}\n{volume}%\n{format_source}",
         "format-bluetooth-muted": "<big></big>\n<big>🔇</big>\n{format_source}",
         "format-muted": "<big>🔇</big>\n{format_source}",
