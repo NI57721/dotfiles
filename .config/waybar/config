@@ -46,10 +46,10 @@
         "exec-if": "which sway-audio-idle-inhibit",
         "return-type": "json",
         "format-icons": {
-            "output": "",
+            "output": "",
             "input": "",
-            "output-input": "  ",
-            "none": ""
+            "output-input": "\n",
+            "none": "🔇"
         }
     },
     "clock": {
