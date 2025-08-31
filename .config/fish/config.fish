@@ -60,6 +60,7 @@ abbr -a cdv cd $XDG_DATA_HOME/dein/repos/github.com/
 abbr -a bye systemctl poweroff
 abbr -a later systemctl reboot
 abbr -a --set-cursor night sleep %\; systemctl suspend
+abbr -a :q exit
 
 # for TODO-TXT
 abbr -a tt   todo.sh
