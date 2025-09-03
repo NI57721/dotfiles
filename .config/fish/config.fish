@@ -86,7 +86,8 @@ abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gian git add -N
-abbr -a --set-cursor gic  git commit -m \"%\"
+abbr -a --set-cursor gic git commit -m \"%
+abbr -a --set-cursor gicm git commit --amend -m \"%
 abbr -a gica git commit --amend --no-edit
 abbr -a gis  git status
 abbr -a gil  git log --max-count 100 --graph --all --abbrev-commit --date=relative --color=always --pretty=format:'"@%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"' \| sed -E '\'s/^([^@]*)@|^([^-]*)$/\\1\\2@\\n/; 1!G; h; $!d;\'' \| sed -E '\'/^[^@]*@$/y!/\\\\\\\\!\\\\\\\\/!; N; s/@\\n//\''
