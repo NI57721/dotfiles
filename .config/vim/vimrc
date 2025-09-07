@@ -960,6 +960,7 @@ nmap tlj yypV<Cmd>call deepl#v("JA")<CR><ESC>
 function OpenGitLogs(n = 100) abort
   let logs = system('git log --follow --max-count=' .. a:n ..' --patch ' .. expand('%:p'))
   tabnew
+  set buftype=nofile
   set filetype=diff
   call append(0, split(logs, "\n"))
 endfunction
