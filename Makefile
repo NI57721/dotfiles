@@ -183,8 +183,8 @@ i_fish:
 
 ## i_fisher: Install fisher
 i_fisher: # i_fish
-	curl -sL https://git.io/fisher | fish
-	fish -c "fisher update"
+	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish && \
+		fish -c "fisher install jorgebucaran/fisher"
 
 ## i_go: Install go
 i_go:
