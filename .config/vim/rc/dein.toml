@@ -14,6 +14,10 @@ repo = 'NI57721/skkeleton-state-popup'
 depends = ['denops.vim', 'skkeleton']
 
 [[plugins]]
+repo = 'NI57721/skkeleton-henkan-highlight'
+depends = ['denops.vim', 'skkeleton']
+
+[[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = 'denops.vim'
 
