@@ -804,7 +804,7 @@ augroup MySkkeleton
   autocmd insertenter * ++once call s:createNeoAZIKKanatable()
 augroup END
 
-highlight SkkeletonHenkan cterm=reverse
+highlight SkkeletonHenkan cterm=underline term=underline
 
 inoremap <C-J> <Plug>(skkeleton-toggle)
 cnoremap <C-J> <Plug>(skkeleton-toggle)
