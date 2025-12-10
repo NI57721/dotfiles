@@ -6,8 +6,8 @@ BASIC_PACKAGES := base-devel curl jq git linux-headers ntfs-3g openssh reflector
 BASIC_PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
 
 # GUI and Desktop
-PACKAGES := libreoffice-still qt5-wayland sway swayidle swaylock thunar
-PACKAGES += tumbler waybar wezterm wl-clipboard xorg-xwayland
+PACKAGES := libreoffice-still qt5-wayland sway swayidle swaylock sway-contrib
+PACKAGES += thunar tumbler waybar wezterm wl-clipboard xorg-xwayland
 # Media
 PACKAGES += bluez bluez-libs bluez-utils libaacs libbluray
 PACKAGES += pavucontrol pulseaudio pulseaudio-alsa pulseaudio-bluetooth sof-firmware
@@ -17,7 +17,7 @@ PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
 PACKAGES += alacritty bat docker docker-compose dunst dust fastfetch github-cli
 PACKAGES += git-delta gnuplot grim hyperfine libyaml man-db man-pages ntfs-3g
 PACKAGES += perl-image-exiftool pptpclient putty python-qrcode strongswan
-PACKAGES += traceroute trash-cli udisks2 virtualbox wf-recorder wget words
+PACKAGES += traceroute trash-cli typst udisks2 virtualbox wf-recorder wget words
 PACKAGES += wtype
 
 AUR_PACKAGES := backlight_control google-chrome pinta
