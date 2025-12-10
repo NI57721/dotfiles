@@ -1,0 +1,2 @@
+--netrc-file $XDG_CONFIG_HOME/curl/ftp_credentials
+

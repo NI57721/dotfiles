@@ -67,7 +67,7 @@ link:
 	scripts/link.sh
 
 ## initialize: Initialize settings for some software
-initialize: init_bash init_docker init_git init_grub init_mirrorlist \
+initialize: init_bash init_curl init_docker init_git init_grub init_mirrorlist \
 	 init_pacman init_putty init_timezone
 
 ## install: Install everything needed except for i_virtualbox_ga
@@ -91,6 +91,11 @@ init_bash:
 	" \
 		| sudo tee -a /etc/bash.bashrc > /dev/null; \
 	fi
+
+## init_curl: Set up cURL
+init_curl:
+	mkdir --parents $$XDG_CONFIG_HOME/curl
+	cat .config/curlrc.template | envsubst > $$XDG_CONFIG_HOME/curlrc
 
 ## init_docker: Set up Docker
 init_docker:
