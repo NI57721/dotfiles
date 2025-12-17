@@ -17,6 +17,7 @@ linked_files=(
   .config/python/startup.py
   .config/sway/{config,scripts/{clamshell.sh,ime-vim.sh,ime-vim-fast-paste.sh,recorder-{gif,mp4}.sh}}
   .config/tmux/tmux.conf
+  .config/user-dirs.dirs
   .config/todo/config
   .config/vim/{vimrc,rc/dein{,_lazy}.toml}
   .config/vsnip/ruby.json
