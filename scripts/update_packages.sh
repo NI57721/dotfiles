@@ -16,7 +16,7 @@ case $ID in
   arch )
     pkgmng=$(which paru 2> /dev/null || echo pacman)
     $pkgmng -Syu
-    [ -n "$($pkgmng -Qdtq)" ] && $pkgmng -Qdtq | $pkgmng -Rs -
+    [ -n "$($pkgmng -Qdtq)" ] && $pkgmng -Qdtq | xargs -o $pkgmng -Rs
     ;;
   rhel )
     echo "Red Hat"
