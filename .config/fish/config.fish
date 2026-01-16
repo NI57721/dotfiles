@@ -81,7 +81,6 @@ abbr -a puts trash-put
 abbr -a cg   cd \(git rev-parse --show-toplevel 2\> /dev/null\; or pwd\)
 abbr -a gist git switch
 abbr -a gistd git switch --detach
-abbr -a girs git reset --soft HEAD~
 abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
@@ -97,12 +96,15 @@ abbr -a gilr git log --reverse --decorate --color=always
 abbr -a gib  git branch
 abbr -a gif  git fetch --all --prune
 abbr -a gim  git merge
+abbr -a gimc git merge --continue
+abbr -a gima git merge --abort
 abbr -a gir  git rebase --autostash
+abbr -a girc git rebase --continue
+abbr -a gira git rebase --abort
 abbr -a gid  git diff --color=always
 abbr -a gidc git diff --cached --color=always
 abbr -a --set-cursor gicl git clone git@github.com:%
 abbr -a giclc git clone git@github.com:\(wl-paste \| sed -r '"s@https://github\.com/([^/]+/[^/]+).*@\1@"'\)
-abbr -a --set-cursor gira git remote add origin git@github.com:%
 abbr -a gifk gh repo fork
 abbr -a gish  git stash
 abbr -a gishp git stash pop
