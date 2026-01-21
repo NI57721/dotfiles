@@ -102,8 +102,9 @@ repo = 'tyru/capture.vim'
 on_event = ['CursorHold', 'InsertEnter']
 
 [[plugins]]
-repo = 'ryicoh/deepl.vim'
+repo = 'NI57721/deepl.vim'
 on_event = ['CursorHold', 'InsertEnter']
+rev = 'match-api-change'
 
 [[plugins]]
 repo = 'lambdalisue/mr.vim'
