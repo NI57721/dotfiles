@@ -88,17 +88,7 @@ install_basic: \
 ## init_bash: Set umask and source the user's bashrc
 .PHONY: init_bash
 init_bash:
-	if [ -f "$$XDG_CONFIG_HOME/bash/bashrc" ]; then \
-		echo -e "\
-	\n\
-	# Set umask for the whole system\n\
-	umask 077\n\
-	\n\
-	# Read the bash config file in an XDG Base Directory\n\
-	. $$XDG_CONFIG_HOME/bash/bashrc\n\
-	" \
-		| sudo tee -a /etc/bash.bashrc > /dev/null; \
-	fi
+	cat config.d/bash.bashrc/defaults.sh | sudo tee --append /etc/bash.bashrc
 
 ## init_curl: Set up cURL
 .PHONY: init_curl

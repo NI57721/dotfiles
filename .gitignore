@@ -8,6 +8,7 @@
 
 !/scripts/*.sh
 !/data/*.mk
+!/config.d/**/*
 
 !/README.md
 !/LICENSE
