@@ -6,6 +6,10 @@ mkcd() {
   mkdir -p $1 && cd $1 && pwd
 }
 
+peep() {
+  scripts/peeping.sh $1
+}
+
 update() {
   echo -e "### Packages ###"
   update_packages

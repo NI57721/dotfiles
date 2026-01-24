@@ -172,6 +172,10 @@ function mkcd
   and pwd
 end
 
+function peep
+  scripts/peeping.sh $argv[1]
+end
+
 function ppk2ssh
   set --local filename (path change-extension '' $argv[1])
   puttygen $argv[1] -O private-openssh -o $filename &&
