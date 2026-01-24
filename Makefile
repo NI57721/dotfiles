@@ -232,10 +232,13 @@ i_skk_dictionaries:
 		https://skk-dev.github.io/dict/SKK-JISYO.station.gz \
 		https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
 		https://skk-dev.github.io/dict/zipcode.tar.gz \
-		https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
+		https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8 \
+		https://skk-dev.github.io/dict/SKK-JISYO.edict.tar.gz
 	find $$XDG_DATA_HOME/skk -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $$XDG_DATA_HOME/skk/zipcode.tar -C $$XDG_DATA_HOME/skk && \
 		rm $$XDG_DATA_HOME/skk/zipcode.tar
+	tar -xf $$XDG_DATA_HOME/skk/SKK-JISYO.edict.tar -C $$XDG_DATA_HOME/skk && \
+		rm $$XDG_DATA_HOME/skk/SKK-JISYO.edict.tar
 	git clone https://github.com/tokuhirom/jawiki-kana-kanji-dict $$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict
 
 ## i_tpm: Install tpm
