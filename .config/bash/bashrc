@@ -313,7 +313,7 @@ alias chrome="swaymsg exec \"google-chrome-stable\""
 
 shopt -s dotglob
 
-set -o vi
+set -o vi -o noclobber
 bind 'set show-mode-in-prompt on'
 bind 'set vi-cmd-mode-string N:'
 bind 'set vi-ins-mode-string I:'
