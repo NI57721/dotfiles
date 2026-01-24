@@ -70,13 +70,10 @@ link:
 initialize: init_bash init_curl init_docker init_git init_grub init_mirrorlist \
 	 init_pacman init_putty init_timezone
 
-## install: Install everything needed except for i_virtualbox_ga
+## install: Install everything needed
 install: install_packages install_go_packages \
 	 i_deno i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
 	 i_rust i_skk_dictionaries i_tpm i_vim i_vpn
-
-## install_optional: Install a tools for guest OSs on VirtualBox
-install_optional: i_virtualbox_ga
 
 ## init_bash: Add settings for umask and the path to User's bashrc
 init_bash:
@@ -251,13 +248,6 @@ i_vim:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) autoconf automake gettext luajit
 	scripts/update_vim.sh
-
-## i_virtualbox_ga: Install VirtualBox Guest Additions
-i_virtualbox_ga:
-	$(UPDATE_PKG)
-	$(INSTALL_PKG) xserver-xorg xserver-xorg-core
-	sudo mount /dev/cdrom /mnt
-	sudo sh /mnt/VBoxLinuxAdditions.run
 
 ## i_vpn: Install VPN settings
 i_vpn:
