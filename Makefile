@@ -115,12 +115,7 @@ init_git:
 ## init_grub: Hide the grub menu
 .PHONY: init_grub
 init_grub:
-	echo -e "\
-	\n\
-	# Hiding grub menu.\n\
-	GRUB_FORCE_HIDDEN_MENU=true\
-	" \
-		| sudo tee -a /etc/default/grub
+	sudo install -m 0644 config.d/grub/defaults.sh /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## init_mirrorlist: Sort pacman's mirrorlist
