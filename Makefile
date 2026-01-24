@@ -122,16 +122,20 @@ init_grub:
 .PHONY: init_mirrorlist
 init_mirrorlist:
 	sudo cp /etc/pacman.d/mirrorlist{,.bak}
-	sudo sed --in-place 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
+	sudo sed --in-place /etc/pacman.d/mirrorlist.bak \
+		--regexp-extended --expression 's/^[[:space:]]*#[[:space:]]*(Server)[[:space:]]*/\1 /'
 	rankmirrors -n 0 /etc/pacman.d/mirrorlist.bak | sudo tee /etc/pacman.d/mirrorlist
 
 ## init_pacman: Enable some pacman options
 .PHONY: init_pacman
 init_pacman:
 	sudo sed --in-place /etc/pacman.conf \
-		-e "s/^#Color$$/Color\nILoveCandy/" \
-		-e "s/^#VerbosePkgLists$$/VerbosePkgLists/" \
-		-e "s/^#ParallelDownloads /ParallelDownloads /"
+		--regexp-extended --expression \
+		's/^[[:space:]]*#[[:space:]]*(Color)[[:space:]]*$$/\1\nILoveCandy/' \
+		--regexp-extended --expression \
+		's/^[[:space:]]*#[[:space:]]*(VerbosePkgLists)[[:space:]]*$$/\1/' \
+		--regexp-extended --expression \
+		's/^[[:space:]]*#[[:space:]]*(ParallelDownloads)[[:space:]]*=.*/\1 = 5/'
 
 ## init_putty: Create an XDG config directory for PuTTY
 .PHONY: init_putty
