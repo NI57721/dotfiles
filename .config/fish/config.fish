@@ -12,17 +12,12 @@ set -gx FLYCTL_INSTALL $XDG_DATA_HOME/fly
 set -gx RBENV_ROOT $XDG_DATA_HOME/rbenv
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-set -gx NVM_DIR $XDG_DATA_HOME/nvm
-set -gx nvm_data $NVM_DIR/versions/node
-set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -gx DVDCSS_CACHE $XDG_CACHE_HOME/dvdcss
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
 set -gx GOPATH $XDG_DATA_HOME/go-workspace
 set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node/repl_history
 # set -gx WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
-
-nvm use (nvm list | sed "s/.*v\|[^0-9]\+\$//g" | sort | tail -1) > /dev/null
 
 set -g theme_display_cmd_duration yes
 set -g theme_display_hostname no
@@ -192,8 +187,6 @@ function update
   update_rbenv
   echo -e "\n### Ruby Gems ###"
   update_gem
-  echo -e "\n### NVM ###"
-  update_nvm
   echo -e "\n### Deno ###"
   update_deno
   echo -e "\n### Go ###"
@@ -224,10 +217,6 @@ end
 function update_gem
   gem update --system
   gem update
-end
-
-function update_nvm
-  $DOTFILES_ROOT/scripts/update_nvm.sh
 end
 
 function update_deno

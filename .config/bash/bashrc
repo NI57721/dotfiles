@@ -13,8 +13,6 @@ update() {
   update_rbenv
   echo -e "\n### Ruby Gems ###"
   update_gem
-  echo -e "\n### NVM ###"
-  update_nvm
   echo -e "\n### Deno ###"
   update_deno
   echo -e "\n### Go ###"
@@ -45,10 +43,6 @@ update_rbenv() {
 update_gem() {
   gem update --system
   gem update
-}
-
-update_nvm() {
-  $DOTFILES_ROOT/scripts/update_nvm.sh
 }
 
 update_deno() {
@@ -214,13 +208,6 @@ eval "$(rbenv init - bash)"
 
 export RUSTUP_ROOT=$XDG_DATA_HOME/rustup
 export CARGO_ROOT=$XDG_DATA_HOME/cargo
-
-export NVM_DIR=$XDG_DATA_HOME/nvm
-if [ -s "$NVM_DIR/nvm.sh" ]; then . $NVM_DIR/nvm.sh; fi
-if [ -s "$NVM_DIR/bash_completion" ]; then . "$NVM_DIR/bash_completion"; fi
-nvm use node > /dev/null
-
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 export DVDCSS_CACHE=$XDG_CACHE_HOME/dvdcss
 export HISTFILE=$XDG_STATE_HOME/bash/history

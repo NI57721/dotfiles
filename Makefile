@@ -65,7 +65,6 @@ initialize_basic: \
 install: install_basic \
 	i_dropbox \
 	i_go \
-	i_nvm \
 	i_rbenv \
 	i_rust \
 	i_vpn \
@@ -206,11 +205,6 @@ i_fisher: # i_fish
 .PHONY: i_go
 i_go:
 	scripts/update_go.sh
-
-## i_nvm: Install nvm
-.PHONY: i_nvm
-i_nvm:
-	scripts/update_nvm.sh
 
 ## i_paru: Install paru
 .PHONY: i_paru
