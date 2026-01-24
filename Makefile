@@ -109,13 +109,7 @@ init_docker:
 init_git:
 	mkdir -p $$HOME/.ssh
 	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
-	echo -e "\
-	Host github github.com\n\
-	  HostName github.com\n\
-	  IdentityFile $$HOME/.ssh/ni57721\n\
-	  User git\n\
-	" \
-		| tee -a $$HOME/.ssh/config
+	cat config.d/ssh/github.conf >> $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
 ## init_grub: Hide the grub menu
