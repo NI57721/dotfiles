@@ -6,8 +6,8 @@
 ### $XDG_CONFIG_HOME
 !/.config/**/*
 
-### /scripts
 !/scripts/*.sh
+!/data/*.mk
 
 !/README.md
 !/LICENSE

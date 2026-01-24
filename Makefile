@@ -1,36 +1,10 @@
 .DEFAULT_GOAL := help
-.PHONY: all allinstall
 
-# Basic packages
-BASIC_PACKAGES := base-devel curl jq git linux-headers ntfs-3g openssh reflector
-BASIC_PACKAGES += ripgrep the_silver_searcher tmux tree unzip whois zip
+include data/*.mk
 
-# GUI and Desktop
-PACKAGES := libreoffice-still qt5-wayland sway swayidle swaylock sway-contrib
-PACKAGES += thunar tumbler waybar wezterm wl-clipboard xorg-xwayland
-# Media
-PACKAGES += bluez bluez-libs bluez-utils libaacs libbluray
-PACKAGES += pavucontrol pulseaudio pulseaudio-alsa pulseaudio-bluetooth sof-firmware
-# Font
-PACKAGES += noto-fonts noto-fonts-cjk noto-fonts-emoji
-# Misc
-PACKAGES += alacritty bat docker docker-compose dunst dust fastfetch github-cli
-PACKAGES += git-delta gnuplot grim hyperfine libyaml man-db man-pages ntfs-3g
-PACKAGES += perl-image-exiftool pptpclient putty python-qrcode strongswan
-PACKAGES += traceroute trash-cli typst udisks2 virtualbox wf-recorder wget words
-PACKAGES += wtype
-
-AUR_PACKAGES := backlight_control google-chrome pinta
-AUR_PACKAGES += sway-audio-idle-inhibit-git todotxt ttf-hackgen vlc-nox
-AUR_PACKAGES += vlc-plugin-ffmpeg xremap-wlroots-bin
-
-GO_PACKAGES := github.com/rhysd/vim-startuptime@latest github.com/yory8/clipman@latest
-GO_PACKAGES += github.com/suin/git-remind@latest
-
-
-# Default distribution is set to ArchLinux.
-# You can specify a distribution as below:
-# make task DST=YourDistribution
+# The default distribution is Arch Linux.
+# To override it:
+# 	make <target> DST=<distribution>
 DST = arch
 
 ifeq ($(DST), arch)
@@ -50,32 +24,69 @@ else
 	REMOVE_PKG     = sudo pacman -R
 endif
 
-## help: Display this message
+## help: Show this message
+.PHONY: help
 help:
-	@grep -P "^## [a-zA-Z_-]+: .[^\n]*$$" $(MAKEFILE_LIST) \
+	@grep --no-filename --perl-regexp "^## [a-zA-Z_-]+: .[^\n]*$$" $(MAKEFILE_LIST) \
 	| awk 'BEGIN {FS = "^## |: "}; {printf "\033[36m%-20s\033[0m %s\n", $$2, $$3}'
 
-## all: Execute install and initialize
+## all: Run install and initialize
+.PHONY: all
 all: install initialize
 
-## basic: Prepare at the basic level
-basic:
-	i
+## basic: Run a minimal install and initialization
+.PHONY: basic
+basic: install_basic initialize_basic
 
-## link: Create links from the files in dotfiles repository into $HOME
+## link: Create symlinks from this repo into $HOME
+.PHONY: link
 link:
 	scripts/link.sh
 
-## initialize: Initialize settings for some software
-initialize: init_bash init_curl init_docker init_git init_grub init_mirrorlist \
-	 init_pacman init_putty init_timezone
+## initialize: Initialize settings for installed software
+.PHONY: initialize
+initialize: initialize_basic \
+	init_curl \
+	init_docker \
+	init_grub \
+	init_mirrorlist \
+	init_pacman
 
-## install: Install everything needed
-install: install_packages install_go_packages \
-	 i_deno i_dropbox i_fish i_fisher i_go i_nvm i_paru i_rbenv \
-	 i_rust i_skk_dictionaries i_tpm i_vim i_vpn
+## initialize_basic: Initialize a minimal set of settings
+.PHONY: initialize_basic
+initialize_basic: \
+	init_bash \
+	init_git \
+	init_putty \
+	init_timezone
 
-## init_bash: Add settings for umask and the path to User's bashrc
+## install: Install everything
+.PHONY: install
+install: install_basic \
+	i_dropbox \
+	i_go \
+	i_nvm \
+	i_rbenv \
+	i_rust \
+	i_vpn \
+	install_packages \
+	install_aur_packages \
+	install_go_packages
+
+## install_basic: Run a minimal install
+.PHONY: install_basic
+install_basic: \
+	i_paru \
+	install_basic_packages \
+	i_deno \
+	i_fish \
+	i_fisher \
+	i_skk_dictionaries \
+	i_tpm \
+	i_vim \
+
+## init_bash: Set umask and source the user's bashrc
+.PHONY: init_bash
 init_bash:
 	if [ -f "$$XDG_CONFIG_HOME/bash/bashrc" ]; then \
 		echo -e "\
@@ -90,11 +101,13 @@ init_bash:
 	fi
 
 ## init_curl: Set up cURL
+.PHONY: init_curl
 init_curl:
 	mkdir --parents $$XDG_CONFIG_HOME/curl
 	cat .config/curlrc.template | envsubst > $$XDG_CONFIG_HOME/curlrc
 
 ## init_docker: Set up Docker
+.PHONY: init_docker
 init_docker:
 	sudo systemctl enable docker.service
 	sudo systemctl restart docker.service
@@ -102,6 +115,7 @@ init_docker:
 	sudo gpasswd -a $$USER docker
 
 ## init_git: Initialize settings for Git
+.PHONY: init_git
 init_git:
 	mkdir -p $$HOME/.ssh
 	ssh-keygen -t rsa -f $$HOME/.ssh/ni57721
@@ -114,7 +128,8 @@ init_git:
 		| tee -a $$HOME/.ssh/config
 	xdg-open https://github.com/settings/ssh
 
-## init_grub: Initialize settings for grub, where grub is hidden
+## init_grub: Hide the grub menu
+.PHONY: init_grub
 init_grub:
 	echo -e "\
 	\n\
@@ -124,58 +139,69 @@ init_grub:
 		| sudo tee -a /etc/default/grub
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-## init_mirrorlist: Sort the mirrorlist used by pacman
+## init_mirrorlist: Sort pacman's mirrorlist
+.PHONY: init_mirrorlist
 init_mirrorlist:
 	sudo cp /etc/pacman.d/mirrorlist{,.bak}
-	sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
+	sudo sed --in-place 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
 	rankmirrors -n 0 /etc/pacman.d/mirrorlist.bak | sudo tee /etc/pacman.d/mirrorlist
 
-## init_pacman: Initialize settings for pacman, where Color and ILoveCandy are turned on
+## init_pacman: Enable some pacman options
+.PHONY: init_pacman
 init_pacman:
-	sudo sed -i /etc/pacman.conf \
+	sudo sed --in-place /etc/pacman.conf \
 		-e "s/^#Color$$/Color\nILoveCandy/" \
 		-e "s/^#VerbosePkgLists$$/VerbosePkgLists/" \
 		-e "s/^#ParallelDownloads /ParallelDownloads /"
 
-## init_putty: Make a directory putty for PuTTY to use this directory instead of $HOME/.putty
+## init_putty: Create an XDG config directory for PuTTY
+.PHONY: init_putty
 init_putty:
 	mkdir $$XDG_CONFIG_HOME/putty
 
 ## init_timezone: Initialize settings for timezones
+.PHONY: init_timezone
 init_timezone:
 	sudo timedatectl set-timezone Asia/Tokyo
 
 ## install_basic_packages: Install basic packages
+.PHONY: install_basic_packages
 install_basic_packages:
+	$(UPDATE_PKG)
+	$(INSTALL_PKG) $(BASIC_PACKAGES) $(BASIC_AUR_PACKAGES)
+
+## install_packages: Install packages
+.PHONY: install_packages
+install_additional_packages:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) $(BASIC_PACKAGES) $(PACKAGES)
 
-## install_additional_packages: Install additional packages
-install_basic_packages:
-	$(UPDATE_PKG)
-	$(INSTALL_PKG) $(PACKAGES) $(PACKAGES)
-
-## install_aur: Install AURs
-install_aur: # i_paru
+## install_aur_packages: Install AUR packages
+.PHONY: install_aur_packages
+install_aur_packages: # i_paru
 	paru -S $(AUR_PACKAGES)
 
 ## install_go_packages: Install go packages
+.PHONY: install_go_packages
 install_go_packages:
 	for go_package in $(GO_PACKAGES); do \
 		go install $$go_package; \
 	done;
 
 ## i_deno: Install deno
+.PHONY: i_deno
 i_deno:
 	curl -fsSL https://deno.land/x/install/install.sh | \
 		DENO_INSTALL=$$XDG_DATA_HOME/deno bash
 
-## i_dropbox: Install DropBox CLI tool
+## i_dropbox: Install Dropbox CLI tool
+.PHONY: i_dropbox
 i_dropbox:
 	curl -L https://www.dropbox.com/download\?plat=lnx.x86_64 | \
 		tar -xzf -
 
 ## i_fish: Install fish shell
+.PHONY: i_fish
 i_fish:
 	if [ "$(DST)" = ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
 	$(UPDATE_PKG)
@@ -184,19 +210,23 @@ i_fish:
 	homectl update --shell=/bin/fish $$USER
 
 ## i_fisher: Install fisher
+.PHONY: i_fisher
 i_fisher: # i_fish
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish && \
 		fish -c "fisher install jorgebucaran/fisher"
 
 ## i_go: Install go
+.PHONY: i_go
 i_go:
 	scripts/update_go.sh
 
 ## i_nvm: Install nvm
+.PHONY: i_nvm
 i_nvm:
 	scripts/update_nvm.sh
 
 ## i_paru: Install paru
+.PHONY: i_paru
 i_paru:
 	mkdir -p $$XDG_DATA_HOME/paru
 	cd $$XDG_DATA_HOME/paru; \
@@ -208,6 +238,7 @@ i_paru:
 	cd $$XDG_DATA_HOME/paru && makepkg -si
 
 ## i_rbenv: Install rbenv
+.PHONY: i_rbenv
 i_rbenv:
 	sudo pacman -Rsc ruby
 	git clone https://github.com/rbenv/rbenv.git $$RBENV_ROOT
@@ -216,10 +247,12 @@ i_rbenv:
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 ## i_rust: Install rust
+.PHONY: i_rust
 i_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
 ## i_skk_dictionaries: Install dictionary files for skk
+.PHONY: i_skk_dictionaries
 i_skk_dictionaries:
 	mkdir -p $$XDG_DATA_HOME/skk
 	curl --remote-name-all --output-dir $$XDG_DATA_HOME/skk \
@@ -239,17 +272,20 @@ i_skk_dictionaries:
 	git clone https://github.com/tokuhirom/jawiki-kana-kanji-dict $$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict
 
 ## i_tpm: Install tpm
+.PHONY: i_tpm
 i_tpm:
 	git clone https://github.com/tmux-plugins/tpm $$XDG_CONFIG_HOME/tmux/plugins/tpm
 	bash $$XDG_CONFIG_HOME/tmux/plugins/tpm/bin/install_plugins
 
 ## i_vim: Build vim HEAD
+.PHONY: i_vim
 i_vim:
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) autoconf automake gettext luajit
 	scripts/update_vim.sh
 
 ## i_vpn: Install VPN settings
+.PHONY: i_vpn
 i_vpn:
 	sudo mv /etc/swanctl/swanctl.conf{,.bak}
 	echo -e "\
@@ -295,6 +331,7 @@ i_vpn:
 	sudo ln -s /etc/ssl/certs /etc/ipsec.d/cacerts
 
 ## i_vpn_with_ppp: Install VPN settings with ppp
+.PHONY: i_vpn_with_ppp
 i_vpn_with_ppp:
 	curl https://www.interlink.or.jp/support/vpn/myip/myiptools/myiptools.tar.gz > /tmp/myiptools.tar.gz
 	sudo tar xvzf /tmp/myiptools.tar.gz -C /etc
@@ -315,9 +352,10 @@ i_vpn_with_ppp:
 		xargs -I{} sudo cat /etc/ppp/peers/myip_{}
 	sudo cat /etc/ppp/chap-secrets
 
-## create_arch_linux_installer: Create Arch Linux installer USB drive for booting in BIOS and UEFI systems.
+## create_arch_linux_installer: Create an Arch Linux installer USB (BIOS/UEFI)
+.PHONY: create_arch_linux_installer
 create_arch_linux_installer:
-	@echo -e "Install the image file if needed"
+	@echo -e "Download the ISO if needed"
 	mkdir -p $$XDG_CACHE_HOME/arch-installation
 	curl https://archlinux.org/iso/latest/archlinux-x86_64.iso.sig \
 		> $$XDG_CACHE_HOME/arch-installation/archlinux.sig.tmp
