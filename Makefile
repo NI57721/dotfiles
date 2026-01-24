@@ -155,13 +155,13 @@ install_basic_packages:
 
 ## install_packages: Install packages
 .PHONY: install_packages
-install_additional_packages:
+install_packages: install_basic_packages
 	$(UPDATE_PKG)
-	$(INSTALL_PKG) $(BASIC_PACKAGES) $(PACKAGES)
+	$(INSTALL_PKG) $(PACKAGES)
 
 ## install_aur_packages: Install AUR packages
 .PHONY: install_aur_packages
-install_aur_packages: # i_paru
+install_aur_packages: i_paru
 	paru -S $(AUR_PACKAGES)
 
 ## install_go_packages: Install go packages
@@ -186,16 +186,20 @@ i_dropbox:
 ## i_fish: Install fish shell
 .PHONY: i_fish
 i_fish:
-	if [ "$(DST)" = ubuntu ]; then $(ADD_REPOSITORY)fish-shell/release-3; fi
+	if [ "$(DST)" = ubuntu ]; then \
+		$(ADD_REPOSITORY)fish-shell/release-3; \
+	fi
 	$(UPDATE_PKG)
 	$(INSTALL_PKG) fish
-	echo /bin/fish | sudo tee -a /etc/shells
+	echo /bin/fish | sudo tee --append /etc/shells
 	homectl update --shell=/bin/fish $$USER
 
 ## i_fisher: Install fisher
 .PHONY: i_fisher
 i_fisher: # i_fish
-	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish && \
+	scripts/peeping.sh \
+		"https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish" | \
+		fish && \
 		fish -c "fisher install jorgebucaran/fisher"
 
 ## i_go: Install go
@@ -232,7 +236,7 @@ i_rbenv:
 ## i_rust: Install rust
 .PHONY: i_rust
 i_rust:
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+	scripts/peeping.sh "https://sh.rustup.rs" | bash
 
 ## i_skk_dictionaries: Install dictionary files for skk
 .PHONY: i_skk_dictionaries
@@ -252,7 +256,8 @@ i_skk_dictionaries:
 		rm $$XDG_DATA_HOME/skk/zipcode.tar
 	tar -xf $$XDG_DATA_HOME/skk/SKK-JISYO.edict.tar -C $$XDG_DATA_HOME/skk && \
 		rm $$XDG_DATA_HOME/skk/SKK-JISYO.edict.tar
-	git clone https://github.com/tokuhirom/jawiki-kana-kanji-dict $$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict
+	git clone https://github.com/tokuhirom/jawiki-kana-kanji-dict \
+		$$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict
 
 ## i_tpm: Install tpm
 .PHONY: i_tpm
