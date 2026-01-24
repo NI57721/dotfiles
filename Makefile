@@ -174,8 +174,8 @@ install_go_packages:
 ## i_deno: Install deno
 .PHONY: i_deno
 i_deno:
-	curl -fsSL https://deno.land/x/install/install.sh | \
-		DENO_INSTALL=$$XDG_DATA_HOME/deno bash
+	scripts/peeping.sh "https://deno.land/x/install/install.sh" | \
+		DENO_INSTALL=$$XDG_DATA_HOME/deno sh
 
 ## i_dropbox: Install Dropbox CLI tool
 .PHONY: i_dropbox
