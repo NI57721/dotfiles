@@ -246,8 +246,7 @@ augroup END
 augroup MyAstro
   autocmd!
   autocmd Filetype astro set shiftwidth=2
-  autocmd Filetype astro inoremap <buffer> </ </<C-X><C-O><ESC><ESC>=j
-  autocmd Filetype astro nnoremap <buffer> <CR> A<br><ESC>=jj$
+  autocmd Filetype astro nnoremap <buffer> <CR> A<br /><ESC>=jj$
   autocmd Filetype astro call s:astroGfSetUp()
 augroup END
 
@@ -261,12 +260,8 @@ function! s:astroGf() abort
   if empty(l:root)
     execute 'tabnew ' .. expand('<cfile>')
   else
-    let l:fname = substitute(l:root, '[^/]*$', '', '') .. expand('<cfile>')
-    if filereadable(l:fname)
-      execute 'tabnew ' .. l:fname
-    else
-      execute 'tabnew ' .. l:fname
-    endif
+    let l:fname = substitute(l:root, '[^/]*$', 'src/', '') .. expand('<cfile>')
+    execute 'tabnew ' .. l:fname
   endif
 endfunction
 
