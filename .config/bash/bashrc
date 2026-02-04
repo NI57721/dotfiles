@@ -280,6 +280,16 @@ alias gipu="git push --set-upstream origin \$(git branch --show-current)"
 alias girm="git remind status --short | grep -ve "-sandbox\$""
 alias givi="git rev-parse --is-inside-work-tree 1> /dev/null 2>&1 && git diff --name-only | uniq | sed \"s#^#\$(git rev-parse --show-toplevel)\\/#\" | xargs --no-run-if-empty -o vim -p"
 
+giig() {
+    git rev-parse --git-common-dir >/dev/null 2>&1 || return 1
+    local root git_common
+    root="$(git rev-parse --show-toplevel)" || return 1
+    git_common="$(git rev-parse --git-common-dir)" || return 1
+    for f in "$@"; do
+      realpath --relative-to="$root" -- "$f"
+    done >> "$git_common/info/exclude"
+}
+
 alias docl="docker container ls"
 alias doil="docker image ls"
 alias dos="docker stop"
