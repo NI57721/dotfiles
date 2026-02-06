@@ -295,7 +295,7 @@ if executable('rg')
   let &grepprg='rg --vimgrep'
   set grepformat=%f:%l:%c:%m
 endif
-command! -nargs=1 -complete=file G execute 'silent grep' <q-args> | redraw! | copen
+command! -nargs=1 -complete=file G execute 'tabedit | silent grep' <q-args> | redraw! | copen
 
 augroup MyQuickFix
   autocmd!
