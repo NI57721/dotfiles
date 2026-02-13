@@ -11,4 +11,3 @@ setxkbmap -option ctrl:nocaps
 #         Option "TappingDrag" "on"
 #         Option "TappingDragLock" "on"
 # EndSection
-

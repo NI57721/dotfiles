@@ -22,4 +22,3 @@ case "$answer" in
   *)
     echo;;
 esac
-

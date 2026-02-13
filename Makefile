@@ -358,4 +358,3 @@ create_arch_linux_installer:
 	@read -p "OK? [y/n]" ans; if [ $$ans != y ]; then exit 1; fi;
 	@read -p "Enter the USB drive without suffix (e.g. /dev/sdb): " usb; \
 	sudo cp $$XDG_CACHE_HOME/arch-installation/archlinux.iso $$usb
-

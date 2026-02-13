@@ -14,4 +14,3 @@ fi
 git clone git@github.com:$user/$repository ~/dev/$repository &
 wezterm cli spawn --cwd ~/dev/$repository -- fish
 swaymsg [app_id="^MainTerminal$"] focus
-

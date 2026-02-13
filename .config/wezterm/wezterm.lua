@@ -113,4 +113,3 @@ return {
     {key='m',mods='CTRL',action=wezterm.action.SendKey{key='Enter'}},
   },
 }
-

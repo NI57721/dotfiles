@@ -16,4 +16,3 @@ if [ -d "$go_root" ]; then
 fi
 mkdir -p $go_root
 tar -C $XDG_DATA_HOME -xzf $tmp_file && rm $tmp_file
-

@@ -7,4 +7,3 @@ else
   killall -s SIGINT -e wf-recorder
   notify-send -t 1000 "Stop recording"
 fi
-

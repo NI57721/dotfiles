@@ -13,5 +13,4 @@ BASIC_PACKAGES := \
 	tree \
 	unzip \
 	whois \
-	zip \
-
+	zip

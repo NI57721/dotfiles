@@ -6,4 +6,3 @@ AUR_PACKAGES := \
 	ttf-hackgen \
 	vlc-nox \
 	vlc-plugin-ffmpeg
-

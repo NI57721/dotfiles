@@ -1,2 +1,1 @@
 export TODO_DIR=$XDG_STATE_HOME/todo
-

@@ -447,4 +447,3 @@ fi
 if [ -f "$XDG_CONFIG_HOME/bash/localrc" ]; then
   . $XDG_CONFIG_HOME/bash/localrc
 fi
-

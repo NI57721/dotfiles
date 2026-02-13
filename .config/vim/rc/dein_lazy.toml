@@ -116,4 +116,3 @@ on_event = ['CursorHold', 'InsertEnter']
 [[plugins]]
 repo = 'vim-fall/fall.vim'
 on_event = ['CursorHold', 'CmdlineEnter']
-

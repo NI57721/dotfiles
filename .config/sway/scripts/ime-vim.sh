@@ -18,4 +18,3 @@ else
     swaymsg '[app_id="FloatingVim"] focus'
   fi
 fi
-

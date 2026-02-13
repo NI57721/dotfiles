@@ -16,4 +16,3 @@ fi
   --with-luajit --enable-fail-if-missing
 make -j$(($(grep cpu.cores /proc/cpuinfo | sort -u | sed 's/[^0-9]//g') + 1))
 sudo make install
-

@@ -30,4 +30,3 @@
     show = delta
 [remind]
     paths = /home/*/dotfiles,/home/*/dev/*
-

@@ -54,5 +54,4 @@ PACKAGES := \
 	wl-clipboard \
 	words \
 	wtype \
-	xorg-xwayland \
-
+	xorg-xwayland

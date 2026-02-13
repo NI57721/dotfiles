@@ -45,4 +45,3 @@ for file in "${linked_files[@]}"; do
   ln -snf $DOTFILES_ROOT/$file $HOME/$file ||
     echo "FAILURE 'ln -snf $DOTFILES_ROOT/$file $HOME/$file'"
 done
-
