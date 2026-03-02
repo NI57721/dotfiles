@@ -144,7 +144,12 @@ init_putty:
 ## init_timezone: Initialize settings for timezones
 .PHONY: init_timezone
 init_timezone:
+	sudo install -D --mode=0644 config.d/systemd/network/25-wireless.network \
+		/etc/systemd/network/25-wireless.network
 	sudo timedatectl set-timezone Asia/Tokyo
+	sudo timedatectl set-ntp true
+	sudo systemctl restart systemd-networkd
+	sudo systemctl restart systemd-timesyncd
 
 ## install_basic_packages: Install basic packages
 .PHONY: install_basic_packages
