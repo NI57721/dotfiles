@@ -461,6 +461,8 @@ endif
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
 
+let g:indentLine_setConceal = v:false
+
 command -nargs=0 ClearUndo call s:ClearUndo()
 function! s:ClearUndo()
   let old_undolevels = &undolevels
