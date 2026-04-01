@@ -1,5 +1,9 @@
 [Default Applications]
+application/pdf=google-chrome.desktop
 image/avif=google-chrome.desktop
+image/gif=google-chrome.desktop
+image/jpeg=google-chrome.desktop
+image/png=google-chrome.desktop
 image/svg+xml=google-chrome.desktop
 text/html=google-chrome.desktop
 x-scheme-handler/http=google-chrome.desktop
