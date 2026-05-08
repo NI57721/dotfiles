@@ -136,7 +136,10 @@ call ddc#enable()
 " ddu.vim
 call ddu#custom#patch_global(#{
   \   ui: 'filer',
-  \   sources: [{'name': 'file', 'params': {}}],
+  \   sources: [
+  \     #{name: 'file', params: {}},
+  \     #{name: 'lsp_diagnostic', params: #{buffer: 0}},
+  \   ],
   \   actionOptions: #{
   \     narrow: #{
   \       quit: v:false,
@@ -205,6 +208,7 @@ set showtabline=2
 set shell=fish
 set ttimeoutlen=10
 set completeopt^=popup
+set clipboard=unnamedplus
 
 augroup MyGo
   autocmd!
@@ -487,7 +491,7 @@ endif
 " Set the indent inside the p tags
 let g:html_indent_inctags = 'p'
 
-let g:indentLine_setConceal = v:false
+let g:vim_json_syntax_conceal = 0
 
 command -nargs=0 ClearUndo call s:ClearUndo()
 function! s:ClearUndo()
@@ -503,23 +507,40 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   nnoremap <buffer> gd <plug>(lsp-definition)
-  nnoremap <buffer> <C-Q> <plug>(lsp-rename)
-  nnoremap <buffer> <C-K> <plug>(lsp-hover)
+  nnoremap <buffer> gs <plug>(lsp-document-symbol-search)
+  nnoremap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nnoremap <buffer> ge <plug>(lsp-references)
+  nnoremap <buffer> gi <plug>(lsp-implementation)
+  nnoremap <buffer> gt <plug>(lsp-type-definition)
+  nnoremap <buffer> gm <plug>(lsp-rename)
+  nnoremap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nnoremap <buffer> ]g <plug>(lsp-next-diagnostic)
+  nnoremap <buffer> K <plug>(lsp-hover)
   inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+
+  let g:lsp_format_sync_timeout = 1000
 endfunction
 
 augroup lsp_install
   autocmd!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  autocmd User lsp_buffer_enabled echom "LSP_INSTALL"
 augroup END
 
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('$HOME/lsp.log')
 let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_virtual_text_enabled = v:false
+let g:lsp_diagnostics_virtual_text_enabled = 1 " v:false
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_text_edit_enabled = 1
 let g:lsp_settings_filetype_ruby = 'solargraph'
 
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_float_cursor = v:true
+let g:lsp_diagnostics_float_delay = 0
+let g:lsp_diagnostics_highlights_enabled = 1
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_signs_insert_mode_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = v:false
 
 " Display results on the upper side with denite
 let g:fzf_layout = #{up: '~40%'}
@@ -545,6 +566,7 @@ call skkeleton#config(#{
   \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.emoji.utf8'), 'utf-8'],
   \     [expand('$XDG_DATA_HOME/skk/jawiki-kana-kanji-dict/SKK-JISYO.jawiki'), 'utf-8'],
   \     [expand('$XDG_DATA_HOME/skk/zipcode/SKK-JISYO.zipcode'), 'euc-jp'],
+  \     [expand('$XDG_DATA_HOME/skk/SKK-JISYO.edict'), 'euc-jp'],
   \   ],
   \   kanaTable: 'neoazik',
   \   completionRankFile: expand('$XDG_DATA_HOME/skk/rank.json'),
@@ -983,8 +1005,6 @@ nnoremap <silent> R <Plug>(operator-replace)
 xnoremap <silent> R <Plug>(operator-replace)
 nnoremap <silent> RR R
 
-set clipboard^=unnamedplus
-
 " Yank for WSL2
 function! IsWSL()
   if has('unix')
@@ -1027,9 +1047,8 @@ function OpenGitLogs(n = 100) abort
   set filetype=diff
   call append(0, split(logs, "\n"))
 endfunction
-nnoremap gr <Cmd>call OpenGitLogs()<CR>
+nnoremap gr <Cmd>call OpenGitLogs(10000)<CR>
 
 if filereadable(expand('$XDG_CONFIG_HOME/vim/vimrc.local'))
   source $XDG_CONFIG_HOME/vim/vimrc.local
 endif
-

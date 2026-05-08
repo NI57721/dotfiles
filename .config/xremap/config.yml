@@ -18,6 +18,16 @@ modmap:
       KEY_F: KEY_Z
       LeftBrace: KEY_X
 keymap:
+  - name: Temporary
+    remap:
+      C-m: Enter
+      C-h: BackSpace
+      C-LeftBrace: Esc
+      C-d: C-BackSpace
+      C-p: Up
+      C-n: Down
+      C-Shift-n: C-Shift-n
+      C-Apostrophe: Shift-Insert
   - name: Disable Some Shortcuts
     application:
       only: google-chrome
