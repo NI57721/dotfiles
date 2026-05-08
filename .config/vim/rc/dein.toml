@@ -90,6 +90,10 @@ repo = 'Shougo/ddu-ui-filer'
 depends = ['denops.vim', 'ddu.vim']
 
 [[plugins]]
+repo = 'uga-rosa/ddu-source-lsp'
+depends = ['denops.vim', 'ddu.vim']
+
+[[plugins]]
 repo = 'lambdalisue/kensaku.vim'
 depends = 'denops.vim'
 
