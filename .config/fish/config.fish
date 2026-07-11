@@ -119,7 +119,7 @@ function gifu
     git rebase --autostash --autosquash $hash~
 end
 complete --no-files --command gifu --keep-order --arguments '(__fish_git_recent_commits)'
-source /usr/share/fish/completions/git.fish
+status get-file completions/git.fish | source
 
 # for Docker
 abbr docl docker container ls
