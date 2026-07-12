@@ -46,6 +46,7 @@ link:
 ## initialize: Initialize settings for installed software
 .PHONY: initialize
 initialize: initialize_basic \
+	init_battery_thresholds \
 	init_curl \
 	init_docker \
 	init_grub \
@@ -88,6 +89,12 @@ install_basic: \
 .PHONY: init_bash
 init_bash:
 	cat config.d/bash.bashrc/defaults.sh | sudo tee --append /etc/bash.bashrc
+
+## init_battery_thresholds: Set the control threshold of a battery
+.PHONY: init_battery_thresholds
+init_battery_thresholds:
+	echo -n 50 | sudo tee /sys/class/power_supply/BAT0/charge_control_start_threshold
+	echo -n 55 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold
 
 ## init_curl: Set up cURL
 .PHONY: init_curl
