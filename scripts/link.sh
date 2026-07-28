@@ -9,6 +9,7 @@ linked_files=(
   .config/bundle/config
   .config/chrome-flags.conf
   .config/fish/{config.fish,fish_plugins}
+  .config/fontconfig/fonts.conf
   .config/git/{config,gitignore_global}
   .config/irb/irbrc
   .config/mimeapps.list
