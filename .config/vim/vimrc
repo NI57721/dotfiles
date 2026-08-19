@@ -309,6 +309,7 @@ nnoremap <silent> <leader>q <Plug>(socrates-greed)
 nnoremap <leader>p <Cmd>call ShowMostRecentlyClosedTabs()<CR>
 nnoremap <leader>m <Plug>(MatchitNormalForward)
 vnoremap <leader>m <Plug>(MatchitVisualForward)
+vnoremap v <C-V>
 
 " QuickFix
 nnoremap [N <Cmd>cprevious<CR>
