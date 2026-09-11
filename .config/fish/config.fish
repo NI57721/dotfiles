@@ -37,6 +37,9 @@ fish_add_path $XDG_DATA_HOME/dein/repos/github.com/thinca/vim-themis/bin
 
 set -x less "-nm"
 
+abbr -a --position anywhere -- '>' '>?'
+abbr -a --position anywhere -- '2>' '2>?'
+
 abbr -a lss ls -acf
 abbr -a ll ls -alh
 abbr -a --set-cursor le % \| less
