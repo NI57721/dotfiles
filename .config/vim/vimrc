@@ -558,7 +558,9 @@ call skkeleton#config(#{
   \   userDictionary: expand('$XDG_DATA_HOME/skk/skkeleton'),
   \ })
 
+call add(g:skkeleton#mapped_keys, '<C-X>')
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
+call skkeleton#register_keymap('input', '<C-X>', 'kakuteiUndo')
 call skkeleton#register_keymap('henkan', '<BS>', 'purgeCandidate')
 call skkeleton#register_keymap('henkan', 'X', v:false)
 
