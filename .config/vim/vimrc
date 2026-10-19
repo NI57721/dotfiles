@@ -877,38 +877,8 @@ function! s:yankAndClose() abort
   call job_start(['swaymsg', 'move window to scratchpad'])
 endfunction
 
-function! s:utf8_bytes(str) abort
-  let bytes = []
-
-  for cp in str2list(a:str, 1)
-    if cp <= 0x7f
-      call add(bytes, cp)
-    elseif cp <= 0x7ff
-      call add(bytes, 0xc0 + (cp / 0x40))
-      call add(bytes, 0x80 + (cp % 0x40))
-    elseif cp <= 0xffff
-      call add(bytes, 0xe0 + (cp / 0x1000))
-      call add(bytes, 0x80 + ((cp / 0x40) % 0x40))
-      call add(bytes, 0x80 + (cp % 0x40))
-    else
-      call add(bytes, 0xf0 + (cp / 0x40000))
-      call add(bytes, 0x80 + ((cp / 0x1000) % 0x40))
-      call add(bytes, 0x80 + ((cp / 0x40) % 0x40))
-      call add(bytes, 0x80 + (cp % 0x40))
-    endif
-  endfor
-
-  return bytes
-endfunction
-
 function! s:sexy_dumpling_encode(message) abort
-  let out = ''
-
-  for byte in s:utf8_bytes(a:message)
-    let out ..= nr2char(0xE00F0 + byte)
-  endfor
-
-  return out
+  return str2blob([a:message])->blob2list()->map({_, byte -> nr2char(0xE00F0 + byte)})->join('')
 endfunction
 
 function! s:replace_visual_with_sexy_dumpling_unicode() abort
