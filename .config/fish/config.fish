@@ -83,6 +83,7 @@ abbr -a gia  git add
 abbr -a giap git add -p
 abbr -a gial git add -A
 abbr -a gian git add -N
+abbr -a giau git add -u
 abbr -a --set-cursor gic git commit -m \"%
 abbr -a --set-cursor gicm git commit --amend -m \"%
 abbr -a gica git commit --amend --no-edit
