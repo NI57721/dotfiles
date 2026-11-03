@@ -52,6 +52,7 @@ PACKAGES := \
 	wf-recorder \
 	wget \
 	wl-clipboard \
+	wl-clip-persist \
 	words \
 	wtype \
 	xorg-xwayland

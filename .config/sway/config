@@ -219,9 +219,7 @@ bindsym $super+8 exec $XDG_CONFIG_HOME/sway/scripts/recorder-mp4.sh
 bindsym $super+9 exec $XDG_CONFIG_HOME/sway/scripts/recorder-gif.sh
 
 # Clipboard
-exec wl-paste -t text --watch clipman --no-persist store
-exec wl-paste -p -t text --watch clipman store -P --histpath="$XDG_DATA_HOME/clipman-primary.json"
-
+exec wl-clip-persist --clipboard regular
 
 # Change focus
 # focus_on_window_activation focus
