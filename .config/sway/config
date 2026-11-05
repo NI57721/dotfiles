@@ -240,7 +240,7 @@ exec_always "systemctl --user import-environment; systemctl --user start sway-se
 
 workspace number 1
 exec wezterm start --class MainTerminal
-exec xremap --watch ~/.config/xremap/config.yml
+exec xremap --watch=config\,device ~/.config/xremap/config.yml
 
 bar {
   swaybar_command waybar
