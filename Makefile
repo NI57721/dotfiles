@@ -256,7 +256,8 @@ i_skk_dictionaries:
 		https://skk-dev.github.io/dict/SKK-JISYO.propernoun.gz \
 		https://skk-dev.github.io/dict/zipcode.tar.gz \
 		https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8 \
-		https://skk-dev.github.io/dict/SKK-JISYO.edict.tar.gz
+		https://skk-dev.github.io/dict/SKK-JISYO.edict.tar.gz \
+		https://github.com/NI57721/skk-verb-adjective-dictionary/releases/latest/download/SKK-JISYO.verb-adjective
 	find $$XDG_DATA_HOME/skk -name "*.gz" | xargs -I{} gzip -d {}
 	tar -xf $$XDG_DATA_HOME/skk/zipcode.tar -C $$XDG_DATA_HOME/skk && \
 		rm $$XDG_DATA_HOME/skk/zipcode.tar
